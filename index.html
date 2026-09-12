@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WarungDigital — Marketplace Produk Digital</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 html{scroll-behavior:smooth}
@@ -15,11 +14,18 @@ input,textarea,select{font-family:inherit}
 
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 20%,rgba(37,211,102,0.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(108,92,231,0.06) 0%,transparent 40%);z-index:-1;pointer-events:none}
 
+/* SVG EMOJI */
+.em{display:inline-block;width:1.1em;height:1.1em;vertical-align:-0.15em;fill:currentColor;stroke:none}
+.em-lg{width:1.5em;height:1.5em}
+.em-xl{width:2.5em;height:2.5em}
+.em-2xl{width:4em;height:4em}
+
 .navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,0.8);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:100}
-.navbar .logo{font-size:20px;font-weight:900;letter-spacing:-0.5px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer}
+.navbar .logo{font-size:20px;font-weight:900;letter-spacing:-0.5px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer;display:flex;align-items:center;gap:8px}
 .navbar .menu{display:flex;gap:8px;align-items:center}
-.navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:12px;transition:0.2s;opacity:0.7;background:transparent;border:none}
+.navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:12px;transition:0.2s;opacity:0.7;background:transparent;border:none;position:relative;display:flex;align-items:center;gap:6px}
 .navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
+.cart-badge{position:absolute;top:2px;right:2px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
 
 .container{max-width:1100px;margin:0 auto;padding:20px}
 
@@ -27,7 +33,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(37,211,102,0.1),transparent 30%);animation:rotate 8s linear infinite;z-index:0}
 @keyframes rotate{to{transform:rotate(360deg)}}
 .hero>*{position:relative;z-index:1}
-.hero .badge{display:inline-block;padding:6px 16px;border-radius:20px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#25d366;font-size:12px;font-weight:700;margin-bottom:16px;letter-spacing:0.5px}
+.hero .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#25d366;font-size:12px;font-weight:700;margin-bottom:16px;letter-spacing:0.5px}
 .hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-1px}
 .hero h1 span{background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{opacity:0.7;font-size:16px;max-width:500px;margin:0 auto 24px;line-height:1.6}
@@ -42,12 +48,13 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .btn-danger:hover{background:#c0392b;transform:translateY(-3px)}
 .btn-sm{padding:8px 16px;font-size:13px;border-radius:12px}
 .btn-block{width:100%;margin-top:8px}
+.btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important}
 
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px}
 .stat{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;padding:22px;text-align:center;transition:0.3s;position:relative;overflow:hidden}
 .stat::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#25d366,#6c5ce7)}
 .stat:hover{transform:translateY(-4px);border-color:#25d366}
-.stat .icon{font-size:24px;margin-bottom:8px}
+.stat .icon{display:flex;justify-content:center;margin-bottom:8px;color:#25d366}
 .stat .num{font-size:26px;font-weight:900;color:#25d366;letter-spacing:-0.5px}
 .stat .label{font-size:12px;opacity:0.6;margin-top:6px;font-weight:600}
 
@@ -57,19 +64,20 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .section-header .count{background:rgba(37,211,102,0.15);color:#25d366;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
 
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:0.3s;cursor:pointer}
+.product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:0.3s;cursor:pointer;position:relative}
 .product-card:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 20px 40px rgba(37,211,102,0.15)}
-.product-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
+.product-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;color:#25d366}
 .product-card .info{padding:16px}
 .product-card .info .kategori{font-size:10px;opacity:0.5;text-transform:uppercase;letter-spacing:1px;font-weight:700}
 .product-card .info .nama{font-weight:700;font-size:15px;margin:6px 0}
 .product-card .info .penjual{font-size:11px;opacity:0.5;margin-bottom:4px}
-.product-card .info .harga{color:#25d366;font-weight:900;font-size:18px;display:flex;justify-content:space-between;align-items:center}
-.product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;transition:0.2s}
+.product-card .info .harga{color:#25d366;font-weight:900;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;transition:0.2s;display:flex;align-items:center;gap:4px}
 .product-card .info .btn-beli:hover{background:#20b858}
+.product-card .badge-cart{position:absolute;top:10px;right:10px;background:#25d366;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px;display:flex;align-items:center;gap:4px}
 
 .empty{text-align:center;padding:50px 20px;opacity:0.5;background:#141a22;border-radius:20px;border:1px dashed #2a3340}
-.empty i{font-size:48px;margin-bottom:12px;display:block;opacity:0.4}
+.empty svg{color:#25d366;opacity:0.4;margin-bottom:12px}
 
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:999;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.show{display:flex}
@@ -77,7 +85,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 @keyframes pop{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
 .modal .close-btn{float:right;font-size:26px;cursor:pointer;opacity:0.5;background:transparent;border:none;color:#e0e6ed}
 .modal .close-btn:hover{opacity:1}
-.modal h2{font-size:20px;margin-bottom:14px}
+.modal h2{font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .modal label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:0.8}
 .modal input,.modal textarea,.modal select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;margin-bottom:12px;transition:0.3s}
 .modal input:focus,.modal textarea:focus,.modal select:focus{border-color:#25d366}
@@ -99,14 +107,14 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .sidebar .user-info .role{font-size:12px;opacity:0.5;margin-top:2px}
 .sidebar .menu-item{padding:14px 16px;border-radius:14px;cursor:pointer;transition:0.3s;display:flex;align-items:center;gap:12px;font-weight:600;margin-bottom:4px;color:#e0e6ed;background:transparent;border:none;width:100%;text-align:left;font-size:14px}
 .sidebar .menu-item:hover{background:rgba(37,211,102,0.08);transform:translateX(-4px)}
-.sidebar .menu-item i{width:24px;text-align:center;color:#25d366}
+.sidebar .menu-item svg{width:20px;height:20px;color:#25d366;flex-shrink:0}
 .sidebar .menu-item.danger{color:#e74c3c}
-.sidebar .menu-item.danger i{color:#e74c3c}
+.sidebar .menu-item.danger svg{color:#e74c3c}
 .sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9998}
 .sidebar-overlay.show{display:block}
 
 .tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto}
-.tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:14px;transition:0.3s;white-space:nowrap;opacity:0.6}
+.tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:14px;transition:0.3s;white-space:nowrap;opacity:0.6;display:flex;align-items:center;justify-content:center;gap:6px}
 .tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
 .tabs button:hover:not(.active){background:#1f2a34;opacity:1}
 
@@ -121,6 +129,20 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .status-cancelled{background:#e74c3c;color:#fff}
 .order-item .body{font-size:13px;opacity:0.8;line-height:1.8}
 .order-item .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+
+.cart-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;margin-bottom:10px;border:1px solid #1f2a34}
+.cart-item .thumb{width:60px;height:60px;border-radius:12px;background:#141a22;display:flex;align-items:center;justify-content:center;color:#25d366;flex-shrink:0}
+.cart-item .info{flex:1;min-width:0}
+.cart-item .info .nama{font-weight:700;font-size:14px}
+.cart-item .info .harga{color:#25d366;font-weight:700;font-size:13px;margin-top:2px}
+.cart-item .qty{display:flex;align-items:center;gap:8px;background:#141a22;border-radius:10px;padding:4px}
+.cart-item .qty button{background:transparent;border:none;color:#e0e6ed;font-size:16px;padding:4px 8px;border-radius:6px;font-weight:700}
+.cart-item .qty button:hover{background:#1f2a34}
+.cart-item .qty .val{min-width:24px;text-align:center;font-weight:700}
+.cart-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:6px}
+
+.cart-total{display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid #1f2a34;margin-top:14px;font-weight:700;font-size:16px}
+.cart-total .total{color:#25d366;font-size:22px}
 
 .wallet-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:30px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
 .wallet-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,0.1),transparent 50%);animation:pulse 4s ease-in-out infinite}
@@ -162,125 +184,164 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 </head>
 <body>
 
+<!-- SVG SPRITE (emoji custom) -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="em-cart" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.6-1.4 2.4c-.1.2-.2.5-.2.8 0 1.1.9 2 2 2h12v-2H7.4c-.1 0-.2-.1-.2-.2v-.1L8.1 13h7.4c.8 0 1.4-.4 1.8-1l3.6-6.5c.1-.2.1-.3.1-.5 0-.6-.4-1-1-1H5.2L4.3 2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
+  <symbol id="em-box" viewBox="0 0 24 24"><path d="M20 6h-2.2c.1-.3.2-.6.2-1 0-2.2-1.8-4-4-4S10 2.8 10 5c0 .4.1.7.2 1H8c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM8 8h12v11H8V8z"/></symbol>
+  <symbol id="em-store" viewBox="0 0 24 24"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></symbol>
+  <symbol id="em-receipt" viewBox="0 0 24 24"><path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z"/></symbol>
+  <symbol id="em-wallet" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></symbol>
+  <symbol id="em-cog" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></symbol>
+  <symbol id="em-user" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
+  <symbol id="em-bulb" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></symbol>
+  <symbol id="em-login" viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></symbol>
+  <symbol id="em-logout" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></symbol>
+  <symbol id="em-star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>
+  <symbol id="em-fire" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></symbol>
+  <symbol id="em-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
+  <symbol id="em-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+  <symbol id="em-warning" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+  <symbol id="em-upload" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></symbol>
+  <symbol id="em-download" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></symbol>
+  <symbol id="em-plus" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></symbol>
+  <symbol id="em-trash" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></symbol>
+  <symbol id="em-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+  <symbol id="em-send" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></symbol>
+  <symbol id="em-dots" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
+  <symbol id="em-tag" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></symbol>
+  <symbol id="em-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="em-lock" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></symbol>
+  <symbol id="em-bag" viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm0 12c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/></symbol>
+</svg>
+
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <div class="sidebar" id="sidebar">
-  <button class="close" onclick="closeSidebar()">✕</button>
+  <button class="close" onclick="closeSidebar()"><svg class="em" style="width:1em;height:1em"><use href="#em-close"/></svg></button>
   <div class="user-info">
     <div class="avatar" id="sidebarAvatar">👤</div>
     <div class="name" id="sidebarName">Belum Login</div>
     <div class="role" id="sidebarRole">Guest</div>
   </div>
-  <button class="menu-item" onclick="showPage('home');closeSidebar()"><i class="fas fa-home"></i> Home</button>
-  <button class="menu-item" onclick="showPage('jualan');closeSidebar()"><i class="fas fa-store"></i> Jualan Saya</button>
-  <button class="menu-item" onclick="showPage('orders');closeSidebar()"><i class="fas fa-receipt"></i> Pesanan</button>
-  <button class="menu-item" onclick="showPage('dompet');closeSidebar()"><i class="fas fa-wallet"></i> Dompet</button>
-  <button class="menu-item" onclick="showPage('setting');closeSidebar()"><i class="fas fa-cog"></i> Setting Web</button>
-  <button class="menu-item" onclick="showPage('account');closeSidebar()"><i class="fas fa-user-cog"></i> Setting Akun</button>
-  <button class="menu-item" onclick="showRequestFitur();closeSidebar()"><i class="fas fa-lightbulb"></i> Request Fitur</button>
-  <button class="menu-item danger" onclick="logoutUser();closeSidebar()" id="logoutBtn" style="display:none"><i class="fas fa-sign-out-alt"></i> Logout</button>
-  <button class="menu-item" onclick="showLoginModal();closeSidebar()" id="loginBtnSide" style="display:none"><i class="fas fa-sign-in-alt"></i> Login / Daftar</button>
+  <button class="menu-item" onclick="showPage('home');closeSidebar()"><svg><use href="#em-box"/></svg> Home</button>
+  <button class="menu-item" onclick="showPage('jualan');closeSidebar()"><svg><use href="#em-store"/></svg> Jualan Saya</button>
+  <button class="menu-item" onclick="showPage('cart');closeSidebar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
+  <button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> Pesanan</button>
+  <button class="menu-item" onclick="showPage('dompet');closeSidebar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
+  <button class="menu-item" onclick="showPage('setting');closeSidebar()"><svg><use href="#em-cog"/></svg> Setting Web</button>
+  <button class="menu-item" onclick="showPage('account');closeSidebar()"><svg><use href="#em-user"/></svg> Setting Akun</button>
+  <button class="menu-item" onclick="showRequestFitur();closeSidebar()"><svg><use href="#em-bulb"/></svg> Request Fitur</button>
+  <button class="menu-item danger" onclick="logoutUser();closeSidebar()" id="logoutBtn" style="display:none"><svg><use href="#em-logout"/></svg> Logout</button>
+  <button class="menu-item" onclick="showLoginModal();closeSidebar()" id="loginBtnSide" style="display:none"><svg><use href="#em-login"/></svg> Login / Daftar</button>
 </div>
 
 <div class="container">
   <nav class="navbar">
-    <div class="logo" onclick="showPage('home')">🛒 WarungDigital</div>
+    <div class="logo" onclick="showPage('home')"><svg class="em em-lg"><use href="#em-bag"/></svg> WarungDigital</div>
     <div class="menu">
       <a href="javascript:showPage('home')">Home</a>
       <a href="javascript:showPage('jualan')">Jualan</a>
-      <a href="javascript:showPage('dompet')">Dompet</a>
-      <button onclick="openSidebar()" style="font-size:20px;padding:8px 14px">⋮</button>
+      <button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
+      <button onclick="openSidebar()" style="font-size:20px;padding:8px 14px"><svg class="em em-lg"><use href="#em-dots"/></svg></button>
     </div>
   </nav>
 
   <div id="page-home">
     <div class="hero">
-      <div class="badge">✨ MARKETPLACE PRODUK DIGITAL</div>
+      <div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
       <h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
       <p>Platform jual-beli produk digital dengan verifikasi AI. Aman, cepat, dan terpercaya.</p>
       <div class="btn-group">
-        <a href="#produk" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Lihat Produk</a>
-        <a href="javascript:showPage('jualan')" class="btn btn-secondary"><i class="fas fa-store"></i> Mulai Jualan</a>
+        <a href="#produk" class="btn btn-primary"><svg class="em em-lg"><use href="#em-bag"/></svg> Lihat Produk</a>
+        <a href="javascript:showPage('jualan')" class="btn btn-secondary"><svg class="em em-lg"><use href="#em-store"/></svg> Mulai Jualan</a>
       </div>
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="icon">📦</div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
-      <div class="stat"><div class="icon">👥</div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
-      <div class="stat"><div class="icon">🛒</div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
-      <div class="stat"><div class="icon">⭐</div><div class="num">4.9</div><div class="label">Rating</div></div>
+      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
+      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
+      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
+      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num">4.9</div><div class="label">Rating</div></div>
     </div>
 
     <div class="section" id="produk">
       <div class="section-header">
-        <h2>🔥 Produk Terbaru</h2>
+        <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2>
         <span class="count" id="produkCount">0 produk</span>
       </div>
       <div class="product-grid" id="productGrid">
-        <div class="empty"><i class="fas fa-box-open"></i>Memuat produk...</div>
+        <div class="empty"><svg class="em-2xl"><use href="#em-box"/></svg><p>Memuat produk...</p></div>
       </div>
     </div>
   </div>
 
   <div id="page-jualan" class="hidden">
     <div class="section-header">
-      <h2>🏪 Jualan Saya</h2>
-      <button class="btn btn-primary btn-sm" onclick="showAddProduct()"><i class="fas fa-plus"></i> Tambah Produk</button>
+      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-store"/></svg> Jualan Saya</h2>
+      <button class="btn btn-primary btn-sm" onclick="showAddProduct()"><svg class="em"><use href="#em-plus"/></svg> Tambah Produk</button>
     </div>
     <div class="tabs">
-      <button class="active" onclick="switchJualanTab('produk',this)">📦 Produk</button>
-      <button onclick="switchJualanTab('pesanan',this)">🛒 Pesanan Masuk</button>
-      <button onclick="switchJualanTab('pembayaran',this)">💳 Metode Bayar</button>
+      <button class="active" onclick="switchJualanTab('produk',this)"><svg class="em"><use href="#em-box"/></svg> Produk</button>
+      <button onclick="switchJualanTab('pesanan',this)"><svg class="em"><use href="#em-cart"/></svg> Pesanan Masuk</button>
+      <button onclick="switchJualanTab('pembayaran',this)"><svg class="em"><use href="#em-tag"/></svg> Metode Bayar</button>
     </div>
     <div id="jualan-produk"></div>
     <div id="jualan-pesanan" class="hidden"></div>
     <div id="jualan-pembayaran" class="hidden"></div>
   </div>
 
+  <div id="page-cart" class="hidden">
+    <div class="section-header">
+      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cart"/></svg> Keranjang</h2>
+      <span class="count" id="cartCount">0 item</span>
+    </div>
+    <div id="cartList"></div>
+  </div>
+
   <div id="page-orders" class="hidden">
     <div class="section-header">
-      <h2>📦 Pesanan Saya</h2>
+      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> Pesanan Saya</h2>
       <span class="count" id="ordersCount">0</span>
     </div>
-    <div id="ordersList"><div class="empty"><i class="fas fa-receipt"></i>Belum ada pesanan</div></div>
+    <div id="ordersList"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada pesanan</p></div></div>
   </div>
 
   <div id="page-dompet" class="hidden">
-    <div class="section-header"><h2>💰 Dompet</h2></div>
+    <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-wallet"/></svg> Dompet</h2></div>
     <div class="wallet-card">
       <div class="label">Saldo Dompet</div>
       <div class="saldo" id="walletSaldo">Rp 0</div>
       <div class="note">*Saldo display only. Penarikan otomatis belum tersedia.</div>
     </div>
     <div class="section">
-      <div class="section-header"><h2 style="font-size:18px">📜 Riwayat Transaksi</h2></div>
-      <div id="walletHistory"><div class="empty"><i class="fas fa-history"></i>Belum ada transaksi</div></div>
+      <div class="section-header"><h2 style="font-size:18px"><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> Riwayat Transaksi</h2></div>
+      <div id="walletHistory"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada transaksi</p></div></div>
     </div>
   </div>
 
   <div id="page-setting" class="hidden">
-    <div class="section-header"><h2>⚙️ Setting Web</h2></div>
+    <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cog"/></svg> Setting Web</h2></div>
     <div class="form-group"><label>Nama Toko</label><input type="text" id="setNamaToko" placeholder="WarungDigital" /></div>
     <div class="form-group"><label>Deskripsi</label><textarea id="setDeskripsi" rows="2" placeholder="Deskripsi toko lo..."></textarea></div>
     <div class="form-group"><label>Link Tako</label><input type="text" id="setTako" placeholder="https://tako.id/warungvaro" /></div>
     <div class="form-group"><label>Link Saweria</label><input type="text" id="setSaweria" placeholder="https://saweria.co/username" /></div>
     <div class="form-group"><label>Nomor WhatsApp</label><input type="text" id="setWA" placeholder="628xxxxxxxxxx" /></div>
-    <button class="btn btn-primary btn-block" onclick="saveSettingWeb()"><i class="fas fa-save"></i> Simpan</button>
+    <button class="btn btn-primary btn-block" onclick="saveSettingWeb()"><svg class="em"><use href="#em-check"/></svg> Simpan</button>
   </div>
 
   <div id="page-account" class="hidden">
-    <div class="section-header"><h2>👤 Setting Akun</h2></div>
+    <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Setting Akun</h2></div>
     <div class="form-group"><label>Nama</label><input type="text" id="accNama" /></div>
     <div class="form-group"><label>Password Baru (kosongin kalau gak ganti)</label><input type="password" id="accPass" /></div>
     <div class="form-group"><label>Nomor WA</label><input type="text" id="accWA" placeholder="628xxxxxxxxxx" /></div>
     <div class="form-group"><label>Link Tako Pribadi</label><input type="text" id="accTako" placeholder="https://tako.id/username" /></div>
     <div class="form-group"><label>Link Saweria Pribadi</label><input type="text" id="accSaweria" placeholder="https://saweria.co/username" /></div>
-    <button class="btn btn-primary btn-block" onclick="saveSettingAccount()"><i class="fas fa-save"></i> Simpan Akun</button>
-    <button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    <button class="btn btn-primary btn-block" onclick="saveSettingAccount()"><svg class="em"><use href="#em-check"/></svg> Simpan Akun</button>
+    <button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px"><svg class="em"><use href="#em-logout"/></svg> Logout</button>
   </div>
 </div>
 
-<div class="footer">Made with 💚 by <strong>WarungDigital</strong> · © 2026</div>
+<div class="footer">Made with <svg class="em" style="color:#25d366"><use href="#em-heart"/></svg> by <strong>WarungDigital</strong> · © 2026</div>
 
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modalContent"></div>
@@ -324,23 +385,26 @@ const METODE_BAYAR = [
 let currentUser = localStorage.getItem('wd_user') || null;
 let currentPage = 'home';
 let products = {};
+let cart = JSON.parse(localStorage.getItem('wd_cart') || '[]');
 let selectedMetodeBeli = null;
 let productFileBase64 = '';
+let pendingRequestFitur = false;
 
 // ============================================================
 // UTILS
 // ============================================================
 function formatRp(n){return 'Rp ' + Number(n||0).toLocaleString('id-ID')}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function emoji(id, cls){return `<svg class="em ${cls||''}"><use href="#${id}"/></svg>`}
 
 function showToast(msg, type){
   const t = document.getElementById('toast');
   const icons = {
-    success: '<i class="fas fa-check-circle"></i> ',
-    error: '<i class="fas fa-exclamation-circle"></i> ',
-    donate: '<i class="fas fa-heart"></i> '
+    success: emoji('em-check'),
+    error: emoji('em-warning'),
+    donate: emoji('em-heart')
   };
-  t.innerHTML = (icons[type] || icons.success) + msg;
+  t.innerHTML = (icons[type] || icons.success) + ' ' + msg;
   t.className = type === 'error' ? 'show error' : type === 'donate' ? 'show donate' : 'show';
   clearTimeout(t._t);
   t._t = setTimeout(()=>t.className='',4000);
@@ -352,6 +416,140 @@ function openModal(html){
 }
 function closeModal(){
   document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// ============================================================
+// CART
+// ============================================================
+function saveCart(){
+  localStorage.setItem('wd_cart', JSON.stringify(cart));
+  updateCartBadge();
+}
+function updateCartBadge(){
+  const badge = document.getElementById('cartBadge');
+  if(!badge) return;
+  const total = cart.reduce((a,b)=>a+b.qty,0);
+  if(total > 0){ badge.style.display = 'block'; badge.textContent = total; }
+  else badge.style.display = 'none';
+}
+function addToCart(id){
+  const p = products[id];
+  if(!p) return;
+  if(!currentUser){showToast('Login dulu buat nambah ke keranjang!','error');showLoginModal();return}
+  if(p.penjual === currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
+  const exist = cart.find(c=>c.id===id);
+  if(exist) exist.qty++;
+  else cart.push({id, nama:p.nama, harga:p.harga, penjual:p.penjual, qty:1});
+  saveCart();
+  showToast('Masuk keranjang!','success');
+  if(currentPage==='cart') renderCart();
+}
+function removeFromCart(i){
+  cart.splice(i,1);
+  saveCart();
+  renderCart();
+}
+function changeQty(i, delta){
+  cart[i].qty += delta;
+  if(cart[i].qty <= 0) cart.splice(i,1);
+  saveCart();
+  renderCart();
+}
+function clearCart(){
+  if(!confirm('Kosongin keranjang?')) return;
+  cart = [];
+  saveCart();
+  renderCart();
+}
+function renderCart(){
+  const el = document.getElementById('cartList');
+  const cc = document.getElementById('cartCount');
+  if(!el) return;
+  if(cc) cc.textContent = cart.reduce((a,b)=>a+b.qty,0) + ' item';
+  if(cart.length === 0){
+    el.innerHTML = `<div class="empty">${emoji('em-cart','em-2xl')}<p>Keranjang masih kosong</p></div>`;
+    return;
+  }
+  const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
+  el.innerHTML = cart.map((c,i)=>`
+    <div class="cart-item">
+      <div class="thumb">${emoji('em-box','em-xl')}</div>
+      <div class="info">
+        <div class="nama">${escapeHtml(c.nama)}</div>
+        <div class="harga">${formatRp(c.harga)} × ${c.qty}</div>
+        <div style="font-size:11px;opacity:0.5;margin-top:2px">${escapeHtml(c.penjual)}</div>
+      </div>
+      <div class="qty">
+        <button onclick="changeQty(${i},-1)">−</button>
+        <span class="val">${c.qty}</span>
+        <button onclick="changeQty(${i},1)">+</button>
+      </div>
+      <button class="del" onclick="removeFromCart(${i})">${emoji('em-trash','em')}</button>
+    </div>
+  `).join('') + `
+    <div class="cart-total">
+      <span>Total</span>
+      <span class="total">${formatRp(total)}</span>
+    </div>
+    <button class="btn btn-primary btn-block" onclick="checkoutCart()">${emoji('em-check','em')} Checkout Semua</button>
+    <button class="btn btn-danger btn-block" onclick="clearCart()" style="margin-top:8px">${emoji('em-trash','em')} Kosongin Keranjang</button>
+  `;
+}
+function checkoutCart(){
+  if(cart.length === 0){showToast('Keranjang kosong!','error');return}
+  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h2>${emoji('em-cart','em-lg')} Checkout</h2>
+    <div style="background:#0f151c;border-radius:14px;padding:16px;margin-bottom:14px;max-height:300px;overflow-y:auto">
+      ${cart.map(c=>`
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px">
+          <span>${escapeHtml(c.nama)} × ${c.qty}</span>
+          <strong style="color:#25d366">${formatRp(c.harga*c.qty)}</strong>
+        </div>
+      `).join('')}
+      <div style="border-top:1px solid #1f2a34;padding-top:10px;margin-top:6px;display:flex;justify-content:space-between;font-weight:700">
+        <span>Total</span>
+        <span style="color:#25d366;font-size:18px">${formatRp(total)}</span>
+      </div>
+    </div>
+    <label>Pilih Metode Bayar</label>
+    <div class="metode-list" id="metodeList">
+      ${METODE_BAYAR.map(m=>`<div class="metode-item" onclick="selectMetodeBeli('${m.id}',this)">${m.icon} ${m.nama}</div>`).join('')}
+    </div>
+    <button class="btn btn-primary btn-block" onclick="submitCartOrder()">${emoji('em-check','em')} Buat Pesanan</button>
+  `);
+}
+function selectMetodeBeli(m, el){
+  selectedMetodeBeli = m;
+  document.querySelectorAll('#metodeList .metode-item').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function submitCartOrder(){
+  if(!selectedMetodeBeli){showToast('Pilih metode bayar dulu!','error');return}
+  const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
+  const orderId = 'ORD-'+Date.now();
+  // Simpen semua item dalam 1 order
+  const order = {
+    orderId,
+    items: cart.map(c=>({nama:c.nama, harga:c.harga, qty:c.qty, penjual:c.penjual})),
+    produkNama: cart.map(c=>c.nama).join(', '),
+    total,
+    pembeli: currentUser,
+    penjual: cart[0].penjual,
+    metode: selectedMetodeBeli,
+    status: 'waiting_payment',
+    createdAt: Date.now()
+  };
+  db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
+    closeModal();
+    showToast('Pesanan dibuat! Upload bukti bayar.','success');
+    cart = [];
+    saveCart();
+    selectedMetodeBeli = null;
+    showPage('orders');
+  }).catch(e=>showToast('❌ '+e.message,'error'));
 }
 
 // ============================================================
@@ -393,9 +591,7 @@ function updateSidebar(){
       if(logoutBtn) logoutBtn.style.display = 'none';
       if(loginBtn) loginBtn.style.display = 'flex';
     }
-  } catch(e) {
-    console.warn('updateSidebar skip:', e.message);
-  }
+  } catch(e) { console.warn('updateSidebar skip:', e.message); }
 }
 
 // ============================================================
@@ -409,14 +605,13 @@ function showPage(page){
     if(el) el.classList.remove('hidden');
     if(page==='home') renderHome();
     if(page==='jualan') renderJualan();
+    if(page==='cart') renderCart();
     if(page==='orders') renderOrders();
     if(page==='dompet') renderDompet();
     if(page==='setting') loadSettingWeb();
     if(page==='account') loadSettingAccount();
     window.scrollTo({top:0,behavior:'smooth'});
-  } catch(e) {
-    console.warn('showPage skip:', e.message);
-  }
+  } catch(e) { console.warn('showPage skip:', e.message); }
 }
 
 // ============================================================
@@ -450,25 +645,26 @@ function renderHome(){
   if(!grid) return;
   const list = Object.entries(products).map(([id,p])=>({id,...p}));
   if(list.length===0){
-    grid.innerHTML = '<div class="empty"><i class="fas fa-box-open"></i>Belum ada produk. Mulai jualan!</div>';
+    grid.innerHTML = `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Mulai jualan!</p></div>`;
     return;
   }
-  grid.innerHTML = list.reverse().map(p=>`
+  grid.innerHTML = list.reverse().map(p=>{
+    const inCart = cart.find(c=>c.id===p.id);
+    return `
     <div class="product-card" onclick="showDetail('${p.id}')">
-      <div class="thumb">${p.tipe==='wa'?'💬':'📦'}</div>
+      <div class="thumb">${emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div>
+      ${inCart?`<div class="badge-cart">${emoji('em-cart','em')} ${inCart.qty}</div>`:''}
       <div class="info">
         <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
         <div class="nama">${escapeHtml(p.nama||'Tanpa Nama')}</div>
-        <div class="penjual">👤 ${escapeHtml(p.penjual||'Anonim')}</div>
+        <div class="penjual">${emoji('em-user','em')} ${escapeHtml(p.penjual||'Anonim')}</div>
         <div class="harga">
           <span>${formatRp(p.harga)}</span>
-          <button class="btn-beli" onclick="event.stopPropagation();beliProduk('${p.id}')">
-            <i class="fas fa-shopping-cart"></i> Beli
-          </button>
+          <button class="btn-beli" onclick="event.stopPropagation();addToCart('${p.id}')">${emoji('em-cart','em')} +</button>
         </div>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 
 // ============================================================
@@ -480,100 +676,12 @@ function showDetail(id){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${escapeHtml(p.nama)}</h2>
-    <div style="font-size:12px;opacity:0.6;margin-bottom:8px">👤 Dijual oleh <strong>${escapeHtml(p.penjual)}</strong> · ${escapeHtml(p.kategori||'Umum')}</div>
+    <div style="font-size:12px;opacity:0.6;margin-bottom:8px">${emoji('em-user','em')} Dijual oleh <strong>${escapeHtml(p.penjual)}</strong> · ${escapeHtml(p.kategori||'Umum')}</div>
     <div style="font-size:28px;font-weight:900;color:#25d366;margin-bottom:12px">${formatRp(p.harga)}</div>
     <p style="font-size:14px;opacity:0.8;line-height:1.6;margin-bottom:16px">${escapeHtml(p.deskripsi||'Tidak ada deskripsi.')}</p>
-    ${p.tipe==='wa'?'<div style="font-size:13px;opacity:0.7;margin-bottom:12px">💬 Produk ini dijual via WhatsApp</div>':''}
-    <button class="btn btn-primary btn-block" onclick="beliProduk('${id}')"><i class="fas fa-shopping-cart"></i> Beli Sekarang</button>
+    ${p.tipe==='wa'?`<div style="font-size:13px;opacity:0.7;margin-bottom:12px">${emoji('em-wa','em')} Produk ini dijual via WhatsApp</div>`:''}
+    <button class="btn btn-primary btn-block" onclick="addToCart('${id}');closeModal();">${emoji('em-cart','em')} Tambah ke Keranjang</button>
   `);
-}
-
-// ============================================================
-// BELI PRODUK
-// ============================================================
-function beliProduk(id){
-  if(!currentUser){showToast('Login dulu buat beli!','error');showLoginModal();return}
-  const p = products[id];
-  if(!p) return;
-  if(p.penjual===currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
-
-  if(p.tipe==='wa' && p.waLink){
-    window.open(p.waLink,'_blank');
-    return;
-  }
-
-  closeModal();
-  const metode = p.metode && p.metode.length > 0 ? p.metode : METODE_BAYAR.map(m=>m.id);
-
-  openModal(`
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2>💳 Pembayaran</h2>
-    <div style="background:#0f151c;border-radius:14px;padding:16px;margin-bottom:14px">
-      <div style="font-size:13px;opacity:0.6">Produk</div>
-      <div style="font-weight:700;font-size:15px">${escapeHtml(p.nama)}</div>
-      <div style="font-size:13px;opacity:0.6;margin-top:8px">Penjual</div>
-      <div style="font-weight:700;font-size:15px">${escapeHtml(p.penjual)}</div>
-      <div style="font-size:13px;opacity:0.6;margin-top:8px">Total</div>
-      <div style="font-weight:900;font-size:20px;color:#25d366">${formatRp(p.harga)}</div>
-    </div>
-    <label>Pilih Metode Pembayaran</label>
-    <div class="metode-list" id="metodeList">
-      ${metode.map(m=>{
-        const info = METODE_BAYAR.find(x=>x.id===m);
-        if(!info) return '';
-        return `<div class="metode-item" onclick="selectMetode('${m}',this)">${info.icon} ${info.nama}</div>`;
-      }).join('')}
-    </div>
-    <div id="detailPembayaran"></div>
-    <button class="btn btn-primary btn-block" onclick="submitOrder('${id}')"><i class="fas fa-check"></i> Buat Pesanan</button>
-  `);
-}
-
-function selectMetode(m, el){
-  selectedMetodeBeli = m;
-  document.querySelectorAll('#metodeList .metode-item').forEach(x=>x.classList.remove('selected'));
-  el.classList.add('selected');
-  const p = products[Object.keys(products).find(k=>products[k].penjual)] || {};
-  db.ref('warungdigital/users').child(p.penjual||'').once('value', snap=>{
-    const u = snap.val() || {};
-    const det = document.getElementById('detailPembayaran');
-    if(!det) return;
-    if(m==='saweria' || m==='tako'){
-      det.innerHTML = `<div style="background:#0f151c;border-radius:14px;padding:14px;font-size:13px;margin-bottom:12px">
-        <div style="opacity:0.6;margin-bottom:4px">Link ${m==='tako'?'Tako':'Saweria'} penjual:</div>
-        <a href="${m==='tako'?u.tako:u.saweria||'#'}" target="_blank" style="color:#25d366;font-weight:700;word-break:break-all">${m==='tako'?u.tako||'Belum diset':u.saweria||'Belum diset'}</a>
-      </div>`;
-    } else {
-      det.innerHTML = `<div style="background:#0f151c;border-radius:14px;padding:14px;font-size:13px;margin-bottom:12px">
-        <div style="opacity:0.6;margin-bottom:4px">Nomor ${m.toUpperCase()} penjual:</div>
-        <div style="font-weight:700;font-size:16px;color:#25d366">${u.nomorEwallet||'Belum diset'}</div>
-      </div>`;
-    }
-  });
-}
-
-function submitOrder(id){
-  if(!selectedMetodeBeli){showToast('Pilih metode bayar dulu!','error');return}
-  const p = products[id];
-  const orderId = 'ORD-'+Date.now();
-  const order = {
-    orderId,
-    produkId: id,
-    produkNama: p.nama,
-    harga: p.harga,
-    total: p.harga,
-    pembeli: currentUser,
-    penjual: p.penjual,
-    metode: selectedMetodeBeli,
-    status: 'waiting_payment',
-    createdAt: Date.now()
-  };
-  db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
-    closeModal();
-    showToast('✅ Pesanan dibuat! Upload bukti bayar.');
-    selectedMetodeBeli = null;
-    showPage('orders');
-  }).catch(e=>showToast('❌ '+e.message,'error'));
 }
 
 // ============================================================
@@ -600,18 +708,18 @@ function renderJualanProduk(){
   if(!el) return;
   const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
   if(my.length===0){
-    el.innerHTML = '<div class="empty"><i class="fas fa-box-open"></i>Belum ada produk. Klik "Tambah Produk"!</div>';
+    el.innerHTML = `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`;
     return;
   }
   el.innerHTML = '<div class="product-grid">' + my.map(([id,p])=>`
     <div class="product-card">
-      <div class="thumb">${p.tipe==='wa'?'💬':'📦'}</div>
+      <div class="thumb">${emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div>
       <div class="info">
         <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
         <div class="nama">${escapeHtml(p.nama)}</div>
         <div class="harga">${formatRp(p.harga)}</div>
         <div style="display:flex;gap:6px;margin-top:10px">
-          <button class="btn btn-sm btn-danger" style="flex:1" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i></button>
+          <button class="btn btn-sm btn-danger" style="flex:1" onclick="deleteProduct('${id}')">${emoji('em-trash','em')}</button>
         </div>
       </div>
     </div>
@@ -622,7 +730,7 @@ function renderJualanPesanan(){
   const el = document.getElementById('jualan-pesanan');
   if(!el) return;
   db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
-    if(!snap.exists()){el.innerHTML='<div class="empty"><i class="fas fa-receipt"></i>Belum ada pesanan masuk</div>';return}
+    if(!snap.exists()){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada pesanan masuk</p></div>`;return}
     let html = '';
     snap.forEach(child=>{
       const o = child.val();
@@ -647,7 +755,7 @@ function renderJualanPembayaran(){
       <div class="form-group"><label>Link Tako</label><input type="text" id="setLinkTako" value="${escapeHtml(u.tako||'')}" placeholder="https://tako.id/username" /></div>
       <div class="form-group"><label>Link Saweria</label><input type="text" id="setLinkSaweria" value="${escapeHtml(u.saweria||'')}" placeholder="https://saweria.co/username" /></div>
       <div class="form-group"><label>Nomor WhatsApp</label><input type="text" id="setNomorWA" value="${escapeHtml(u.wa||'')}" placeholder="628xxxxxxxxxx" /></div>
-      <button class="btn btn-primary btn-block" onclick="saveMetodePembayaran()"><i class="fas fa-save"></i> Simpan Metode Bayar</button>
+      <button class="btn btn-primary btn-block" onclick="saveMetodePembayaran()">${emoji('em-check','em')} Simpan Metode Bayar</button>
     `;
   });
 }
@@ -662,7 +770,7 @@ function saveMetodePembayaran(){
   const saweria = document.getElementById('setLinkSaweria').value.trim();
   const wa = document.getElementById('setNomorWA').value.trim();
   db.ref('warungdigital/users').child(currentUser).update({metode,nomorEwallet,tako,saweria,wa}).then(()=>{
-    showToast('✅ Metode bayar disimpan!');
+    showToast('Metode bayar disimpan!','success');
   }).catch(e=>showToast('❌ '+e.message,'error'));
 }
 
@@ -673,11 +781,11 @@ function showAddProduct(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2>➕ Tambah Produk</h2>
+    <h2>${emoji('em-plus','em-lg')} Tambah Produk</h2>
     <label>Tipe Jualan</label>
     <select id="pType" onchange="toggleProductType()">
-      <option value="digital">📦 Produk Digital (upload file)</option>
-      <option value="wa">💬 Via WhatsApp (chat langsung)</option>
+      <option value="digital">Produk Digital (upload file)</option>
+      <option value="wa">Via WhatsApp (chat langsung)</option>
     </select>
     <label>Nama Produk</label>
     <input type="text" id="pNama" placeholder="Contoh: Template Canva Pro" />
@@ -697,7 +805,7 @@ function showAddProduct(){
       <input type="text" id="pWALink" placeholder="https://wa.me/628xxxxxxxxxx?text=..." />
       <div style="font-size:12px;opacity:0.5;margin-top:4px">Pembeli bakal langsung diarahkan ke WA lo</div>
     </div>
-    <button class="btn btn-primary btn-block" onclick="saveProduct()"><i class="fas fa-save"></i> Simpan Produk</button>
+    <button class="btn btn-primary btn-block" onclick="saveProduct()">${emoji('em-check','em')} Simpan Produk</button>
   `);
 }
 
@@ -739,7 +847,7 @@ function saveProduct(){
   db.ref('warungdigital/products').push(data).then(()=>{
     closeModal();
     productFileBase64='';
-    showToast('✅ Produk ditambah!');
+    showToast('Produk ditambah!','success');
     renderJualanProduk();
   }).catch(e=>showToast('❌ '+e.message,'error'));
 }
@@ -749,7 +857,7 @@ function deleteProduct(id){
   const p = products[id];
   if(p.penjual!==currentUser){showToast('Bukan produk lo!','error');return}
   db.ref('warungdigital/products').child(id).remove().then(()=>{
-    showToast('✅ Produk dihapus');
+    showToast('Produk dihapus','success');
     renderJualanProduk();
   });
 }
@@ -770,21 +878,22 @@ function renderOrders(){
     orders.sort((a,b)=>b.createdAt-a.createdAt);
     const oc = document.getElementById('ordersCount');
     if(oc) oc.textContent = orders.length + ' pesanan';
-    if(orders.length===0){el.innerHTML='<div class="empty"><i class="fas fa-receipt"></i>Belum ada pesanan</div>';return}
+    if(orders.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada pesanan</p></div>`;return}
     el.innerHTML = orders.map(o=>renderOrderCard(o, o.penjual===currentUser?'penjual':'pembeli')).join('');
   });
 }
 
 function renderOrderCard(o, role){
   const statusMap = {
-    waiting_payment: {label:'⏳ Menunggu Bayar', cls:'status-waiting'},
-    paid: {label:'💰 Sudah Bayar', cls:'status-paid'},
-    proof_uploaded: {label:'📸 Bukti Diupload', cls:'status-proof'},
-    confirmed: {label:'✅ Selesai', cls:'status-confirmed'},
-    cancelled: {label:'❌ Dibatalkan', cls:'status-cancelled'}
+    waiting_payment: {label:'Menunggu Bayar', cls:'status-waiting'},
+    paid: {label:'Sudah Bayar', cls:'status-paid'},
+    proof_uploaded: {label:'Bukti Diupload', cls:'status-proof'},
+    confirmed: {label:'Selesai', cls:'status-confirmed'},
+    cancelled: {label:'Dibatalkan', cls:'status-cancelled'}
   };
   const st = statusMap[o.status] || statusMap.waiting_payment;
   const time = new Date(o.createdAt).toLocaleString('id-ID');
+  const items = o.items ? o.items.map(i=>`${escapeHtml(i.nama)} ×${i.qty}`).join(', ') : escapeHtml(o.produkNama||'');
   return `
     <div class="order-item">
       <div class="head">
@@ -792,20 +901,20 @@ function renderOrderCard(o, role){
         <div class="status ${st.cls}">${st.label}</div>
       </div>
       <div class="body">
-        📦 <strong>${escapeHtml(o.produkNama)}</strong><br>
-        💰 ${formatRp(o.total)} · 💳 ${escapeHtml(o.metode)}<br>
-        👤 ${role==='pembeli'?'Penjual':'Pembeli'}: ${escapeHtml(role==='pembeli'?o.penjual:o.pembeli)}<br>
-        🕐 ${time}
+        ${emoji('em-box','em')} <strong>${items}</strong><br>
+        ${emoji('em-wallet','em')} ${formatRp(o.total)} · ${emoji('em-tag','em')} ${escapeHtml(o.metode)}<br>
+        ${emoji('em-user','em')} ${role==='pembeli'?'Penjual':'Pembeli'}: ${escapeHtml(role==='pembeli'?o.penjual:o.pembeli)}<br>
+        ${emoji('em-receipt','em')} ${time}
       </div>
       <div class="actions">
         ${o.status==='waiting_payment' && role==='pembeli' ? `
-          <button class="btn btn-sm btn-primary" onclick="uploadBukti('${o.key}')"><i class="fas fa-upload"></i> Upload Bukti</button>
+          <button class="btn btn-sm btn-primary" onclick="uploadBukti('${o.key}')">${emoji('em-upload','em')} Upload Bukti</button>
         `:''}
         ${o.status==='proof_uploaded' && role==='penjual' ? `
-          <button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')"><i class="fas fa-check"></i> Konfirmasi</button>
+          <button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')">${emoji('em-check','em')} Konfirmasi</button>
         `:''}
         ${o.status==='confirmed' && role==='pembeli' && o.fileProduk ? `
-          <a class="btn btn-sm btn-primary" href="${o.fileProduk}" download="${escapeHtml(o.produkNama)}"><i class="fas fa-download"></i> Download</a>
+          <a class="btn btn-sm btn-primary" href="${o.fileProduk}" download="${escapeHtml(o.produkNama)}">${emoji('em-download','em')} Download</a>
         `:''}
       </div>
     </div>
@@ -823,7 +932,7 @@ function uploadBukti(orderKey){
     const reader = new FileReader();
     reader.onload = async ev=>{
       const base64 = ev.target.result;
-      showToast('🔍 AI lagi verifikasi...');
+      showToast('AI lagi verifikasi...');
       try {
         const res = await fetch('/api/verify', {
           method: 'POST',
@@ -832,9 +941,9 @@ function uploadBukti(orderKey){
         });
         const data = await res.json();
         if(data.success && data.verified){
-          showToast('✅ Bukti terverifikasi AI!');
+          showToast('Bukti terverifikasi AI!','success');
         } else {
-          showToast('⚠️ AI gak yakin, penjual bakal cek manual','error');
+          showToast('AI gak yakin, penjual cek manual','error');
         }
         renderOrders();
       } catch(err){
@@ -843,7 +952,7 @@ function uploadBukti(orderKey){
           bukti: base64.substring(0,2000),
           proofAt: Date.now()
         }).then(()=>{
-          showToast('📸 Bukti diupload! Nunggu konfirmasi penjual.');
+          showToast('Bukti diupload!','success');
           renderOrders();
         });
       }
@@ -854,19 +963,14 @@ function uploadBukti(orderKey){
 }
 
 function confirmOrder(orderKey){
-  if(!confirm('Konfirmasi pesanan ini? Pastikan pembayaran udah masuk.')) return;
+  if(!confirm('Konfirmasi pesanan ini?')) return;
   db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
     const o = snap.val();
     const produk = products[o.produkId];
-    const update = {
-      status:'confirmed',
-      confirmedAt: Date.now()
-    };
-    if(produk && produk.fileBase64){
-      update.fileProduk = produk.fileBase64;
-    }
+    const update = { status:'confirmed', confirmedAt: Date.now() };
+    if(produk && produk.fileBase64) update.fileProduk = produk.fileBase64;
     db.ref('warungdigital/orders').child(orderKey).update(update).then(()=>{
-      showToast('✅ Pesanan dikonfirmasi!');
+      showToast('Pesanan dikonfirmasi!','success');
       renderOrders();
       renderJualanPesanan();
     });
@@ -879,27 +983,23 @@ function confirmOrder(orderKey){
 function renderDompet(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
-    let total = 0;
-    let history = [];
+    let total = 0; let history = [];
     snap.forEach(child=>{
       const o = child.val();
-      if(o.status==='confirmed'){
-        total += o.total;
-        history.push(o);
-      }
+      if(o.status==='confirmed'){ total += o.total; history.push(o); }
     });
     const ws = document.getElementById('walletSaldo');
     if(ws) ws.textContent = formatRp(total);
     const el = document.getElementById('walletHistory');
     if(!el) return;
-    if(history.length===0){el.innerHTML='<div class="empty"><i class="fas fa-history"></i>Belum ada transaksi</div>';return}
+    if(history.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada transaksi</p></div>`;return}
     el.innerHTML = history.reverse().map(o=>`
       <div class="order-item">
         <div class="head">
           <div class="oid">${escapeHtml(o.produkNama)}</div>
           <div class="status status-confirmed">+${formatRp(o.total)}</div>
         </div>
-        <div class="body">👤 ${escapeHtml(o.pembeli)} · 🕐 ${new Date(o.confirmedAt||o.createdAt).toLocaleString('id-ID')}</div>
+        <div class="body">${emoji('em-user','em')} ${escapeHtml(o.pembeli)} · ${new Date(o.confirmedAt||o.createdAt).toLocaleString('id-ID')}</div>
       </div>
     `).join('');
   });
@@ -927,7 +1027,7 @@ function saveSettingWeb(){
     saweria: document.getElementById('setSaweria').value.trim(),
     wa: document.getElementById('setWA').value.trim()
   };
-  db.ref('warungdigital/settings').update(data).then(()=>showToast('✅ Setting web disimpan!'));
+  db.ref('warungdigital/settings').update(data).then(()=>showToast('Setting web disimpan!','success'));
 }
 
 function loadSettingAccount(){
@@ -951,7 +1051,7 @@ function saveSettingAccount(){
   const update = {wa,tako,saweria};
   if(pass) update.password = pass;
   db.ref('warungdigital/users').child(currentUser).update(update).then(()=>{
-    showToast('✅ Akun disimpan!');
+    showToast('Akun disimpan!','success');
     document.getElementById('accPass').value='';
   });
 }
@@ -963,13 +1063,13 @@ function showLoginModal(){
   if(currentUser){showToast('Udah login!');return}
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2>🔐 Login / Daftar</h2>
+    <h2>${emoji('em-lock','em-lg')} Login / Daftar</h2>
     <label>Nama</label>
     <input type="text" id="authNama" placeholder="Nama lo" />
     <label>Password</label>
     <input type="password" id="authPass" placeholder="Password" />
-    <button class="btn btn-primary btn-block" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
-    <button class="btn btn-secondary btn-block" onclick="doRegister()"><i class="fas fa-user-plus"></i> Daftar</button>
+    <button class="btn btn-primary btn-block" onclick="doLogin()">${emoji('em-login','em')} Login</button>
+    <button class="btn btn-secondary btn-block" onclick="doRegister()">${emoji('em-user','em')} Daftar</button>
   `);
 }
 function doLogin(){
@@ -982,7 +1082,7 @@ function doLogin(){
     currentUser = nama;
     localStorage.setItem('wd_user', nama);
     closeModal();
-    showToast('✅ Login berhasil!');
+    showToast('Login berhasil!','success');
     updateSidebar();
     showPage('home');
   });
@@ -1001,12 +1101,13 @@ function doRegister(){
       nomorEwallet: '',
       tako: '',
       saweria: '',
-      wa: ''
+      wa: '',
+      hasDonated: false
     }).then(()=>{
       currentUser = nama;
       localStorage.setItem('wd_user', nama);
       closeModal();
-      showToast('✅ Daftar & login berhasil!');
+      showToast('Daftar & login berhasil!','success');
       updateSidebar();
       showPage('home');
     }).catch(e=>showToast('❌ '+e.message,'error'));
@@ -1016,35 +1117,84 @@ function logoutUser(){
   if(!confirm('Yakin logout?')) return;
   currentUser = null;
   localStorage.removeItem('wd_user');
-  showToast('👋 Logout!');
+  showToast('Logout!','success');
   updateSidebar();
   showPage('home');
 }
 
 // ============================================================
-// REQUEST FITUR
+// REQUEST FITUR (WAJIB DONATE)
 // ============================================================
 function showRequestFitur(){
-  openModal(`
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2>💡 Request Fitur</h2>
-    <p style="font-size:13px;opacity:0.7;margin-bottom:14px">Mau fitur apa di WarungDigital? Kirim ke admin!</p>
-    <label>Nama Lo</label>
-    <input type="text" id="reqNama" value="${escapeHtml(currentUser||'')}" />
-    <label>Fitur yang Dimau</label>
-    <textarea id="reqFitur" rows="3" placeholder="Contoh: fitur chat antar user, sistem rating, dll"></textarea>
-    <button class="btn btn-primary btn-block" onclick="submitRequestFitur()"><i class="fas fa-paper-plane"></i> Kirim Request</button>
-  `);
+  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  // Cek apakah udah donasi
+  db.ref('warungdigital/requests').orderByChild('user').equalTo(currentUser).once('value', snap=>{
+    // Cek juga apakah udah ada donasi dari user ini
+    db.ref('warungdigital/donations').once('value', dsnap=>{
+      let hasDonated = false;
+      dsnap.forEach(child=>{
+        const d = child.val();
+        if(d.donator === currentUser || d.user === currentUser) hasDonated = true;
+      });
+      if(!hasDonated){
+        // Belum donasi → suruh donasi dulu
+        openModal(`
+          <button class="close-btn" onclick="closeModal()">✕</button>
+          <h2>${emoji('em-lock','em-lg')} Request Fitur</h2>
+          <div style="text-align:center;padding:20px 0">
+            <div style="font-size:48px;margin-bottom:12px">${emoji('em-heart','em-2xl')}</div>
+            <p style="opacity:0.7;font-size:14px;margin-bottom:16px">Buat request fitur, lo harus <strong style="color:#25d366">donasi dulu</strong> ya, bro!</p>
+            <p style="font-size:13px;opacity:0.6;margin-bottom:20px">Donasi minimal Rp 10.000 ke akun Tako admin. Setelah donasi, baru bisa request fitur.</p>
+            <a href="https://tako.id/warungvaro" target="_blank" class="btn btn-primary btn-block" style="text-decoration:none">
+              ${emoji('em-heart','em')} Donasi via Tako
+            </a>
+            <button class="btn btn-secondary btn-block" onclick="checkDonationStatus()">${emoji('em-check','em')} Udah Donasi, Cek Status</button>
+          </div>
+        `);
+        return;
+      }
+      // Udah donasi → boleh request
+      openModal(`
+        <button class="close-btn" onclick="closeModal()">✕</button>
+        <h2>${emoji('em-bulb','em-lg')} Request Fitur</h2>
+        <p style="font-size:13px;opacity:0.7;margin-bottom:14px">Makasih udah donasi! Sekarang lo bisa request fitur.</p>
+        <label>Nama Lo</label>
+        <input type="text" id="reqNama" value="${escapeHtml(currentUser||'')}" />
+        <label>Fitur yang Dimau</label>
+        <textarea id="reqFitur" rows="3" placeholder="Contoh: fitur chat antar user, sistem rating, dll"></textarea>
+        <button class="btn btn-primary btn-block" onclick="submitRequestFitur()">${emoji('em-send','em')} Kirim Request</button>
+      `);
+    });
+  });
+}
+function checkDonationStatus(){
+  closeModal();
+  showToast('Cek status donasi...');
+  setTimeout(()=>{
+    db.ref('warungdigital/donations').once('value', dsnap=>{
+      let hasDonated = false;
+      dsnap.forEach(child=>{
+        const d = child.val();
+        if(d.donator === currentUser || d.user === currentUser) hasDonated = true;
+      });
+      if(hasDonated){
+        showToast('Donasi terdeteksi! Sekarang bisa request.','success');
+        showRequestFitur();
+      } else {
+        showToast('Belum ada donasi dari lo. Donasi dulu ya!','error');
+      }
+    });
+  }, 1000);
 }
 function submitRequestFitur(){
   const nama = document.getElementById('reqNama').value.trim()||'Anonim';
   const fitur = document.getElementById('reqFitur').value.trim();
   if(!fitur){showToast('Tulis fitur yang dimau!','error');return}
   db.ref('warungdigital/requests').push({
-    nama, fitur, timestamp: Date.now()
+    nama, fitur, user: currentUser, timestamp: Date.now()
   }).then(()=>{
     closeModal();
-    showToast('✅ Request terkirim!');
+    showToast('Request terkirim!','success');
   });
 }
 
@@ -1056,27 +1206,20 @@ let isFirstDonationLoad = true;
 
 db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(1).on('value', snap => {
   if (!snap.exists()) return;
-
   let latest = null;
-  snap.forEach(child => {
-    latest = { key: child.key, ...child.val() };
-  });
-
+  snap.forEach(child => { latest = { key: child.key, ...child.val() }; });
   if (isFirstDonationLoad) {
     lastDonationKey = latest?.key;
     isFirstDonationLoad = false;
     return;
   }
-
   if (latest && latest.key !== lastDonationKey) {
     lastDonationKey = latest.key;
     const amount = Number(latest.amount || 0).toLocaleString('id-ID');
     const donator = latest.donator || 'Anonim';
     const source = (latest.source || 'tako').toUpperCase();
-
-    console.log(`🔥 DONASI BARU [${source}]: Rp ${amount} dari ${donator}`);
-    showToast(`🔥 ${source} SUCCESS! Rp ${amount} dari ${donator}`, 'donate');
-
+    console.log(`DONASI BARU [${source}]: Rp ${amount} dari ${donator}`);
+    showToast(`${source} SUCCESS! Rp ${amount} dari ${donator}`, 'donate');
     if (currentPage === 'orders') renderOrders();
     if (currentPage === 'jualan') renderJualan();
     if (currentPage === 'dompet') renderDompet();
@@ -1087,22 +1230,15 @@ db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(1).on('v
 // AUTO LOGIN (AMAN)
 // ============================================================
 try {
-  if(currentUser && typeof updateSidebar === 'function'){
-    updateSidebar();
-  }
-} catch(e) {
-  console.warn('Auto login sidebar skip:', e.message);
-}
+  if(currentUser && typeof updateSidebar === 'function') updateSidebar();
+} catch(e) { console.warn('Auto login sidebar skip:', e.message); }
 
 try {
-  if(typeof showPage === 'function'){
-    showPage('home');
-  }
-} catch(e) {
-  console.warn('Auto login showPage skip:', e.message);
-}
+  if(typeof showPage === 'function') showPage('home');
+  updateCartBadge();
+} catch(e) { console.warn('Auto login showPage skip:', e.message); }
 
-console.log('🛒 WarungDigital v1.0 — Ready!');
+console.log('WarungDigital v1.1 — Ready!');
 </script>
 </body>
 </html>
