@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warung Digital — Produk Digital & Donasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:#070a0f; color:#e0e6ed; min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* ANIMATED BACKGROUND */
+  body::before {
+    content:''; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(37,211,102,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(108,92,231,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(37,211,102,0.05) 0%, transparent 50%);
+    z-index:-1; pointer-events:none;
+  }
+
+  .container { max-width:1100px; margin:0 auto; padding:20px; }
+
+  /* NAVBAR */
+  .navbar {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 22px; background:rgba(20,26,34,0.8);
+    backdrop-filter:blur(20px); border:1px solid #1f2a34;
+    border-radius:20px; margin-bottom:30px; position:sticky; top:14px; z-index:100;
+  }
+  .navbar .logo {
+    font-size:20px; font-weight:900; letter-spacing:-0.5px;
+    background:linear-gradient(135deg, #25d366, #6c5ce7);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .navbar .menu { display:flex; gap:8px; }
+  .navbar .menu a {
+    color:#e0e6ed; text-decoration:none; font-size:14px; font-weight:600;
+    padding:8px 16px; border-radius:12px; transition:0.2s; opacity:0.7;
+  }
+  .navbar .menu a:hover { background:#1f2a34; opacity:1; }
+
+  /* HERO */
+  .hero {
+    text-align:center; padding:60px 30px; position:relative;
+    background:linear-gradient(135deg, rgba(20,26,34,0.9), rgba(26,42,58,0.9));
+    border-radius:32px; margin-bottom:30px; border:1px solid #1f2a34;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+    background:conic-gradient(from 0deg, transparent, rgba(37,211,102,0.1), transparent 30%);
+    animation:rotate 8s linear infinite; z-index:0;
+  }
+  @keyframes rotate { to { transform:rotate(360deg); } }
+  .hero > * { position:relative; z-index:1; }
+  .hero .badge {
+    display:inline-block; padding:6px 16px; border-radius:20px;
+    background:rgba(37,211,102,0.1); border:1px solid rgba(37,211,102,0.3);
+    color:#25d366; font-size:12px; font-weight:700; margin-bottom:16px;
+    letter-spacing:0.5px;
+  }
+  .hero h1 {
+    font-size:clamp(28px, 5vw, 44px); font-weight:900; line-height:1.1;
+    margin-bottom:14px; letter-spacing:-1px;
+  }
+  .hero h1 span {
+    background:linear-gradient(135deg, #25d366, #6c5ce7);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero p { opacity:0.7; font-size:16px; max-width:500px; margin:0 auto 24px; line-height:1.6; }
+  .hero .btn-group { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn {
+    padding:14px 28px; border-radius:40px; border:none; font-weight:700;
+    font-size:15px; cursor:pointer; transition:0.3s; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary {
+    background:linear-gradient(135deg, #25d366, #20b858); color:#fff;
+    box-shadow:0 8px 24px rgba(37,211,102,0.3);
+  }
+  .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(37,211,102,0.4); }
+  .btn-secondary {
+    background:rgba(255,255,255,0.05); color:#e0e6ed;
+    border:1px solid #2a3340;
+  }
+  .btn-secondary:hover { background:rgba(255,255,255,0.1); transform:translateY(-3px); }
+
+  /* STATS */
+  .stats {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:16px; margin-bottom:30px;
+  }
+  .stat {
+    background:linear-gradient(135deg, #141a22, #1a222c);
+    border:1px solid #1f2a34; border-radius:20px; padding:22px;
+    text-align:center; transition:0.3s; position:relative; overflow:hidden;
+  }
+  .stat::before {
+    content:''; position:absolute; top:0; left:0; width:100%; height:3px;
+    background:linear-gradient(90deg, #25d366, #6c5ce7);
+  }
+  .stat:hover { transform:translateY(-4px); border-color:#25d366; }
+  .stat .icon { font-size:24px; margin-bottom:8px; }
+  .stat .num { font-size:26px; font-weight:900; color:#25d366; letter-spacing:-0.5px; }
+  .stat .label { font-size:12px; opacity:0.6; margin-top:6px; font-weight:600; }
+
+  /* SECTION */
+  .section { margin-bottom:40px; }
+  .section-header {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:18px; flex-wrap:wrap; gap:10px;
+  }
+  .section-header h2 {
+    font-size:22px; font-weight:800; letter-spacing:-0.5px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-header .count {
+    background:rgba(37,211,102,0.15); color:#25d366;
+    padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;
+  }
+
+  /* PRODUCT GRID */
+  .product-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:16px;
+  }
+  .product-card {
+    background:linear-gradient(135deg, #141a22, #1a222c);
+    border:1px solid #1f2a34; border-radius:20px; overflow:hidden;
+    transition:0.3s; cursor:pointer;
+  }
+  .product-card:hover {
+    transform:translateY(-6px); border-color:#25d366;
+    box-shadow:0 20px 40px rgba(37,211,102,0.15);
+  }
+  .product-card .thumb {
+    aspect-ratio:16/10; background:#0f151c;
+    display:flex; align-items:center; justify-content:center;
+    font-size:48px; position:relative; overflow:hidden;
+  }
+  .product-card .thumb::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4));
+  }
+  .product-card .info { padding:16px; }
+  .product-card .info .kategori {
+    font-size:10px; opacity:0.5; text-transform:uppercase;
+    letter-spacing:1px; font-weight:700;
+  }
+  .product-card .info .nama { font-weight:700; font-size:15px; margin:6px 0; }
+  .product-card .info .harga {
+    color:#25d366; font-weight:900; font-size:18px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .product-card .info .btn-beli {
+    background:#25d366; color:#fff; border:none; padding:6px 12px;
+    border-radius:10px; font-size:12px; font-weight:700; cursor:pointer;
+    transition:0.2s;
+  }
+  .product-card .info .btn-beli:hover { background:#20b858; }
+
+  /* DONATION LIST */
+  .donation-list { display:flex; flex-direction:column; gap:10px; }
+  .donation-item {
+    background:linear-gradient(135deg, #141a22, #1a222c);
+    border:1px solid #1f2a34; border-radius:18px;
+    padding:16px 20px; display:flex; justify-content:space-between;
+    align-items:center; gap:14px; transition:0.3s;
+    animation:slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes slideIn {
+    from { opacity:0; transform:translateY(-20px) scale(0.98); }
+    to { opacity:1; transform:translateY(0) scale(1); }
+  }
+  .donation-item:hover { border-color:#25d366; transform:translateX(4px); }
+  .donation-item .avatar {
+    width:46px; height:46px; border-radius:50%;
+    background:linear-gradient(135deg, #25d366, #6c5ce7);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:18px; color:#fff; flex-shrink:0;
+  }
+  .donation-item .left { display:flex; align-items:center; gap:14px; flex:1; min-width:0; }
+  .donation-item .info { min-width:0; }
+  .donation-item .name { font-weight:700; font-size:15px; }
+  .donation-item .msg { font-size:13px; opacity:0.7; margin-top:2px; word-wrap:break-word; }
+  .donation-item .time { font-size:11px; opacity:0.4; margin-top:4px; }
+  .donation-item .amount {
+    color:#25d366; font-weight:900; font-size:17px;
+    white-space:nowrap; flex-shrink:0;
+    padding:8px 14px; border-radius:12px;
+    background:rgba(37,211,102,0.1);
+  }
+
+  .empty {
+    text-align:center; padding:50px 20px; opacity:0.5;
+    background:#141a22; border-radius:20px; border:1px dashed #2a3340;
+  }
+  .empty i { font-size:48px; margin-bottom:12px; display:block; opacity:0.4; }
+
+  /* FOOTER */
+  .footer {
+    text-align:center; padding:30px 20px; opacity:0.4;
+    font-size:13px; border-top:1px solid #1f2a34; margin-top:40px;
+  }
+
+  /* TOAST */
+  #toast {
+    position:fixed; bottom:24px; right:24px; z-index:9999;
+    background:linear-gradient(135deg, #25d366, #20b858); color:#fff;
+    padding:14px 24px; border-radius:16px; font-weight:700; font-size:14px;
+    box-shadow:0 12px 32px rgba(37,211,102,0.4);
+    transform:translateX(400px); transition:0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display:flex; align-items:center; gap:10px;
+  }
+  #toast.show { transform:translateX(0); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:#070a0f; }
+  ::-webkit-scrollbar-thumb { background:#2a3340; border-radius:10px; }
+  ::-webkit-scrollbar-thumb:hover { background:#25d366; }
+
+  @media (max-width:600px) {
+    .container { padding:14px; }
+    .navbar { padding:12px 16px; }
+    .navbar .menu a { padding:6px 10px; font-size:13px; }
+    .hero { padding:40px 20px; }
+    .product-grid { grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); }
+    .donation-item { padding:12px 14px; }
+    .donation-item .avatar { width:38px; height:38px; font-size:15px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🛒 WarungDigital</div>
+    <div class="menu">
+      <a href="#produk">Produk</a>
+      <a href="#donasi">Donasi</a>
+      <a href="https://tako.id/VarszStore" target="_blank">Support</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">✨ PRODUK DIGITAL PREMIUM</div>
+    <h1>Temukan <span>Produk Digital</span><br>Keren & Berkualitas</h1>
+    <p>Template, e-book, preset, script — semua ada di sini. Dukung juga kreator dengan donasi!</p>
+    <div class="btn-group">
+      <a href="#produk" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Lihat Produk</a>
+      <a href="https://tako.id/VarszStore" target="_blank" class="btn btn-secondary"><i class="fas fa-heart"></i> Donasi</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="icon">💰</div>
+      <div class="num" id="totalDonasi">Rp 0</div>
+      <div class="label">Total Donasi</div>
+    </div>
+    <div class="stat">
+      <div class="icon">👥</div>
+      <div class="num" id="jumlahDonatur">0</div>
+      <div class="label">Donatur</div>
+    </div>
+    <div class="stat">
+      <div class="icon">📦</div>
+      <div class="num" id="jumlahProduk">0</div>
+      <div class="label">Produk</div>
+    </div>
+    <div class="stat">
+      <div class="icon">⭐</div>
+      <div class="num">4.9</div>
+      <div class="label">Rating</div>
+    </div>
+  </div>
+
+  <!-- PRODUK -->
+  <div class="section" id="produk">
+    <div class="section-header">
+      <h2>🔥 Produk Digital</h2>
+      <span class="count" id="produkCount">0 produk</span>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <div class="empty"><i class="fas fa-box-open"></i>Memuat produk...</div>
+    </div>
+  </div>
+
+  <!-- DONASI -->
+  <div class="section" id="donasi">
+    <div class="section-header">
+      <h2>💚 Donasi Terbaru</h2>
+      <span class="count" id="donasiCount">0 donatur</span>
+    </div>
+    <div class="donation-list" id="donationList">
+      <div class="empty"><i class="fas fa-heart"></i>Memuat donasi...</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Made with 💚 by <strong>VarszStore</strong> · © 2026 WarungDigital
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+// ============================================================
+// FIREBASE CONFIG
+// ============================================================
+const firebaseConfig = {
+  apiKey: "AIzaSyDp_3SDiQUAGX0_gw8BYtO2Ecnypl1GlgE",
+  authDomain: "project1-f57d6.firebaseapp.com",
+  databaseURL: "https://project1-f57d6-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "project1-f57d6",
+  storageBucket: "project1-f57d6.firebasestorage.app",
+  messagingSenderId: "722737960517",
+  appId: "1:722737960517:web:f465039879d08fa306b52c"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// ============================================================
+// UTILS
+// ============================================================
+function formatRp(n) { return 'Rp ' + Number(n || 0).toLocaleString('id-ID'); }
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = '<i class="fas fa-bell"></i> ' + msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ============================================================
+// PRODUK (dari Firebase atau dummy)
+// ============================================================
+const dummyProducts = [
+  { nama: 'Template Canva Pro', kategori: 'Template', harga: 25000, emoji: '🎨' },
+  { nama: 'E-book Belajar Coding', kategori: 'E-book', harga: 50000, emoji: '📚' },
+  { nama: 'Preset Lightroom Moody', kategori: 'Preset', harga: 30000, emoji: '📸' },
+  { nama: 'Script Bot WhatsApp', kategori: 'Script', harga: 75000, emoji: '🤖' },
+  { nama: 'Pack Font Aesthetic', kategori: 'Font', harga: 20000, emoji: '✒️' },
+  { nama: 'Template Web Portofolio', kategori: 'Template', harga: 45000, emoji: '💻' }
+];
+
+db.ref('warungdigital/products').on('value', snap => {
+  const grid = document.getElementById('productGrid');
+  let products = [];
+  if (snap.exists()) {
+    snap.forEach(child => { products.push({ id: child.key, ...child.val() }); });
+  } else {
+    products = dummyProducts;
+  }
+
+  document.getElementById('jumlahProduk').textContent = products.length;
+  document.getElementById('produkCount').textContent = products.length + ' produk';
+
+  if (products.length === 0) {
+    grid.innerHTML = '<div class="empty"><i class="fas fa-box-open"></i>Belum ada produk</div>';
+    return;
+  }
+
+  grid.innerHTML = products.map(p => `
+    <div class="product-card">
+      <div class="thumb">${p.emoji || '📦'}</div>
+      <div class="info">
+        <div class="kategori">${escapeHtml(p.kategori || 'Umum')}</div>
+        <div class="nama">${escapeHtml(p.nama || 'Tanpa Nama')}</div>
+        <div class="harga">
+          <span>${formatRp(p.harga)}</span>
+          <button class="btn-beli" onclick="beliProduk('${escapeHtml(p.nama || '')}')">
+            <i class="fas fa-cart-plus"></i> Beli
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+});
+
+function beliProduk(nama) {
+  showToast('Hubungi admin buat beli: ' + nama);
+}
+
+// ============================================================
+// DONASI REAL-TIME
+// ============================================================
+let lastDonationKey = null;
+let isFirstLoad = true;
+
+db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(50).on('value', snap => {
+  const list = document.getElementById('donationList');
+  if (!snap.exists()) {
+    list.innerHTML = '<div class="empty"><i class="fas fa-heart"></i>Belum ada donasi. Jadilah yang pertama! 💝</div>';
+    document.getElementById('totalDonasi').textContent = 'Rp 0';
+    document.getElementById('jumlahDonatur').textContent = '0';
+    document.getElementById('donasiCount').textContent = '0 donatur';
+    return;
+  }
+
+  let total = 0, count = 0;
+  const items = [];
+  snap.forEach(child => { items.push({ key: child.key, ...child.val() }); });
+  items.reverse();
+
+  // Notif kalau ada donasi baru
+  if (!isFirstLoad && items.length > 0 && items[0].key !== lastDonationKey) {
+    const newD = items[0];
+    showToast(`${newD.donator || 'Anonim'} donasi ${formatRp(newD.amount)}! 🎉`);
+  }
+  lastDonationKey = items[0]?.key;
+  isFirstLoad = false;
+
+  let html = '';
+  items.forEach(d => {
+    total += d.amount || 0;
+    count++;
+    const time = new Date(d.timestamp).toLocaleString('id-ID', {
+      day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'
+    });
+    const initial = (d.donator || 'A').charAt(0).toUpperCase();
+    html += `
+      <div class="donation-item">
+        <div class="left">
+          <div class="avatar">${initial}</div>
+          <div class="info">
+            <div class="name">${escapeHtml(d.donator || 'Anonim')}</div>
+            ${d.message ? `<div class="msg">"${escapeHtml(d.message)}"</div>` : ''}
+            <div class="time">${time}</div>
+          </div>
+        </div>
+        <div class="amount">${formatRp(d.amount)}</div>
+      </div>
+    `;
+  });
+
+  list.innerHTML = html;
+  document.getElementById('totalDonasi').textContent = formatRp(total);
+  document.getElementById('jumlahDonatur').textContent = count;
+  document.getElementById('donasiCount').textContent = count + ' donatur';
+});
+</script>
+</body>
+</html>
