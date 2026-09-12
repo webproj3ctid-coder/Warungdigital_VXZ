@@ -13,21 +13,16 @@ body{background:#070a0f;color:#e0e6ed;min-height:100vh;overflow-x:hidden}
 button{cursor:pointer;font-family:inherit}
 input,textarea,select{font-family:inherit}
 
-/* BACKGROUND */
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 20%,rgba(37,211,102,0.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(108,92,231,0.06) 0%,transparent 40%);z-index:-1;pointer-events:none}
 
-/* NAVBAR */
 .navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,0.8);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:100}
 .navbar .logo{font-size:20px;font-weight:900;letter-spacing:-0.5px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer}
 .navbar .menu{display:flex;gap:8px;align-items:center}
 .navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:12px;transition:0.2s;opacity:0.7;background:transparent;border:none}
 .navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
-.navbar .menu .cart-badge{position:absolute;top:0;right:0;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px}
 
-/* CONTAINER */
 .container{max-width:1100px;margin:0 auto;padding:20px}
 
-/* HERO */
 .hero{text-align:center;padding:60px 30px;position:relative;background:linear-gradient(135deg,rgba(20,26,34,0.9),rgba(26,42,58,0.9));border-radius:32px;margin-bottom:30px;border:1px solid #1f2a34;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(37,211,102,0.1),transparent 30%);animation:rotate 8s linear infinite;z-index:0}
 @keyframes rotate{to{transform:rotate(360deg)}}
@@ -38,7 +33,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .hero p{opacity:0.7;font-size:16px;max-width:500px;margin:0 auto 24px;line-height:1.6}
 .hero .btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-/* BUTTONS */
 .btn{padding:14px 28px;border-radius:40px;border:none;font-weight:700;font-size:15px;cursor:pointer;transition:0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center}
 .btn-primary{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,0.3)}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,0.4)}
@@ -49,7 +43,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .btn-sm{padding:8px 16px;font-size:13px;border-radius:12px}
 .btn-block{width:100%;margin-top:8px}
 
-/* STATS */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px}
 .stat{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;padding:22px;text-align:center;transition:0.3s;position:relative;overflow:hidden}
 .stat::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#25d366,#6c5ce7)}
@@ -58,13 +51,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .stat .num{font-size:26px;font-weight:900;color:#25d366;letter-spacing:-0.5px}
 .stat .label{font-size:12px;opacity:0.6;margin-top:6px;font-weight:600}
 
-/* SECTION */
 .section{margin-bottom:40px}
 .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
 .section-header h2{font-size:22px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px}
 .section-header .count{background:rgba(37,211,102,0.15);color:#25d366;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
 
-/* PRODUCT GRID */
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
 .product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:0.3s;cursor:pointer}
 .product-card:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 20px 40px rgba(37,211,102,0.15)}
@@ -77,11 +68,9 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;transition:0.2s}
 .product-card .info .btn-beli:hover{background:#20b858}
 
-/* EMPTY */
 .empty{text-align:center;padding:50px 20px;opacity:0.5;background:#141a22;border-radius:20px;border:1px dashed #2a3340}
 .empty i{font-size:48px;margin-bottom:12px;display:block;opacity:0.4}
 
-/* MODAL */
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:999;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.show{display:flex}
 .modal{background:#141a22;border-radius:24px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid #2a3340;animation:pop 0.25s ease}
@@ -95,19 +84,17 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .modal .btn-primary{width:100%;padding:12px;border-radius:14px}
 .modal .btn-secondary{width:100%;padding:12px;border-radius:14px;margin-top:8px}
 
-/* TOAST */
-#toast{position:fixed;bottom:24px;right:24px;z-index:99999;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;padding:14px 24px;border-radius:16px;font-weight:700;font-size:14px;box-shadow:0 12px 32px rgba(37,211,102,0.4);transform:translateX(400px);transition:0.4s cubic-bezier(0.16,1,0.3,1);display:flex;align-items:center;gap:10px}
+#toast{position:fixed;bottom:24px;right:24px;z-index:99999;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;padding:14px 24px;border-radius:16px;font-weight:700;font-size:14px;box-shadow:0 12px 32px rgba(37,211,102,0.4);transform:translateX(400px);transition:0.4s cubic-bezier(0.16,1,0.3,1);display:flex;align-items:center;gap:10px;max-width:90vw}
 #toast.show{transform:translateX(0)}
 #toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b);box-shadow:0 12px 32px rgba(231,76,60,0.4)}
+#toast.donate{background:linear-gradient(135deg,#6c5ce7,#4834d4);box-shadow:0 12px 32px rgba(108,92,231,0.4)}
 
-/* SIDEBAR MENU (titik tiga) */
 .sidebar{position:fixed;top:0;right:-360px;width:340px;height:100%;background:#141a22;border-left:1px solid #2a3340;box-shadow:-4px 0 40px rgba(0,0,0,0.5);transition:0.4s cubic-bezier(0.4,0,0.2,1);z-index:9999;padding:30px 20px;overflow-y:auto}
 .sidebar.open{right:0}
 .sidebar .close{float:right;font-size:28px;cursor:pointer;opacity:0.5;background:transparent;border:none;color:#e0e6ed}
 .sidebar .close:hover{opacity:1;transform:rotate(90deg)}
 .sidebar .user-info{text-align:center;padding:12px 0 20px 0;border-bottom:1px solid #1f2a34;margin-bottom:16px}
 .sidebar .user-info .avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;overflow:hidden}
-.sidebar .user-info .avatar img{width:100%;height:100%;object-fit:cover}
 .sidebar .user-info .name{font-weight:700;font-size:18px;margin-top:8px}
 .sidebar .user-info .role{font-size:12px;opacity:0.5;margin-top:2px}
 .sidebar .menu-item{padding:14px 16px;border-radius:14px;cursor:pointer;transition:0.3s;display:flex;align-items:center;gap:12px;font-weight:600;margin-bottom:4px;color:#e0e6ed;background:transparent;border:none;width:100%;text-align:left;font-size:14px}
@@ -118,13 +105,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9998}
 .sidebar-overlay.show{display:block}
 
-/* TABS */
 .tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto}
 .tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:14px;transition:0.3s;white-space:nowrap;opacity:0.6}
 .tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
 .tabs button:hover:not(.active){background:#1f2a34;opacity:1}
 
-/* ORDER ITEM */
 .order-item{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;padding:18px;margin-bottom:12px}
 .order-item .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px}
 .order-item .head .oid{font-weight:800;font-size:15px}
@@ -137,7 +122,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .order-item .body{font-size:13px;opacity:0.8;line-height:1.8}
 .order-item .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 
-/* WALLET */
 .wallet-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:30px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
 .wallet-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,0.1),transparent 50%);animation:pulse 4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:0.5}50%{opacity:1}}
@@ -146,31 +130,25 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .wallet-card .saldo{font-size:42px;font-weight:900;color:#25d366;letter-spacing:-1px}
 .wallet-card .note{font-size:12px;opacity:0.5;margin-top:8px}
 
-/* FORM */
 .form-group{margin-bottom:14px}
 .form-group label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:0.8}
 .form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;transition:0.3s}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#25d366}
 
-/* METODE BAYAR */
 .metode-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .metode-item{padding:10px 16px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;transition:0.3s;display:flex;align-items:center;gap:6px}
 .metode-item:hover{border-color:#25d366}
 .metode-item.selected{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border-color:#25d366}
 
-/* FOOTER */
 .footer{text-align:center;padding:30px 20px;opacity:0.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
 
-/* SCROLLBAR */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#070a0f}
 ::-webkit-scrollbar-thumb{background:#2a3340;border-radius:10px}
 ::-webkit-scrollbar-thumb:hover{background:#25d366}
 
-/* HIDDEN */
 .hidden{display:none!important}
 
-/* RESPONSIVE */
 @media (max-width:600px){
   .container{padding:14px}
   .navbar{padding:12px 16px}
@@ -184,13 +162,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 </head>
 <body>
 
-<!-- SIDEBAR OVERLAY -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-<!-- SIDEBAR MENU (titik tiga) -->
 <div class="sidebar" id="sidebar">
   <button class="close" onclick="closeSidebar()">✕</button>
-  <div class="user-info" id="userInfo">
+  <div class="user-info">
     <div class="avatar" id="sidebarAvatar">👤</div>
     <div class="name" id="sidebarName">Belum Login</div>
     <div class="role" id="sidebarRole">Guest</div>
@@ -206,7 +182,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   <button class="menu-item" onclick="showLoginModal();closeSidebar()" id="loginBtnSide" style="display:none"><i class="fas fa-sign-in-alt"></i> Login / Daftar</button>
 </div>
 
-<!-- MAIN -->
 <div class="container">
   <nav class="navbar">
     <div class="logo" onclick="showPage('home')">🛒 WarungDigital</div>
@@ -218,7 +193,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     </div>
   </nav>
 
-  <!-- PAGE: HOME -->
   <div id="page-home">
     <div class="hero">
       <div class="badge">✨ MARKETPLACE PRODUK DIGITAL</div>
@@ -248,7 +222,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     </div>
   </div>
 
-  <!-- PAGE: JUALAN -->
   <div id="page-jualan" class="hidden">
     <div class="section-header">
       <h2>🏪 Jualan Saya</h2>
@@ -264,7 +237,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     <div id="jualan-pembayaran" class="hidden"></div>
   </div>
 
-  <!-- PAGE: ORDERS -->
   <div id="page-orders" class="hidden">
     <div class="section-header">
       <h2>📦 Pesanan Saya</h2>
@@ -273,7 +245,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     <div id="ordersList"><div class="empty"><i class="fas fa-receipt"></i>Belum ada pesanan</div></div>
   </div>
 
-  <!-- PAGE: DOMPET -->
   <div id="page-dompet" class="hidden">
     <div class="section-header"><h2>💰 Dompet</h2></div>
     <div class="wallet-card">
@@ -287,7 +258,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     </div>
   </div>
 
-  <!-- PAGE: SETTING WEB -->
   <div id="page-setting" class="hidden">
     <div class="section-header"><h2>⚙️ Setting Web</h2></div>
     <div class="form-group"><label>Nama Toko</label><input type="text" id="setNamaToko" placeholder="WarungDigital" /></div>
@@ -298,7 +268,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     <button class="btn btn-primary btn-block" onclick="saveSettingWeb()"><i class="fas fa-save"></i> Simpan</button>
   </div>
 
-  <!-- PAGE: SETTING ACCOUNT -->
   <div id="page-account" class="hidden">
     <div class="section-header"><h2>👤 Setting Akun</h2></div>
     <div class="form-group"><label>Nama</label><input type="text" id="accNama" /></div>
@@ -313,15 +282,12 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 
 <div class="footer">Made with 💚 by <strong>WarungDigital</strong> · © 2026</div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modalContent"></div>
 </div>
 
-<!-- TOAST -->
 <div id="toast"></div>
 
-<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script>
@@ -358,95 +324,130 @@ const METODE_BAYAR = [
 let currentUser = localStorage.getItem('wd_user') || null;
 let currentPage = 'home';
 let products = {};
-let selectedMetode = [];
-let currentTabJualan = 'produk';
+let selectedMetodeBeli = null;
+let productFileBase64 = '';
 
 // ============================================================
 // UTILS
 // ============================================================
 function formatRp(n){return 'Rp ' + Number(n||0).toLocaleString('id-ID')}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function showToast(msg, isError){
+
+function showToast(msg, type){
   const t = document.getElementById('toast');
-  t.innerHTML = (isError?'<i class="fas fa-exclamation-circle"></i> ':'<i class="fas fa-check-circle"></i> ') + msg;
-  t.className = isError ? 'show error' : 'show';
+  const icons = {
+    success: '<i class="fas fa-check-circle"></i> ',
+    error: '<i class="fas fa-exclamation-circle"></i> ',
+    donate: '<i class="fas fa-heart"></i> '
+  };
+  t.innerHTML = (icons[type] || icons.success) + msg;
+  t.className = type === 'error' ? 'show error' : type === 'donate' ? 'show donate' : 'show';
   clearTimeout(t._t);
-  t._t = setTimeout(()=>t.className='',3500);
+  t._t = setTimeout(()=>t.className='',4000);
 }
-function openModal(html){document.getElementById('modalContent').innerHTML=html;document.getElementById('modalOverlay').classList.add('show')}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('show')}
+
+function openModal(html){
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('show');
+}
 
 // ============================================================
 // SIDEBAR
 // ============================================================
 function openSidebar(){
-  document.getElementById('sidebar').classList.add('open');
-  document.getElementById('sidebarOverlay').classList.add('show');
-  updateSidebar();
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  if(sb && ov){
+    sb.classList.add('open');
+    ov.classList.add('show');
+    updateSidebar();
+  }
 }
 function closeSidebar(){
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebarOverlay').classList.remove('show');
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  if(sb) sb.classList.remove('open');
+  if(ov) ov.classList.remove('show');
 }
 function updateSidebar(){
-  const av = document.getElementById('sidebarAvatar');
-  const nm = document.getElementById('sidebarName');
-  const rl = document.getElementById('sidebarRole');
-  const logoutBtn = document.getElementById('logoutBtn');
-  const loginBtn = document.getElementById('loginBtnSide');
-  if(currentUser){
-    av.textContent = currentUser.charAt(0).toUpperCase();
-    nm.textContent = currentUser;
-    rl.textContent = 'Member';
-    logoutBtn.style.display = 'flex';
-    loginBtn.style.display = 'none';
-  } else {
-    av.textContent = '👤';
-    nm.textContent = 'Belum Login';
-    rl.textContent = 'Guest';
-    logoutBtn.style.display = 'none';
-    loginBtn.style.display = 'flex';
+  try {
+    const av = document.getElementById('sidebarAvatar');
+    const nm = document.getElementById('sidebarName');
+    const rl = document.getElementById('sidebarRole');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginBtn = document.getElementById('loginBtnSide');
+    if(!av || !nm) return;
+    if(currentUser){
+      av.textContent = currentUser.charAt(0).toUpperCase();
+      nm.textContent = currentUser;
+      if(rl) rl.textContent = 'Member';
+      if(logoutBtn) logoutBtn.style.display = 'flex';
+      if(loginBtn) loginBtn.style.display = 'none';
+    } else {
+      av.textContent = '👤';
+      nm.textContent = 'Belum Login';
+      if(rl) rl.textContent = 'Guest';
+      if(logoutBtn) logoutBtn.style.display = 'none';
+      if(loginBtn) loginBtn.style.display = 'flex';
+    }
+  } catch(e) {
+    console.warn('updateSidebar skip:', e.message);
   }
 }
 
 // ============================================================
-// NAVIGASI HALAMAN
+// NAVIGASI
 // ============================================================
 function showPage(page){
-  currentPage = page;
-  document.querySelectorAll('[id^="page-"]').forEach(el=>el.classList.add('hidden'));
-  const el = document.getElementById('page-'+page);
-  if(el) el.classList.remove('hidden');
-  if(page==='home') renderHome();
-  if(page==='jualan') renderJualan();
-  if(page==='orders') renderOrders();
-  if(page==='dompet') renderDompet();
-  if(page==='setting') loadSettingWeb();
-  if(page==='account') loadSettingAccount();
-  window.scrollTo({top:0,behavior:'smooth'});
+  try {
+    currentPage = page;
+    document.querySelectorAll('[id^="page-"]').forEach(el=>el.classList.add('hidden'));
+    const el = document.getElementById('page-'+page);
+    if(el) el.classList.remove('hidden');
+    if(page==='home') renderHome();
+    if(page==='jualan') renderJualan();
+    if(page==='orders') renderOrders();
+    if(page==='dompet') renderDompet();
+    if(page==='setting') loadSettingWeb();
+    if(page==='account') loadSettingAccount();
+    window.scrollTo({top:0,behavior:'smooth'});
+  } catch(e) {
+    console.warn('showPage skip:', e.message);
+  }
 }
 
 // ============================================================
-// HOME
+// LISTENER FIREBASE
 // ============================================================
 db.ref('warungdigital/products').on('value', snap=>{
   products = snap.val() || {};
   if(currentPage==='home') renderHome();
   if(currentPage==='jualan') renderJualan();
-  document.getElementById('statProduk').textContent = Object.keys(products).length;
-  document.getElementById('produkCount').textContent = Object.keys(products).length + ' produk';
+  const sp = document.getElementById('statProduk');
+  const pc = document.getElementById('produkCount');
+  if(sp) sp.textContent = Object.keys(products).length;
+  if(pc) pc.textContent = Object.keys(products).length + ' produk';
 });
 
 db.ref('warungdigital/users').on('value', snap=>{
-  document.getElementById('statUser').textContent = snap.numChildren();
+  const el = document.getElementById('statUser');
+  if(el) el.textContent = snap.numChildren();
 });
 
 db.ref('warungdigital/orders').on('value', snap=>{
-  document.getElementById('statOrder').textContent = snap.numChildren();
+  const el = document.getElementById('statOrder');
+  if(el) el.textContent = snap.numChildren();
 });
 
+// ============================================================
+// RENDER HOME
+// ============================================================
 function renderHome(){
   const grid = document.getElementById('productGrid');
+  if(!grid) return;
   const list = Object.entries(products).map(([id,p])=>({id,...p}));
   if(list.length===0){
     grid.innerHTML = '<div class="empty"><i class="fas fa-box-open"></i>Belum ada produk. Mulai jualan!</div>';
@@ -491,12 +492,11 @@ function showDetail(id){
 // BELI PRODUK
 // ============================================================
 function beliProduk(id){
-  if(!currentUser){showToast('Login dulu buat beli!',true);showLoginModal();return}
+  if(!currentUser){showToast('Login dulu buat beli!','error');showLoginModal();return}
   const p = products[id];
   if(!p) return;
-  if(p.penjual===currentUser){showToast('Gak bisa beli produk sendiri!',true);return}
-  
-  // Kalau tipe WA → langsung ke WA penjual
+  if(p.penjual===currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
+
   if(p.tipe==='wa' && p.waLink){
     window.open(p.waLink,'_blank');
     return;
@@ -504,7 +504,7 @@ function beliProduk(id){
 
   closeModal();
   const metode = p.metode && p.metode.length > 0 ? p.metode : METODE_BAYAR.map(m=>m.id);
-  
+
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>💳 Pembayaran</h2>
@@ -529,20 +529,19 @@ function beliProduk(id){
   `);
 }
 
-let selectedMetodeBeli = null;
 function selectMetode(m, el){
   selectedMetodeBeli = m;
   document.querySelectorAll('#metodeList .metode-item').forEach(x=>x.classList.remove('selected'));
   el.classList.add('selected');
-  // Tampilkan detail pembayaran
-  const p = Object.values(products).find(x=>x.penjual);
-  db.ref('warungdigital/users').child(p?.penjual||'').once('value', snap=>{
+  const p = products[Object.keys(products).find(k=>products[k].penjual)] || {};
+  db.ref('warungdigital/users').child(p.penjual||'').once('value', snap=>{
     const u = snap.val() || {};
     const det = document.getElementById('detailPembayaran');
+    if(!det) return;
     if(m==='saweria' || m==='tako'){
       det.innerHTML = `<div style="background:#0f151c;border-radius:14px;padding:14px;font-size:13px;margin-bottom:12px">
         <div style="opacity:0.6;margin-bottom:4px">Link ${m==='tako'?'Tako':'Saweria'} penjual:</div>
-        <a href="${m==='tako'?u.tako:u.saweria||'#'}" target="_blank" style="color:#25d366;font-weight:700">${m==='tako'?u.tako:u.saweria||'Belum diset'}</a>
+        <a href="${m==='tako'?u.tako:u.saweria||'#'}" target="_blank" style="color:#25d366;font-weight:700;word-break:break-all">${m==='tako'?u.tako||'Belum diset':u.saweria||'Belum diset'}</a>
       </div>`;
     } else {
       det.innerHTML = `<div style="background:#0f151c;border-radius:14px;padding:14px;font-size:13px;margin-bottom:12px">
@@ -554,7 +553,7 @@ function selectMetode(m, el){
 }
 
 function submitOrder(id){
-  if(!selectedMetodeBeli){showToast('Pilih metode bayar dulu!',true);return}
+  if(!selectedMetodeBeli){showToast('Pilih metode bayar dulu!','error');return}
   const p = products[id];
   const orderId = 'ORD-'+Date.now();
   const order = {
@@ -571,31 +570,34 @@ function submitOrder(id){
   };
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
     closeModal();
-    showToast('✅ Pesanan dibuat! Silakan bayar & upload bukti.');
+    showToast('✅ Pesanan dibuat! Upload bukti bayar.');
     selectedMetodeBeli = null;
     showPage('orders');
-  }).catch(e=>showToast('❌ '+e.message,true));
+  }).catch(e=>showToast('❌ '+e.message,'error'));
 }
 
 // ============================================================
 // JUALAN
 // ============================================================
 function renderJualan(){
-  if(!currentUser){showToast('Login dulu!',true);showLoginModal();return}
+  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   renderJualanProduk();
   renderJualanPesanan();
   renderJualanPembayaran();
 }
+
 function switchJualanTab(tab, el){
-  currentTabJualan = tab;
   document.querySelectorAll('#page-jualan .tabs button').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
   ['produk','pesanan','pembayaran'].forEach(t=>{
-    document.getElementById('jualan-'+t).classList.toggle('hidden', t!==tab);
+    const e = document.getElementById('jualan-'+t);
+    if(e) e.classList.toggle('hidden', t!==tab);
   });
 }
+
 function renderJualanProduk(){
   const el = document.getElementById('jualan-produk');
+  if(!el) return;
   const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
   if(my.length===0){
     el.innerHTML = '<div class="empty"><i class="fas fa-box-open"></i>Belum ada produk. Klik "Tambah Produk"!</div>';
@@ -615,26 +617,30 @@ function renderJualanProduk(){
     </div>
   `).join('') + '</div>';
 }
+
 function renderJualanPesanan(){
   const el = document.getElementById('jualan-pesanan');
+  if(!el) return;
   db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
     if(!snap.exists()){el.innerHTML='<div class="empty"><i class="fas fa-receipt"></i>Belum ada pesanan masuk</div>';return}
     let html = '';
     snap.forEach(child=>{
       const o = child.val();
-      html += renderOrderCard(o, 'penjual');
+      html += renderOrderCard({key:child.key,...o}, 'penjual');
     });
     el.innerHTML = html;
   });
 }
+
 function renderJualanPembayaran(){
   const el = document.getElementById('jualan-pembayaran');
+  if(!el) return;
   db.ref('warungdigital/users').child(currentUser).once('value', snap=>{
     const u = snap.val() || {};
     el.innerHTML = `
       <div class="form-group"><label>Metode Bayar yang Diterima</label>
         <div class="metode-list" id="metodeSetting">
-          ${METODE_BAYAR.map(m=>`<div class="metode-item ${(u.metode||[]).includes(m.id)?'selected':''}" onclick="toggleMetodeSetting('${m.id}',this)">${m.icon} ${m.nama}</div>`).join('')}
+          ${METODE_BAYAR.map(m=>`<div class="metode-item ${(u.metode||[]).includes(m.id)?'selected':''}" onclick="this.classList.toggle('selected')">${m.icon} ${m.nama}</div>`).join('')}
         </div>
       </div>
       <div class="form-group"><label>Nomor E-Wallet (DANA/OVO/GoPay/ShopeePay)</label><input type="text" id="setNomorEwallet" value="${escapeHtml(u.nomorEwallet||'')}" placeholder="08xxxxxxxxxx" /></div>
@@ -645,9 +651,7 @@ function renderJualanPembayaran(){
     `;
   });
 }
-function toggleMetodeSetting(m, el){
-  el.classList.toggle('selected');
-}
+
 function saveMetodePembayaran(){
   const metode = Array.from(document.querySelectorAll('#metodeSetting .metode-item.selected')).map(x=>{
     const txt = x.textContent.trim();
@@ -659,14 +663,14 @@ function saveMetodePembayaran(){
   const wa = document.getElementById('setNomorWA').value.trim();
   db.ref('warungdigital/users').child(currentUser).update({metode,nomorEwallet,tako,saweria,wa}).then(()=>{
     showToast('✅ Metode bayar disimpan!');
-  }).catch(e=>showToast('❌ '+e.message,true));
+  }).catch(e=>showToast('❌ '+e.message,'error'));
 }
 
 // ============================================================
 // TAMBAH PRODUK
 // ============================================================
 function showAddProduct(){
-  if(!currentUser){showToast('Login dulu!',true);showLoginModal();return}
+  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>➕ Tambah Produk</h2>
@@ -696,16 +700,17 @@ function showAddProduct(){
     <button class="btn btn-primary btn-block" onclick="saveProduct()"><i class="fas fa-save"></i> Simpan Produk</button>
   `);
 }
+
 function toggleProductType(){
   const t = document.getElementById('pType').value;
   document.getElementById('pDigitalSection').classList.toggle('hidden', t!=='digital');
   document.getElementById('pWASection').classList.toggle('hidden', t!=='wa');
 }
-let productFileBase64 = '';
+
 function readProductFile(input){
   const file = input.files[0];
   if(!file) return;
-  if(file.size > 1024*1024){showToast('File max 1MB!',true);input.value='';return}
+  if(file.size > 1024*1024){showToast('File max 1MB!','error');input.value='';return}
   const reader = new FileReader();
   reader.onload = e=>{
     productFileBase64 = e.target.result;
@@ -713,6 +718,7 @@ function readProductFile(input){
   };
   reader.readAsDataURL(file);
 }
+
 function saveProduct(){
   const tipe = document.getElementById('pType').value;
   const nama = document.getElementById('pNama').value.trim();
@@ -720,8 +726,8 @@ function saveProduct(){
   const kategori = document.getElementById('pKategori').value.trim()||'Umum';
   const deskripsi = document.getElementById('pDeskripsi').value.trim();
   const waLink = document.getElementById('pWALink').value.trim();
-  if(!nama||!harga){showToast('Nama & harga wajib!',true);return}
-  if(tipe==='wa'&&!waLink){showToast('Link WA wajib!',true);return}
+  if(!nama||!harga){showToast('Nama & harga wajib!','error');return}
+  if(tipe==='wa'&&!waLink){showToast('Link WA wajib!','error');return}
   const data = {
     nama, harga, kategori, deskripsi,
     penjual: currentUser,
@@ -735,12 +741,13 @@ function saveProduct(){
     productFileBase64='';
     showToast('✅ Produk ditambah!');
     renderJualanProduk();
-  }).catch(e=>showToast('❌ '+e.message,true));
+  }).catch(e=>showToast('❌ '+e.message,'error'));
 }
+
 function deleteProduct(id){
   if(!confirm('Hapus produk ini?')) return;
   const p = products[id];
-  if(p.penjual!==currentUser){showToast('Bukan produk lo!',true);return}
+  if(p.penjual!==currentUser){showToast('Bukan produk lo!','error');return}
   db.ref('warungdigital/products').child(id).remove().then(()=>{
     showToast('✅ Produk dihapus');
     renderJualanProduk();
@@ -748,11 +755,12 @@ function deleteProduct(id){
 }
 
 // ============================================================
-// ORDERS (PEMBELI)
+// ORDERS
 // ============================================================
 function renderOrders(){
-  if(!currentUser){showToast('Login dulu!',true);showLoginModal();return}
+  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   const el = document.getElementById('ordersList');
+  if(!el) return;
   db.ref('warungdigital/orders').once('value', snap=>{
     const orders = [];
     snap.forEach(child=>{
@@ -760,11 +768,13 @@ function renderOrders(){
       if(o.pembeli===currentUser || o.penjual===currentUser) orders.push({key:child.key,...o});
     });
     orders.sort((a,b)=>b.createdAt-a.createdAt);
-    document.getElementById('ordersCount').textContent = orders.length + ' pesanan';
+    const oc = document.getElementById('ordersCount');
+    if(oc) oc.textContent = orders.length + ' pesanan';
     if(orders.length===0){el.innerHTML='<div class="empty"><i class="fas fa-receipt"></i>Belum ada pesanan</div>';return}
     el.innerHTML = orders.map(o=>renderOrderCard(o, o.penjual===currentUser?'penjual':'pembeli')).join('');
   });
 }
+
 function renderOrderCard(o, role){
   const statusMap = {
     waiting_payment: {label:'⏳ Menunggu Bayar', cls:'status-waiting'},
@@ -801,6 +811,7 @@ function renderOrderCard(o, role){
     </div>
   `;
 }
+
 function uploadBukti(orderKey){
   const input = document.createElement('input');
   input.type = 'file';
@@ -808,7 +819,7 @@ function uploadBukti(orderKey){
   input.onchange = async e=>{
     const file = e.target.files[0];
     if(!file) return;
-    if(file.size > 2*1024*1024){showToast('Foto max 2MB!',true);return}
+    if(file.size > 2*1024*1024){showToast('Foto max 2MB!','error');return}
     const reader = new FileReader();
     reader.onload = async ev=>{
       const base64 = ev.target.result;
@@ -817,20 +828,16 @@ function uploadBukti(orderKey){
         const res = await fetch('/api/verify', {
           method: 'POST',
           headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({
-            orderKey,
-            buktiBase64: base64
-          })
+          body: JSON.stringify({ orderKey, buktiBase64: base64 })
         });
         const data = await res.json();
         if(data.success && data.verified){
           showToast('✅ Bukti terverifikasi AI!');
         } else {
-          showToast('⚠️ AI gak yakin, penjual bakal cek manual',true);
+          showToast('⚠️ AI gak yakin, penjual bakal cek manual','error');
         }
         renderOrders();
       } catch(err){
-        // Fallback: simpen bukti aja tanpa verifikasi AI
         db.ref('warungdigital/orders').child(orderKey).update({
           status:'proof_uploaded',
           bukti: base64.substring(0,2000),
@@ -845,6 +852,7 @@ function uploadBukti(orderKey){
   };
   input.click();
 }
+
 function confirmOrder(orderKey){
   if(!confirm('Konfirmasi pesanan ini? Pastikan pembayaran udah masuk.')) return;
   db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
@@ -869,7 +877,7 @@ function confirmOrder(orderKey){
 // DOMPET
 // ============================================================
 function renderDompet(){
-  if(!currentUser){showToast('Login dulu!',true);showLoginModal();return}
+  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
     let total = 0;
     let history = [];
@@ -880,8 +888,10 @@ function renderDompet(){
         history.push(o);
       }
     });
-    document.getElementById('walletSaldo').textContent = formatRp(total);
+    const ws = document.getElementById('walletSaldo');
+    if(ws) ws.textContent = formatRp(total);
     const el = document.getElementById('walletHistory');
+    if(!el) return;
     if(history.length===0){el.innerHTML='<div class="empty"><i class="fas fa-history"></i>Belum ada transaksi</div>';return}
     el.innerHTML = history.reverse().map(o=>`
       <div class="order-item">
@@ -896,16 +906,17 @@ function renderDompet(){
 }
 
 // ============================================================
-// SETTING WEB
+// SETTING
 // ============================================================
 function loadSettingWeb(){
   db.ref('warungdigital/settings').once('value', snap=>{
     const s = snap.val() || {};
-    document.getElementById('setNamaToko').value = s.namaToko || 'WarungDigital';
-    document.getElementById('setDeskripsi').value = s.deskripsi || '';
-    document.getElementById('setTako').value = s.tako || '';
-    document.getElementById('setSaweria').value = s.saweria || '';
-    document.getElementById('setWA').value = s.wa || '';
+    const el = id => document.getElementById(id);
+    if(el('setNamaToko')) el('setNamaToko').value = s.namaToko || 'WarungDigital';
+    if(el('setDeskripsi')) el('setDeskripsi').value = s.deskripsi || '';
+    if(el('setTako')) el('setTako').value = s.tako || '';
+    if(el('setSaweria')) el('setSaweria').value = s.saweria || '';
+    if(el('setWA')) el('setWA').value = s.wa || '';
   });
 }
 function saveSettingWeb(){
@@ -919,17 +930,15 @@ function saveSettingWeb(){
   db.ref('warungdigital/settings').update(data).then(()=>showToast('✅ Setting web disimpan!'));
 }
 
-// ============================================================
-// SETTING ACCOUNT
-// ============================================================
 function loadSettingAccount(){
   if(!currentUser) return;
   db.ref('warungdigital/users').child(currentUser).once('value', snap=>{
     const u = snap.val() || {};
-    document.getElementById('accNama').value = currentUser;
-    document.getElementById('accWA').value = u.wa || '';
-    document.getElementById('accTako').value = u.tako || '';
-    document.getElementById('accSaweria').value = u.saweria || '';
+    const el = id => document.getElementById(id);
+    if(el('accNama')) el('accNama').value = currentUser;
+    if(el('accWA')) el('accWA').value = u.wa || '';
+    if(el('accTako')) el('accTako').value = u.tako || '';
+    if(el('accSaweria')) el('accSaweria').value = u.saweria || '';
   });
 }
 function saveSettingAccount(){
@@ -938,7 +947,7 @@ function saveSettingAccount(){
   const wa = document.getElementById('accWA').value.trim();
   const tako = document.getElementById('accTako').value.trim();
   const saweria = document.getElementById('accSaweria').value.trim();
-  if(!nama){showToast('Nama wajib!',true);return}
+  if(!nama){showToast('Nama wajib!','error');return}
   const update = {wa,tako,saweria};
   if(pass) update.password = pass;
   db.ref('warungdigital/users').child(currentUser).update(update).then(()=>{
@@ -966,10 +975,10 @@ function showLoginModal(){
 function doLogin(){
   const nama = document.getElementById('authNama').value.trim();
   const pass = document.getElementById('authPass').value.trim();
-  if(!nama||!pass){showToast('Isi semua!',true);return}
+  if(!nama||!pass){showToast('Isi semua!','error');return}
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
-    if(!snap.exists()){showToast('Nama gak terdaftar!',true);return}
-    if(snap.val().password!==pass){showToast('Password salah!',true);return}
+    if(!snap.exists()){showToast('Nama gak terdaftar!','error');return}
+    if(snap.val().password!==pass){showToast('Password salah!','error');return}
     currentUser = nama;
     localStorage.setItem('wd_user', nama);
     closeModal();
@@ -981,10 +990,10 @@ function doLogin(){
 function doRegister(){
   const nama = document.getElementById('authNama').value.trim();
   const pass = document.getElementById('authPass').value.trim();
-  if(!nama||!pass){showToast('Isi semua!',true);return}
-  if(pass.length<4){showToast('Password min 4 karakter!',true);return}
+  if(!nama||!pass){showToast('Isi semua!','error');return}
+  if(pass.length<4){showToast('Password min 4 karakter!','error');return}
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
-    if(snap.exists()){showToast('Nama udah dipake!',true);return}
+    if(snap.exists()){showToast('Nama udah dipake!','error');return}
     db.ref('warungdigital/users').child(nama).set({
       password: pass,
       createdAt: Date.now(),
@@ -1000,7 +1009,7 @@ function doRegister(){
       showToast('✅ Daftar & login berhasil!');
       updateSidebar();
       showPage('home');
-    }).catch(e=>showToast('❌ '+e.message,true));
+    }).catch(e=>showToast('❌ '+e.message,'error'));
   });
 }
 function logoutUser(){
@@ -1030,7 +1039,7 @@ function showRequestFitur(){
 function submitRequestFitur(){
   const nama = document.getElementById('reqNama').value.trim()||'Anonim';
   const fitur = document.getElementById('reqFitur').value.trim();
-  if(!fitur){showToast('Tulis fitur yang dimau!',true);return}
+  if(!fitur){showToast('Tulis fitur yang dimau!','error');return}
   db.ref('warungdigital/requests').push({
     nama, fitur, timestamp: Date.now()
   }).then(()=>{
@@ -1040,372 +1049,60 @@ function submitRequestFitur(){
 }
 
 // ============================================================
-// AUTO LOGIN
-// ============================================================
-if(currentUser) updateSidebar();
-showPage('home');
-
-console.log('🛒 WarungDigital v1.0 — Ready!');
-</script>
-</body>
-</html>  .stat::before {
-    content:''; position:absolute; top:0; left:0; width:100%; height:3px;
-    background:linear-gradient(90deg, #25d366, #6c5ce7);
-  }
-  .stat:hover { transform:translateY(-4px); border-color:#25d366; }
-  .stat .icon { font-size:24px; margin-bottom:8px; }
-  .stat .num { font-size:26px; font-weight:900; color:#25d366; letter-spacing:-0.5px; }
-  .stat .label { font-size:12px; opacity:0.6; margin-top:6px; font-weight:600; }
-
-  /* SECTION */
-  .section { margin-bottom:40px; }
-  .section-header {
-    display:flex; justify-content:space-between; align-items:center;
-    margin-bottom:18px; flex-wrap:wrap; gap:10px;
-  }
-  .section-header h2 {
-    font-size:22px; font-weight:800; letter-spacing:-0.5px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .section-header .count {
-    background:rgba(37,211,102,0.15); color:#25d366;
-    padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;
-  }
-
-  /* PRODUCT GRID */
-  .product-grid {
-    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-    gap:16px;
-  }
-  .product-card {
-    background:linear-gradient(135deg, #141a22, #1a222c);
-    border:1px solid #1f2a34; border-radius:20px; overflow:hidden;
-    transition:0.3s; cursor:pointer;
-  }
-  .product-card:hover {
-    transform:translateY(-6px); border-color:#25d366;
-    box-shadow:0 20px 40px rgba(37,211,102,0.15);
-  }
-  .product-card .thumb {
-    aspect-ratio:16/10; background:#0f151c;
-    display:flex; align-items:center; justify-content:center;
-    font-size:48px; position:relative; overflow:hidden;
-  }
-  .product-card .thumb::after {
-    content:''; position:absolute; inset:0;
-    background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4));
-  }
-  .product-card .info { padding:16px; }
-  .product-card .info .kategori {
-    font-size:10px; opacity:0.5; text-transform:uppercase;
-    letter-spacing:1px; font-weight:700;
-  }
-  .product-card .info .nama { font-weight:700; font-size:15px; margin:6px 0; }
-  .product-card .info .harga {
-    color:#25d366; font-weight:900; font-size:18px;
-    display:flex; justify-content:space-between; align-items:center;
-  }
-  .product-card .info .btn-beli {
-    background:#25d366; color:#fff; border:none; padding:6px 12px;
-    border-radius:10px; font-size:12px; font-weight:700; cursor:pointer;
-    transition:0.2s;
-  }
-  .product-card .info .btn-beli:hover { background:#20b858; }
-
-  /* DONATION LIST */
-  .donation-list { display:flex; flex-direction:column; gap:10px; }
-  .donation-item {
-    background:linear-gradient(135deg, #141a22, #1a222c);
-    border:1px solid #1f2a34; border-radius:18px;
-    padding:16px 20px; display:flex; justify-content:space-between;
-    align-items:center; gap:14px; transition:0.3s;
-    animation:slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @keyframes slideIn {
-    from { opacity:0; transform:translateY(-20px) scale(0.98); }
-    to { opacity:1; transform:translateY(0) scale(1); }
-  }
-  .donation-item:hover { border-color:#25d366; transform:translateX(4px); }
-  .donation-item .avatar {
-    width:46px; height:46px; border-radius:50%;
-    background:linear-gradient(135deg, #25d366, #6c5ce7);
-    display:flex; align-items:center; justify-content:center;
-    font-weight:800; font-size:18px; color:#fff; flex-shrink:0;
-  }
-  .donation-item .left { display:flex; align-items:center; gap:14px; flex:1; min-width:0; }
-  .donation-item .info { min-width:0; }
-  .donation-item .name { font-weight:700; font-size:15px; }
-  .donation-item .msg { font-size:13px; opacity:0.7; margin-top:2px; word-wrap:break-word; }
-  .donation-item .time { font-size:11px; opacity:0.4; margin-top:4px; }
-  .donation-item .amount {
-    color:#25d366; font-weight:900; font-size:17px;
-    white-space:nowrap; flex-shrink:0;
-    padding:8px 14px; border-radius:12px;
-    background:rgba(37,211,102,0.1);
-  }
-
-  .empty {
-    text-align:center; padding:50px 20px; opacity:0.5;
-    background:#141a22; border-radius:20px; border:1px dashed #2a3340;
-  }
-  .empty i { font-size:48px; margin-bottom:12px; display:block; opacity:0.4; }
-
-  /* FOOTER */
-  .footer {
-    text-align:center; padding:30px 20px; opacity:0.4;
-    font-size:13px; border-top:1px solid #1f2a34; margin-top:40px;
-  }
-
-  /* TOAST */
-  #toast {
-    position:fixed; bottom:24px; right:24px; z-index:9999;
-    background:linear-gradient(135deg, #25d366, #20b858); color:#fff;
-    padding:14px 24px; border-radius:16px; font-weight:700; font-size:14px;
-    box-shadow:0 12px 32px rgba(37,211,102,0.4);
-    transform:translateX(400px); transition:0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    display:flex; align-items:center; gap:10px;
-  }
-  #toast.show { transform:translateX(0); }
-
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width:6px; }
-  ::-webkit-scrollbar-track { background:#070a0f; }
-  ::-webkit-scrollbar-thumb { background:#2a3340; border-radius:10px; }
-  ::-webkit-scrollbar-thumb:hover { background:#25d366; }
-
-  @media (max-width:600px) {
-    .container { padding:14px; }
-    .navbar { padding:12px 16px; }
-    .navbar .menu a { padding:6px 10px; font-size:13px; }
-    .hero { padding:40px 20px; }
-    .product-grid { grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); }
-    .donation-item { padding:12px 14px; }
-    .donation-item .avatar { width:38px; height:38px; font-size:15px; }
-  }
-</style>
-</head>
-<body>
-
-<div class="container">
-
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">🛒 WarungDigital</div>
-    <div class="menu">
-      <a href="#produk">Produk</a>
-      <a href="#donasi">Donasi</a>
-      <a href="https://tako.id/VarszStore" target="_blank">Support</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="badge">✨ PRODUK DIGITAL PREMIUM</div>
-    <h1>Temukan <span>Produk Digital</span><br>Keren & Berkualitas</h1>
-    <p>Template, e-book, preset, script — semua ada di sini. Dukung juga kreator dengan donasi!</p>
-    <div class="btn-group">
-      <a href="#produk" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Lihat Produk</a>
-      <a href="https://tako.id/VarszStore" target="_blank" class="btn btn-secondary"><i class="fas fa-heart"></i> Donasi</a>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">
-      <div class="icon">💰</div>
-      <div class="num" id="totalDonasi">Rp 0</div>
-      <div class="label">Total Donasi</div>
-    </div>
-    <div class="stat">
-      <div class="icon">👥</div>
-      <div class="num" id="jumlahDonatur">0</div>
-      <div class="label">Donatur</div>
-    </div>
-    <div class="stat">
-      <div class="icon">📦</div>
-      <div class="num" id="jumlahProduk">0</div>
-      <div class="label">Produk</div>
-    </div>
-    <div class="stat">
-      <div class="icon">⭐</div>
-      <div class="num">4.9</div>
-      <div class="label">Rating</div>
-    </div>
-  </div>
-
-  <!-- PRODUK -->
-  <div class="section" id="produk">
-    <div class="section-header">
-      <h2>🔥 Produk Digital</h2>
-      <span class="count" id="produkCount">0 produk</span>
-    </div>
-    <div class="product-grid" id="productGrid">
-      <div class="empty"><i class="fas fa-box-open"></i>Memuat produk...</div>
-    </div>
-  </div>
-
-  <!-- DONASI -->
-  <div class="section" id="donasi">
-    <div class="section-header">
-      <h2>💚 Donasi Terbaru</h2>
-      <span class="count" id="donasiCount">0 donatur</span>
-    </div>
-    <div class="donation-list" id="donationList">
-      <div class="empty"><i class="fas fa-heart"></i>Memuat donasi...</div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    Made with 💚 by <strong>VarszStore</strong> · © 2026 WarungDigital
-  </div>
-
-</div>
-
-<!-- TOAST -->
-<div id="toast"></div>
-
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script>
-// ============================================================
-// FIREBASE CONFIG
-// ============================================================
-const firebaseConfig = {
-  apiKey: "AIzaSyDp_3SDiQUAGX0_gw8BYtO2Ecnypl1GlgE",
-  authDomain: "project1-f57d6.firebaseapp.com",
-  databaseURL: "https://project1-f57d6-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "project1-f57d6",
-  storageBucket: "project1-f57d6.firebasestorage.app",
-  messagingSenderId: "722737960517",
-  appId: "1:722737960517:web:f465039879d08fa306b52c"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-
-// ============================================================
-// UTILS
-// ============================================================
-function formatRp(n) { return 'Rp ' + Number(n || 0).toLocaleString('id-ID'); }
-function escapeHtml(s) {
-  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.innerHTML = '<i class="fas fa-bell"></i> ' + msg;
-  t.classList.add('show');
-  clearTimeout(t._t);
-  t._t = setTimeout(() => t.classList.remove('show'), 3500);
-}
-
-// ============================================================
-// PRODUK (dari Firebase atau dummy)
-// ============================================================
-const dummyProducts = [
-  { nama: 'Template Canva Pro', kategori: 'Template', harga: 25000, emoji: '🎨' },
-  { nama: 'E-book Belajar Coding', kategori: 'E-book', harga: 50000, emoji: '📚' },
-  { nama: 'Preset Lightroom Moody', kategori: 'Preset', harga: 30000, emoji: '📸' },
-  { nama: 'Script Bot WhatsApp', kategori: 'Script', harga: 75000, emoji: '🤖' },
-  { nama: 'Pack Font Aesthetic', kategori: 'Font', harga: 20000, emoji: '✒️' },
-  { nama: 'Template Web Portofolio', kategori: 'Template', harga: 45000, emoji: '💻' }
-];
-
-db.ref('warungdigital/products').on('value', snap => {
-  const grid = document.getElementById('productGrid');
-  let products = [];
-  if (snap.exists()) {
-    snap.forEach(child => { products.push({ id: child.key, ...child.val() }); });
-  } else {
-    products = dummyProducts;
-  }
-
-  document.getElementById('jumlahProduk').textContent = products.length;
-  document.getElementById('produkCount').textContent = products.length + ' produk';
-
-  if (products.length === 0) {
-    grid.innerHTML = '<div class="empty"><i class="fas fa-box-open"></i>Belum ada produk</div>';
-    return;
-  }
-
-  grid.innerHTML = products.map(p => `
-    <div class="product-card">
-      <div class="thumb">${p.emoji || '📦'}</div>
-      <div class="info">
-        <div class="kategori">${escapeHtml(p.kategori || 'Umum')}</div>
-        <div class="nama">${escapeHtml(p.nama || 'Tanpa Nama')}</div>
-        <div class="harga">
-          <span>${formatRp(p.harga)}</span>
-          <button class="btn-beli" onclick="beliProduk('${escapeHtml(p.nama || '')}')">
-            <i class="fas fa-cart-plus"></i> Beli
-          </button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-});
-
-function beliProduk(nama) {
-  showToast('Hubungi admin buat beli: ' + nama);
-}
-
-// ============================================================
-// DONASI REAL-TIME
+// LISTENER DONASI REAL-TIME
 // ============================================================
 let lastDonationKey = null;
-let isFirstLoad = true;
+let isFirstDonationLoad = true;
 
-db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(50).on('value', snap => {
-  const list = document.getElementById('donationList');
-  if (!snap.exists()) {
-    list.innerHTML = '<div class="empty"><i class="fas fa-heart"></i>Belum ada donasi. Jadilah yang pertama! 💝</div>';
-    document.getElementById('totalDonasi').textContent = 'Rp 0';
-    document.getElementById('jumlahDonatur').textContent = '0';
-    document.getElementById('donasiCount').textContent = '0 donatur';
+db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(1).on('value', snap => {
+  if (!snap.exists()) return;
+
+  let latest = null;
+  snap.forEach(child => {
+    latest = { key: child.key, ...child.val() };
+  });
+
+  if (isFirstDonationLoad) {
+    lastDonationKey = latest?.key;
+    isFirstDonationLoad = false;
     return;
   }
 
-  let total = 0, count = 0;
-  const items = [];
-  snap.forEach(child => { items.push({ key: child.key, ...child.val() }); });
-  items.reverse();
+  if (latest && latest.key !== lastDonationKey) {
+    lastDonationKey = latest.key;
+    const amount = Number(latest.amount || 0).toLocaleString('id-ID');
+    const donator = latest.donator || 'Anonim';
+    const source = (latest.source || 'tako').toUpperCase();
 
-  // Notif kalau ada donasi baru
-  if (!isFirstLoad && items.length > 0 && items[0].key !== lastDonationKey) {
-    const newD = items[0];
-    showToast(`${newD.donator || 'Anonim'} donasi ${formatRp(newD.amount)}! 🎉`);
+    console.log(`🔥 DONASI BARU [${source}]: Rp ${amount} dari ${donator}`);
+    showToast(`🔥 ${source} SUCCESS! Rp ${amount} dari ${donator}`, 'donate');
+
+    if (currentPage === 'orders') renderOrders();
+    if (currentPage === 'jualan') renderJualan();
+    if (currentPage === 'dompet') renderDompet();
   }
-  lastDonationKey = items[0]?.key;
-  isFirstLoad = false;
-
-  let html = '';
-  items.forEach(d => {
-    total += d.amount || 0;
-    count++;
-    const time = new Date(d.timestamp).toLocaleString('id-ID', {
-      day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'
-    });
-    const initial = (d.donator || 'A').charAt(0).toUpperCase();
-    html += `
-      <div class="donation-item">
-        <div class="left">
-          <div class="avatar">${initial}</div>
-          <div class="info">
-            <div class="name">${escapeHtml(d.donator || 'Anonim')}</div>
-            ${d.message ? `<div class="msg">"${escapeHtml(d.message)}"</div>` : ''}
-            <div class="time">${time}</div>
-          </div>
-        </div>
-        <div class="amount">${formatRp(d.amount)}</div>
-      </div>
-    `;
-  });
-
-  list.innerHTML = html;
-  document.getElementById('totalDonasi').textContent = formatRp(total);
-  document.getElementById('jumlahDonatur').textContent = count;
-  document.getElementById('donasiCount').textContent = count + ' donatur';
 });
+
+// ============================================================
+// AUTO LOGIN (AMAN)
+// ============================================================
+try {
+  if(currentUser && typeof updateSidebar === 'function'){
+    updateSidebar();
+  }
+} catch(e) {
+  console.warn('Auto login sidebar skip:', e.message);
+}
+
+try {
+  if(typeof showPage === 'function'){
+    showPage('home');
+  }
+} catch(e) {
+  console.warn('Auto login showPage skip:', e.message);
+}
+
+console.log('🛒 WarungDigital v1.0 — Ready!');
 </script>
 </body>
 </html>
