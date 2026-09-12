@@ -1,6 +1,7 @@
 {
-  "name": "warungdigital-webhook",
+  "name": "warungdigital",
   "version": "1.0.0",
+  "description": "Marketplace produk digital dengan verifikasi AI",
   "dependencies": {
     "express": "^4.18.2",
     "firebase-admin": "^12.0.0"
