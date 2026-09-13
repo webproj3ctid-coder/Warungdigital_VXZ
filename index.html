@@ -11,24 +11,18 @@ html{scroll-behavior:smooth}
 body{background:#070a0f;color:#e0e6ed;min-height:100vh;overflow-x:hidden}
 button{cursor:pointer;font-family:inherit}
 input,textarea,select{font-family:inherit}
-
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 20%,rgba(37,211,102,0.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(108,92,231,0.06) 0%,transparent 40%);z-index:-1;pointer-events:none}
-
 .em{display:inline-block;width:1.1em;height:1.1em;vertical-align:-0.15em;fill:currentColor}
 .em-lg{width:1.5em;height:1.5em}
 .em-xl{width:2.5em;height:2.5em}
 .em-2xl{width:4em;height:4em}
-
 .navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,0.8);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:100}
 .navbar .logo{font-size:20px;font-weight:900;letter-spacing:-0.5px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer;display:flex;align-items:center;gap:8px}
 .navbar .menu{display:flex;gap:8px;align-items:center}
 .navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:12px;transition:0.2s;opacity:0.7;background:transparent;border:none;position:relative;display:flex;align-items:center;gap:6px}
 .navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
 .cart-badge{position:absolute;top:2px;right:2px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
-.chat-badge{position:absolute;top:2px;right:2px;background:#3498db;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
-
 .container{max-width:1100px;margin:0 auto;padding:20px}
-
 .hero{text-align:center;padding:60px 30px;position:relative;background:linear-gradient(135deg,rgba(20,26,34,0.9),rgba(26,42,58,0.9));border-radius:32px;margin-bottom:30px;border:1px solid #1f2a34;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(37,211,102,0.1),transparent 30%);animation:rotate 8s linear infinite;z-index:0}
 @keyframes rotate{to{transform:rotate(360deg)}}
@@ -38,7 +32,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .hero h1 span{background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{opacity:0.7;font-size:16px;max-width:500px;margin:0 auto 24px;line-height:1.6}
 .hero .btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
 .btn{padding:14px 28px;border-radius:40px;border:none;font-weight:700;font-size:15px;cursor:pointer;transition:0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center}
 .btn-primary{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,0.3)}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,0.4)}
@@ -46,10 +39,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .btn-secondary:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px)}
 .btn-danger{background:#e74c3c;color:#fff}
 .btn-danger:hover{background:#c0392b;transform:translateY(-3px)}
+.btn-success{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff}
+.btn-success:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,0.4)}
 .btn-sm{padding:8px 16px;font-size:13px;border-radius:12px}
 .btn-block{width:100%;margin-top:8px}
 .btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important}
-
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px}
 .stat{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;padding:22px;text-align:center;transition:0.3s;position:relative;overflow:hidden}
 .stat::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#25d366,#6c5ce7)}
@@ -57,12 +51,10 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .stat .icon{display:flex;justify-content:center;margin-bottom:8px;color:#25d366}
 .stat .num{font-size:26px;font-weight:900;color:#25d366;letter-spacing:-0.5px}
 .stat .label{font-size:12px;opacity:0.6;margin-top:6px;font-weight:600}
-
 .section{margin-bottom:40px}
 .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
 .section-header h2{font-size:22px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px}
 .section-header .count{background:rgba(37,211,102,0.15);color:#25d366;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
-
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
 .product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:0.3s;cursor:pointer;position:relative}
 .product-card:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 20px 40px rgba(37,211,102,0.15)}
@@ -72,14 +64,16 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .product-card .info .kategori{font-size:10px;opacity:0.5;text-transform:uppercase;letter-spacing:1px;font-weight:700}
 .product-card .info .nama{font-weight:700;font-size:15px;margin:6px 0}
 .product-card .info .penjual{font-size:11px;opacity:0.5;margin-bottom:4px}
+.product-card .info .meta{font-size:11px;margin:4px 0;display:flex;gap:8px;flex-wrap:wrap}
+.product-card .info .meta .stok{color:#25d366}
+.product-card .info .meta .sold{color:#e74c3c}
 .product-card .info .harga{color:#25d366;font-weight:900;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:8px}
 .product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;transition:0.2s;display:flex;align-items:center;gap:4px}
 .product-card .info .btn-beli:hover{background:#20b858}
 .product-card .badge-cart{position:absolute;top:10px;right:10px;background:#25d366;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px;display:flex;align-items:center;gap:4px}
-
+.product-card .badge-habis{position:absolute;top:10px;left:10px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
 .empty{text-align:center;padding:50px 20px;opacity:0.5;background:#141a22;border-radius:20px;border:1px dashed #2a3340}
 .empty svg{color:#25d366;opacity:0.4;margin-bottom:12px}
-
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:999;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.show{display:flex}
 .modal{background:#141a22;border-radius:24px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid #2a3340;animation:pop 0.25s ease}
@@ -92,12 +86,10 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .modal input:focus,.modal textarea:focus,.modal select:focus{border-color:#25d366}
 .modal .btn-primary{width:100%;padding:12px;border-radius:14px}
 .modal .btn-secondary{width:100%;padding:12px;border-radius:14px;margin-top:8px}
-
 #toast{position:fixed;bottom:24px;right:24px;z-index:99999;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;padding:14px 24px;border-radius:16px;font-weight:700;font-size:14px;box-shadow:0 12px 32px rgba(37,211,102,0.4);transform:translateX(400px);transition:0.4s cubic-bezier(0.16,1,0.3,1);display:flex;align-items:center;gap:10px;max-width:90vw}
 #toast.show{transform:translateX(0)}
 #toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b);box-shadow:0 12px 32px rgba(231,76,60,0.4)}
 #toast.donate{background:linear-gradient(135deg,#6c5ce7,#4834d4);box-shadow:0 12px 32px rgba(108,92,231,0.4)}
-
 #loadingOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);backdrop-filter:blur(8px);z-index:99999;justify-content:center;align-items:center;flex-direction:column;padding:20px}
 #loadingOverlay.show{display:flex}
 #loadingOverlay .load-box{background:#141a22;border:1px solid #2a3340;border-radius:24px;padding:36px;text-align:center;max-width:400px;width:100%;animation:pop 0.3s ease}
@@ -108,7 +100,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 #loadingOverlay .countdown{font-size:48px;font-weight:900;color:#25d366;margin:16px 0;letter-spacing:-2px}
 #loadingOverlay .progress{width:100%;height:8px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:20px}
 #loadingOverlay .progress-bar{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);width:0%;transition:width 1s linear;border-radius:10px}
-
 .sidebar{position:fixed;top:0;right:-360px;width:340px;height:100%;background:#141a22;border-left:1px solid #2a3340;box-shadow:-4px 0 40px rgba(0,0,0,0.5);transition:0.4s cubic-bezier(0.4,0,0.2,1);z-index:9999;padding:30px 20px;overflow-y:auto}
 .sidebar.open{right:0}
 .sidebar .close{float:right;font-size:28px;cursor:pointer;opacity:0.5;background:transparent;border:none;color:#e0e6ed}
@@ -125,24 +116,20 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .sidebar .menu-item.danger svg{color:#e74c3c}
 .sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9998}
 .sidebar-overlay.show{display:block}
-
 .tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto}
 .tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:14px;transition:0.3s;white-space:nowrap;opacity:0.6;display:flex;align-items:center;justify-content:center;gap:6px}
 .tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
 .tabs button:hover:not(.active){background:#1f2a34;opacity:1}
-
 .order-item{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;padding:18px;margin-bottom:12px}
 .order-item .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px}
 .order-item .head .oid{font-weight:800;font-size:15px}
 .order-item .head .status{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700}
 .status-waiting{background:#f39c12;color:#fff}
-.status-paid{background:#3498db;color:#fff}
-.status-proof{background:#9b59b6;color:#fff}
+.status-verified{background:#3498db;color:#fff}
 .status-confirmed{background:#25d366;color:#fff}
 .status-cancelled{background:#e74c3c;color:#fff}
 .order-item .body{font-size:13px;opacity:0.8;line-height:1.8}
 .order-item .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-
 .cart-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;margin-bottom:10px;border:1px solid #1f2a34}
 .cart-item .thumb{width:60px;height:60px;border-radius:12px;background:#141a22;display:flex;align-items:center;justify-content:center;color:#25d366;flex-shrink:0;overflow:hidden}
 .cart-item .thumb img{width:100%;height:100%;object-fit:cover}
@@ -154,10 +141,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .cart-item .qty button:hover{background:#1f2a34}
 .cart-item .qty .val{min-width:24px;text-align:center;font-weight:700}
 .cart-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:6px}
-
 .cart-total{display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid #1f2a34;margin-top:14px;font-weight:700;font-size:16px}
 .cart-total .total{color:#25d366;font-size:22px}
-
 .wallet-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:30px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
 .wallet-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,0.1),transparent 50%);animation:pulse 4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:0.5}50%{opacity:1}}
@@ -165,17 +150,14 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .wallet-card .label{font-size:13px;opacity:0.6;margin-bottom:8px}
 .wallet-card .saldo{font-size:42px;font-weight:900;color:#25d366;letter-spacing:-1px}
 .wallet-card .note{font-size:12px;opacity:0.5;margin-top:8px}
-
 .form-group{margin-bottom:14px}
 .form-group label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:0.8}
 .form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;transition:0.3s}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#25d366}
-
 .metode-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .metode-item{padding:10px 16px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;transition:0.3s;display:flex;align-items:center;gap:6px}
 .metode-item:hover{border-color:#25d366}
 .metode-item.selected{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border-color:#25d366}
-
 .account-list{display:flex;flex-direction:column;gap:10px}
 .account-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;border:1px solid #1f2a34;cursor:pointer;transition:0.3s}
 .account-item:hover{border-color:#25d366;transform:translateX(4px)}
@@ -184,7 +166,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .account-item .info{flex:1;min-width:0}
 .account-item .info .nama{font-weight:700;font-size:15px}
 .account-item .info .meta{font-size:12px;opacity:0.6;margin-top:2px}
-
 .chat-container{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e14;z-index:9999;flex-direction:column}
 .chat-container.show{display:flex}
 .chat-header{display:flex;align-items:center;gap:12px;padding:14px 20px;background:#141a22;border-bottom:1px solid #1f2a34;flex-shrink:0}
@@ -209,7 +190,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .chat-footer input:focus{border-color:#25d366}
 .chat-footer .send{font-size:22px;cursor:pointer;background:transparent;border:none;color:#25d366;padding:4px}
 .chat-footer .send:hover{transform:scale(1.1)}
-
 .tabungan-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:24px;margin-bottom:16px}
 .tabungan-card .label{font-size:13px;opacity:0.6;margin-bottom:8px}
 .tabungan-card .saldo{font-size:32px;font-weight:900;color:#25d366;letter-spacing:-1px}
@@ -218,8 +198,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .tabungan-item{background:#0f151c;border:1px solid #1f2a34;border-radius:16px;padding:16px}
 .tabungan-item .label{font-size:12px;opacity:0.6}
 .tabungan-item .val{font-size:20px;font-weight:900;color:#25d366;margin-top:4px}
-
-/* HELP & INFO */
 .help-section{margin-bottom:20px}
 .help-section h3{font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:#25d366}
 .help-step{display:flex;gap:12px;margin-bottom:12px;padding:12px;background:#0f151c;border-radius:12px;border-left:3px solid #25d366}
@@ -227,16 +205,22 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .help-step .text{font-size:13px;opacity:0.85;line-height:1.6}
 .help-info-box{background:rgba(37,211,102,0.08);border-left:4px solid #25d366;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
 .help-info-box strong{color:#25d366}
-
+.verify-box{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:16px;margin-bottom:14px}
+.verify-box .label{font-size:12px;opacity:0.6;margin-bottom:6px}
+.verify-box .val{font-size:14px;font-weight:700}
+.verify-box .val.big{font-size:18px;color:#25d366}
+.upload-area{border:2px dashed #2a3340;border-radius:16px;padding:24px;text-align:center;cursor:pointer;transition:0.3s;margin-bottom:12px}
+.upload-area:hover{border-color:#25d366;background:rgba(37,211,102,0.05)}
+.upload-area.has-file{border-color:#25d366;background:rgba(37,211,102,0.1)}
+.upload-area img{max-width:100%;max-height:150px;border-radius:12px;margin-top:8px}
+.upload-area .icon{font-size:32px;color:#25d366;margin-bottom:8px}
+.upload-area .text{font-size:13px;opacity:0.7}
 .footer{text-align:center;padding:30px 20px;opacity:0.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
-
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#070a0f}
 ::-webkit-scrollbar-thumb{background:#2a3340;border-radius:10px}
 ::-webkit-scrollbar-thumb:hover{background:#25d366}
-
 .hidden{display:none!important}
-
 @media (max-width:600px){
   .container{padding:14px}
   .navbar{padding:12px 16px}
@@ -326,14 +310,12 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
         <a href="javascript:showPage('jualan')" class="btn btn-secondary"><svg class="em em-lg"><use href="#em-store"/></svg> Mulai Jualan</a>
       </div>
     </div>
-
     <div class="stats">
       <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
       <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
       <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
       <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num">4.9</div><div class="label">Rating</div></div>
     </div>
-
     <div class="section" id="produk">
       <div class="section-header">
         <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2>
@@ -454,8 +436,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   </div>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script>
 // ============================================================
 // FIREBASE CONFIG
@@ -469,6 +449,10 @@ const firebaseConfig = {
   messagingSenderId: "722737960517",
   appId: "1:722737960517:web:f465039879d08fa306b52c"
 };
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
@@ -493,11 +477,12 @@ let products = {};
 let cart = JSON.parse(localStorage.getItem('wd_cart') || '[]');
 let selectedMetodeBeli = null;
 let productFileBase64 = '';
+let bannerBase64 = '';
 let currentChatUser = null;
 let chatRef = null;
-let loadTimer = null;
 let loadInterval = null;
 let pendingDeleteId = null;
+let buktiBase64 = '';
 
 // ============================================================
 // UTILS
@@ -508,24 +493,14 @@ function emoji(id, cls){return `<svg class="em ${cls||''}"><use href="#${id}"/><
 
 function showToast(msg, type){
   const t = document.getElementById('toast');
-  const icons = {
-    success: emoji('em-check'),
-    error: emoji('em-warning'),
-    donate: emoji('em-heart')
-  };
+  const icons = { success: emoji('em-check'), error: emoji('em-warning'), donate: emoji('em-heart') };
   t.innerHTML = (icons[type] || icons.success) + ' ' + msg;
   t.className = type === 'error' ? 'show error' : type === 'donate' ? 'show donate' : 'show';
   clearTimeout(t._t);
   t._t = setTimeout(()=>t.className='',4000);
 }
-
-function openModal(html){
-  document.getElementById('modalContent').innerHTML = html;
-  document.getElementById('modalOverlay').classList.add('show');
-}
-function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('show');
-}
+function openModal(html){ document.getElementById('modalContent').innerHTML = html; document.getElementById('modalOverlay').classList.add('show'); }
+function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
 
 // ============================================================
 // LOADING 10 DETIK
@@ -537,14 +512,12 @@ function startLoading(title, desc, onDone) {
   document.getElementById('loadBar').style.width = '0%';
   let count = 10;
   document.getElementById('loadCountdown').textContent = count;
-
   loadInterval = setInterval(()=>{
     count--;
     document.getElementById('loadCountdown').textContent = count;
     document.getElementById('loadBar').style.width = ((10-count)*10) + '%';
     if(count <= 0){
       clearInterval(loadInterval);
-      clearTimeout(loadTimer);
       document.getElementById('loadingOverlay').classList.remove('show');
       if(onDone) onDone();
     }
@@ -553,22 +526,15 @@ function startLoading(title, desc, onDone) {
 function cancelProcess(){
   if(!confirm('Batalkan proses?')) return;
   clearInterval(loadInterval);
-  clearTimeout(loadTimer);
   document.getElementById('loadingOverlay').classList.remove('show');
-  if(pendingDeleteId){
-    // Batalkan hapus produk
-    pendingDeleteId = null;
-  }
+  pendingDeleteId = null;
   showToast('Proses dibatalkan','error');
 }
 
 // ============================================================
 // CART
 // ============================================================
-function saveCart(){
-  localStorage.setItem('wd_cart', JSON.stringify(cart));
-  updateCartBadge();
-}
+function saveCart(){ localStorage.setItem('wd_cart', JSON.stringify(cart)); updateCartBadge(); }
 function updateCartBadge(){
   const badge = document.getElementById('cartBadge');
   if(!badge) return;
@@ -581,6 +547,7 @@ function addToCart(id){
   if(!p) return;
   if(!currentUser){showToast('Login dulu buat nambah ke keranjang!','error');showLoginModal();return}
   if(p.penjual === currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
+  if(p.stock !== undefined && p.stock <= 0){showToast('Stok habis!','error');return}
   const exist = cart.find(c=>c.id===id);
   if(exist) exist.qty++;
   else cart.push({id, nama:p.nama, harga:p.harga, penjual:p.penjual, qty:1});
@@ -589,27 +556,14 @@ function addToCart(id){
   if(currentPage==='cart') renderCart();
 }
 function removeFromCart(i){ cart.splice(i,1); saveCart(); renderCart(); }
-function changeQty(i, delta){
-  cart[i].qty += delta;
-  if(cart[i].qty <= 0) cart.splice(i,1);
-  saveCart();
-  renderCart();
-}
-function clearCart(){
-  if(!confirm('Kosongin keranjang?')) return;
-  cart = [];
-  saveCart();
-  renderCart();
-}
+function changeQty(i, delta){ cart[i].qty += delta; if(cart[i].qty <= 0) cart.splice(i,1); saveCart(); renderCart(); }
+function clearCart(){ if(!confirm('Kosongin keranjang?')) return; cart = []; saveCart(); renderCart(); }
 function renderCart(){
   const el = document.getElementById('cartList');
   const cc = document.getElementById('cartCount');
   if(!el) return;
   if(cc) cc.textContent = cart.reduce((a,b)=>a+b.qty,0) + ' item';
-  if(cart.length === 0){
-    el.innerHTML = `<div class="empty">${emoji('em-cart','em-2xl')}<p>Keranjang masih kosong</p></div>`;
-    return;
-  }
+  if(cart.length === 0){ el.innerHTML = `<div class="empty">${emoji('em-cart','em-2xl')}<p>Keranjang masih kosong</p></div>`; return; }
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
   el.innerHTML = cart.map((c,i)=>`
     <div class="cart-item">
@@ -636,54 +590,58 @@ function checkoutCart(){
   if(cart.length === 0){showToast('Keranjang kosong!','error');return}
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
-  openModal(`
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2>${emoji('em-cart','em-lg')} Checkout</h2>
-    <div style="background:#0f151c;border-radius:14px;padding:16px;margin-bottom:14px;max-height:300px;overflow-y:auto">
-      ${cart.map(c=>`
-        <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px">
-          <span>${escapeHtml(c.nama)} × ${c.qty}</span>
-          <strong style="color:#25d366">${formatRp(c.harga*c.qty)}</strong>
-        </div>
-      `).join('')}
-      <div style="border-top:1px solid #1f2a34;padding-top:10px;margin-top:6px;display:flex;justify-content:space-between;font-weight:700">
-        <span>Total</span>
-        <span style="color:#25d366;font-size:18px">${formatRp(total)}</span>
+  const firstSeller = cart[0].penjual;
+  db.ref('warungdigital/users').child(firstSeller).once('value', snap=>{
+    const u = snap.val() || {};
+    openModal(`
+      <button class="close-btn" onclick="closeModal()">✕</button>
+      <h2>${emoji('em-cart','em-lg')} Checkout</h2>
+      <div class="verify-box">
+        <div class="label">Bayar ke Penjual</div>
+        <div class="val">${escapeHtml(firstSeller)}</div>
+        <div class="label" style="margin-top:8px">Total</div>
+        <div class="val big">${formatRp(total)}</div>
       </div>
-    </div>
-    <label>Pilih Metode Bayar</label>
-    <div class="metode-list" id="metodeList">
-      ${METODE_BAYAR.map(m=>`<div class="metode-item" onclick="selectMetodeBeli('${m.id}',this)">${m.icon} ${m.nama}</div>`).join('')}
-    </div>
-    <button class="btn btn-primary btn-block" onclick="submitCartOrder()">${emoji('em-check','em')} Buat Pesanan</button>
-  `);
+      <label>Metode Bayar</label>
+      <div class="metode-list" id="metodeList">
+        ${METODE_BAYAR.map(m=>`<div class="metode-item" onclick="selectMetodeBeli('${m.id}',this)">${m.icon} ${m.nama}</div>`).join('')}
+      </div>
+      <div id="detailPembayaran"></div>
+      <button class="btn btn-primary btn-block" onclick="submitCartOrder()">${emoji('em-check','em')} Buat Pesanan</button>
+    `);
+  });
 }
 function selectMetodeBeli(m, el){
   selectedMetodeBeli = m;
   document.querySelectorAll('#metodeList .metode-item').forEach(x=>x.classList.remove('selected'));
   el.classList.add('selected');
+  const firstSeller = cart[0]?.penjual;
+  if(!firstSeller) return;
+  db.ref('warungdigital/users').child(firstSeller).once('value', snap=>{
+    const u = snap.val() || {};
+    const det = document.getElementById('detailPembayaran');
+    if(!det) return;
+    if(m==='saweria' || m==='tako'){
+      det.innerHTML = `<div class="verify-box"><div class="label">Link ${m==='tako'?'Tako':'Saweria'} Penjual</div><a href="${m==='tako'?u.tako:u.saweria||'#'}" target="_blank" style="color:#25d366;font-weight:700;word-break:break-all">${m==='tako'?u.tako||'Belum diset':u.saweria||'Belum diset'}</a></div>`;
+    } else {
+      det.innerHTML = `<div class="verify-box"><div class="label">Nomor ${m.toUpperCase()} Penjual</div><div class="val big">${u.nomorEwallet||'Belum diset'}</div></div>`;
+    }
+  });
 }
 function submitCartOrder(){
   if(!selectedMetodeBeli){showToast('Pilih metode bayar dulu!','error');return}
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
   const orderId = 'ORD-'+Date.now();
   const order = {
-    orderId,
-    items: cart.map(c=>({nama:c.nama, harga:c.harga, qty:c.qty, penjual:c.penjual})),
+    orderId, items: cart.map(c=>({nama:c.nama, harga:c.harga, qty:c.qty, penjual:c.penjual})),
     produkNama: cart.map(c=>c.nama).join(', '),
-    total,
-    pembeli: currentUser,
-    penjual: cart[0].penjual,
-    metode: selectedMetodeBeli,
-    status: 'waiting_payment',
-    createdAt: Date.now()
+    total, pembeli: currentUser, penjual: cart[0].penjual,
+    metode: selectedMetodeBeli, status: 'waiting_payment', createdAt: Date.now()
   };
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
     closeModal();
     showToast('Pesanan dibuat! Upload bukti bayar.','success');
-    cart = [];
-    saveCart();
-    selectedMetodeBeli = null;
+    cart = []; saveCart(); selectedMetodeBeli = null;
     showPage('orders');
   }).catch(e=>showToast('❌ '+e.message,'error'));
 }
@@ -692,15 +650,13 @@ function submitCartOrder(){
 // SIDEBAR
 // ============================================================
 function openSidebar(){
-  const sb = document.getElementById('sidebar');
-  const ov = document.getElementById('sidebarOverlay');
-  if(sb && ov){ sb.classList.add('open'); ov.classList.add('show'); updateSidebar(); }
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebarOverlay').classList.add('show');
+  updateSidebar();
 }
 function closeSidebar(){
-  const sb = document.getElementById('sidebar');
-  const ov = document.getElementById('sidebarOverlay');
-  if(sb) sb.classList.remove('open');
-  if(ov) ov.classList.remove('show');
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('show');
 }
 function updateSidebar(){
   try {
@@ -759,12 +715,10 @@ db.ref('warungdigital/products').on('value', snap=>{
   if(sp) sp.textContent = Object.keys(products).length;
   if(pc) pc.textContent = Object.keys(products).length + ' produk';
 });
-
 db.ref('warungdigital/users').on('value', snap=>{
   const el = document.getElementById('statUser');
   if(el) el.textContent = snap.numChildren();
 });
-
 db.ref('warungdigital/orders').on('value', snap=>{
   const el = document.getElementById('statOrder');
   if(el) el.textContent = snap.numChildren();
@@ -783,18 +737,24 @@ function renderHome(){
   }
   grid.innerHTML = list.reverse().map(p=>{
     const inCart = cart.find(c=>c.id===p.id);
+    const habis = p.stock !== undefined && p.stock <= 0;
     const thumbContent = p.banner ? `<img src="${p.banner}" alt="banner">` : emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl');
     return `
     <div class="product-card" onclick="showDetail('${p.id}')">
       <div class="thumb">${thumbContent}</div>
       ${inCart?`<div class="badge-cart">${emoji('em-cart','em')} ${inCart.qty}</div>`:''}
+      ${habis?`<div class="badge-habis">HABIS</div>`:''}
       <div class="info">
         <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
         <div class="nama">${escapeHtml(p.nama||'Tanpa Nama')}</div>
         <div class="penjual">${emoji('em-user','em')} ${escapeHtml(p.penjual||'Anonim')}</div>
+        <div class="meta">
+          <span class="stok">📦 ${p.stock !== undefined ? 'Stok: ' + p.stock : '∞'}</span>
+          <span class="sold">🛒 ${p.sold || 0} terjual</span>
+        </div>
         <div class="harga">
           <span>${formatRp(p.harga)}</span>
-          <button class="btn-beli" onclick="event.stopPropagation();addToCart('${p.id}')">${emoji('em-cart','em')} +</button>
+          <button class="btn-beli" onclick="event.stopPropagation();${habis?'showToast(\'Stok habis!\',\'error\')':`beliLangsung('${p.id}')`}">${emoji('em-cart','em')} Beli</button>
         </div>
       </div>
     </div>
@@ -802,12 +762,13 @@ function renderHome(){
 }
 
 // ============================================================
-// DETAIL PRODUK
+// DETAIL PRODUK (link MediaFire disembunyiin)
 // ============================================================
 function showDetail(id){
   const p = products[id];
   if(!p) return;
   const banner = p.banner ? `<img src="${p.banner}" style="width:100%;border-radius:16px;margin-bottom:14px;max-height:200px;object-fit:cover" />` : '';
+  const habis = p.stock !== undefined && p.stock <= 0;
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     ${banner}
@@ -815,11 +776,191 @@ function showDetail(id){
     <div style="font-size:12px;opacity:0.6;margin-bottom:8px">${emoji('em-user','em')} Dijual oleh <strong>${escapeHtml(p.penjual)}</strong> · ${escapeHtml(p.kategori||'Umum')}</div>
     <div style="font-size:28px;font-weight:900;color:#25d366;margin-bottom:12px">${formatRp(p.harga)}</div>
     <p style="font-size:14px;opacity:0.8;line-height:1.6;margin-bottom:16px;white-space:pre-wrap">${escapeHtml(p.deskripsi||'Tidak ada deskripsi.')}</p>
-    ${p.linkMediafire ? `<div style="font-size:13px;opacity:0.7;margin-bottom:12px;word-break:break-all">${emoji('em-download','em')} Link download: <a href="${escapeHtml(p.linkMediafire)}" target="_blank" style="color:#25d366">${escapeHtml(p.linkMediafire)}</a></div>`:''}
+    <div class="tabungan-grid" style="margin-bottom:16px">
+      <div class="tabungan-item"><div class="label">Stok</div><div class="val">${p.stock !== undefined ? p.stock : '∞'}</div></div>
+      <div class="tabungan-item"><div class="label">Terjual</div><div class="val">${p.sold || 0}</div></div>
+    </div>
     ${p.tipe==='wa'?`<div style="font-size:13px;opacity:0.7;margin-bottom:12px">${emoji('em-wa','em')} Produk ini dijual via WhatsApp</div>`:''}
-    <button class="btn btn-primary btn-block" onclick="addToCart('${id}');closeModal();">${emoji('em-cart','em')} Tambah ke Keranjang</button>
+    <button class="btn btn-primary btn-block" onclick="${habis?'showToast(\'Stok habis!\',\'error\')':`beliLangsung('${id}')`}" ${habis?'disabled':''}>${emoji('em-cart','em')} Beli Langsung</button>
+    <button class="btn btn-secondary btn-block" onclick="addToCart('${id}');closeModal();" ${habis?'disabled':''}>${emoji('em-cart','em')} + Keranjang</button>
     <button class="btn btn-secondary btn-block" onclick="closeModal();openChatWith('${escapeHtml(p.penjual)}')">${emoji('em-send','em')} Chat Penjual</button>
   `);
+}
+
+// ============================================================
+// BELI LANGSUNG + VERIFIKASI AI
+// ============================================================
+function beliLangsung(id){
+  if(!currentUser){showToast('Login dulu buat beli!','error');showLoginModal();return}
+  const p = products[id];
+  if(!p) return;
+  if(p.penjual === currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
+  if(p.stock !== undefined && p.stock <= 0){showToast('Stok habis!','error');return}
+
+  if(p.tipe === 'wa' && p.waLink){ window.open(p.waLink,'_blank'); return; }
+
+  closeModal();
+  const metode = p.metode && p.metode.length > 0 ? p.metode : METODE_BAYAR.map(m=>m.id);
+
+  db.ref('warungdigital/users').child(p.penjual).once('value', usnap=>{
+    const u = usnap.val() || {};
+    openModal(`
+      <button class="close-btn" onclick="closeModal()">✕</button>
+      <h2>${emoji('em-cart','em-lg')} Beli Langsung</h2>
+
+      <div class="verify-box">
+        <div class="label">Produk</div>
+        <div class="val">${escapeHtml(p.nama)}</div>
+        <div class="label" style="margin-top:8px">Penjual</div>
+        <div class="val">${escapeHtml(p.penjual)}</div>
+        <div class="label" style="margin-top:8px">Nominal (harus sama persis)</div>
+        <div class="val big">${formatRp(p.harga)}</div>
+      </div>
+
+      <label>Pilih Metode Bayar</label>
+      <div class="metode-list" id="metodeList">
+        ${metode.map(m=>{
+          const info = METODE_BAYAR.find(x=>x.id===m);
+          if(!info) return '';
+          return `<div class="metode-item" onclick="selectMetodeBeli2('${m}',this,${p.harga},'${escapeHtml(p.penjual)}','${escapeHtml(id)}')">${info.icon} ${info.nama}</div>`;
+        }).join('')}
+      </div>
+      <div id="detailPembayaran2"></div>
+
+      <label style="margin-top:14px">Upload Bukti Transfer</label>
+      <div class="upload-area" id="uploadArea" onclick="document.getElementById('buktiInput').click()">
+        <div class="icon">${emoji('em-upload','em-2xl')}</div>
+        <div class="text">Klik buat upload foto bukti transfer</div>
+        <img id="buktiPreview" style="display:none" />
+      </div>
+      <input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFile(this)" />
+
+      <label>Nama Tujuan Transfer (harus sama)</label>
+      <input type="text" id="namaTujuanInput" placeholder="Contoh: ${escapeHtml(p.penjual)}" />
+
+      <label>Nominal yang Ditransfer (Rp)</label>
+      <input type="number" id="nominalInput" placeholder="${p.harga}" />
+
+      <button class="btn btn-primary btn-block" onclick="submitBeliLangsung('${id}')">${emoji('em-check','em')} Verifikasi & Beli</button>
+    `);
+  });
+}
+
+function selectMetodeBeli2(m, el, harga, penjual, produkId){
+  selectedMetodeBeli = m;
+  document.querySelectorAll('#metodeList .metode-item').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+  db.ref('warungdigital/users').child(penjual).once('value', snap=>{
+    const u = snap.val() || {};
+    const det = document.getElementById('detailPembayaran2');
+    if(!det) return;
+    if(m==='saweria' || m==='tako'){
+      det.innerHTML = `<div class="verify-box"><div class="label">Link ${m==='tako'?'Tako':'Saweria'} Penjual</div><a href="${m==='tako'?u.tako:u.saweria||'#'}" target="_blank" style="color:#25d366;font-weight:700;word-break:break-all">${m==='tako'?u.tako||'Belum diset':u.saweria||'Belum diset'}</a></div>`;
+    } else {
+      det.innerHTML = `<div class="verify-box"><div class="label">Nomor ${m.toUpperCase()} Penjual</div><div class="val big">${u.nomorEwallet||'Belum diset'}</div></div>`;
+    }
+  });
+}
+
+function readBuktiFile(input){
+  const file = input.files[0];
+  if(!file) return;
+  if(file.size > 2*1024*1024){showToast('Foto max 2MB!','error');input.value='';return}
+  const reader = new FileReader();
+  reader.onload = e=>{
+    buktiBase64 = e.target.result;
+    const area = document.getElementById('uploadArea');
+    const img = document.getElementById('buktiPreview');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    area.classList.add('has-file');
+  };
+  reader.readAsDataURL(file);
+}
+
+function submitBeliLangsung(id){
+  if(!selectedMetodeBeli){showToast('Pilih metode bayar dulu!','error');return}
+  if(!buktiBase64){showToast('Upload bukti transfer dulu!','error');return}
+  const namaTujuan = document.getElementById('namaTujuanInput').value.trim();
+  const nominal = parseInt(document.getElementById('nominalInput').value) || 0;
+  if(!namaTujuan){showToast('Isi nama tujuan transfer!','error');return}
+  if(!nominal){showToast('Isi nominal transfer!','error');return}
+
+  const p = products[id];
+  if(nominal !== p.harga){showToast(`Nominal harus ${formatRp(p.harga)}!`,'error');return}
+
+  // Loading + panggil API verify
+  startLoading('Verifikasi AI...', 'AI sedang cek bukti transfer lo', () => {
+    fetch('/api/verify', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        orderId: id,
+        buktiBase64,
+        nominal,
+        namaTujuan,
+        penjual: p.penjual,
+        produkNama: p.nama
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success && data.verified){
+        // Verifikasi lolos → buat order + simpen bukti
+        const orderId = 'ORD-'+Date.now();
+        const order = {
+          orderId,
+          produkId: id,
+          produkNama: p.nama,
+          harga: p.harga,
+          total: p.harga,
+          pembeli: currentUser,
+          penjual: p.penjual,
+          metode: selectedMetodeBeli,
+          namaTujuan, nominal,
+          bukti: buktiBase64.substring(0,5000),
+          aiResult: data.aiResult,
+          status: 'verified',
+          createdAt: Date.now(),
+          verifiedAt: Date.now()
+        };
+        db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
+          closeModal();
+          showToast('✅ Verifikasi AI lolos! Pesanan dibuat.','success');
+          buktiBase64 = '';
+          selectedMetodeBeli = null;
+          showPage('orders');
+        });
+      } else {
+        showToast('❌ Verifikasi gagal: ' + (data.error || data.aiResult?.alasan || 'Cek bukti lo'), 'error');
+      }
+    })
+    .catch(err => {
+      // Fallback kalau API gak jalan: simpen manual
+      const orderId = 'ORD-'+Date.now();
+      const order = {
+        orderId,
+        produkId: id,
+        produkNama: p.nama,
+        harga: p.harga,
+        total: p.harga,
+        pembeli: currentUser,
+        penjual: p.penjual,
+        metode: selectedMetodeBeli,
+        namaTujuan, nominal,
+        bukti: buktiBase64.substring(0,5000),
+        status: 'proof_uploaded',
+        createdAt: Date.now()
+      };
+      db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
+        closeModal();
+        showToast('Bukti diupload! Penjual bakal cek manual.','success');
+        buktiBase64 = '';
+        selectedMetodeBeli = null;
+        showPage('orders');
+      });
+    });
+  });
 }
 
 // ============================================================
@@ -843,16 +984,17 @@ function renderJualanProduk(){
   const el = document.getElementById('jualan-produk');
   if(!el) return;
   const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
-  if(my.length===0){
-    el.innerHTML = `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`;
-    return;
-  }
+  if(my.length===0){ el.innerHTML = `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`; return; }
   el.innerHTML = '<div class="product-grid">' + my.map(([id,p])=>`
     <div class="product-card">
       <div class="thumb">${p.banner?`<img src="${p.banner}">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div>
       <div class="info">
         <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
         <div class="nama">${escapeHtml(p.nama)}</div>
+        <div class="meta">
+          <span class="stok">📦 ${p.stock !== undefined ? 'Stok: ' + p.stock : '∞'}</span>
+          <span class="sold">🛒 ${p.sold || 0} terjual</span>
+        </div>
         <div class="harga">${formatRp(p.harga)}</div>
         <div style="display:flex;gap:6px;margin-top:10px">
           <button class="btn btn-sm btn-danger" style="flex:1" onclick="requestDeleteProduct('${id}')">${emoji('em-trash','em')}</button>
@@ -907,7 +1049,7 @@ function saveMetodePembayaran(){
 }
 
 // ============================================================
-// TAMBAH PRODUK (dengan Link MediaFire)
+// TAMBAH PRODUK
 // ============================================================
 function showAddProduct(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
@@ -923,6 +1065,8 @@ function showAddProduct(){
     <input type="text" id="pNama" placeholder="Contoh: Template Canva Pro" />
     <label>Harga (Rp)</label>
     <input type="number" id="pHarga" placeholder="25000" />
+    <label>Stok (kosongin kalau unlimited)</label>
+    <input type="number" id="pStock" placeholder="contoh: 10" />
     <label>Kategori</label>
     <input type="text" id="pKategori" placeholder="Template / E-book / Preset / dll" />
     <label>Deskripsi</label>
@@ -930,7 +1074,7 @@ function showAddProduct(){
     <div id="pDigitalSection">
       <label>Link MediaFire (upload manual dulu di mediafire.com)</label>
       <input type="text" id="pLinkMediafire" placeholder="https://www.mediafire.com/file/xxx/namafile" />
-      <div style="font-size:12px;opacity:0.5;margin-top:4px">Upload file lo ke MediaFire, terus copy link-nya ke sini</div>
+      <div style="font-size:12px;opacity:0.5;margin-top:4px">Link ini cuma keliatan setelah pembeli lolos verifikasi AI</div>
       <label style="margin-top:12px">Banner Promosi (opsional)</label>
       <input type="file" id="pBanner" accept="image/*" onchange="readBannerFile(this)" />
       <div id="pBannerInfo" style="font-size:12px;opacity:0.6;margin-top:4px"></div>
@@ -952,33 +1096,26 @@ function toggleProductType(){
 function autoFillWA(){
   const num = document.getElementById('pWANumber').value.replace(/[^0-9]/g,'');
   const link = document.getElementById('pWALink');
-  if(num.length >= 10){
-    link.value = `https://wa.me/${num}?text=Halo,%20saya%20mau%20beli%20produk%20lo`;
-  } else {
-    link.value = '';
-  }
+  if(num.length >= 10) link.value = `https://wa.me/${num}?text=Halo,%20saya%20mau%20beli%20produk%20lo`;
+  else link.value = '';
 }
-let bannerBase64 = '';
 function readBannerFile(input){
   const file = input.files[0];
   if(!file) return;
   if(file.size > 2*1024*1024){showToast('Banner max 2MB!','error');input.value='';return}
   const reader = new FileReader();
-  reader.onload = e=>{
-    bannerBase64 = e.target.result;
-    document.getElementById('pBannerInfo').textContent = `✅ ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
-  };
+  reader.onload = e=>{ bannerBase64 = e.target.result; document.getElementById('pBannerInfo').textContent = `✅ ${file.name}`; };
   reader.readAsDataURL(file);
 }
 function requestSaveProduct(){
-  startLoading('Menyimpan Produk...', 'Sedang menyimpan produk lo ke server', () => {
-    saveProduct();
-  });
+  startLoading('Menyimpan Produk...', 'Sedang menyimpan produk lo', () => { saveProduct(); });
 }
 function saveProduct(){
   const tipe = document.getElementById('pType').value;
   const nama = document.getElementById('pNama').value.trim();
   const harga = parseInt(document.getElementById('pHarga').value)||0;
+  const stockInput = document.getElementById('pStock').value.trim();
+  const stock = stockInput ? parseInt(stockInput) : null;
   const kategori = document.getElementById('pKategori').value.trim()||'Umum';
   const deskripsi = document.getElementById('pDeskripsi').value.trim();
   const linkMediafire = document.getElementById('pLinkMediafire').value.trim();
@@ -988,24 +1125,19 @@ function saveProduct(){
   if(tipe==='digital'&&!linkMediafire){showToast('Link MediaFire wajib!','error');return}
   const data = {
     nama, harga, kategori, deskripsi,
-    penjual: currentUser,
-    tipe,
+    stock: stock, sold: 0,
+    penjual: currentUser, tipe,
     linkMediafire: tipe==='digital'?linkMediafire:'',
     waLink: tipe==='wa'?waLink:'',
     banner: bannerBase64,
     createdAt: Date.now()
   };
   db.ref('warungdigital/products').push(data).then(()=>{
-    closeModal();
-    bannerBase64='';
+    closeModal(); bannerBase64='';
     showToast('Produk ditambah!','success');
     renderJualanProduk();
   }).catch(e=>showToast('❌ '+e.message,'error'));
 }
-
-// ============================================================
-// HAPUS PRODUK (dengan konfirmasi + batal)
-// ============================================================
 function requestDeleteProduct(id){
   const p = products[id];
   if(!p) return;
@@ -1053,8 +1185,8 @@ function renderOrders(){
 function renderOrderCard(o, role){
   const statusMap = {
     waiting_payment: {label:'Menunggu Bayar', cls:'status-waiting'},
-    paid: {label:'Sudah Bayar', cls:'status-paid'},
-    proof_uploaded: {label:'Bukti Diupload', cls:'status-proof'},
+    verified: {label:'✅ Terverifikasi AI', cls:'status-verified'},
+    proof_uploaded: {label:'Bukti Diupload', cls:'status-verified'},
     confirmed: {label:'Selesai', cls:'status-confirmed'},
     cancelled: {label:'Dibatalkan', cls:'status-cancelled'}
   };
@@ -1074,56 +1206,30 @@ function renderOrderCard(o, role){
         ${emoji('em-receipt','em')} ${time}
       </div>
       <div class="actions">
-        ${o.status==='waiting_payment' && role==='pembeli' ? `<button class="btn btn-sm btn-primary" onclick="uploadBukti('${o.key}')">${emoji('em-upload','em')} Upload Bukti</button>`:''}
-        ${o.status==='proof_uploaded' && role==='penjual' ? `<button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')">${emoji('em-check','em')} Konfirmasi</button>`:''}
+        ${o.status==='waiting_payment' && role==='pembeli' ? `<button class="btn btn-sm btn-primary" onclick="beliLangsung('${o.produkId}')">${emoji('em-upload','em')} Bayar Sekarang</button>`:''}
+        ${o.status==='verified' && role==='penjual' ? `<button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')">${emoji('em-check','em')} Konfirmasi & Kirim</button>`:''}
+        ${o.status==='confirmed' && role==='pembeli' && o.linkProduk ? `<a class="btn btn-sm btn-success" href="${o.linkProduk}" target="_blank">${emoji('em-download','em')} Download Produk</a>`:''}
         ${o.status==='confirmed' ? `<button class="btn btn-sm btn-secondary" onclick="openChatWith('${role==='pembeli'?o.penjual:o.pembeli}')">${emoji('em-send','em')} Chat</button>`:''}
       </div>
     </div>
   `;
 }
-function uploadBukti(orderKey){
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/*';
-  input.onchange = async e=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    if(file.size > 2*1024*1024){showToast('Foto max 2MB!','error');return}
-    const reader = new FileReader();
-    reader.onload = async ev=>{
-      const base64 = ev.target.result;
-      showToast('AI lagi verifikasi...');
-      try {
-        const res = await fetch('/api/verify', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ orderKey, buktiBase64: base64 })
-        });
-        const data = await res.json();
-        if(data.success && data.verified){ showToast('Bukti terverifikasi AI!','success'); }
-        else { showToast('AI gak yakin, penjual cek manual','error'); }
-        renderOrders();
-      } catch(err){
-        db.ref('warungdigital/orders').child(orderKey).update({
-          status:'proof_uploaded', bukti: base64.substring(0,2000), proofAt: Date.now()
-        }).then(()=>{ showToast('Bukti diupload!','success'); renderOrders(); });
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-  input.click();
-}
 function confirmOrder(orderKey){
-  if(!confirm('Konfirmasi pesanan ini?')) return;
+  if(!confirm('Konfirmasi pesanan ini? Link download bakal dikirim ke pembeli.')) return;
   db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
     const o = snap.val();
     const produk = products[o.produkId];
     const update = { status:'confirmed', confirmedAt: Date.now() };
     if(produk && produk.linkMediafire) update.linkProduk = produk.linkMediafire;
     db.ref('warungdigital/orders').child(orderKey).update(update).then(()=>{
+      if(produk && produk.stock !== undefined){
+        db.ref('warungdigital/products').child(o.produkId).update({
+          stock: Math.max(0, (produk.stock || 0) - 1),
+          sold: (produk.sold || 0) + 1
+        });
+      }
       showToast('Pesanan dikonfirmasi!','success');
-      renderOrders();
-      renderJualanPesanan();
+      renderOrders(); renderJualanPesanan();
     });
   });
 }
@@ -1169,10 +1275,9 @@ function renderAccounts(){
       const nama = child.key;
       const u = child.val();
       if(nama === currentUser) return;
-      const initial = nama.charAt(0).toUpperCase();
       html += `
         <div class="account-item" onclick="showAccountDetail('${escapeHtml(nama)}')">
-          <div class="avatar">${u.avatar?`<img src="${u.avatar}">`:initial}</div>
+          <div class="avatar">${u.avatar?`<img src="${u.avatar}">`:nama.charAt(0).toUpperCase()}</div>
           <div class="info">
             <div class="nama">${escapeHtml(nama)}</div>
             <div class="meta">${emoji('em-store','em')} Lihat profil & produk</div>
@@ -1197,21 +1302,12 @@ function showAccountDetail(nama){
             ${u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover">`:nama.charAt(0).toUpperCase()}
           </div>
           <h2 style="margin-top:12px">${escapeHtml(nama)}</h2>
-          ${u.status?`<div style="font-size:13px;opacity:0.6;margin-top:4px">${escapeHtml(u.status)}</div>`:''}
         </div>
         ${u.banner?`<img src="${u.banner}" style="width:100%;border-radius:12px;margin-bottom:12px;max-height:120px;object-fit:cover">`:''}
         <div class="tabungan-grid" style="margin-bottom:16px">
           <div class="tabungan-item"><div class="label">Produk</div><div class="val">${myProducts.length}</div></div>
           <div class="tabungan-item"><div class="label">Penjualan</div><div class="val">${count}</div></div>
           <div class="tabungan-item"><div class="label">Total</div><div class="val">${formatRp(total)}</div></div>
-        </div>
-        <div class="section-header"><h2 style="font-size:16px">Produk</h2></div>
-        <div style="max-height:200px;overflow-y:auto;margin-bottom:12px">
-          ${myProducts.length===0?'<div style="opacity:0.5;text-align:center;padding:12px">Belum ada produk</div>':myProducts.map(([id,p])=>`
-            <div style="padding:10px;background:#0f151c;border-radius:12px;margin-bottom:6px;font-size:13px">
-              <strong>${escapeHtml(p.nama)}</strong> · ${formatRp(p.harga)}
-            </div>
-          `).join('')}
         </div>
         <button class="btn btn-primary btn-block" onclick="closeModal();openChatWith('${escapeHtml(nama)}')">${emoji('em-send','em')} Chat ${escapeHtml(nama)}</button>
       `);
@@ -1261,12 +1357,9 @@ function closeChat(){
 function sendChatMsg(){
   const input = document.getElementById('chatInput');
   const text = input.value.trim();
-  if(!text) return;
-  if(!currentChatUser) return;
+  if(!text || !currentChatUser) return;
   const roomId = [currentUser, currentChatUser].sort().join('_');
-  db.ref('warungdigital/chats').child(roomId).push({
-    from: currentUser, text, timestamp: Date.now()
-  }).then(()=>{ input.value = ''; });
+  db.ref('warungdigital/chats').child(roomId).push({ from: currentUser, text, timestamp: Date.now() }).then(()=>{ input.value = ''; });
 }
 function attachChatFile(){
   if(!currentChatUser) return;
@@ -1280,13 +1373,7 @@ function attachChatFile(){
     const reader = new FileReader();
     reader.onload = ev=>{
       const roomId = [currentUser, currentChatUser].sort().join('_');
-      db.ref('warungdigital/chats').child(roomId).push({
-        from: currentUser,
-        file: ev.target.result,
-        fileType: file.type,
-        fileName: file.name,
-        timestamp: Date.now()
-      }).then(()=>showToast('File terkirim!','success'));
+      db.ref('warungdigital/chats').child(roomId).push({ from: currentUser, file: ev.target.result, fileType: file.type, fileName: file.name, timestamp: Date.now() }).then(()=>showToast('File terkirim!','success'));
     };
     reader.readAsDataURL(file);
   };
@@ -1354,74 +1441,53 @@ function showHelp(){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji('em-help','em-lg')} Help & Info</h2>
+    <div class="help-info-box"><strong>WarungDigital</strong> adalah marketplace produk digital. Lo bisa jual produk digital (via MediaFire) atau via WhatsApp.</div>
 
-    <div class="help-info-box">
-      <strong>WarungDigital</strong> adalah marketplace produk digital. Lo bisa jual produk digital (via MediaFire) atau via WhatsApp, dan pembeli bisa beli langsung dari web.
-    </div>
-
-    <div class="help-section">
-      <h3>${emoji('em-user','em')} Cara Daftar & Login</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik tombol <strong>Login / Daftar</strong> di sidebar atau pojok kanan atas.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Isi <strong>Nama</strong> dan <strong>Password</strong>, terus klik <strong>Daftar</strong>.</div></div>
+    <div class="help-section"><h3>${emoji('em-user','em')} Cara Daftar & Login</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik tombol <strong>Login / Daftar</strong> di sidebar.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Isi <strong>Nama</strong> dan <strong>Password</strong>, klik <strong>Daftar</strong>.</div></div>
       <div class="help-step"><div class="num">3</div><div class="text">Kalau udah punya akun, tinggal klik <strong>Login</strong>.</div></div>
     </div>
 
-    <div class="help-section">
-      <h3>${emoji('em-store','em')} Cara Jualan Produk Digital</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Upload file produk lo ke <strong>MediaFire</strong> (mediafire.com) secara manual.</div></div>
+    <div class="help-section"><h3>${emoji('em-store','em')} Cara Jualan Produk Digital</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Upload file ke <strong>MediaFire</strong> manual.</div></div>
       <div class="help-step"><div class="num">2</div><div class="text">Copy <strong>link MediaFire</strong> file lo.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Di web, klik <strong>Jualan Saya</strong> → <strong>Tambah Produk</strong>.</div></div>
-      <div class="help-step"><div class="num">4</div><div class="text">Isi nama, harga, kategori, deskripsi, <strong>tempel link MediaFire</strong>, dan banner promosi (opsional).</div></div>
-      <div class="help-step"><div class="num">5</div><div class="text">Klik <strong>Simpan Produk</strong>. Produk lo langsung muncul di Home!</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Klik <strong>Jualan Saya</strong> → <strong>Tambah Produk</strong>.</div></div>
+      <div class="help-step"><div class="num">4</div><div class="text">Isi data produk, tempel <strong>link MediaFire</strong>, banner (opsional).</div></div>
+      <div class="help-step"><div class="num">5</div><div class="text">Klik <strong>Simpan Produk</strong>.</div></div>
     </div>
 
-    <div class="help-section">
-      <h3>${emoji('em-wa','em')} Cara Jualan via WhatsApp</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Di <strong>Tambah Produk</strong>, pilih tipe <strong>Via WhatsApp</strong>.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Masukin <strong>nomor WA</strong> lo (contoh: 628xxxxxxxxxx). Link WA otomatis keisi.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Pembeli yang klik beli bakal langsung diarahkan ke WA lo.</div></div>
+    <div class="help-section"><h3>${emoji('em-cart','em')} Cara Beli Produk (Verifikasi AI)</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>Beli Langsung</strong> di produk.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Pilih metode bayar, transfer sesuai nominal ke penjual.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Upload <strong>bukti transfer</strong>, isi nama tujuan & nominal.</div></div>
+      <div class="help-step"><div class="num">4</div><div class="text"><strong>AI verifikasi</strong> bukti lo (nominal & nama tujuan harus sama persis).</div></div>
+      <div class="help-step"><div class="num">5</div><div class="text">Kalau lolos, penjual konfirmasi → lo dapet <strong>tombol Download</strong>.</div></div>
     </div>
 
-    <div class="help-section">
-      <h3>${emoji('em-cart','em')} Cara Beli Produk</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik tombol <strong>+</strong> di produk buat masukin ke keranjang.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Buka <strong>Keranjang</strong> → <strong>Checkout Semua</strong>.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Pilih <strong>metode bayar</strong> (DANA, OVO, GoPay, dll).</div></div>
-      <div class="help-step"><div class="num">4</div><div class="text">Bayar ke penjual, upload <strong>bukti transfer</strong>.</div></div>
-      <div class="help-step"><div class="num">5</div><div class="text">Tunggu penjual konfirmasi. Setelah dikonfirmasi, lo dapet link download produk.</div></div>
-    </div>
-
-    <div class="help-section">
-      <h3>${emoji('em-send','em')} Fitur Chat</h3>
+    <div class="help-section"><h3>${emoji('em-send','em')} Fitur Chat</h3>
       <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>Daftar Akun</strong> di sidebar buat liat semua user.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Klik salah satu akun → muncul profil & produk mereka.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Klik <strong>Chat</strong> buat mulai ngobrol. Bisa kirim teks, gambar, atau file.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Klik salah satu akun → profil & produk mereka.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Klik <strong>Chat</strong> buat mulai ngobrol. Bisa kirim file max 5MB.</div></div>
     </div>
 
-    <div class="help-section">
-      <h3>${emoji('em-wallet','em')} Dompet & Tabungan</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Setiap penjualan yang udah dikonfirmasi, otomatis masuk ke <strong>Dompet</strong> lo.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Cek <strong>Dompet</strong> buat liat saldo & riwayat transaksi.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text"><strong>Catatan:</strong> Saldo masih display only. Penarikan otomatis belum tersedia.</div></div>
+    <div class="help-section"><h3>${emoji('em-wallet','em')} Dompet</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Setiap penjualan yang dikonfirmasi masuk ke <strong>Dompet</strong>.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Saldo masih display only. Penarikan otomatis belum tersedia.</div></div>
     </div>
 
-    <div class="help-section">
-      <h3>${emoji('em-bulb','em')} Request Fitur</h3>
+    <div class="help-section"><h3>${emoji('em-bulb','em')} Request Fitur</h3>
       <div class="help-step"><div class="num">1</div><div class="text">Buat request fitur, lo harus <strong>donasi dulu</strong> ke Tako admin.</div></div>
       <div class="help-step"><div class="num">2</div><div class="text">Setelah donasi, klik <strong>Request Fitur</strong> di sidebar.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Tulis fitur yang lo mau, kirim. Admin bakal review.</div></div>
     </div>
 
-    <div class="help-section">
-      <h3>${emoji('em-info','em')} Info Tambahan</h3>
-      <div class="help-step"><div class="num">1</div><div class="text"><strong>File max:</strong> 5 MB buat chat, 2 MB buat banner. Buat produk digital, upload ke MediaFire dulu.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text"><strong>Banner promosi:</strong> Bisa diupload pas tambah produk, biar produk lo keliatan cakep.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text"><strong>Data:</strong> Semua data kesimpen di Firebase Realtime Database.</div></div>
+    <div class="help-section"><h3>${emoji('em-info','em')} Info Tambahan</h3>
+      <div class="help-step"><div class="num">1</div><div class="text"><strong>Link MediaFire</strong> cuma keliatan setelah verifikasi AI lolos.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text"><strong>Chat file max:</strong> 5MB. <strong>Banner max:</strong> 2MB.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text"><strong>Stok</strong> otomatis berkurang pas penjual konfirmasi pesanan.</div></div>
     </div>
 
-    <div class="help-info-box">
-      <strong>Butuh bantuan?</strong> Chat admin di Tako: <a href="https://tako.id/warungvaro" target="_blank" style="color:#25d366">tako.id/warungvaro</a>
-    </div>
+    <div class="help-info-box"><strong>Butuh bantuan?</strong> Chat admin di Tako: <a href="https://tako.id/warungvaro" target="_blank" style="color:#25d366">tako.id/warungvaro</a></div>
 
     <button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti, Makasih!</button>
   `);
@@ -1450,12 +1516,9 @@ function doLogin(){
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
     if(!snap.exists()){showToast('Nama gak terdaftar!','error');return}
     if(snap.val().password!==pass){showToast('Password salah!','error');return}
-    currentUser = nama;
-    localStorage.setItem('wd_user', nama);
-    closeModal();
-    showToast('Login berhasil!','success');
-    updateSidebar();
-    showPage('home');
+    currentUser = nama; localStorage.setItem('wd_user', nama);
+    closeModal(); showToast('Login berhasil!','success');
+    updateSidebar(); showPage('home');
   });
 }
 function doRegister(){
@@ -1469,22 +1532,16 @@ function doRegister(){
       password: pass, createdAt: Date.now(), metode: [], nomorEwallet: '',
       tako: '', saweria: '', wa: '', avatar: '', banner: '', status: ''
     }).then(()=>{
-      currentUser = nama;
-      localStorage.setItem('wd_user', nama);
-      closeModal();
-      showToast('Daftar & login berhasil!','success');
-      updateSidebar();
-      showPage('home');
+      currentUser = nama; localStorage.setItem('wd_user', nama);
+      closeModal(); showToast('Daftar & login berhasil!','success');
+      updateSidebar(); showPage('home');
     }).catch(e=>showToast('❌ '+e.message,'error'));
   });
 }
 function logoutUser(){
   if(!confirm('Yakin logout?')) return;
-  currentUser = null;
-  localStorage.removeItem('wd_user');
-  showToast('Logout!','success');
-  updateSidebar();
-  showPage('home');
+  currentUser = null; localStorage.removeItem('wd_user');
+  showToast('Logout!','success'); updateSidebar(); showPage('home');
 }
 
 // ============================================================
@@ -1494,10 +1551,7 @@ function showRequestFitur(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   db.ref('warungdigital/donations').once('value', dsnap=>{
     let hasDonated = false;
-    dsnap.forEach(child=>{
-      const d = child.val();
-      if(d.donator === currentUser || d.user === currentUser) hasDonated = true;
-    });
+    dsnap.forEach(child=>{ const d = child.val(); if(d.donator === currentUser || d.user === currentUser) hasDonated = true; });
     if(!hasDonated){
       openModal(`
         <button class="close-btn" onclick="closeModal()">✕</button>
@@ -1525,15 +1579,11 @@ function showRequestFitur(){
   });
 }
 function checkDonationStatus(){
-  closeModal();
-  showToast('Cek status donasi...');
+  closeModal(); showToast('Cek status donasi...');
   setTimeout(()=>{
     db.ref('warungdigital/donations').once('value', dsnap=>{
       let hasDonated = false;
-      dsnap.forEach(child=>{
-        const d = child.val();
-        if(d.donator === currentUser || d.user === currentUser) hasDonated = true;
-      });
+      dsnap.forEach(child=>{ const d = child.val(); if(d.donator === currentUser || d.user === currentUser) hasDonated = true; });
       if(hasDonated){ showToast('Donasi terdeteksi! Sekarang bisa request.','success'); showRequestFitur(); }
       else { showToast('Belum ada donasi dari lo. Donasi dulu ya!','error'); }
     });
@@ -1544,9 +1594,7 @@ function submitRequestFitur(){
   const fitur = document.getElementById('reqFitur').value.trim();
   if(!fitur){showToast('Tulis fitur yang dimau!','error');return}
   startLoading('Mengirim...', 'Mengirim request fitur lo', () => {
-    db.ref('warungdigital/requests').push({
-      nama, fitur, user: currentUser, timestamp: Date.now()
-    }).then(()=>{ closeModal(); showToast('Request terkirim!','success'); });
+    db.ref('warungdigital/requests').push({ nama, fitur, user: currentUser, timestamp: Date.now() }).then(()=>{ closeModal(); showToast('Request terkirim!','success'); });
   });
 }
 
@@ -1555,7 +1603,6 @@ function submitRequestFitur(){
 // ============================================================
 let lastDonationKey = null;
 let isFirstDonationLoad = true;
-
 db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(1).on('value', snap => {
   if (!snap.exists()) return;
   let latest = null;
@@ -1575,12 +1622,12 @@ db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(1).on('v
 });
 
 // ============================================================
-// AUTO LOGIN (AMAN)
+// AUTO LOGIN
 // ============================================================
 try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e) { console.warn('Auto login sidebar skip:', e.message); }
 try { if(typeof showPage === 'function') showPage('home'); updateCartBadge(); } catch(e) { console.warn('Auto login showPage skip:', e.message); }
 
-console.log('WarungDigital v1.2 — Ready!');
+console.log('WarungDigital v1.3 — Ready!');
 </script>
 </body>
-                                                                                                                                                                                                                                                                                          </html>
+                                                                                                                                                                                                                                                                                                                                     </html>
