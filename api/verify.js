@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json({ limit: '10mb' }));
 
 // ============================================================
-// FIREBASE ADMIN (ENV VARS)
+// FIREBASE ADMIN
 // ============================================================
 const serviceAccount = {
   "type": "service_account",
@@ -38,22 +38,17 @@ const GEMINI_MODEL = "gemini-2.0-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 // ============================================================
-// VERIFIKASI BUKTI TRANSFER PAKE GEMINI AI
+// VERIFIKASI BUKTI TRANSFER
 // ============================================================
 app.post('/api/verify', async (req, res) => {
   try {
-    const { orderKey, buktiBase64 } = req.body;
+    const { orderId, buktiBase64, nominal, namaTujuan, penjual, produkNama } = req.body;
 
-    if (!orderKey || !buktiBase64) {
+    console.log('🔍 VERIFY REQUEST:', { orderId, nominal, namaTujuan, penjual, produkNama });
+
+    if (!buktiBase64 || !nominal || !namaTujuan) {
       return res.status(400).json({ error: 'Data gak lengkap' });
     }
-
-    // Ambil data order
-    const orderSnap = await db.ref('warungdigital/orders').child(orderKey).once('value');
-    if (!orderSnap.exists()) {
-      return res.status(404).json({ error: 'Order gak ditemukan' });
-    }
-    const order = orderSnap.val();
 
     // ============================================================
     // 1. CEK DUPLIKAT (anti-timpa foto)
@@ -63,10 +58,11 @@ app.post('/api/verify', async (req, res) => {
       .orderByChild('hash').equalTo(hash).once('value');
     
     if (dupSnap.exists()) {
-      return res.status(400).json({
-        success: false,
+      return res.json({
+        success: true,
         verified: false,
-        error: '❌ Bukti transfer ini udah pernah dipake sebelumnya!'
+        error: '❌ Bukti transfer ini udah pernah dipake sebelumnya!',
+        aiResult: { valid: false, alasan: 'Bukti duplikat' }
       });
     }
 
@@ -75,27 +71,28 @@ app.post('/api/verify', async (req, res) => {
     // ============================================================
     const base64Data = buktiBase64.replace(/^data:image\/\w+;base64,/, '');
     
-    const prompt = `Kamu adalah sistem verifikasi bukti transfer pembayaran.
+    const prompt = `Kamu adalah sistem verifikasi bukti transfer pembayaran yang SANGAT TELITI.
 
 Data pesanan:
-- Nominal yang harus dibayar: Rp ${order.total.toLocaleString('id-ID')}
-- Nama tujuan transfer: ${order.penjual}
-- Metode pembayaran: ${order.metode}
+- Produk: ${produkNama || '-'}
+- Nominal yang harus dibayar: Rp ${Number(nominal).toLocaleString('id-ID')}
+- Nama tujuan transfer: ${namaTujuan}
+- Penjual: ${penjual}
 
 Tugas kamu:
-1. Baca gambar bukti transfer ini dengan teliti
-2. Cek apakah nominal transfer SAMA PERSIS dengan Rp ${order.total.toLocaleString('id-ID')}
-3. Cek apakah nama tujuan transfer COCOK dengan "${order.penjual}"
-4. Cek apakah ini bukti transfer yang VALID
+1. Baca gambar bukti transfer ini dengan TELITI
+2. Cek apakah nominal transfer SAMA PERSIS dengan Rp ${Number(nominal).toLocaleString('id-ID')} (harus exact, gak boleh selisih)
+3. Cek apakah nama tujuan transfer COCOK dengan "${namaTujuan}"
+4. Cek apakah bukti transfer ini VALID (bukan screenshot palsu, bukan hasil edit, bukan screenshot aplikasi lain)
 
-Jawab HANYA dalam format JSON seperti ini:
+Jawab HANYA dalam format JSON seperti ini (tanpa teks lain):
 {
   "valid": true/false,
-  "nominalTerbaca": "angka",
-  "namaTujuanTerbaca": "nama",
+  "nominalTerbaca": "angka yang kebaca",
+  "namaTujuanTerbaca": "nama yang kebaca",
   "nominalMatch": true/false,
   "namaMatch": true/false,
-  "alasan": "penjelasan"
+  "alasan": "penjelasan singkat dalam bahasa Indonesia"
 }`;
 
     const geminiRes = await fetch(GEMINI_URL, {
@@ -114,9 +111,17 @@ Jawab HANYA dalam format JSON seperti ini:
       })
     });
 
+    if (!geminiRes.ok) {
+      const errText = await geminiRes.text();
+      console.error('Gemini API error:', errText);
+      return res.status(500).json({ error: 'Gemini API error: ' + errText });
+    }
+
     const geminiData = await geminiRes.json();
     const aiText = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    
+    console.log('🤖 AI Response:', aiText);
+
+    // Extract JSON dari response AI
     let aiResult;
     try {
       const jsonMatch = aiText.match(/\{[\s\S]*\}/);
@@ -126,35 +131,31 @@ Jawab HANYA dalam format JSON seperti ini:
     }
 
     // ============================================================
-    // 3. SIMPEN PROOF
+    // 3. SIMPEN PROOF KE FIREBASE
     // ============================================================
     const proofId = 'PROOF-' + Date.now();
     await db.ref('warungdigital/proofs').child(proofId).set({
-      orderKey,
+      orderId,
       hash,
+      nominal,
+      namaTujuan,
+      penjual,
       aiResult,
       timestamp: Date.now()
     });
 
     // ============================================================
-    // 4. UPDATE ORDER
+    // 4. RESULT
     // ============================================================
     const isVerified = aiResult.valid && aiResult.nominalMatch && aiResult.namaMatch;
-    
-    await db.ref('warungdigital/orders').child(orderKey).update({
-      status: isVerified ? 'proof_uploaded' : 'proof_uploaded',
-      proofId,
-      proofAt: Date.now(),
-      bukti: buktiBase64.substring(0, 2000),
-      aiVerification: aiResult
-    });
+
+    console.log(`✅ Verifikasi ${isVerified ? 'LOLOS' : 'GAGAL'}:`, aiResult.alasan);
 
     res.json({
       success: true,
       verified: isVerified,
       proofId,
-      aiResult,
-      status: isVerified ? 'verified' : 'manual_review'
+      aiResult
     });
 
   } catch (err) {
