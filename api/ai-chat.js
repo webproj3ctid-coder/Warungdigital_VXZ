@@ -2,48 +2,68 @@ const express = require('express');
 const app = express();
 app.use(express.json({ limit: '10mb' }));
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AQ.Ab8RN6I_Qe4ijniu5d1AQoq6-tagfeM91dtM8UYMlIwH5zF5Fw";
-const GEMINI_MODEL = "gemini-3.8-flash";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GROQ_API_KEY = process.env.GROQ_API_KEY || "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";
+const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
+
+const ALLOWED_MODELS = [
+  "qwen/qwen3.6-27b",
+  "openai/gpt-oss-20b",
+  "openai/gpt-oss-120b",
+  "moonshotai/kimi-k2-instruct",
+  "llama-3.3-70b-versatile"
+];
 
 app.post('/api/ai-chat', async (req, res) => {
   try {
-    const { message, history } = req.body;
+    const { message, history, model: reqModel } = req.body;
     if(!message) return res.status(400).json({ error: 'Pesan kosong' });
+
+    const model = (reqModel && ALLOWED_MODELS.includes(reqModel)) ? reqModel : 'qwen/qwen3.6-27b';
 
     const systemPrompt = `Kamu adalah AI assistant WarungDigital, marketplace produk digital Indonesia. 
 Jawab dengan ramah, santai, dan helpful. Pake bahasa Indonesia gaul dikit boleh.
-Kalau ditanya soal web ini, jelasin: web ini buat jual-beli produk digital, verifikasi AI pakai Gemini, pembayaran manual via e-wallet (DANA, OVO, GoPay, dll), penjual harus daftarin e-wallet dulu.
 Jangan jawab pertanyaan yang berkaitan dengan hal ilegal, SARA, atau konten dewasa.`;
 
-    const contents = [
-      { role: 'user', parts: [{ text: systemPrompt }] },
-      { role: 'model', parts: [{ text: 'Ok, gua siap bantu!' }] }
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      ...(history || []).map(h => ({ role: h.role === 'assistant' ? 'assistant' : 'user', content: h.content })),
+      { role: 'user', content: message }
     ];
-    (history || []).forEach(h => {
-      contents.push({ role: h.role === 'assistant' ? 'model' : 'user', parts: [{ text: h.content }] });
-    });
-    contents.push({ role: 'user', parts: [{ text: message }] });
 
-    const geminiRes = await fetch(GEMINI_URL, {
+    const response = await fetch(GROQ_API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY },
-      body: JSON.stringify({ contents, generationConfig: { temperature: 0.9, maxOutputTokens: 1000 } })
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROQ_API_KEY}`
+      },
+      body: JSON.stringify({ model, messages, temperature: 0.7, top_p: 0.80, max_tokens: 1000 })
     });
 
-    if(!geminiRes.ok){
-      const errText = await geminiRes.text();
-      return res.status(500).json({ error: 'Gemini error: ' + errText.substring(0,200) });
+    if (!response.ok) {
+      const errText = await response.text();
+      // Fallback ke Qwen kalau model error
+      if(response.status === 400 || response.status === 404){
+        const fb = await fetch(GROQ_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
+          body: JSON.stringify({ model: 'qwen/qwen3.6-27b', messages, temperature: 0.7, max_tokens: 1000 })
+        });
+        if(fb.ok){
+          const fbd = await fb.json();
+          return res.json({ success: true, reply: fbd?.choices?.[0]?.message?.content, model: 'qwen/qwen3.6-27b (fallback)' });
+        }
+      }
+      return res.status(500).json({ error: 'Groq error: ' + errText.substring(0, 200) });
     }
 
-    const data = await geminiRes.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'AI gak bisa jawab nih.';
-    res.json({ success: true, reply });
+    const data = await response.json();
+    const reply = data?.choices?.[0]?.message?.content || 'AI gak bisa jawab nih.';
+    res.json({ success: true, reply, model });
   } catch(e) {
     res.status(500).json({ error: e.message });
   }
 });
 
-app.get('/api/ai-chat', (req, res) => res.send('AI Chat aktif! ✅'));
+app.get('/api/ai-chat', (req, res) => res.send('AI Chat (Groq) aktif! ✅'));
 
 module.exports = app;
