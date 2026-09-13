@@ -90,6 +90,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 #toast.show{transform:translateX(0)}
 #toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b);box-shadow:0 12px 32px rgba(231,76,60,0.4)}
 #toast.donate{background:linear-gradient(135deg,#6c5ce7,#4834d4);box-shadow:0 12px 32px rgba(108,92,231,0.4)}
+#toast.warn{background:linear-gradient(135deg,#f39c12,#e67e22);box-shadow:0 12px 32px rgba(243,156,18,0.4)}
 #loadingOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);backdrop-filter:blur(8px);z-index:99999;justify-content:center;align-items:center;flex-direction:column;padding:20px}
 #loadingOverlay.show{display:flex}
 #loadingOverlay .load-box{background:#141a22;border:1px solid #2a3340;border-radius:24px;padding:36px;text-align:center;max-width:400px;width:100%;animation:pop 0.3s ease}
@@ -206,6 +207,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .help-step .text{font-size:13px;opacity:0.85;line-height:1.6}
 .help-info-box{background:rgba(37,211,102,0.08);border-left:4px solid #25d366;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
 .help-info-box strong{color:#25d366}
+.help-warn-box{background:rgba(243,156,18,0.1);border-left:4px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
+.help-warn-box strong{color:#f39c12}
 .verify-box{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:16px;margin-bottom:14px}
 .verify-box .label{font-size:12px;opacity:0.6;margin-bottom:6px}
 .verify-box .val{font-size:14px;font-weight:700}
@@ -216,6 +219,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .upload-area img{max-width:100%;max-height:150px;border-radius:12px;margin-top:8px}
 .upload-area .icon{font-size:32px;color:#25d366;margin-bottom:8px}
 .upload-area .text{font-size:13px;opacity:0.7}
+.ai-limit-bar{background:rgba(243,156,18,0.1);border:1px solid rgba(243,156,18,0.3);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ai-limit-bar.warn{background:rgba(231,76,60,0.1);border-color:rgba(231,76,60,0.3);color:#e74c3c}
+.ai-limit-bar .bar{flex:1;height:6px;background:#0f151c;border-radius:10px;overflow:hidden}
+.ai-limit-bar .bar-fill{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);border-radius:10px;transition:width 0.3s ease}
+.ai-limit-bar.warn .bar-fill{background:linear-gradient(90deg,#e74c3c,#c0392b)}
 .footer{text-align:center;padding:30px 20px;opacity:0.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#070a0f}
@@ -408,17 +416,33 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   <div id="page-aichat" class="hidden">
     <div class="section-header">
       <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-star"/></svg> AI Chat</h2>
-      <button class="btn btn-sm btn-danger" onclick="clearAIChat()"><svg class="em"><use href="#em-trash"/></svg> Hapus</button>
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-sm btn-secondary" id="notifPermBtn" onclick="requestNotifPermission()">🔔 Aktifkan Notif</button>
+        <button class="btn btn-sm btn-danger" onclick="clearAIChat()"><svg class="em"><use href="#em-trash"/></svg> Hapus</button>
+      </div>
     </div>
-    <div id="aiChatBody" style="background:#0f151c;border:1px solid #1f2a34;border-radius:20px;padding:16px;height:60vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
+    <div class="help-warn-box">
+      <strong>⚠️ Peringatan Limit AI Chat:</strong><br>
+      • Max <strong>50 chat per hari</strong> per user<br>
+      • Delay <strong>3 detik</strong> antar chat biar gak spam<br>
+      • Limit reset tiap <strong>jam 00:00 WIB</strong><br>
+      • Aktifkan <strong>🔔 Notif</strong> biar dapet notifikasi dari sistem HP
+    </div>
+    <div class="ai-limit-bar" id="aiLimitBar">
+      <span>💬 <strong id="aiUsed">0</strong>/50 chat</span>
+      <div class="bar"><div class="bar-fill" id="aiBarFill" style="width:0%"></div></div>
+      <span id="aiLeftText">50 sisa</span>
+    </div>
+    <div id="aiChatBody" style="background:#0f151c;border:1px solid #1f2a34;border-radius:20px;padding:16px;height:55vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
       <div class="chat-msg other" style="max-width:90%">
         <div>👋 Halo! Gua AI WarungDigital. Mau tanya apa?</div>
       </div>
     </div>
     <div style="display:flex;gap:8px">
       <input type="text" id="aiChatInput" placeholder="Tanya apa aja..." onkeydown="if(event.key==='Enter')sendAIChat()" style="flex:1;padding:12px 16px;border-radius:24px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none" />
-      <button class="btn btn-primary" onclick="sendAIChat()"><svg class="em em-lg"><use href="#em-send"/></svg></button>
+      <button class="btn btn-primary" id="aiSendBtn" onclick="sendAIChat()"><svg class="em em-lg"><use href="#em-send"/></svg></button>
     </div>
+    <div id="aiDelayInfo" style="text-align:center;font-size:12px;opacity:0.6;margin-top:8px"></div>
   </div>
 
   <div id="page-setting" class="hidden">
@@ -436,6 +460,22 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     <div class="form-group"><label>Nama</label><input type="text" id="accNama" /></div>
     <div class="form-group"><label>Password Baru (kosongin kalau gak ganti)</label><input type="password" id="accPass" /></div>
     <div class="form-group"><label>Nomor WA</label><input type="text" id="accWA" placeholder="628xxxxxxxxxx" /></div>
+    <div class="form-group">
+      <label>Model AI yang Dipakai</label>
+      <select id="accAIModel">
+        <option value="qwen/qwen3.6-27b">Qwen 3.6 27B (Default - Cepat & Pinter)</option>
+        <option value="openai/gpt-oss-20b">GPT-OSS 20B (Ringan & Cepat)</option>
+        <option value="openai/gpt-oss-120b">GPT-OSS 120B (Pinter, Lebih Berat)</option>
+        <option value="moonshotai/kimi-k2-instruct">Kimi K2 (Konteks Panjang)</option>
+        <option value="llama-3.3-70b-versatile">Llama 3.3 70B (Stabil)</option>
+      </select>
+      <div style="font-size:11px;opacity:0.5;margin-top:4px">Model AI yang dipakai buat AI Chat</div>
+    </div>
+    <div class="form-group">
+      <label>Notifikasi Browser</label>
+      <button type="button" class="btn btn-secondary btn-block" id="notifPermBtn2" onclick="requestNotifPermission()">🔔 Aktifkan Notifikasi</button>
+      <div style="font-size:11px;opacity:0.5;margin-top:4px">Dapet notif dari sistem HP pas ada chat/order/donasi</div>
+    </div>
     <button class="btn btn-primary btn-block" onclick="saveSettingAccount()"><svg class="em"><use href="#em-check"/></svg> Simpan Akun</button>
     <button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px"><svg class="em"><use href="#em-logout"/></svg> Logout</button>
   </div>
@@ -504,6 +544,11 @@ const METODE_BAYAR = [
   { id: 'tako', nama: 'Tako', icon: '💚' }
 ];
 
+const AI_DAILY_LIMIT = 50;
+const AI_DELAY_MS = 3000;
+let aiLastSent = 0;
+let aiDailyCount = 0;
+
 // ============================================================
 // STATE
 // ============================================================
@@ -521,6 +566,7 @@ let pendingDeleteId = null;
 let buktiBase64 = '';
 let aiChatHistory = [];
 let dbReady = false;
+let notifPermission = 'default';
 
 // ============================================================
 // UTILS
@@ -531,14 +577,74 @@ function emoji(id, cls){return `<svg class="em ${cls||''}"><use href="#${id}"/><
 
 function showToast(msg, type){
   const t = document.getElementById('toast');
-  const icons = { success: emoji('em-check'), error: emoji('em-warning'), donate: emoji('em-heart') };
+  const icons = { success: emoji('em-check'), error: emoji('em-warning'), donate: emoji('em-heart'), warn: emoji('em-warning') };
   t.innerHTML = (icons[type] || icons.success) + ' ' + msg;
-  t.className = type === 'error' ? 'show error' : type === 'donate' ? 'show donate' : 'show';
+  t.className = type === 'error' ? 'show error' : type === 'donate' ? 'show donate' : type === 'warn' ? 'show warn' : 'show';
   clearTimeout(t._t);
   t._t = setTimeout(()=>t.className='',4000);
 }
 function openModal(html){ document.getElementById('modalContent').innerHTML = html; document.getElementById('modalOverlay').classList.add('show'); }
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
+
+// ============================================================
+// WEB NOTIFICATION API
+// ============================================================
+function checkNotifPermission(){
+  if(!('Notification' in window)){ notifPermission = 'unsupported'; return; }
+  notifPermission = Notification.permission;
+  updateNotifButton();
+}
+function requestNotifPermission(){
+  if(!('Notification' in window)){ showToast('Browser gak support notifikasi','error'); return; }
+  if(Notification.permission === 'granted'){ showToast('Notifikasi udah aktif ✅','success'); return; }
+  Notification.requestPermission().then(permission => {
+    notifPermission = permission;
+    updateNotifButton();
+    if(permission === 'granted'){
+      showToast('✅ Notifikasi aktif!','success');
+      sendWebNotif('WarungDigital', 'Notifikasi berhasil diaktifkan! 🎉', 'em-heart');
+    } else if(permission === 'denied'){
+      showToast('❌ Notifikasi ditolak. Aktifkan manual di setting browser.','error');
+    }
+  });
+}
+function sendWebNotif(title, body, iconId){
+  if(!('Notification' in window)) return;
+  if(Notification.permission !== 'granted') return;
+  try {
+    const iconSvg = iconId ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325d366"><use href="#${iconId}"/></svg>` : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325d366"><circle cx="12" cy="12" r="10"/></svg>';
+    const notif = new Notification(title, {
+      body: body,
+      icon: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(iconSvg),
+      badge: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325d366"><circle cx="12" cy="12" r="10"/></svg>'),
+      tag: 'warungdigital-' + Date.now(),
+      requireInteraction: false,
+      silent: false
+    });
+    setTimeout(() => notif.close(), 8000);
+    notif.onclick = () => { window.focus(); notif.close(); };
+  } catch(e) { console.warn('Notif error:', e.message); }
+}
+function updateNotifButton(){
+  const btns = [document.getElementById('notifPermBtn'), document.getElementById('notifPermBtn2')];
+  btns.forEach(btn => {
+    if(!btn) return;
+    if(notifPermission === 'granted'){
+      btn.textContent = '🔔 Notif Aktif ✅';
+      btn.style.background = 'rgba(37,211,102,0.15)';
+      btn.style.color = '#25d366';
+      btn.style.borderColor = 'rgba(37,211,102,0.3)';
+    } else if(notifPermission === 'denied'){
+      btn.textContent = '🔕 Notif Ditolak';
+      btn.style.background = 'rgba(231,76,60,0.15)';
+      btn.style.color = '#e74c3c';
+      btn.style.borderColor = 'rgba(231,76,60,0.3)';
+    } else {
+      btn.textContent = '🔔 Aktifkan Notif';
+    }
+  });
+}
+checkNotifPermission();
 
 // ============================================================
 // LOADING DATABASE
@@ -729,6 +835,7 @@ function submitCartOrder(){
         db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
           closeModal();
           showToast('✅ Verifikasi AI lolos!','success');
+          if(document.hidden) sendWebNotif('✅ Pembelian Berhasil', 'Verifikasi AI lolos!', 'em-check');
           cart = []; saveCart(); selectedEwallet = null; buktiBase64 = '';
           showPage('orders');
         });
@@ -800,6 +907,7 @@ function showPage(page){
     if(page==='dompet') renderDompet();
     if(page==='accounts') renderAccounts();
     if(page==='chatlist') renderChatList();
+    if(page==='aichat') loadAIUsage();
     if(page==='setting') loadSettingWeb();
     if(page==='account') loadSettingAccount();
     window.scrollTo({top:0,behavior:'smooth'});
@@ -824,9 +932,20 @@ db.ref('warungdigital/users').on('value', snap=>{
   const el = document.getElementById('statUser');
   if(el) el.textContent = snap.numChildren();
 });
+let lastOrderCount = 0;
 db.ref('warungdigital/orders').on('value', snap=>{
+  const count = snap.numChildren();
   const el = document.getElementById('statOrder');
-  if(el) el.textContent = snap.numChildren();
+  if(el) el.textContent = count;
+  if(lastOrderCount > 0 && count > lastOrderCount && currentUser){
+    snap.forEach(child => {
+      const o = child.val();
+      if(o.penjual === currentUser && o.status === 'verified'){
+        sendWebNotif('🛒 Pesanan Baru!', `${o.produkNama} - Rp ${o.total.toLocaleString('id-ID')}`, 'em-cart');
+      }
+    });
+  }
+  lastOrderCount = count;
 });
 
 // ============================================================
@@ -1011,6 +1130,7 @@ function submitBeliLangsung(id){
           }
           closeModal();
           showToast('✅ Verifikasi AI lolos! Link download siap.','success');
+          if(document.hidden) sendWebNotif('✅ Pembelian Berhasil', 'Verifikasi AI lolos! Link download siap.', 'em-check');
           buktiBase64 = ''; selectedEwallet = null;
           showPage('orders');
         });
@@ -1483,18 +1603,13 @@ function renderChatList(){
         if(other){
           const msgs = child.val() || {};
           const arr = Object.values(msgs).sort((a,b)=>b.timestamp-a.timestamp);
-          if(arr.length > 0){
-            rooms.push({ other, lastMsg: arr[0], count: arr.length });
-          }
+          if(arr.length > 0){ rooms.push({ other, lastMsg: arr[0], count: arr.length }); }
         }
       }
     });
     rooms.sort((a,b)=>b.lastMsg.timestamp-a.lastMsg.timestamp);
     if(cc) cc.textContent = rooms.length + ' chat';
-    if(rooms.length === 0){
-      el.innerHTML = `<div class="empty">${emoji('em-send','em-2xl')}<p>Belum ada chat</p></div>`;
-      return;
-    }
+    if(rooms.length === 0){ el.innerHTML = `<div class="empty">${emoji('em-send','em-2xl')}<p>Belum ada chat</p></div>`; return; }
     el.innerHTML = rooms.map(r=>{
       const time = new Date(r.lastMsg.timestamp).toLocaleString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
       const preview = r.lastMsg.text || (r.lastMsg.file ? '📎 File' : '');
@@ -1513,24 +1628,89 @@ function renderChatList(){
 }
 
 // ============================================================
-// AI CHAT
+// AI CHAT — LIMIT 50/HARI + DELAY 3 DETIK
 // ============================================================
+function getTodayKey(){
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function loadAIUsage(){
+  if(!currentUser){ aiDailyCount = 0; return; }
+  db.ref('warungdigital/users').child(currentUser).child('aiUsage').once('value', snap=>{
+    const u = snap.val() || {};
+    const today = getTodayKey();
+    if(u.date !== today){
+      aiDailyCount = 0;
+      db.ref('warungdigital/users').child(currentUser).child('aiUsage').set({ date: today, count: 0 });
+    } else {
+      aiDailyCount = u.count || 0;
+    }
+    updateAICounter();
+  });
+}
+function updateAICounter(){
+  const used = document.getElementById('aiUsed');
+  const left = document.getElementById('aiLeftText');
+  const bar = document.getElementById('aiBarFill');
+  const limitBar = document.getElementById('aiLimitBar');
+  if(used) used.textContent = aiDailyCount;
+  if(left) left.textContent = Math.max(0, AI_DAILY_LIMIT - aiDailyCount) + ' sisa';
+  if(bar) bar.style.width = (aiDailyCount / AI_DAILY_LIMIT * 100) + '%';
+  if(limitBar) limitBar.classList.toggle('warn', aiDailyCount >= AI_DAILY_LIMIT * 0.8);
+}
+function incrementAIUsage(){
+  aiDailyCount++;
+  if(currentUser){
+    db.ref('warungdigital/users').child(currentUser).child('aiUsage').set({ date: getTodayKey(), count: aiDailyCount });
+  }
+  updateAICounter();
+}
 function sendAIChat(){
   const input = document.getElementById('aiChatInput');
   const text = input.value.trim();
   if(!text) return;
+
+  if(aiDailyCount >= AI_DAILY_LIMIT){
+    showToast('Limit AI Chat harian abis! Reset jam 00:00 WIB.','error');
+    sendWebNotif('⚠️ Limit AI Chat', 'Limit 50 chat/hari udah abis. Reset jam 00:00 WIB.', 'em-warning');
+    return;
+  }
+  const now = Date.now();
+  const diff = now - aiLastSent;
+  if(diff < AI_DELAY_MS){
+    const sisa = Math.ceil((AI_DELAY_MS - diff) / 1000);
+    showToast(`Tunggu ${sisa} detik lagi biar gak spam`,'warn');
+    return;
+  }
+
   input.value = '';
   addAIChatMsg('me', text);
   aiChatHistory.push({ role: 'user', content: text });
+  aiLastSent = now;
+  incrementAIUsage();
+
+  const btn = document.getElementById('aiSendBtn');
+  if(btn) btn.disabled = true;
+  const delayInfo = document.getElementById('aiDelayInfo');
+  let countdown = 3;
+  if(delayInfo) delayInfo.textContent = `⏳ Delay ${countdown}s...`;
+  const cdInterval = setInterval(()=>{
+    countdown--;
+    if(countdown > 0){ if(delayInfo) delayInfo.textContent = `⏳ Delay ${countdown}s...`; }
+    else { clearInterval(cdInterval); if(delayInfo) delayInfo.textContent = ''; if(btn) btn.disabled = false; }
+  }, 1000);
+
   const body = document.getElementById('aiChatBody');
   const loadId = 'aiLoad_' + Date.now();
   body.insertAdjacentHTML('beforeend', `<div class="chat-msg other" id="${loadId}" style="max-width:90%"><div>⏳ AI sedang mikir...</div></div>`);
   body.scrollTop = body.scrollHeight;
 
+  const userModel = window._userAIModel || 'qwen/qwen3.6-27b';
+
   fetch('/api/ai-chat', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({ message: text, history: aiChatHistory.slice(-10) })
+    body: JSON.stringify({ message: text, history: aiChatHistory.slice(-10), user: currentUser, model: userModel })
   })
   .then(res => res.json())
   .then(data => {
@@ -1539,6 +1719,9 @@ function sendAIChat(){
     if(data.success && data.reply){
       addAIChatMsg('other', data.reply);
       aiChatHistory.push({ role: 'assistant', content: data.reply });
+      if(document.hidden){
+        sendWebNotif('💬 AI WarungDigital', data.reply.substring(0, 100) + (data.reply.length > 100 ? '...' : ''), 'em-star');
+      }
     } else {
       addAIChatMsg('other', '⚠️ AI error: ' + (data.error || 'Coba lagi'));
     }
@@ -1567,7 +1750,7 @@ function clearAIChat(){
 }
 
 // ============================================================
-// CHAT (REAL-TIME)
+// CHAT REAL-TIME
 // ============================================================
 function openChatWith(user){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
@@ -1584,8 +1767,9 @@ function openChatWith(user){
     const body = document.getElementById('chatBody');
     if(!snap.exists()){body.innerHTML=`<div style="text-align:center;padding:20px;opacity:0.5;font-size:13px">Belum ada chat. Mulai ngobrol!</div>`;return}
     let html = '';
-    snap.forEach(child=>{
-      const m = child.val();
+    const arr = [];
+    snap.forEach(child=>{ arr.push(child.val()); });
+    arr.forEach(m=>{
       const isMe = m.from === currentUser;
       const time = new Date(m.timestamp).toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
       html += `<div class="chat-msg ${isMe?'me':'other'}">`;
@@ -1598,6 +1782,14 @@ function openChatWith(user){
     });
     body.innerHTML = html;
     body.scrollTop = body.scrollHeight;
+    // Notif chat baru
+    const last = arr[arr.length - 1];
+    if(last && last.from !== currentUser && last.timestamp > (window._lastChatTime || 0)){
+      if(document.hidden || currentChatUser !== last.from){
+        sendWebNotif('💬 Chat Baru', `${last.from}: ${(last.text || '📎 File').substring(0, 80)}`, 'em-send');
+      }
+    }
+    window._lastChatTime = last.timestamp;
   });
 }
 function closeChat(){
@@ -1664,18 +1856,22 @@ function loadSettingAccount(){
     const el = id => document.getElementById(id);
     if(el('accNama')) el('accNama').value = currentUser;
     if(el('accWA')) el('accWA').value = u.wa || '';
+    if(el('accAIModel')) el('accAIModel').value = u.aiModel || 'qwen/qwen3.6-27b';
+    window._userAIModel = u.aiModel || 'qwen/qwen3.6-27b';
   });
 }
 function saveSettingAccount(){
   const nama = document.getElementById('accNama').value.trim();
   const pass = document.getElementById('accPass').value.trim();
   const wa = document.getElementById('accWA').value.trim();
+  const aiModel = document.getElementById('accAIModel')?.value || 'qwen/qwen3.6-27b';
   if(!nama){showToast('Nama wajib!','error');return}
-  const update = {wa};
+  const update = {wa, aiModel};
   if(pass) update.password = pass;
   startLoading('Menyimpan Akun...', 'Menyimpan perubahan akun lo', () => {
     db.ref('warungdigital/users').child(currentUser).update(update).then(()=>{
       showToast('Akun disimpan!','success');
+      window._userAIModel = aiModel;
       document.getElementById('accPass').value='';
     });
   });
@@ -1704,10 +1900,13 @@ function showHelp(){
       <div class="help-step"><div class="num">3</div><div class="text">Upload bukti, <strong>AI verifikasi</strong> otomatis.</div></div>
       <div class="help-step"><div class="num">4</div><div class="text">Lolos → langsung dapet <strong>link download</strong>.</div></div>
     </div>
-    <div class="help-section"><h3>${emoji('em-send','em')} Chat & AI Chat</h3>
-      <div class="help-step"><div class="num">1</div><div class="text"><strong>Chat</strong> — liat semua percakapan lo.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text"><strong>AI Chat</strong> — tanya apa aja ke AI Gemini.</div></div>
+    <div class="help-section"><h3>${emoji('em-star','em')} AI Chat</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>AI Chat</strong> di sidebar.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Tanya apa aja ke AI Gemini/Groq.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Limit <strong>50 chat/hari</strong>, delay <strong>3 detik</strong> antar chat.</div></div>
+      <div class="help-step"><div class="num">4</div><div class="text">Bisa ganti model AI di <strong>Setting Akun</strong>.</div></div>
     </div>
+    <div class="help-warn-box"><strong>🔔 Notifikasi Web:</strong> Klik tombol <strong>Aktifkan Notif</strong> di halaman AI Chat atau Setting Akun, terus pilih <strong>Allow</strong> di browser. Notif bakal muncul di sistem HP/laptop lo.</div>
     <div class="help-info-box"><strong>Bantuan?</strong> Tako admin: <a href="https://tako.id/warungvaro" target="_blank" style="color:#25d366">tako.id/warungvaro</a></div>
     <button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti!</button>
   `);
@@ -1749,7 +1948,7 @@ function doRegister(){
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
     if(snap.exists()){showToast('Nama udah dipake!','error');return}
     db.ref('warungdigital/users').child(nama).set({
-      password: pass, createdAt: Date.now(), ewallets: [], wa: '', avatar: '', banner: '', status: ''
+      password: pass, createdAt: Date.now(), ewallets: [], wa: '', aiModel: 'qwen/qwen3.6-27b', avatar: '', banner: '', status: ''
     }).then(()=>{
       currentUser = nama; localStorage.setItem('wd_user', nama);
       closeModal(); showToast('Daftar & login berhasil!','success');
@@ -1832,6 +2031,7 @@ db.ref('warungdigital/donations').orderByChild('timestamp').limitToLast(1).on('v
     const source = (latest.source || 'tako').toUpperCase();
     console.log(`DONASI BARU [${source}]: Rp ${amount} dari ${donator}`);
     showToast(`${source} SUCCESS! Rp ${amount} dari ${donator}`, 'donate');
+    sendWebNotif('💰 Donasi Masuk!', `${source} - Rp ${amount} dari ${donator}`, 'em-heart');
   }
 });
 
@@ -1861,11 +2061,11 @@ function checkDbReady() {
       try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
       try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
       try { updateCartBadge(); } catch(e){}
+      try { loadAIUsage(); } catch(e){}
     }, 600);
   }
 }
 
-// Fallback 8 detik
 setTimeout(()=>{
   if(!dbReady) {
     dbReady = true;
@@ -1874,10 +2074,11 @@ setTimeout(()=>{
     try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
     try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
     try { updateCartBadge(); } catch(e){}
+    try { loadAIUsage(); } catch(e){}
   }
 }, 8000);
 
-console.log('WarungDigital v1.4 — Ready!');
+console.log('WarungDigital v1.5 — Ready!');
 </script>
 </body>
-  </html>
+</html>
