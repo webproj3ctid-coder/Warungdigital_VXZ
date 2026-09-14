@@ -4,13 +4,7 @@ app.use(express.json({ limit: '10mb' }));
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY || "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";
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
-
-const ALLOWED_MODELS = [
-  "qwen/qwen3.6-27b",
-  "openai/gpt-oss-20b",
-  "openai/gpt-oss-120b",
-  "moonshotai/kimi-k2-instruct",
-  "llama-3.3-70b-versatile"
+const GROQ_MODEL = "qwen/qwen3.6-27b";
 ];
 
 app.post('/api/ai-chat', async (req, res) => {
