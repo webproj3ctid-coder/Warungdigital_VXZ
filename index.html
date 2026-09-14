@@ -127,7 +127,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .order-item .head .oid{font-weight:800;font-size:15px}
 .order-item .head .status{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700}
 .status-waiting{background:#f39c12;color:#fff}
-.status-verified{background:#3498db;color:#fff}
+.status-verified{background:#25d366;color:#fff}
 .status-confirmed{background:#25d366;color:#fff}
 .status-cancelled{background:#e74c3c;color:#fff}
 .order-item .body{font-size:13px;opacity:0.8;line-height:1.8}
@@ -276,7 +276,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   <symbol id="em-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
 </svg>
 
-<!-- LOADING DATABASE OVERLAY -->
+<!-- LOADING DATABASE -->
 <div id="dbLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:999999;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity 0.5s ease">
   <div style="text-align:center;max-width:400px">
     <div style="width:80px;height:80px;margin:0 auto 24px;border:6px solid rgba(37,211,102,0.15);border-top-color:#25d366;border-radius:50%;animation:dbSpin 0.9s linear infinite"></div>
@@ -301,7 +301,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   <button class="menu-item" onclick="showPage('home');closeSidebar()"><svg><use href="#em-box"/></svg> Home</button>
   <button class="menu-item" onclick="showPage('jualan');closeSidebar()"><svg><use href="#em-store"/></svg> Jualan Saya</button>
   <button class="menu-item" onclick="showPage('cart');closeSidebar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
-  <button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> Pesanan</button>
+  <button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> History Pembelian</button>
   <button class="menu-item" onclick="showPage('dompet');closeSidebar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
   <button class="menu-item" onclick="showPage('accounts');closeSidebar()"><svg><use href="#em-user"/></svg> Liat Info Akun</button>
   <button class="menu-item" onclick="showPage('chatlist');closeSidebar()"><svg><use href="#em-send"/></svg> Chat</button>
@@ -359,7 +359,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     </div>
     <div class="tabs">
       <button class="active" onclick="switchJualanTab('produk',this)"><svg class="em"><use href="#em-box"/></svg> Produk</button>
-      <button onclick="switchJualanTab('pesanan',this)"><svg class="em"><use href="#em-cart"/></svg> Pesanan Masuk</button>
+      <button onclick="switchJualanTab('pesanan',this)"><svg class="em"><use href="#em-receipt"/></svg> History Penjualan</button>
       <button onclick="switchJualanTab('pembayaran',this)"><svg class="em"><use href="#em-tag"/></svg> E-Wallet</button>
     </div>
     <div id="jualan-produk"></div>
@@ -377,10 +377,10 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 
   <div id="page-orders" class="hidden">
     <div class="section-header">
-      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> Pesanan Saya</h2>
+      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> History Pembelian</h2>
       <span class="count" id="ordersCount">0</span>
     </div>
-    <div id="ordersList"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada pesanan</p></div></div>
+    <div id="ordersList"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada history pembelian</p></div></div>
   </div>
 
   <div id="page-dompet" class="hidden">
@@ -567,6 +567,7 @@ let buktiBase64 = '';
 let aiChatHistory = [];
 let dbReady = false;
 let notifPermission = 'default';
+let isSubmitting = false;
 
 // ============================================================
 // UTILS
@@ -688,6 +689,7 @@ function cancelProcess(){
   clearInterval(loadInterval);
   document.getElementById('loadingOverlay').classList.remove('show');
   pendingDeleteId = null;
+  isSubmitting = false;
   showToast('Proses dibatalkan','error');
 }
 
@@ -805,8 +807,10 @@ function pilihEwalletCart(i, jenis, namaAkun, nomor){
   document.getElementById('autoNamaTujuan').textContent = namaAkun;
 }
 function submitCartOrder(){
+  if(isSubmitting){ showToast('Tunggu bentar, masih proses...','warn'); return; }
   if(!selectedEwallet){showToast('Pilih e-wallet penjual dulu!','error');return}
   if(!buktiBase64){showToast('Upload bukti transfer dulu!','error');return}
+  isSubmitting = true;
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
   const namaTujuan = selectedEwallet.namaAkun;
   startLoading('Verifikasi AI...', 'AI sedang cek bukti transfer lo', () => {
@@ -830,34 +834,31 @@ function submitCartOrder(){
           total, pembeli: currentUser, penjual: cart[0].penjual,
           ewallet: selectedEwallet, nominal: total, namaTujuan,
           bukti: buktiBase64.substring(0,5000), aiResult: data.aiResult,
-          status: 'confirmed', createdAt: Date.now(), verifiedAt: Date.now()
+          status: 'verified', createdAt: Date.now(), verifiedAt: Date.now()
         };
         db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
+          cart.forEach(c => {
+            const prod = products[c.id];
+            if(prod && prod.stock !== undefined){
+              db.ref('warungdigital/products').child(c.id).update({
+                stock: Math.max(0, (prod.stock || 0) - c.qty), sold: (prod.sold || 0) + c.qty
+              });
+            }
+          });
           closeModal();
-          showToast('✅ Verifikasi AI lolos!','success');
-          if(document.hidden) sendWebNotif('✅ Pembelian Berhasil', 'Verifikasi AI lolos!', 'em-check');
-          cart = []; saveCart(); selectedEwallet = null; buktiBase64 = '';
+          showToast('✅ Verifikasi AI lolos! Link download siap.','success');
+          if(document.hidden) sendWebNotif('✅ Pembelian Berhasil', 'Link download siap!', 'em-check');
+          cart = []; saveCart(); selectedEwallet = null; buktiBase64 = ''; isSubmitting = false;
           showPage('orders');
         });
       } else {
         showToast('❌ Verifikasi gagal: ' + (data.error || data.aiResult?.alasan || ''),'error');
+        isSubmitting = false;
       }
     })
     .catch(()=>{
-      const orderId = 'ORD-'+Date.now();
-      const order = {
-        orderId, items: cart.map(c=>({nama:c.nama, harga:c.harga, qty:c.qty, penjual:c.penjual})),
-        produkNama: cart.map(c=>c.nama).join(', '),
-        total, pembeli: currentUser, penjual: cart[0].penjual,
-        ewallet: selectedEwallet, nominal: total, namaTujuan,
-        bukti: buktiBase64.substring(0,5000), status: 'proof_uploaded', createdAt: Date.now()
-      };
-      db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
-        closeModal();
-        showToast('Bukti diupload!','success');
-        cart = []; saveCart(); selectedEwallet = null; buktiBase64 = '';
-        showPage('orders');
-      });
+      showToast('⚠️ AI error, coba lagi nanti.','warn');
+      isSubmitting = false;
     });
   });
 }
@@ -941,7 +942,7 @@ db.ref('warungdigital/orders').on('value', snap=>{
     snap.forEach(child => {
       const o = child.val();
       if(o.penjual === currentUser && o.status === 'verified'){
-        sendWebNotif('🛒 Pesanan Baru!', `${o.produkNama} - Rp ${o.total.toLocaleString('id-ID')}`, 'em-cart');
+        sendWebNotif('🛒 Penjualan Baru!', `${o.produkNama} - Rp ${o.total.toLocaleString('id-ID')}`, 'em-cart');
       }
     });
   }
@@ -1012,7 +1013,7 @@ function showDetail(id){
 }
 
 // ============================================================
-// BELI LANGSUNG + VERIFIKASI AI
+// BELI LANGSUNG + VERIFIKASI AI (AUTO-CONFIRM)
 // ============================================================
 function beliLangsung(id){
   if(!currentUser){showToast('Login dulu buat beli!','error');showLoginModal();return}
@@ -1093,8 +1094,10 @@ function readBuktiFile(input){
   reader.readAsDataURL(file);
 }
 function submitBeliLangsung(id){
+  if(isSubmitting){ showToast('Tunggu bentar, masih proses...','warn'); return; }
   if(!selectedEwallet){showToast('Pilih e-wallet penjual dulu!','error');return}
   if(!buktiBase64){showToast('Upload bukti transfer dulu!','error');return}
+  isSubmitting = true;
   const p = products[id];
   const namaTujuan = selectedEwallet.namaAkun;
   const nominal = p.harga;
@@ -1119,7 +1122,7 @@ function submitBeliLangsung(id){
           pembeli: currentUser, penjual: p.penjual,
           ewallet: selectedEwallet, nominal, namaTujuan,
           bukti: buktiBase64.substring(0,5000), aiResult: data.aiResult,
-          status: 'confirmed', linkProduk: p.linkMediafire,
+          status: 'verified', linkProduk: p.linkMediafire,
           createdAt: Date.now(), verifiedAt: Date.now()
         };
         db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
@@ -1130,30 +1133,18 @@ function submitBeliLangsung(id){
           }
           closeModal();
           showToast('✅ Verifikasi AI lolos! Link download siap.','success');
-          if(document.hidden) sendWebNotif('✅ Pembelian Berhasil', 'Verifikasi AI lolos! Link download siap.', 'em-check');
-          buktiBase64 = ''; selectedEwallet = null;
+          if(document.hidden) sendWebNotif('✅ Pembelian Berhasil', 'Link download siap!', 'em-check');
+          buktiBase64 = ''; selectedEwallet = null; isSubmitting = false;
           showPage('orders');
         });
       } else {
         showToast('❌ Verifikasi gagal: ' + (data.error || data.aiResult?.alasan || 'Cek bukti lo'),'error');
+        isSubmitting = false;
       }
     })
     .catch(()=>{
-      const orderId = 'ORD-'+Date.now();
-      const order = {
-        orderId, produkId: id, produkNama: p.nama,
-        harga: p.harga, total: p.harga,
-        pembeli: currentUser, penjual: p.penjual,
-        ewallet: selectedEwallet, nominal, namaTujuan,
-        bukti: buktiBase64.substring(0,5000),
-        status: 'proof_uploaded', createdAt: Date.now()
-      };
-      db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
-        closeModal();
-        showToast('Bukti diupload! Nunggu review.','success');
-        buktiBase64 = ''; selectedEwallet = null;
-        showPage('orders');
-      });
+      showToast('⚠️ AI error, coba lagi nanti.','warn');
+      isSubmitting = false;
     });
   });
 }
@@ -1199,9 +1190,12 @@ function renderJualanPesanan(){
   const el = document.getElementById('jualan-pesanan');
   if(!el) return;
   db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
-    if(!snap.exists()){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada pesanan masuk</p></div>`;return}
+    if(!snap.exists()){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada penjualan</p></div>`;return}
     let html = '';
-    snap.forEach(child=>{ html += renderOrderCard({key:child.key,...child.val()}, 'penjual'); });
+    const orders = [];
+    snap.forEach(child=>{ orders.push({key:child.key, ...child.val()}); });
+    orders.sort((a,b)=>b.createdAt-a.createdAt);
+    orders.forEach(o => { html += renderOrderCard(o, 'penjual'); });
     el.innerHTML = html;
   });
 }
@@ -1435,7 +1429,7 @@ function confirmDeleteProduct(id){
 }
 
 // ============================================================
-// ORDERS
+// HISTORY PEMBELIAN & PENJUALAN
 // ============================================================
 function renderOrders(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
@@ -1449,20 +1443,18 @@ function renderOrders(){
     });
     orders.sort((a,b)=>b.createdAt-a.createdAt);
     const oc = document.getElementById('ordersCount');
-    if(oc) oc.textContent = orders.length + ' pesanan';
-    if(orders.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada pesanan</p></div>`;return}
+    if(oc) oc.textContent = orders.length + ' transaksi';
+    if(orders.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada history pembelian</p></div>`;return}
     el.innerHTML = orders.map(o=>renderOrderCard(o, o.penjual===currentUser?'penjual':'pembeli')).join('');
   });
 }
 function renderOrderCard(o, role){
   const statusMap = {
-    waiting_payment: {label:'Menunggu Bayar', cls:'status-waiting'},
-    verified: {label:'✅ Terverifikasi AI', cls:'status-verified'},
-    proof_uploaded: {label:'Bukti Diupload', cls:'status-verified'},
-    confirmed: {label:'Selesai', cls:'status-confirmed'},
-    cancelled: {label:'Dibatalkan', cls:'status-cancelled'}
+    verified: {label:'✅ Selesai (Auto AI)', cls:'status-confirmed'},
+    proof_uploaded: {label:'⏳ Nunggu Review AI', cls:'status-waiting'},
+    cancelled: {label:'❌ Dibatalkan', cls:'status-cancelled'}
   };
-  const st = statusMap[o.status] || statusMap.waiting_payment;
+  const st = statusMap[o.status] || {label:'✅ Selesai (Auto AI)', cls:'status-confirmed'};
   const time = new Date(o.createdAt).toLocaleString('id-ID');
   const items = o.items ? o.items.map(i=>`${escapeHtml(i.nama)} ×${i.qty}`).join(', ') : escapeHtml(o.produkNama||'');
   return `
@@ -1478,31 +1470,12 @@ function renderOrderCard(o, role){
         ${emoji('em-receipt','em')} ${time}
       </div>
       <div class="actions">
-        ${o.status==='waiting_payment' && role==='pembeli' ? `<button class="btn btn-sm btn-primary" onclick="beliLangsung('${o.produkId}')">${emoji('em-upload','em')} Bayar Sekarang</button>`:''}
-        ${o.status==='verified' && role==='penjual' ? `<button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')">${emoji('em-check','em')} Konfirmasi & Kirim</button>`:''}
-        ${o.status==='confirmed' && role==='pembeli' && o.linkProduk ? `<a class="btn btn-sm btn-success" href="${o.linkProduk}" target="_blank">${emoji('em-download','em')} Download Produk</a>`:''}
-        ${o.status==='confirmed' ? `<button class="btn btn-sm btn-secondary" onclick="openChatWith('${role==='pembeli'?o.penjual:o.pembeli}')">${emoji('em-send','em')} Chat</button>`:''}
+        ${o.status==='verified' && role==='pembeli' && o.linkProduk ? `<a class="btn btn-sm btn-success" href="${o.linkProduk}" target="_blank">${emoji('em-download','em')} Download Produk</a>`:''}
+        ${o.status==='proof_uploaded' ? `<div style="font-size:12px;opacity:0.6;padding:6px 0">⏳ AI masih review bukti lo. Tunggu bentar ya.</div>`:''}
+        <button class="btn btn-sm btn-secondary" onclick="openChatWith('${role==='pembeli'?o.penjual:o.pembeli}')">${emoji('em-send','em')} Chat</button>
       </div>
     </div>
   `;
-}
-function confirmOrder(orderKey){
-  if(!confirm('Konfirmasi pesanan ini? Link download bakal dikirim ke pembeli.')) return;
-  db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
-    const o = snap.val();
-    const produk = products[o.produkId];
-    const update = { status:'confirmed', confirmedAt: Date.now() };
-    if(produk && produk.linkMediafire) update.linkProduk = produk.linkMediafire;
-    db.ref('warungdigital/orders').child(orderKey).update(update).then(()=>{
-      if(produk && produk.stock !== undefined){
-        db.ref('warungdigital/products').child(o.produkId).update({
-          stock: Math.max(0, (produk.stock || 0) - 1), sold: (produk.sold || 0) + 1
-        });
-      }
-      showToast('Pesanan dikonfirmasi!','success');
-      renderOrders(); renderJualanPesanan();
-    });
-  });
 }
 
 // ============================================================
@@ -1514,7 +1487,7 @@ function renderDompet(){
     let total = 0; let history = [];
     snap.forEach(child=>{
       const o = child.val();
-      if(o.status==='confirmed'){ total += o.total; history.push(o); }
+      if(o.status==='verified' || o.status==='confirmed'){ total += o.total; history.push(o); }
     });
     const ws = document.getElementById('walletSaldo');
     if(ws) ws.textContent = formatRp(total);
@@ -1527,7 +1500,7 @@ function renderDompet(){
           <div class="oid">${escapeHtml(o.produkNama)}</div>
           <div class="status status-confirmed">+${formatRp(o.total)}</div>
         </div>
-        <div class="body">${emoji('em-user','em')} ${escapeHtml(o.pembeli)} · ${new Date(o.confirmedAt||o.createdAt).toLocaleString('id-ID')}</div>
+        <div class="body">${emoji('em-user','em')} ${escapeHtml(o.pembeli)} · ${new Date(o.confirmedAt||o.verifiedAt||o.createdAt).toLocaleString('id-ID')}</div>
       </div>
     `).join('');
   });
@@ -1565,7 +1538,7 @@ function showAccountDetail(nama){
     const myProducts = Object.entries(products).filter(([id,p])=>p.penjual===nama);
     db.ref('warungdigital/orders').orderByChild('penjual').equalTo(nama).once('value', osnap=>{
       let total = 0, count = 0;
-      osnap.forEach(c=>{ const o=c.val(); if(o.status==='confirmed'){total+=o.total;count++;} });
+      osnap.forEach(c=>{ const o=c.val(); if(o.status==='verified'||o.status==='confirmed'){total+=o.total;count++;} });
       openModal(`
         <button class="close-btn" onclick="closeModal()">✕</button>
         <div style="text-align:center;margin-bottom:16px">
@@ -1628,7 +1601,7 @@ function renderChatList(){
 }
 
 // ============================================================
-// AI CHAT — LIMIT 50/HARI + DELAY 3 DETIK
+// AI CHAT
 // ============================================================
 function getTodayKey(){
   const d = new Date();
@@ -1669,7 +1642,6 @@ function sendAIChat(){
   const input = document.getElementById('aiChatInput');
   const text = input.value.trim();
   if(!text) return;
-
   if(aiDailyCount >= AI_DAILY_LIMIT){
     showToast('Limit AI Chat harian abis! Reset jam 00:00 WIB.','error');
     sendWebNotif('⚠️ Limit AI Chat', 'Limit 50 chat/hari udah abis. Reset jam 00:00 WIB.', 'em-warning');
@@ -1682,13 +1654,11 @@ function sendAIChat(){
     showToast(`Tunggu ${sisa} detik lagi biar gak spam`,'warn');
     return;
   }
-
   input.value = '';
   addAIChatMsg('me', text);
   aiChatHistory.push({ role: 'user', content: text });
   aiLastSent = now;
   incrementAIUsage();
-
   const btn = document.getElementById('aiSendBtn');
   if(btn) btn.disabled = true;
   const delayInfo = document.getElementById('aiDelayInfo');
@@ -1699,14 +1669,11 @@ function sendAIChat(){
     if(countdown > 0){ if(delayInfo) delayInfo.textContent = `⏳ Delay ${countdown}s...`; }
     else { clearInterval(cdInterval); if(delayInfo) delayInfo.textContent = ''; if(btn) btn.disabled = false; }
   }, 1000);
-
   const body = document.getElementById('aiChatBody');
   const loadId = 'aiLoad_' + Date.now();
   body.insertAdjacentHTML('beforeend', `<div class="chat-msg other" id="${loadId}" style="max-width:90%"><div>⏳ AI sedang mikir...</div></div>`);
   body.scrollTop = body.scrollHeight;
-
   const userModel = window._userAIModel || 'qwen/qwen3.6-27b';
-
   fetch('/api/ai-chat', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -1782,7 +1749,6 @@ function openChatWith(user){
     });
     body.innerHTML = html;
     body.scrollTop = body.scrollHeight;
-    // Notif chat baru
     const last = arr[arr.length - 1];
     if(last && last.from !== currentUser && last.timestamp > (window._lastChatTime || 0)){
       if(document.hidden || currentChatUser !== last.from){
@@ -1894,15 +1860,15 @@ function showHelp(){
       <div class="help-step"><div class="num">2</div><div class="text">Klik <strong>Jualan Saya</strong> → <strong>E-Wallet</strong> → tambah e-wallet lo.</div></div>
       <div class="help-step"><div class="num">3</div><div class="text">Klik <strong>Tambah Produk</strong>, isi data + link MediaFire.</div></div>
     </div>
-    <div class="help-section"><h3>${emoji('em-cart','em')} Cara Beli</h3>
+    <div class="help-section"><h3>${emoji('em-cart','em')} Cara Beli (Auto AI)</h3>
       <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>Beli Langsung</strong> di produk.</div></div>
       <div class="help-step"><div class="num">2</div><div class="text">Pilih e-wallet penjual, transfer sesuai nominal.</div></div>
       <div class="help-step"><div class="num">3</div><div class="text">Upload bukti, <strong>AI verifikasi</strong> otomatis.</div></div>
-      <div class="help-step"><div class="num">4</div><div class="text">Lolos → langsung dapet <strong>link download</strong>.</div></div>
+      <div class="help-step"><div class="num">4</div><div class="text"><strong>Langsung dapet link download</strong> kalau AI lolos. Gak perlu nunggu penjual.</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-star','em')} AI Chat</h3>
       <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>AI Chat</strong> di sidebar.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Tanya apa aja ke AI Gemini/Groq.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Tanya apa aja ke AI.</div></div>
       <div class="help-step"><div class="num">3</div><div class="text">Limit <strong>50 chat/hari</strong>, delay <strong>3 detik</strong> antar chat.</div></div>
       <div class="help-step"><div class="num">4</div><div class="text">Bisa ganti model AI di <strong>Setting Akun</strong>.</div></div>
     </div>
@@ -1963,7 +1929,7 @@ function logoutUser(){
 }
 
 // ============================================================
-// REQUEST FITUR (WAJIB DONATE)
+// REQUEST FITUR
 // ============================================================
 function showRequestFitur(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
@@ -2078,7 +2044,7 @@ setTimeout(()=>{
   }
 }, 8000);
 
-console.log('WarungDigital v1.5 — Ready!');
+console.log('WarungDigital v1.6 — Ready!');
 </script>
 </body>
-</html>
+                                               </html>
