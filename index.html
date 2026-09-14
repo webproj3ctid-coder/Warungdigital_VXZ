@@ -4,17 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>WarungDigital — Marketplace Produk Digital</title>
-
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2325d366'/%3E%3Cstop offset='100%25' stop-color='%236c5ce7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='72' font-size='60' font-weight='900' text-anchor='middle' fill='white' font-family='Arial'%3EW%3C/text%3E%3C/svg%3E">
-
-<!-- Open Graph (Link Preview) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2325d366'/%3E%3Cstop offset='100%25' stop-color='%236c5ce7'/%3E%3C/linearGradient%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='2' stdDeviation='3' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='white' stroke-opacity='0.15' stroke-width='1'/%3E%3Ctext x='50' y='68' font-size='55' font-weight='900' text-anchor='middle' fill='white' font-family='Arial, sans-serif' filter='url(%23s)'%3EW%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="WarungDigital — Marketplace Produk Digital">
-<meta property="og:description" content="Jual beli produk digital dengan verifikasi manual. Aman & terpercaya.">
+<meta property="og:description" content="Jual beli produk digital dengan verifikasi manual.">
 <meta property="og:url" content="https://warungdigital-vxz.vercel.app">
 <meta property="og:type" content="website">
-
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
@@ -52,6 +46,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .btn-success:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,.4)}
 .btn-warning{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff}
 .btn-warning:hover{transform:translateY(-3px)}
+.btn-dev{background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-weight:900}
+.btn-dev:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(241,196,15,.4)}
 .btn-sm{padding:8px 16px;font-size:13px;border-radius:12px}
 .btn-block{width:100%;margin-top:8px}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
@@ -115,7 +111,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .sidebar .close{float:right;font-size:28px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed}
 .sidebar .user-info{text-align:center;padding:12px 0 20px 0;border-bottom:1px solid #1f2a34;margin-bottom:16px}
 .sidebar .user-info .avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;overflow:hidden;cursor:pointer;border:2px solid #2a3340}
-.sidebar .user-info .avatar img{width:100%;height:100%;object-fit:cover}
 .sidebar .user-info .name{font-weight:700;font-size:18px;margin-top:8px}
 .sidebar .user-info .role{font-size:12px;opacity:.5;margin-top:2px}
 .sidebar .menu-item{padding:14px 16px;border-radius:14px;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:12px;font-weight:600;margin-bottom:4px;color:#e0e6ed;background:transparent;border:none;width:100%;text-align:left;font-size:14px}
@@ -141,7 +136,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .order-item .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .cart-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;margin-bottom:10px;border:1px solid #1f2a34}
 .cart-item .thumb{width:60px;height:60px;border-radius:12px;background:#141a22;display:flex;align-items:center;justify-content:center;color:#25d366;flex-shrink:0;overflow:hidden;font-size:24px}
-.cart-item .thumb img{width:100%;height:100%;object-fit:cover}
 .cart-item .info{flex:1;min-width:0}
 .cart-item .info .nama{font-weight:700;font-size:14px}
 .cart-item .info .harga{color:#25d366;font-weight:700;font-size:13px;margin-top:2px}
@@ -164,13 +158,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#25d366}
 .metode-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .metode-item{padding:10px 16px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:6px}
-.metode-item:hover{border-color:#25d366}
 .metode-item.selected{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border-color:#25d366}
 .account-list{display:flex;flex-direction:column;gap:10px}
 .account-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;border:1px solid #1f2a34;cursor:pointer;transition:.3s}
 .account-item:hover{border-color:#25d366;transform:translateX(4px)}
 .account-item .avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;font-weight:700;flex-shrink:0;overflow:hidden}
-.account-item .avatar img{width:100%;height:100%;object-fit:cover}
 .account-item .info{flex:1;min-width:0}
 .account-item .info .nama{font-weight:700;font-size:15px}
 .account-item .info .meta{font-size:12px;opacity:.6;margin-top:2px}
@@ -180,19 +172,15 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .chat-header .back{font-size:22px;cursor:pointer;opacity:.7;background:transparent;border:none;color:#e0e6ed;padding:4px}
 .chat-header .chat-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700;overflow:hidden}
 .chat-header .chat-name{font-weight:700;font-size:16px}
-.chat-header .chat-status{font-size:12px;opacity:.5}
 .chat-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:8px;background:#0a0e14}
 .chat-msg{max-width:75%;padding:10px 16px;border-radius:18px;font-size:14px;word-wrap:break-word;animation:fadeIn .2s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .chat-msg.me{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .chat-msg.other{background:#1f2a34;color:#e0e6ed;align-self:flex-start;border-bottom-left-radius:4px}
 .chat-msg .time{font-size:10px;opacity:.6;margin-top:4px;display:block}
-.chat-msg img{max-width:100%;border-radius:12px;margin-top:6px}
-.chat-msg .file{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);padding:8px 12px;border-radius:10px;margin-top:6px;font-size:13px}
 .chat-footer{display:flex;gap:8px;padding:12px 16px;background:#141a22;border-top:1px solid #1f2a34;flex-shrink:0}
 .chat-footer .attach{font-size:22px;cursor:pointer;opacity:.6;background:transparent;border:none;color:#e0e6ed;padding:4px}
 .chat-footer input{flex:1;padding:12px 16px;border-radius:24px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none}
-.chat-footer input:focus{border-color:#25d366}
 .chat-footer .send{font-size:22px;cursor:pointer;background:transparent;border:none;color:#25d366;padding:4px}
 .tabungan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .tabungan-item{background:#0f151c;border:1px solid #1f2a34;border-radius:16px;padding:16px}
@@ -204,16 +192,13 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .help-step .num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
 .help-step .text{font-size:13px;opacity:.85;line-height:1.6}
 .help-info-box{background:rgba(37,211,102,.08);border-left:4px solid #25d366;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
-.help-info-box strong{color:#25d366}
 .help-warn-box{background:rgba(243,156,18,.1);border-left:4px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
 .help-dev-box{background:rgba(241,196,15,.1);border-left:4px solid #f1c40f;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
-.help-dev-box strong{color:#f1c40f}
 .verify-box{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:16px;margin-bottom:14px}
 .verify-box .label{font-size:12px;opacity:.6;margin-bottom:6px}
 .verify-box .val{font-size:14px;font-weight:700}
 .verify-box .val.big{font-size:18px;color:#25d366}
 .upload-area{border:2px dashed #2a3340;border-radius:16px;padding:24px;text-align:center;cursor:pointer;transition:.3s;margin-bottom:12px}
-.upload-area:hover{border-color:#25d366;background:rgba(37,211,102,.05)}
 .upload-area.has-file{border-color:#25d366;background:rgba(37,211,102,.1)}
 .upload-area img{max-width:100%;max-height:150px;border-radius:12px;margin-top:8px}
 .upload-area .icon{font-size:32px;color:#25d366;margin-bottom:8px}
@@ -237,248 +222,234 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 </head>
 <body>
 
-<!-- SVG SPRITE -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="em-cart" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.6-1.4 2.4c-.1.2-.2.5-.2.8 0 1.1.9 2 2 2h12v-2H7.4c-.1 0-.2-.1-.2-.2v-.1L8.1 13h7.4c.8 0 1.4-.4 1.8-1l3.6-6.5c.1-.2.1-.3.1-.5 0-.6-.4-1-1-1H5.2L4.3 2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
-  <symbol id="em-box" viewBox="0 0 24 24"><path d="M20 6h-2.2c.1-.3.2-.6.2-1 0-2.2-1.8-4-4-4S10 2.8 10 5c0 .4.1.7.2 1H8c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM8 8h12v11H8V8z"/></symbol>
-  <symbol id="em-store" viewBox="0 0 24 24"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></symbol>
-  <symbol id="em-receipt" viewBox="0 0 24 24"><path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z"/></symbol>
-  <symbol id="em-wallet" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></symbol>
-  <symbol id="em-cog" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></symbol>
-  <symbol id="em-user" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
-  <symbol id="em-bulb" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></symbol>
-  <symbol id="em-login" viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></symbol>
-  <symbol id="em-logout" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></symbol>
-  <symbol id="em-star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>
-  <symbol id="em-fire" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></symbol>
-  <symbol id="em-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
-  <symbol id="em-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
-  <symbol id="em-warning" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
-  <symbol id="em-upload" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></symbol>
-  <symbol id="em-download" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></symbol>
-  <symbol id="em-plus" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></symbol>
-  <symbol id="em-trash" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></symbol>
-  <symbol id="em-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
-  <symbol id="em-send" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></symbol>
-  <symbol id="em-dots" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
-  <symbol id="em-tag" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></symbol>
-  <symbol id="em-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
-  <symbol id="em-lock" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></symbol>
-  <symbol id="em-bag" viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm0 12c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/></symbol>
-  <symbol id="em-help" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></symbol>
-  <symbol id="em-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
-  <symbol id="em-crown" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></symbol>
-  <symbol id="em-shield" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></symbol>
-  <symbol id="em-eye" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></symbol>
-  <symbol id="em-report" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+<symbol id="em-cart" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.6-1.4 2.4c-.1.2-.2.5-.2.8 0 1.1.9 2 2 2h12v-2H7.4c-.1 0-.2-.1-.2-.2v-.1L8.1 13h7.4c.8 0 1.4-.4 1.8-1l3.6-6.5c.1-.2.1-.3.1-.5 0-.6-.4-1-1-1H5.2L4.3 2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
+<symbol id="em-box" viewBox="0 0 24 24"><path d="M20 6h-2.2c.1-.3.2-.6.2-1 0-2.2-1.8-4-4-4S10 2.8 10 5c0 .4.1.7.2 1H8c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM8 8h12v11H8V8z"/></symbol>
+<symbol id="em-store" viewBox="0 0 24 24"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></symbol>
+<symbol id="em-receipt" viewBox="0 0 24 24"><path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z"/></symbol>
+<symbol id="em-wallet" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></symbol>
+<symbol id="em-cog" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></symbol>
+<symbol id="em-user" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
+<symbol id="em-bulb" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></symbol>
+<symbol id="em-login" viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></symbol>
+<symbol id="em-logout" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></symbol>
+<symbol id="em-star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>
+<symbol id="em-fire" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></symbol>
+<symbol id="em-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
+<symbol id="em-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+<symbol id="em-warning" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+<symbol id="em-upload" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></symbol>
+<symbol id="em-download" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></symbol>
+<symbol id="em-plus" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></symbol>
+<symbol id="em-trash" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></symbol>
+<symbol id="em-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+<symbol id="em-send" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></symbol>
+<symbol id="em-dots" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
+<symbol id="em-tag" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></symbol>
+<symbol id="em-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+<symbol id="em-lock" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></symbol>
+<symbol id="em-bag" viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm0 12c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/></symbol>
+<symbol id="em-help" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></symbol>
+<symbol id="em-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
+<symbol id="em-crown" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></symbol>
+<symbol id="em-shield" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></symbol>
+<symbol id="em-eye" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></symbol>
+<symbol id="em-report" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
 </svg>
 
-<!-- LOADING DATABASE -->
 <div id="dbLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:999999;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease">
-  <div style="text-align:center;max-width:400px">
-    <div style="width:80px;height:80px;margin:0 auto 24px;border:6px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;animation:dbSpin .9s linear infinite"></div>
-    <h2 style="font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent">WarungDigital</h2>
-    <p style="font-size:14px;opacity:.6;margin-bottom:24px">Sedang memuat data...</p>
-    <div style="width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px">
-      <div id="dbLoadingBar" style="height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#25d366,#6c5ce7);transition:width .3s ease"></div>
-    </div>
-    <div id="dbLoadingStatus" style="font-size:13px;opacity:.5">Menghubungkan ke database...</div>
-  </div>
+<div style="text-align:center;max-width:400px">
+<div style="width:80px;height:80px;margin:0 auto 24px;border:6px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;animation:dbSpin .9s linear infinite"></div>
+<h2 style="font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent">WarungDigital</h2>
+<p style="font-size:14px;opacity:.6;margin-bottom:24px">Sedang memuat data...</p>
+<div style="width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px"><div id="dbLoadingBar" style="height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#25d366,#6c5ce7);transition:width .3s ease"></div></div>
+<div id="dbLoadingStatus" style="font-size:13px;opacity:.5">Menghubungkan ke database...</div>
+</div>
 </div>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <div class="sidebar" id="sidebar">
-  <button class="close" onclick="closeSidebar()"><svg class="em" style="width:1em;height:1em"><use href="#em-close"/></svg></button>
-  <div class="user-info">
-    <div class="avatar" id="sidebarAvatar" onclick="showLoginModal()">👤</div>
-    <div class="name" id="sidebarName">Belum Login</div>
-    <div class="role" id="sidebarRole">Guest</div>
-  </div>
-  <button class="menu-item" onclick="showPage('home');closeSidebar()"><svg><use href="#em-box"/></svg> Home</button>
-  <button class="menu-item" onclick="showPage('jualan');closeSidebar()"><svg><use href="#em-store"/></svg> Jualan Saya</button>
-  <button class="menu-item" onclick="showPage('cart');closeSidebar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
-  <button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> History Pembelian</button>
-  <button class="menu-item" onclick="showPage('dompet');closeSidebar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
-  <button class="menu-item" onclick="showPage('accounts');closeSidebar()"><svg><use href="#em-user"/></svg> Liat Info Akun</button>
-  <button class="menu-item" onclick="showPage('chatlist');closeSidebar()"><svg><use href="#em-send"/></svg> Chat</button>
-  <button class="menu-item" onclick="showPage('setting');closeSidebar()"><svg><use href="#em-cog"/></svg> Setting Web</button>
-  <button class="menu-item" onclick="showPage('account');closeSidebar()"><svg><use href="#em-user"/></svg> Setting Akun</button>
-  <button class="menu-item" onclick="showRequestFitur();closeSidebar()"><svg><use href="#em-bulb"/></svg> Request Fitur</button>
-  <button class="menu-item" onclick="showHelp();closeSidebar()"><svg><use href="#em-help"/></svg> Help & Info</button>
-  <button class="menu-item dev" id="devMenuBtn" style="display:none" onclick="showPage('dev');closeSidebar()"><svg><use href="#em-crown"/></svg> Developer Panel</button>
-  <button class="menu-item danger" onclick="logoutUser();closeSidebar()" id="logoutBtn" style="display:none"><svg><use href="#em-logout"/></svg> Logout</button>
-  <button class="menu-item" onclick="showLoginModal();closeSidebar()" id="loginBtnSide" style="display:none"><svg><use href="#em-login"/></svg> Login / Daftar</button>
+<button class="close" onclick="closeSidebar()"><svg class="em" style="width:1em;height:1em"><use href="#em-close"/></svg></button>
+<div class="user-info">
+<div class="avatar" id="sidebarAvatar" onclick="showLoginModal()">👤</div>
+<div class="name" id="sidebarName">Belum Login</div>
+<div class="role" id="sidebarRole">Guest</div>
+</div>
+<button class="menu-item" onclick="showPage('home');closeSidebar()"><svg><use href="#em-box"/></svg> Home</button>
+<button class="menu-item" onclick="showPage('jualan');closeSidebar()"><svg><use href="#em-store"/></svg> Jualan Saya</button>
+<button class="menu-item" onclick="showPage('cart');closeSidebar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
+<button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> History Pembelian</button>
+<button class="menu-item" onclick="showPage('dompet');closeSidebar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
+<button class="menu-item" onclick="showPage('accounts');closeSidebar()"><svg><use href="#em-user"/></svg> Liat Info Akun</button>
+<button class="menu-item" onclick="showPage('chatlist');closeSidebar()"><svg><use href="#em-send"/></svg> Chat</button>
+<button class="menu-item" onclick="showPage('account');closeSidebar()"><svg><use href="#em-user"/></svg> Setting Akun</button>
+<button class="menu-item" onclick="showRequestFitur();closeSidebar()"><svg><use href="#em-bulb"/></svg> Request Fitur</button>
+<button class="menu-item" onclick="showHelp();closeSidebar()"><svg><use href="#em-help"/></svg> Help & Info</button>
+<button class="menu-item dev" id="devMenuBtn" style="display:none" onclick="showPage('dev');closeSidebar()"><svg><use href="#em-crown"/></svg> Developer Panel</button>
+<button class="menu-item danger" onclick="logoutUser();closeSidebar()" id="logoutBtn" style="display:none"><svg><use href="#em-logout"/></svg> Logout</button>
+<button class="menu-item" onclick="showLoginModal();closeSidebar()" id="loginBtnSide" style="display:none"><svg><use href="#em-login"/></svg> Login / Daftar</button>
 </div>
 
 <div class="container">
-  <nav class="navbar">
-    <div class="logo" onclick="showPage('home')"><svg class="em em-lg"><use href="#em-bag"/></svg> WarungDigital</div>
-    <div class="menu">
-      <a href="javascript:showPage('home')">Home</a>
-      <a href="javascript:showPage('jualan')">Jualan</a>
-      <button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
-      <button onclick="openSidebar()" style="font-size:20px;padding:8px 14px"><svg class="em em-lg"><use href="#em-dots"/></svg></button>
-    </div>
-  </nav>
+<nav class="navbar">
+<div class="logo" onclick="showPage('home')"><svg class="em em-lg"><use href="#em-bag"/></svg> WarungDigital <span id="navbarDevBadge" style="display:none;background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px;margin-left:6px">👑 DEV</span></div>
+<div class="menu">
+<a href="javascript:showPage('home')">Home</a>
+<a href="javascript:showPage('jualan')">Jualan</a>
+<button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
+<button onclick="openSidebar()" style="font-size:20px;padding:8px 14px"><svg class="em em-lg"><use href="#em-dots"/></svg></button>
+</div>
+</nav>
 
-  <div id="page-home">
-    <div class="hero">
-      <div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
-      <h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
-      <p>Platform jual-beli produk digital dengan verifikasi manual. Aman, cepat, dan terpercaya.</p>
-      <div class="btn-group">
-        <a href="#produk" class="btn btn-primary"><svg class="em em-lg"><use href="#em-bag"/></svg> Lihat Produk</a>
-        <a href="javascript:showPage('jualan')" class="btn btn-secondary"><svg class="em em-lg"><use href="#em-store"/></svg> Mulai Jualan</a>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
-      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
-      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
-      <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num">4.9</div><div class="label">Rating</div></div>
-    </div>
-    <div class="section" id="produk">
-      <div class="section-header">
-        <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2>
-        <span class="count" id="produkCount">0 produk</span>
-      </div>
-      <div class="product-grid" id="productGrid">
-        <div class="empty"><svg class="em-2xl"><use href="#em-box"/></svg><p>Memuat produk...</p></div>
-      </div>
-    </div>
-  </div>
+<div id="page-home">
+<div class="hero">
+<div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
+<h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
+<p>Platform jual-beli produk digital dengan verifikasi manual. Aman, cepat, dan terpercaya.</p>
+<div class="btn-group">
+<a href="#produk" class="btn btn-primary"><svg class="em em-lg"><use href="#em-bag"/></svg> Lihat Produk</a>
+<a href="javascript:showPage('jualan')" class="btn btn-secondary"><svg class="em em-lg"><use href="#em-store"/></svg> Mulai Jualan</a>
+</div>
+</div>
+<div class="stats">
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num">4.9</div><div class="label">Rating</div></div>
+</div>
+<div class="section" id="produk">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2>
+<span class="count" id="produkCount">0 produk</span>
+</div>
+<div class="product-grid" id="productGrid">
+<div class="empty"><svg class="em-2xl"><use href="#em-box"/></svg><p>Memuat produk...</p></div>
+</div>
+</div>
+</div>
 
-  <div id="page-jualan" class="hidden">
-    <div class="section-header">
-      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-store"/></svg> Jualan Saya</h2>
-      <button class="btn btn-primary btn-sm" onclick="showAddProduct()"><svg class="em"><use href="#em-plus"/></svg> Tambah Produk</button>
-    </div>
-    <div class="tabs">
-      <button class="active" onclick="switchJualanTab('produk',this)"><svg class="em"><use href="#em-box"/></svg> Produk</button>
-      <button onclick="switchJualanTab('pesanan',this)"><svg class="em"><use href="#em-receipt"/></svg> History Penjualan</button>
-      <button onclick="switchJualanTab('pembayaran',this)"><svg class="em"><use href="#em-tag"/></svg> E-Wallet</button>
-    </div>
-    <div id="jualan-produk"></div>
-    <div id="jualan-pesanan" class="hidden"></div>
-    <div id="jualan-pembayaran" class="hidden"></div>
-  </div>
+<div id="page-jualan" class="hidden">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-store"/></svg> Jualan Saya</h2>
+<button class="btn btn-primary btn-sm" onclick="showAddProduct()"><svg class="em"><use href="#em-plus"/></svg> Tambah Produk</button>
+</div>
+<div class="tabs">
+<button class="active" onclick="switchJualanTab('produk',this)"><svg class="em"><use href="#em-box"/></svg> Produk</button>
+<button onclick="switchJualanTab('pesanan',this)"><svg class="em"><use href="#em-receipt"/></svg> History Penjualan</button>
+<button onclick="switchJualanTab('pembayaran',this)"><svg class="em"><use href="#em-tag"/></svg> E-Wallet</button>
+</div>
+<div id="jualan-produk"></div>
+<div id="jualan-pesanan" class="hidden"></div>
+<div id="jualan-pembayaran" class="hidden"></div>
+</div>
 
-  <div id="page-cart" class="hidden">
-    <div class="section-header">
-      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cart"/></svg> Keranjang</h2>
-      <span class="count" id="cartCount">0 item</span>
-    </div>
-    <div id="cartList"></div>
-  </div>
+<div id="page-cart" class="hidden">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cart"/></svg> Keranjang</h2>
+<span class="count" id="cartCount">0 item</span>
+</div>
+<div id="cartList"></div>
+</div>
 
-  <div id="page-orders" class="hidden">
-    <div class="section-header">
-      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> History Pembelian</h2>
-      <span class="count" id="ordersCount">0</span>
-    </div>
-    <div id="ordersList"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada history pembelian</p></div></div>
-  </div>
+<div id="page-orders" class="hidden">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> History Pembelian</h2>
+<span class="count" id="ordersCount">0</span>
+</div>
+<div id="ordersList"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada history pembelian</p></div></div>
+</div>
 
-  <div id="page-dompet" class="hidden">
-    <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-wallet"/></svg> Dompet</h2></div>
-    <div class="wallet-card">
-      <div class="label">Saldo Dompet</div>
-      <div class="saldo" id="walletSaldo">Rp 0</div>
-      <div class="note">*Saldo display only. Penarikan otomatis belum tersedia.</div>
-    </div>
-    <div class="section">
-      <div class="section-header"><h2 style="font-size:18px"><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> Riwayat Transaksi</h2></div>
-      <div id="walletHistory"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada transaksi</p></div></div>
-    </div>
-  </div>
+<div id="page-dompet" class="hidden">
+<div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-wallet"/></svg> Dompet</h2></div>
+<div class="wallet-card">
+<div class="label">Saldo Dompet</div>
+<div class="saldo" id="walletSaldo">Rp 0</div>
+<div class="note">*Saldo display only. Penarikan otomatis belum tersedia.</div>
+</div>
+<div class="section">
+<div class="section-header"><h2 style="font-size:18px"><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> Riwayat Transaksi</h2></div>
+<div id="walletHistory"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada transaksi</p></div></div>
+</div>
+</div>
 
-  <div id="page-accounts" class="hidden">
-    <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Liat Info Akun</h2></div>
-    <div class="account-list" id="accountsList">
-      <div class="empty"><svg class="em-2xl"><use href="#em-user"/></svg><p>Memuat daftar akun...</p></div>
-    </div>
-  </div>
+<div id="page-accounts" class="hidden">
+<div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Liat Info Akun</h2></div>
+<div class="account-list" id="accountsList">
+<div class="empty"><svg class="em-2xl"><use href="#em-user"/></svg><p>Memuat daftar akun...</p></div>
+</div>
+</div>
 
-  <div id="page-chatlist" class="hidden">
-    <div class="section-header">
-      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-send"/></svg> Chat Saya</h2>
-      <span class="count" id="chatListCount">0</span>
-    </div>
-    <div class="account-list" id="chatListContainer">
-      <div class="empty"><svg class="em-2xl"><use href="#em-send"/></svg><p>Memuat chat...</p></div>
-    </div>
-  </div>
+<div id="page-chatlist" class="hidden">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-send"/></svg> Chat Saya</h2>
+<span class="count" id="chatListCount">0</span>
+</div>
+<div class="account-list" id="chatListContainer">
+<div class="empty"><svg class="em-2xl"><use href="#em-send"/></svg><p>Memuat chat...</p></div>
+</div>
+</div>
 
-  <div id="page-setting" class="hidden">
-    <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cog"/></svg> Setting Web</h2></div>
-    <div class="form-group"><label>Nama Toko</label><input type="text" id="setNamaToko" placeholder="WarungDigital" /></div>
-    <div class="form-group"><label>Deskripsi</label><textarea id="setDeskripsi" rows="2" placeholder="Deskripsi toko lo..."></textarea></div>
-    <div class="form-group"><label>Link Tako</label><input type="text" id="setTako" placeholder="https://tako.id/warungvaro" /></div>
-    <div class="form-group"><label>Link Saweria</label><input type="text" id="setSaweria" placeholder="https://saweria.co/username" /></div>
-    <div class="form-group"><label>Nomor WhatsApp</label><input type="text" id="setWA" placeholder="628xxxxxxxxxx" /></div>
-    <button class="btn btn-primary btn-block" onclick="saveSettingWeb()"><svg class="em"><use href="#em-check"/></svg> Simpan</button>
-  </div>
+<div id="page-account" class="hidden">
+<div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Setting Akun</h2></div>
+<div class="form-group"><label>Nama</label><input type="text" id="accNama" /></div>
+<div class="form-group"><label>Password Baru (kosongin kalau gak ganti)</label><input type="password" id="accPass" /></div>
+<div class="form-group"><label>Nomor WA</label><input type="text" id="accWA" placeholder="628xxxxxxxxxx" /></div>
+<div class="form-group">
+<label>Notifikasi Browser</label>
+<button type="button" class="btn btn-secondary btn-block" id="notifPermBtn2" onclick="requestNotifPermission()">🔔 Aktifkan Notifikasi</button>
+<div style="font-size:11px;opacity:.5;margin-top:4px">Dapet notif dari sistem HP pas ada chat/order/donasi</div>
+</div>
+<button class="btn btn-primary btn-block" onclick="saveSettingAccount()"><svg class="em"><use href="#em-check"/></svg> Simpan Akun</button>
+<button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px"><svg class="em"><use href="#em-logout"/></svg> Logout</button>
+</div>
 
-  <div id="page-account" class="hidden">
-    <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Setting Akun</h2></div>
-    <div class="form-group"><label>Nama</label><input type="text" id="accNama" /></div>
-    <div class="form-group"><label>Password Baru (kosongin kalau gak ganti)</label><input type="password" id="accPass" /></div>
-    <div class="form-group"><label>Nomor WA</label><input type="text" id="accWA" placeholder="628xxxxxxxxxx" /></div>
-    <div class="form-group">
-      <label>Notifikasi Browser</label>
-      <button type="button" class="btn btn-secondary btn-block" id="notifPermBtn2" onclick="requestNotifPermission()">🔔 Aktifkan Notifikasi</button>
-      <div style="font-size:11px;opacity:.5;margin-top:4px">Dapet notif dari sistem HP pas ada chat/order/donasi</div>
-    </div>
-    <button class="btn btn-primary btn-block" onclick="saveSettingAccount()"><svg class="em"><use href="#em-check"/></svg> Simpan Akun</button>
-    <button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px"><svg class="em"><use href="#em-logout"/></svg> Logout</button>
-  </div>
+<div id="page-dev" class="hidden">
+<div class="section-header">
+<h2 style="color:#f1c40f"><svg class="em em-lg" style="color:#f1c40f"><use href="#em-crown"/></svg> Developer Panel</h2>
+<span class="count" id="devCount">0 user</span>
+</div>
+<div id="devContent">
+<div class="empty"><p>Memuat panel developer...</p></div>
+</div>
+</div>
 
-  <div id="page-dev" class="hidden">
-    <div class="section-header">
-      <h2 style="color:#f1c40f"><svg class="em em-lg" style="color:#f1c40f"><use href="#em-crown"/></svg> Developer Panel</h2>
-      <span class="count" id="devCount">0 user</span>
-    </div>
-    <div id="devContent">
-      <div class="empty"><p>Memuat panel developer...</p></div>
-    </div>
-  </div>
 </div>
 
 <div class="footer">Made with <svg class="em" style="color:#25d366"><use href="#em-heart"/></svg> by <strong>WarungDigital</strong> · © 2026</div>
 
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modalContent"></div>
+<div class="modal" id="modalContent"></div>
 </div>
 
 <div id="toast"></div>
 
 <div id="loadingOverlay">
-  <div class="load-box">
-    <div class="spinner"></div>
-    <h3 id="loadTitle">Memproses...</h3>
-    <p id="loadDesc">Mohon tunggu sebentar</p>
-    <div class="progress"><div class="progress-bar" id="loadBar"></div></div>
-    <div class="countdown" id="loadCountdown">10</div>
-    <button class="btn btn-danger btn-block" onclick="cancelProcess()"><svg class="em"><use href="#em-close"/></svg> Batal</button>
-  </div>
+<div class="load-box">
+<div class="spinner"></div>
+<h3 id="loadTitle">Memproses...</h3>
+<p id="loadDesc">Mohon tunggu sebentar</p>
+<div class="progress"><div class="progress-bar" id="loadBar"></div></div>
+<div class="countdown" id="loadCountdown">10</div>
+<button class="btn btn-danger btn-block" onclick="cancelProcess()"><svg class="em"><use href="#em-close"/></svg> Batal</button>
+</div>
 </div>
 
 <div class="chat-container" id="chatContainer">
-  <div class="chat-header">
-    <button class="back" onclick="closeChat()"><svg class="em em-lg"><use href="#em-close"/></svg></button>
-    <div class="chat-avatar" id="chatAvatar">👤</div>
-    <div>
-      <div class="chat-name" id="chatName">-</div>
-      <div class="chat-status" id="chatStatus">Online</div>
-    </div>
-  </div>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="chat-footer">
-    <button class="attach" onclick="attachChatFile()"><svg class="em em-lg"><use href="#em-upload"/></svg></button>
-    <input type="text" id="chatInput" placeholder="Tulis pesan..." onkeydown="if(event.key==='Enter')sendChatMsg()" />
-    <button class="send" onclick="sendChatMsg()"><svg class="em em-lg"><use href="#em-send"/></svg></button>
-  </div>
+<div class="chat-header">
+<button class="back" onclick="closeChat()"><svg class="em em-lg"><use href="#em-close"/></svg></button>
+<div class="chat-avatar" id="chatAvatar">👤</div>
+<div>
+<div class="chat-name" id="chatName">-</div>
+<div class="chat-status" id="chatStatus">Online</div>
+</div>
+</div>
+<div class="chat-body" id="chatBody"></div>
+<div class="chat-footer">
+<button class="attach" onclick="attachChatFile()"><svg class="em em-lg"><use href="#em-upload"/></svg></button>
+<input type="text" id="chatInput" placeholder="Tulis pesan..." onkeydown="if(event.key==='Enter')sendChatMsg()" />
+<button class="send" onclick="sendChatMsg()"><svg class="em em-lg"><use href="#em-send"/></svg></button>
+</div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -496,9 +467,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// ============================================================
-// KONFIG
-// ============================================================
 const METODE_BAYAR = [
   { id: 'dana', nama: 'DANA', icon: '💳' },
   { id: 'ovo', nama: 'OVO', icon: '🟣' },
@@ -508,9 +476,6 @@ const METODE_BAYAR = [
   { id: 'tako', nama: 'Tako', icon: '💚' }
 ];
 
-// ============================================================
-// STATE
-// ============================================================
 let currentUser = localStorage.getItem('wd_user') || null;
 let currentPage = 'home';
 let products = {};
@@ -530,9 +495,6 @@ let isDev = false;
 const DEV_NAME = "vardev";
 const DEV_PASS = "vardevanakganteng2";
 
-// ============================================================
-// UTILS
-// ============================================================
 function formatRp(n){return 'Rp ' + Number(n||0).toLocaleString('id-ID')}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function emoji(id, cls){return `<svg class="em ${cls||''}"><use href="#${id}"/></svg>`}
@@ -548,9 +510,6 @@ function showToast(msg, type){
 function openModal(html){ document.getElementById('modalContent').innerHTML = html; document.getElementById('modalOverlay').classList.add('show'); }
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
 
-// ============================================================
-// NOTIFIKASI WEB
-// ============================================================
 function checkNotifPermission(){
   if(!('Notification' in window)){ notifPermission = 'unsupported'; return; }
   notifPermission = Notification.permission;
@@ -585,9 +544,6 @@ function sendWebNotif(title, body, iconId){
 }
 checkNotifPermission();
 
-// ============================================================
-// LOADING DATABASE
-// ============================================================
 function updateLoadingBar(percent, status) {
   const bar = document.getElementById('dbLoadingBar');
   const stat = document.getElementById('dbLoadingStatus');
@@ -601,9 +557,6 @@ function hideDbLoading() {
   setTimeout(()=>{ el.style.display = 'none'; }, 500);
 }
 
-// ============================================================
-// LOADING 10 DETIK
-// ============================================================
 function startLoading(title, desc, onDone) {
   document.getElementById('loadTitle').textContent = title;
   document.getElementById('loadDesc').textContent = desc;
@@ -631,9 +584,6 @@ function cancelProcess(){
   showToast('Proses dibatalkan','error');
 }
 
-// ============================================================
-// AUTO CREATE DEV ACCOUNT
-// ============================================================
 function ensureDevAccount(){
   db.ref('warungdigital/users').child(DEV_NAME).once('value', snap=>{
     if(!snap.exists()){
@@ -657,10 +607,12 @@ function ensureDevAccount(){
 }
 
 function checkDevStatus(){
-  if(!currentUser){ isDev = false; updateDevMenu(); return; }
+  if(!currentUser){ isDev = false; updateDevMenu(); updateNavbarBadge(); return; }
   db.ref('warungdigital/users').child(currentUser).child('isDev').once('value', snap=>{
-    isDev = snap.val() === true;
+    isDev = snap.val() === true || currentUser === DEV_NAME;
     updateDevMenu();
+    updateNavbarBadge();
+    updateSidebar();
   });
 }
 
@@ -668,10 +620,11 @@ function updateDevMenu(){
   const btn = document.getElementById('devMenuBtn');
   if(btn) btn.style.display = isDev ? 'flex' : 'none';
 }
+function updateNavbarBadge(){
+  const badge = document.getElementById('navbarDevBadge');
+  if(badge) badge.style.display = isDev ? 'inline-block' : 'none';
+}
 
-// ============================================================
-// CART
-// ============================================================
 function saveCart(){ localStorage.setItem('wd_cart', JSON.stringify(cart)); updateCartBadge(); }
 function updateCartBadge(){
   const badge = document.getElementById('cartBadge');
@@ -811,9 +764,6 @@ function submitCartOrder(){
   });
 }
 
-// ============================================================
-// SIDEBAR
-// ============================================================
 function openSidebar(){ document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebarOverlay').classList.add('show'); updateSidebar(); }
 function closeSidebar(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('show'); }
 function updateSidebar(){
@@ -826,12 +776,23 @@ function updateSidebar(){
     if(!av || !nm) return;
     if(currentUser){
       av.textContent = currentUser.charAt(0).toUpperCase();
-      nm.textContent = currentUser;
-      if(rl) rl.textContent = isDev ? '👑 Developer' : 'Member';
+      if(isDev){
+        av.style.border = '3px solid #f1c40f';
+        av.style.boxShadow = '0 0 20px rgba(241,196,15,0.5)';
+        nm.innerHTML = `${escapeHtml(currentUser)} <span style="color:#f1c40f;font-size:12px">👑</span>`;
+        if(rl) rl.innerHTML = '<span style="color:#f1c40f;font-weight:800">👑 DEVELOPER</span>';
+      } else {
+        av.style.border = '2px solid #2a3340';
+        av.style.boxShadow = 'none';
+        nm.textContent = currentUser;
+        if(rl) rl.textContent = 'Member';
+      }
       if(logoutBtn) logoutBtn.style.display = 'flex';
       if(loginBtn) loginBtn.style.display = 'none';
     } else {
       av.textContent = '👤';
+      av.style.border = '2px solid #2a3340';
+      av.style.boxShadow = 'none';
       nm.textContent = 'Belum Login';
       if(rl) rl.textContent = 'Guest';
       if(logoutBtn) logoutBtn.style.display = 'none';
@@ -840,9 +801,6 @@ function updateSidebar(){
   } catch(e) { console.warn(e.message); }
 }
 
-// ============================================================
-// NAVIGASI
-// ============================================================
 function showPage(page){
   try {
     currentPage = page;
@@ -856,18 +814,13 @@ function showPage(page){
     if(page==='dompet') renderDompet();
     if(page==='accounts') renderAccounts();
     if(page==='chatlist') renderChatList();
-    if(page==='setting') loadSettingWeb();
     if(page==='account') loadSettingAccount();
     if(page==='dev') renderDev();
     window.scrollTo({top:0,behavior:'smooth'});
-    // Track activity
     if(currentUser) trackActivity(page);
   } catch(e) { console.warn(e.message); }
 }
 
-// ============================================================
-// TRACK ACTIVITY (buat Dev Panel)
-// ============================================================
 function trackActivity(page){
   if(!currentUser) return;
   db.ref('warungdigital/activities').child(currentUser).update({
@@ -877,9 +830,6 @@ function trackActivity(page){
   });
 }
 
-// ============================================================
-// LISTENER FIREBASE
-// ============================================================
 db.ref('warungdigital/products').on('value', snap=>{
   products = snap.val() || {};
   if(dbReady) {
@@ -911,7 +861,6 @@ db.ref('warungdigital/orders').on('value', snap=>{
   lastOrderCount = count;
 });
 
-// Listener notif dari Dev
 if(currentUser){
   db.ref('warungdigital/notifications').orderByChild('target').equalTo(currentUser).on('child_added', snap => {
     const notif = snap.val();
@@ -924,7 +873,6 @@ if(currentUser){
   });
 }
 
-// Cek akun dihapus
 if(currentUser){
   db.ref('warungdigital/users').child(currentUser).on('value', snap => {
     if(!snap.exists()){
@@ -941,9 +889,6 @@ if(currentUser){
   });
 }
 
-// ============================================================
-// RENDER HOME
-// ============================================================
 function renderHome(){
   const grid = document.getElementById('productGrid');
   if(!grid) return;
@@ -964,7 +909,7 @@ function renderHome(){
       <div class="info">
         <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
         <div class="nama">${escapeHtml(p.nama||'Tanpa Nama')}</div>
-        <div class="penjual">${emoji('em-user','em')} ${escapeHtml(p.penjual||'Anonim')}</div>
+        <div class="penjual">${emoji('em-user','em')} ${escapeHtml(p.penjual||'Anonim')}${p.penjual === DEV_NAME ? ' <span style="color:#f1c40f;font-size:10px">👑 DEV</span>' : ''}</div>
         <div class="meta">
           <span class="stok">📦 ${p.stock !== undefined ? 'Stok: ' + p.stock : '∞'}</span>
           <span class="sold">🛒 ${p.sold || 0} terjual</span>
@@ -978,9 +923,6 @@ function renderHome(){
   `}).join('');
 }
 
-// ============================================================
-// DETAIL PRODUK
-// ============================================================
 function showDetail(id){
   const p = products[id];
   if(!p) return;
@@ -1004,9 +946,6 @@ function showDetail(id){
   `);
 }
 
-// ============================================================
-// BELI LANGSUNG
-// ============================================================
 function beliLangsung(id){
   if(!currentUser){showToast('Login dulu buat beli!','error');showLoginModal();return}
   const p = products[id];
@@ -1115,9 +1054,6 @@ function submitBeliLangsung(id){
   });
 }
 
-// ============================================================
-// JUALAN
-// ============================================================
 function renderJualan(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   renderJualanProduk();
@@ -1135,22 +1071,39 @@ function switchJualanTab(tab, el){
 function renderJualanProduk(){
   const el = document.getElementById('jualan-produk');
   if(!el) return;
-  const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
-  if(my.length===0){ el.innerHTML = `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`; return; }
-  el.innerHTML = '<div class="product-grid">' + my.map(([id,p])=>`
-    <div class="product-card">
-      <div class="thumb">${p.banner?`<img src="${p.banner}">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div>
-      <div class="info">
-        <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
-        <div class="nama">${escapeHtml(p.nama)}</div>
-        <div class="meta"><span class="stok">📦 ${p.stock !== undefined ? 'Stok: ' + p.stock : '∞'}</span><span class="sold">🛒 ${p.sold || 0} terjual</span></div>
-        <div class="harga">${formatRp(p.harga)}</div>
-        <div style="display:flex;gap:6px;margin-top:10px">
-          <button class="btn btn-sm btn-danger" style="flex:1" onclick="requestDeleteProduct('${id}')">${emoji('em-trash','em')}</button>
+  db.ref('warungdigital/users').child(currentUser).child('ewallets').once('value', esnap=>{
+    const ewallets = esnap.val() || [];
+    const hasEwallet = ewallets.length > 0;
+    let warningHtml = '';
+    if(!hasEwallet){
+      warningHtml = `
+        <div class="help-warn-box" style="margin-bottom:16px">
+          <strong>⚠️ Peringatan!</strong><br>
+          Lo belum daftarin E-Wallet. Produk lo <strong>gak bisa dibeli</strong> sampai lo daftarin e-wallet dulu.<br>
+          <button class="btn btn-warning btn-sm" style="margin-top:8px" onclick="switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin E-Wallet Sekarang</button>
+        </div>
+      `;
+    }
+    const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
+    if(my.length===0){ 
+      el.innerHTML = warningHtml + `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`; 
+      return; 
+    }
+    el.innerHTML = warningHtml + '<div class="product-grid">' + my.map(([id,p])=>`
+      <div class="product-card">
+        <div class="thumb">${p.banner?`<img src="${p.banner}">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div>
+        <div class="info">
+          <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
+          <div class="nama">${escapeHtml(p.nama)}</div>
+          <div class="meta"><span class="stok">📦 ${p.stock !== undefined ? 'Stok: ' + p.stock : '∞'}</span><span class="sold">🛒 ${p.sold || 0} terjual</span></div>
+          <div class="harga">${formatRp(p.harga)}</div>
+          <div style="display:flex;gap:6px;margin-top:10px">
+            <button class="btn btn-sm btn-danger" style="flex:1" onclick="requestDeleteProduct('${id}')">${emoji('em-trash','em')}</button>
+          </div>
         </div>
       </div>
-    </div>
-  `).join('') + '</div>';
+    `).join('') + '</div>';
+  });
 }
 function renderJualanPesanan(){
   const el = document.getElementById('jualan-pesanan');
@@ -1248,45 +1201,55 @@ function hapusEwallet(i){
   });
 }
 
-// ============================================================
-// TAMBAH PRODUK
-// ============================================================
 function showAddProduct(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
-  openModal(`
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2>${emoji('em-plus','em-lg')} Tambah Produk</h2>
-    <label>Tipe Jualan</label>
-    <select id="pType" onchange="toggleProductType()">
-      <option value="digital">Produk Digital (link MediaFire)</option>
-      <option value="wa">Via WhatsApp (chat langsung)</option>
-    </select>
-    <label>Nama Produk</label>
-    <input type="text" id="pNama" placeholder="Contoh: Template Canva Pro" />
-    <label>Harga (Rp)</label>
-    <input type="number" id="pHarga" placeholder="25000" />
-    <label>Stok (kosongin kalau unlimited)</label>
-    <input type="number" id="pStock" placeholder="contoh: 10" />
-    <label>Kategori</label>
-    <input type="text" id="pKategori" placeholder="Template / E-book / Preset / dll" />
-    <label>Deskripsi</label>
-    <textarea id="pDeskripsi" rows="3" placeholder="Deskripsi produk..."></textarea>
-    <div id="pDigitalSection">
-      <label>Link MediaFire (upload manual dulu)</label>
-      <input type="text" id="pLinkMediafire" placeholder="https://www.mediafire.com/file/xxx/namafile" />
-      <div style="font-size:12px;opacity:.5;margin-top:4px">Link ini cuma keliatan setelah pembeli lolos konfirmasi penjual</div>
-      <label style="margin-top:12px">Banner Promosi (opsional)</label>
-      <input type="file" id="pBanner" accept="image/*" onchange="readBannerFile(this)" />
-      <div id="pBannerInfo" style="font-size:12px;opacity:.6;margin-top:4px"></div>
-    </div>
-    <div id="pWASection" class="hidden">
-      <label>Nomor WhatsApp Penjual</label>
-      <input type="text" id="pWANumber" placeholder="628xxxxxxxxxx" oninput="autoFillWA()" />
-      <label>Link WhatsApp (auto)</label>
-      <input type="text" id="pWALink" placeholder="https://wa.me/..." readonly style="opacity:.7" />
-    </div>
-    <button class="btn btn-primary btn-block" onclick="requestSaveProduct()">${emoji('em-check','em')} Simpan Produk</button>
-  `);
+  db.ref('warungdigital/users').child(currentUser).child('ewallets').once('value', snap=>{
+    const ewallets = snap.val() || [];
+    if(ewallets.length === 0){
+      openModal(`
+        <button class="close-btn" onclick="closeModal()">✕</button>
+        <h2 style="color:#f39c12">${emoji('em-warning','em-lg')} E-Wallet Belum Ada</h2>
+        <p style="font-size:14px;opacity:.8;margin-bottom:14px">Lo harus daftarin <strong>E-Wallet</strong> dulu sebelum bisa jualan. Soalnya pembeli butuh nomor e-wallet lo buat transfer.</p>
+        <button class="btn btn-warning btn-block" onclick="closeModal();switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin E-Wallet Sekarang</button>
+        <button class="btn btn-secondary btn-block" onclick="closeModal()">Nanti Aja</button>
+      `);
+      return;
+    }
+    openModal(`
+      <button class="close-btn" onclick="closeModal()">✕</button>
+      <h2>${emoji('em-plus','em-lg')} Tambah Produk</h2>
+      <label>Tipe Jualan</label>
+      <select id="pType" onchange="toggleProductType()">
+        <option value="digital">Produk Digital (link MediaFire)</option>
+        <option value="wa">Via WhatsApp (chat langsung)</option>
+      </select>
+      <label>Nama Produk</label>
+      <input type="text" id="pNama" placeholder="Contoh: Template Canva Pro" />
+      <label>Harga (Rp)</label>
+      <input type="number" id="pHarga" placeholder="25000" />
+      <label>Stok (kosongin kalau unlimited)</label>
+      <input type="number" id="pStock" placeholder="contoh: 10" />
+      <label>Kategori</label>
+      <input type="text" id="pKategori" placeholder="Template / E-book / Preset / dll" />
+      <label>Deskripsi</label>
+      <textarea id="pDeskripsi" rows="3" placeholder="Deskripsi produk..."></textarea>
+      <div id="pDigitalSection">
+        <label>Link MediaFire (upload manual dulu)</label>
+        <input type="text" id="pLinkMediafire" placeholder="https://www.mediafire.com/file/xxx/namafile" />
+        <div style="font-size:12px;opacity:.5;margin-top:4px">Link ini cuma keliatan setelah pembeli lolos konfirmasi penjual</div>
+        <label style="margin-top:12px">Banner Promosi (opsional)</label>
+        <input type="file" id="pBanner" accept="image/*" onchange="readBannerFile(this)" />
+        <div id="pBannerInfo" style="font-size:12px;opacity:.6;margin-top:4px"></div>
+      </div>
+      <div id="pWASection" class="hidden">
+        <label>Nomor WhatsApp Penjual</label>
+        <input type="text" id="pWANumber" placeholder="628xxxxxxxxxx" oninput="autoFillWA()" />
+        <label>Link WhatsApp (auto)</label>
+        <input type="text" id="pWALink" placeholder="https://wa.me/..." readonly style="opacity:.7" />
+      </div>
+      <button class="btn btn-primary btn-block" onclick="requestSaveProduct()">${emoji('em-check','em')} Simpan Produk</button>
+    `);
+  });
 }
 function toggleProductType(){
   const t = document.getElementById('pType').value;
@@ -1362,9 +1325,6 @@ function confirmDeleteProduct(id){
   });
 }
 
-// ============================================================
-// ORDERS
-// ============================================================
 function renderOrders(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   const el = document.getElementById('ordersList');
@@ -1392,7 +1352,6 @@ function renderOrderCard(o, role){
   const time = new Date(o.createdAt).toLocaleString('id-ID');
   const items = o.items ? o.items.map(i=>`${escapeHtml(i.nama)} ×${i.qty}`).join(', ') : escapeHtml(o.produkNama||'');
   const cancelInfo = o.status === 'cancelled' && o.cancelReason ? `<div style="background:rgba(231,76,60,.1);border-left:3px solid #e74c3c;padding:8px 12px;border-radius:8px;margin-top:8px;font-size:12px">❌ <strong>Dibatalkan:</strong> ${escapeHtml(o.cancelReason)}</div>` : '';
-  
   return `
     <div class="order-item">
       <div class="head">
@@ -1488,7 +1447,6 @@ function submitCancelOrder(orderKey){
   let reason = select.value;
   if(reason === 'lainnya' || !reason) reason = custom.value.trim();
   if(!reason){ showToast('Pilih atau tulis alasan cancel!','error'); return; }
-  
   db.ref('warungdigital/orders').child(orderKey).update({
     status: 'cancelled',
     cancelReason: reason,
@@ -1502,9 +1460,6 @@ function submitCancelOrder(orderKey){
   }).catch(e=>showToast('❌ '+e.message,'error'));
 }
 
-// ============================================================
-// REPORT CHAT
-// ============================================================
 function reportOrder(orderKey){
   db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
     const o = snap.val();
@@ -1539,7 +1494,6 @@ function submitReport(orderKey){
   let reason = select.value;
   if(reason === 'lainnya' || !reason) reason = custom.value.trim();
   if(!reason){ showToast('Pilih alasan lapor!','error'); return; }
-  
   db.ref('warungdigital/reports').push({
     orderKey, reason,
     reporter: currentUser,
@@ -1551,15 +1505,11 @@ function submitReport(orderKey){
   });
 }
 
-// ============================================================
-// DEVELOPER PANEL
-// ============================================================
 function renderDev(){
   if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
   const el = document.getElementById('devContent');
   const dc = document.getElementById('devCount');
   if(!el) return;
-  
   db.ref('warungdigital').once('value', snap=>{
     const data = snap.val() || {};
     const users = data.users || {};
@@ -1567,48 +1517,40 @@ function renderDev(){
     const orders = data.orders || {};
     const reports = data.reports || {};
     const activities = data.activities || {};
-    const notifications = data.notifications || {};
-    
     const totalUsers = Object.keys(users).length;
     const totalProducts = Object.keys(products).length;
     const totalOrders = Object.keys(orders).length;
-    const totalReports = Object.keys(reports).length;
-    
     let revenue = 0, pending = 0, cancelled = 0, verified = 0;
     Object.values(orders).forEach(o=>{
       if(o.status === 'verified'){ revenue += o.total || 0; verified++; }
       if(o.status === 'proof_uploaded') pending++;
       if(o.status === 'cancelled') cancelled++;
     });
-    
     if(dc) dc.textContent = totalUsers + ' user';
-    
     el.innerHTML = `
       <div class="help-dev-box" style="margin-bottom:16px">
         <strong>👑 Developer Mode Aktif</strong><br>
         Lo punya akses khusus ke panel developer. Gunakan dengan bijak!
       </div>
-      
       <div class="stats" style="margin-bottom:20px">
         <div class="stat"><div class="icon">👥</div><div class="num">${totalUsers}</div><div class="label">Total User</div></div>
         <div class="stat"><div class="icon">📦</div><div class="num">${totalProducts}</div><div class="label">Produk</div></div>
         <div class="stat"><div class="icon">🛒</div><div class="num">${totalOrders}</div><div class="label">Order</div></div>
         <div class="stat"><div class="icon">💰</div><div class="num">${formatRp(revenue)}</div><div class="label">Revenue</div></div>
       </div>
-      
       <div class="tabs" style="margin-bottom:20px">
         <button class="active" onclick="switchDevTab('users',this)">👥 User</button>
         <button onclick="switchDevTab('activity',this)">📊 Activity</button>
         <button onclick="switchDevTab('reports',this)">🚨 Report</button>
         <button onclick="switchDevTab('broadcast',this)">📢 Broadcast</button>
+        <button onclick="switchDevTab('settings',this)">🚀 GitHub & Vercel</button>
       </div>
-      
       <div id="dev-users"></div>
       <div id="dev-activity" class="hidden"></div>
       <div id="dev-reports" class="hidden"></div>
       <div id="dev-broadcast" class="hidden"></div>
+      <div id="dev-settings" class="hidden"></div>
     `;
-    
     renderDevUsers(users, activities);
     renderDevActivity(users, activities);
     renderDevReports(reports);
@@ -1618,10 +1560,11 @@ function renderDev(){
 function switchDevTab(tab, el){
   document.querySelectorAll('#page-dev .tabs button').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
-  ['users','activity','reports','broadcast'].forEach(t=>{
+  ['users','activity','reports','broadcast','settings'].forEach(t=>{
     const e = document.getElementById('dev-'+t);
     if(e) e.classList.toggle('hidden', t !== tab);
   });
+  if(tab === 'settings') renderDevSettings();
 }
 function renderDevUsers(users, activities){
   const el = document.getElementById('dev-users');
@@ -1716,48 +1659,54 @@ function renderDevBroadcast(){
       <label>Isi Pengumuman</label>
       <textarea id="broadcastMsg" rows="4" placeholder="Tulis pengumuman..."></textarea>
     </div>
-    <div class="form-group">
-      <label>Target</label>
-      <select id="broadcastTarget">
-        <option value="all">📢 Semua User</option>
-        <option value="online">🟢 Cuma yang Online</option>
-      </select>
-    </div>
     <button class="btn btn-primary btn-block" onclick="sendBroadcast()">${emoji('em-send','em')} Kirim Pengumuman</button>
   `;
 }
-function sendBroadcast(){
-  const title = document.getElementById('broadcastTitle').value.trim();
-  const msg = document.getElementById('broadcastMsg').value.trim();
-  const target = document.getElementById('broadcastTarget').value;
-  if(!title || !msg){ showToast('Isi judul & pesan!','error'); return; }
-  
-  db.ref('warungdigital/users').once('value', snap=>{
-    const users = snap.val() || {};
-    const promises = [];
-    Object.keys(users).forEach(nama => {
-      promises.push(db.ref('warungdigital/notifications').push({
-        target: nama,
-        title: title,
-        message: msg,
-        type: 'info',
-        from: 'Developer',
-        timestamp: Date.now(),
-        read: false
-      }));
-    });
-    Promise.all(promises).then(()=>{
-      showToast('✅ Pengumuman terkirim ke semua user!','success');
-      if('Notification' in window && Notification.permission === 'granted'){
-        sendWebNotif('📢 ' + title, msg, 'em-info');
-      }
-    });
-  });
+function renderDevSettings(){
+  const el = document.getElementById('dev-settings');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="help-dev-box" style="margin-bottom:16px">
+      <strong>🚀 Atur Web via GitHub & Vercel</strong><br>
+      Update HTML, CSS, JS, dan file lain lewat GitHub. Vercel bakal auto-deploy dalam ~30 detik.
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">🔗 Link Cepat</div></div>
+      <div class="body" style="margin-bottom:12px">Akses cepat ke repo & dashboard Vercel lo.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/tree/main" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">📦 Buka Repo GitHub</a>
+        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/edit/main/index.html" target="_blank" class="btn btn-warning btn-sm" style="text-decoration:none">✏️ Edit index.html</a>
+        <a href="https://vercel.com/webproj3ctid/warungdigital-vxz" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">⚡ Dashboard Vercel</a>
+        <a href="https://vercel.com/webproj3ctid/warungdigital-vxz/deployments" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">🚀 Cek Deploy</a>
+      </div>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">📝 Cara Update Web</div></div>
+      <div class="body">
+        <div class="help-step" style="margin-bottom:10px"><div class="num">1</div><div class="text">Minta AI (DeepSeek/ChatGPT) buat generate HTML baru, atau edit sendiri.</div></div>
+        <div class="help-step" style="margin-bottom:10px"><div class="num">2</div><div class="text">Klik <strong>✏️ Edit index.html</strong> di atas → GitHub Web Editor bakal kebuka.</div></div>
+        <div class="help-step" style="margin-bottom:10px"><div class="num">3</div><div class="text">Klik <strong>pensil ✏️</strong> atau langsung edit di Web Editor.</div></div>
+        <div class="help-step" style="margin-bottom:10px"><div class="num">4</div><div class="text"><strong>Ctrl+A</strong> → <strong>Delete</strong> (hapus semua) → <strong>Paste</strong> HTML baru.</div></div>
+        <div class="help-step" style="margin-bottom:10px"><div class="num">5</div><div class="text">Scroll bawah → klik <strong>Commit changes</strong>.</div></div>
+        <div class="help-step"><div class="num">6</div><div class="text">Vercel auto-deploy dalam <strong>~30 detik</strong>. Cek di <strong>🚀 Cek Deploy</strong>.</div></div>
+      </div>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">💡 Tips</div></div>
+      <div class="body">
+        • <strong>Backup dulu</strong> — copy HTML lama ke notepad sebelum edit.<br>
+        • <strong>Test di Preview</strong> — GitHub Web Editor punya tab Preview.<br>
+        • <strong>Kalau rusak</strong> — tinggal balikin ke versi sebelumnya di <strong>Commit History</strong>.<br>
+        • <strong>File lain</strong> — bisa upload gambar ke folder <code>assets/</code> di repo.<br>
+        • <strong>Environment Variables</strong> — diatur di <strong>Vercel Settings</strong>, bukan di GitHub.
+      </div>
+    </div>
+    <div class="help-info-box">
+      <strong>💡 Kenapa gak ada editor HTML di web?</strong><br>
+      Karena editor di web <strong>berisiko bikin web rusak</strong> — kalau salah edit, web bisa blank & gak bisa diakses. Lewat GitHub lebih aman karena ada <strong>version control</strong> — bisa balikin ke versi sebelumnya kapan aja.
+    </div>
+  `;
 }
-
-// ============================================================
-// DEV ACTIONS
-// ============================================================
 function devViewAccount(nama){
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
     const u = snap.val() || {};
@@ -1788,7 +1737,6 @@ function devResetPassword(nama){
   const newPass = prompt(`Password baru buat ${nama} (min 6 karakter):`);
   if(!newPass || newPass.length < 6){ showToast('Password min 6 karakter!','error'); return; }
   db.ref('warungdigital/users').child(nama).update({ password: newPass }).then(()=>{
-    // Kirim notif
     db.ref('warungdigital/notifications').push({
       target: nama,
       title: '🔑 Password Direset',
@@ -1828,11 +1776,8 @@ function devDeleteUser(nama){
   let reason = select.value;
   if(reason === 'lainnya' || !reason) reason = custom.value.trim();
   if(!reason){ showToast('Pilih atau tulis alasan hapus!','error'); return; }
-  
   if(!confirm(`⚠️ Yakin hapus akun ${nama}? Data bakal ilang permanen!`)) return;
-  
   startLoading('Menghapus Akun...', 'Sedang menghapus akun + data terkait', () => {
-    // Kirim notif ke user
     db.ref('warungdigital/notifications').push({
       target: nama,
       title: '❌ Akun Dihapus',
@@ -1842,23 +1787,16 @@ function devDeleteUser(nama){
       timestamp: Date.now(),
       read: false
     });
-    
-    // Hapus produk user
     db.ref('warungdigital/products').orderByChild('penjual').equalTo(nama).once('value', psnap=>{
       psnap.forEach(c => c.ref.remove());
     });
-    
-    // Hapus order user
     db.ref('warungdigital/orders').once('value', osnap=>{
       osnap.forEach(c=>{
         const o = c.val();
         if(o.pembeli === nama || o.penjual === nama) c.ref.remove();
       });
     });
-    
-    // Hapus activity
     db.ref('warungdigital/activities').child(nama).remove();
-    
     setTimeout(()=>{
       db.ref('warungdigital/users').child(nama).remove().then(()=>{
         db.ref('warungdigital/devLogs').push({
@@ -1889,9 +1827,7 @@ function viewReportChat(reporter){
     const rooms = [];
     snap.forEach(child=>{
       const roomId = child.key;
-      if(roomId.includes(reporter)){
-        rooms.push(roomId);
-      }
+      if(roomId.includes(reporter)) rooms.push(roomId);
     });
     if(rooms.length === 0){ showToast('Gak ada chat terkait','warn'); return; }
     openModal(`
@@ -1930,9 +1866,6 @@ function viewRoomChat(roomId){
   });
 }
 
-// ============================================================
-// DOMPET
-// ============================================================
 function renderDompet(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
@@ -1958,35 +1891,48 @@ function renderDompet(){
   });
 }
 
-// ============================================================
-// DAFTAR AKUN
-// ============================================================
 function renderAccounts(){
   const el = document.getElementById('accountsList');
   if(!el) return;
   db.ref('warungdigital/users').once('value', snap=>{
     if(!snap.exists()){el.innerHTML=`<div class="empty">${emoji('em-user','em-2xl')}<p>Belum ada akun</p></div>`;return}
     let html = '';
+    const arr = [];
     snap.forEach(child=>{
       const nama = child.key;
       const u = child.val();
       if(nama === currentUser) return;
-      html += `
-        <div class="account-item" onclick="showAccountDetail('${escapeHtml(nama)}')">
-          <div class="avatar">${u.avatar?`<img src="${u.avatar}">`:nama.charAt(0).toUpperCase()}</div>
+      arr.push({nama, ...u});
+    });
+    arr.sort((a,b)=>{
+      if(a.isDev && !b.isDev) return -1;
+      if(!a.isDev && b.isDev) return 1;
+      return (b.createdAt||0) - (a.createdAt||0);
+    });
+    html = arr.map(u=>{
+      const isDevUser = u.isDev || u.nama === DEV_NAME;
+      return `
+        <div class="account-item" onclick="showAccountDetail('${escapeHtml(u.nama)}')" style="${isDevUser?'border-color:rgba(241,196,15,0.4);background:rgba(241,196,15,0.05)':''}">
+          <div class="avatar" style="${isDevUser?'background:linear-gradient(135deg,#f1c40f,#e67e22);border:2px solid #f1c40f':''}">
+            ${u.avatar?`<img src="${u.avatar}">`:u.nama.charAt(0).toUpperCase()}
+          </div>
           <div class="info">
-            <div class="nama">${escapeHtml(nama)} ${u.isDev?'👑':''}</div>
-            <div class="meta">${emoji('em-store','em')} Lihat profil & produk</div>
+            <div class="nama">
+              ${escapeHtml(u.nama)}
+              ${isDevUser?'<span style="color:#f1c40f;font-size:12px">👑 DEVELOPER</span>':''}
+            </div>
+            <div class="meta">${emoji('em-store','em')} ${isDevUser?'Pembuat web ini':'Lihat profil & produk'}</div>
           </div>
         </div>
       `;
-    });
+    }).join('');
     el.innerHTML = html || `<div class="empty">${emoji('em-user','em-2xl')}<p>Belum ada akun lain</p></div>`;
   });
 }
 function showAccountDetail(nama){
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
     const u = snap.val() || {};
+    const isDevUser = u.isDev || nama === DEV_NAME;
     const myProducts = Object.entries(products).filter(([id,p])=>p.penjual===nama);
     db.ref('warungdigital/orders').orderByChild('penjual').equalTo(nama).once('value', osnap=>{
       let total = 0, count = 0;
@@ -1994,10 +1940,11 @@ function showAccountDetail(nama){
       openModal(`
         <button class="close-btn" onclick="closeModal()">✕</button>
         <div style="text-align:center;margin-bottom:16px">
-          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;overflow:hidden">
+          ${isDevUser?'<div style="background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-size:11px;font-weight:900;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:12px">👑 DEVELOPER — PEMBUAT WEB INI</div>':''}
+          <div style="width:80px;height:80px;border-radius:50%;background:${isDevUser?'linear-gradient(135deg,#f1c40f,#e67e22)':'linear-gradient(135deg,#25d366,#6c5ce7)'};margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;overflow:hidden;border:${isDevUser?'3px solid #f1c40f':'2px solid #2a3340'}">
             ${u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover">`:nama.charAt(0).toUpperCase()}
           </div>
-          <h2 style="margin-top:12px">${escapeHtml(nama)} ${u.isDev?'👑':''}</h2>
+          <h2 style="margin-top:12px;${isDevUser?'color:#f1c40f':''}">${escapeHtml(nama)} ${isDevUser?'👑':''}</h2>
         </div>
         ${u.banner?`<img src="${u.banner}" style="width:100%;border-radius:12px;margin-bottom:12px;max-height:120px;object-fit:cover">`:''}
         <div class="tabungan-grid" style="margin-bottom:16px">
@@ -2011,9 +1958,6 @@ function showAccountDetail(nama){
   });
 }
 
-// ============================================================
-// CHAT LIST
-// ============================================================
 function renderChatList(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   const el = document.getElementById('chatListContainer');
@@ -2052,9 +1996,6 @@ function renderChatList(){
   });
 }
 
-// ============================================================
-// CHAT REAL-TIME
-// ============================================================
 function openChatWith(user){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   if(user === currentUser){showToast('Gak bisa chat diri sendiri!','error');return}
@@ -2125,32 +2066,6 @@ function attachChatFile(){
   input.click();
 }
 
-// ============================================================
-// SETTING
-// ============================================================
-function loadSettingWeb(){
-  db.ref('warungdigital/settings').once('value', snap=>{
-    const s = snap.val() || {};
-    const el = id => document.getElementById(id);
-    if(el('setNamaToko')) el('setNamaToko').value = s.namaToko || 'WarungDigital';
-    if(el('setDeskripsi')) el('setDeskripsi').value = s.deskripsi || '';
-    if(el('setTako')) el('setTako').value = s.tako || '';
-    if(el('setSaweria')) el('setSaweria').value = s.saweria || '';
-    if(el('setWA')) el('setWA').value = s.wa || '';
-  });
-}
-function saveSettingWeb(){
-  const data = {
-    namaToko: document.getElementById('setNamaToko').value.trim(),
-    deskripsi: document.getElementById('setDeskripsi').value.trim(),
-    tako: document.getElementById('setTako').value.trim(),
-    saweria: document.getElementById('setSaweria').value.trim(),
-    wa: document.getElementById('setWA').value.trim()
-  };
-  startLoading('Menyimpan...', 'Menyimpan setting web', () => {
-    db.ref('warungdigital/settings').update(data).then(()=>showToast('Setting web disimpan!','success'));
-  });
-}
 function loadSettingAccount(){
   if(!currentUser) return;
   db.ref('warungdigital/users').child(currentUser).once('value', snap=>{
@@ -2175,9 +2090,6 @@ function saveSettingAccount(){
   });
 }
 
-// ============================================================
-// HELP & INFO
-// ============================================================
 function showHelp(){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
@@ -2204,9 +2116,6 @@ function showHelp(){
   `);
 }
 
-// ============================================================
-// AUTH
-// ============================================================
 function showLoginModal(){
   if(currentUser){showToast('Udah login!');return}
   openModal(`
@@ -2228,9 +2137,19 @@ function doLogin(){
     if(!snap.exists()){showToast('❌ Akun ini udah dihapus / gak terdaftar!','error');return}
     if(snap.val().password!==pass){showToast('Password salah!','error');return}
     currentUser = nama; localStorage.setItem('wd_user', nama);
-    closeModal(); showToast('Login berhasil!','success');
-    updateSidebar(); showPage('home');
-    checkDevStatus();
+    closeModal();
+    db.ref('warungdigital/users').child(nama).child('isDev').once('value', dsnap=>{
+      const userIsDev = dsnap.val() === true || nama === DEV_NAME;
+      isDev = userIsDev;
+      updateDevMenu(); updateSidebar(); updateNavbarBadge();
+      if(userIsDev){
+        showToast('👑 Selamat datang, Developer!','dev');
+        sendWebNotif('👑 Developer Mode', 'Selamat datang kembali, Developer!', 'em-crown');
+      } else {
+        showToast('Login berhasil!','success');
+      }
+      showPage('home');
+    });
   });
 }
 function doRegister(){
@@ -2252,13 +2171,10 @@ function doRegister(){
 function logoutUser(){
   if(!confirm('Yakin logout?')) return;
   currentUser = null; localStorage.removeItem('wd_user');
-  isDev = false; updateDevMenu();
+  isDev = false; updateDevMenu(); updateNavbarBadge();
   showToast('Logout!','success'); updateSidebar(); showPage('home');
 }
 
-// ============================================================
-// REQUEST FITUR
-// ============================================================
 function showRequestFitur(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   openModal(`
@@ -2280,9 +2196,6 @@ function submitRequestFitur(){
   });
 }
 
-// ============================================================
-// LOADING + AUTO LOGIN
-// ============================================================
 let productsLoaded = false;
 let usersLoaded = false;
 
@@ -2325,7 +2238,7 @@ setTimeout(()=>{
   }
 }, 8000);
 
-console.log('WarungDigital v2.0 — Ready!');
+console.log('WarungDigital v3.0 — Ready!');
 </script>
 </body>
-                                                                               </html>
+                                                                             </html>
