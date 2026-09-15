@@ -23,13 +23,12 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .clock-top{display:flex;flex-direction:column;gap:2px;font-size:11px;font-weight:700}
 .clock-top .row{display:flex;gap:8px;align-items:center;color:#e0e6ed;opacity:.7}
 .clock-top .row span{color:#25d366;font-weight:800}
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,.8);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:1002;overflow-x:hidden;gap:10px;flex-wrap:wrap}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:999;overflow-x:hidden;gap:10px;flex-wrap:wrap}
 .navbar .left{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .navbar .logo{font-size:20px;font-weight:900;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;display:flex;align-items:center;gap:8px}
-.navbar .menu{display:flex;gap:8px;align-items:center;position:relative;z-index:1003}
+.navbar .menu{display:flex;gap:8px;align-items:center;position:relative}
 .navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:12px;transition:.2s;opacity:.7;background:transparent;border:none;position:relative;display:flex;align-items:center;gap:6px}
 .navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
-.navbar .menu button[onclick*="openSidebar"]{position:relative;z-index:1004}
 .cart-badge{position:absolute;top:2px;right:2px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
 .container{max-width:1100px;margin:0 auto;padding:20px;overflow-x:hidden}
 .hero{text-align:center;padding:60px 30px;position:relative;background:linear-gradient(135deg,rgba(20,26,34,.9),rgba(26,42,58,.9));border-radius:32px;margin-bottom:30px;border:1px solid #1f2a34;overflow:hidden}
@@ -86,7 +85,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .product-card .badge-habis{position:absolute;top:10px;left:10px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
 .empty{text-align:center;padding:50px 20px;opacity:.5;background:#141a22;border-radius:20px;border:1px dashed #2a3340}
 .empty svg{color:#25d366;opacity:.4;margin-bottom:12px}
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:9999;justify-content:center;align-items:center;padding:20px;overflow-x:hidden}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:10001;justify-content:center;align-items:center;padding:20px;overflow-x:hidden}
 .modal-overlay.show{display:flex}
 .modal{background:#141a22;border-radius:24px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;overflow-x:hidden;border:1px solid #2a3340}
 .modal .close-btn{float:right;font-size:26px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed}
@@ -112,7 +111,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 #loadingOverlay .progress{width:100%;height:8px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:20px}
 #loadingOverlay .progress-bar{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);width:0%;transition:width 1s linear;border-radius:10px}
 @keyframes dbSpin{to{transform:rotate(360deg)}}
-.sidebar{position:fixed;top:0;right:-360px;width:340px;max-width:90vw;height:100%;background:#141a22;border-left:1px solid #2a3340;box-shadow:-4px 0 40px rgba(0,0,0,.5);transition:.4s;z-index:1001;padding:30px 20px;overflow-y:auto;overflow-x:hidden}
+.sidebar{position:fixed;top:0;right:-360px;width:340px;max-width:90vw;height:100%;background:#141a22;border-left:1px solid #2a3340;box-shadow:-4px 0 40px rgba(0,0,0,.8);transition:.4s;z-index:10000;padding:30px 20px;overflow-y:auto;overflow-x:hidden}
 .sidebar.open{right:0}
 .sidebar .close{float:right;font-size:28px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed}
 .sidebar .user-info{text-align:center;padding:12px 0 20px 0;border-bottom:1px solid #1f2a34;margin-bottom:16px}
@@ -126,7 +125,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .sidebar .menu-item.danger svg{color:#e74c3c}
 .sidebar .menu-item.dev{color:#f1c40f;background:rgba(241,196,15,.08);border:1px solid rgba(241,196,15,.2)}
 .sidebar .menu-item.dev svg{color:#f1c40f}
-.sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000}
+.sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999}
 .sidebar-overlay.show{display:block}
 .tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto}
 .tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:14px;transition:.3s;white-space:nowrap;opacity:.6;display:flex;align-items:center;justify-content:center;gap:6px}
@@ -172,7 +171,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .account-item .info{flex:1;min-width:0}
 .account-item .info .nama{font-weight:700;font-size:15px}
 .account-item .info .meta{font-size:12px;opacity:.6;margin-top:2px}
-.chat-container{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;max-width:100%;max-height:100%;background:#0a0e14;z-index:9999;flex-direction:column;overflow:hidden}
+.chat-container{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;max-width:100%;max-height:100%;background:#0a0e14;z-index:10002;flex-direction:column;overflow:hidden}
 .chat-container.show{display:flex}
 .chat-header{display:flex;align-items:center;gap:12px;padding:14px 20px;background:#141a22;border-bottom:1px solid #1f2a34;flex-shrink:0}
 .chat-header .back{font-size:22px;cursor:pointer;opacity:.7;background:transparent;border:none;color:#e0e6ed;padding:4px}
@@ -211,21 +210,18 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .upload-area .icon{font-size:32px;color:#25d366;margin-bottom:8px}
 .upload-area .text{font-size:13px;opacity:.7}
 .banner-dev{width:100%;aspect-ratio:16/5;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;overflow:hidden;margin-bottom:16px;position:relative;display:flex;align-items:center;justify-content:center;color:#2a3340;font-size:14px;cursor:pointer}
-.banner-dev img{width:100%;height:100%;object-fit:cover}
+.banner-dev img,.banner-dev video{width:100%;height:100%;object-fit:cover}
 .banner-dev .placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.4}
 .calc-display{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:20px;text-align:right;font-size:32px;font-weight:900;color:#25d366;margin-bottom:12px;min-height:60px;word-break:break-all}
 .calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .calc-buttons button{padding:16px;border-radius:12px;border:none;background:#1f2a34;color:#e0e6ed;font-size:18px;font-weight:700;cursor:pointer;transition:.2s}
 .calc-buttons button:hover{background:#2a3340}
 .calc-buttons button.op{background:#25d366;color:#fff}
-.calc-buttons button.op:hover{background:#20b858}
 .calc-buttons button.equals{background:#6c5ce7;color:#fff;grid-column:span 2}
-.income-list{max-height:300px;overflow-y:auto}
 .income-item{background:#0f151c;border:1px solid #1f2a34;border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
 .income-item .info{flex:1;min-width:0}
 .income-item .info .nama{font-weight:700;font-size:14px}
 .income-item .info .tanggal{font-size:11px;opacity:.5}
-.income-item .nominal{font-weight:900;font-size:16px;color:#25d366}
 .income-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:4px 8px}
 .footer{text-align:center;padding:30px 20px;opacity:.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
 ::-webkit-scrollbar{width:6px}
@@ -329,11 +325,15 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="javascript:showPage('home')">Home</a>
 <a href="javascript:showPage('jualan')">Jualan</a>
 <button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
-<button onclick="openSidebar()" style="font-size:20px;padding:8px 14px;position:relative;z-index:1004"><svg class="em em-lg"><use href="#em-dots"/></svg></button>
+<button onclick="openSidebar()" style="font-size:20px;padding:8px 14px;position:relative;z-index:1000"><svg class="em em-lg"><use href="#em-dots"/></svg></button>
 </div>
 </nav>
 
 <div id="page-home">
+<div id="homeBanner" style="display:none;width:100%;aspect-ratio:16/5;border-radius:24px;overflow:hidden;margin-bottom:20px;border:1px solid #1f2a34;background:#0f151c">
+<img id="homeBannerImg" style="width:100%;height:100%;object-fit:cover;display:none" />
+<video id="homeBannerVid" style="width:100%;height:100%;object-fit:cover;display:none" autoplay muted loop playsinline></video>
+</div>
 <div class="hero">
 <div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
 <h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
@@ -438,7 +438,7 @@ Kalkulator ini buat nyatet penghasilan lo. Bisa ditambah, dikurang, dikali, diba
 <h2 style="font-size:16px"><svg class="em em-lg" style="color:#25d366"><use href="#em-wallet"/></svg> Catatan Penghasilan</h2>
 <span class="count" id="incomeCount">0</span>
 </div>
-<div class="income-list" id="incomeList">
+<div id="incomeList">
 <div class="empty"><p>Belum ada catatan</p></div>
 </div>
 </div>
@@ -708,6 +708,30 @@ function updateNavbarBadge(){
   if(badge) badge.style.display = isDev ? 'inline-block' : 'none';
 }
 
+function loadHomeBanner(){
+  db.ref('warungdigital/settings').once('value', snap=>{
+    const s = snap.val() || {};
+    const wrap = document.getElementById('homeBanner');
+    const img = document.getElementById('homeBannerImg');
+    const vid = document.getElementById('homeBannerVid');
+    if(!wrap || !img || !vid) return;
+    if(s.banner){
+      wrap.style.display = 'block';
+      if(s.bannerType === 'video'){
+        img.style.display = 'none';
+        vid.style.display = 'block';
+        vid.src = s.banner;
+      } else {
+        vid.style.display = 'none';
+        img.style.display = 'block';
+        img.src = s.banner;
+      }
+    } else {
+      wrap.style.display = 'none';
+    }
+  });
+}
+
 function saveCart(){ localStorage.setItem('wd_cart', JSON.stringify(cart)); updateCartBadge(); }
 function updateCartBadge(){
   const badge = document.getElementById('cartBadge');
@@ -890,7 +914,7 @@ function showPage(page){
     document.querySelectorAll('[id^="page-"]').forEach(el=>el.classList.add('hidden'));
     const el = document.getElementById('page-'+page);
     if(el) el.classList.remove('hidden');
-    if(page==='home') renderHome();
+    if(page==='home'){ renderHome(); loadHomeBanner(); }
     if(page==='jualan') renderJualan();
     if(page==='cart') renderCart();
     if(page==='orders') renderOrders();
@@ -1665,6 +1689,7 @@ function renderDev(){
     const reports = data.reports || {};
     const activities = data.activities || {};
     const banner = data.settings?.banner || '';
+    const bannerType = data.settings?.bannerType || 'image';
     const totalUsers = Object.keys(users).length;
     const totalProducts = Object.keys(products).length;
     const totalOrders = Object.keys(orders).length;
@@ -1677,7 +1702,7 @@ function renderDev(){
     if(dc) dc.textContent = totalUsers + ' user';
     el.innerHTML = `
       <div class="banner-dev" id="devBanner" onclick="changeDevBanner()">
-        ${banner ? `<img src="${banner}" />` : `<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik buat upload banner</div></div>`}
+        ${banner ? (bannerType === 'video' ? `<video src="${banner}" autoplay muted loop playsinline></video>` : `<img src="${banner}" />`) : `<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik buat upload banner</div></div>`}
         <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:4px 12px;border-radius:20px;font-size:11px;color:#fff">✏️ Ganti Banner</div>
       </div>
       <div class="help-dev-box" style="margin-bottom:16px">
@@ -1713,15 +1738,22 @@ function changeDevBanner(){
   if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
   const input = document.createElement('input');
   input.type = 'file';
-  input.accept = 'image/*';
+  input.accept = 'image/*,video/mp4,video/webm';
   input.onchange = e=>{
     const file = e.target.files[0];
     if(!file) return;
-    if(file.size > 2*1024*1024){ showToast('Banner max 2MB!','error'); return; }
+    const isVideo = file.type.startsWith('video/');
+    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
+    const maxLabel = isVideo ? '5MB' : '2MB';
+    if(file.size > maxSize){ showToast(`Banner max ${maxLabel}!`,'error'); return; }
     const reader = new FileReader();
     reader.onload = ev=>{
-      db.ref('warungdigital/settings').update({ banner: ev.target.result }).then(()=>{
-        showToast('✅ Banner dashboard diganti!','success');
+      db.ref('warungdigital/settings').update({
+        banner: ev.target.result,
+        bannerType: isVideo ? 'video' : 'image'
+      }).then(()=>{
+        showToast('✅ Banner diganti!','success');
+        loadHomeBanner();
         renderDev();
       });
     };
@@ -2421,6 +2453,7 @@ function checkDbReady() {
     setTimeout(()=>{
       hideDbLoading();
       try { ensureDevAccount(); } catch(e){ console.warn(e); }
+      try { loadHomeBanner(); } catch(e){}
       try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
       try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
       try { if(currentUser) checkDevStatus(); } catch(e){}
@@ -2435,6 +2468,7 @@ setTimeout(()=>{
     updateLoadingBar(100, 'Selesai!');
     hideDbLoading();
     try { ensureDevAccount(); } catch(e){}
+    try { loadHomeBanner(); } catch(e){}
     try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
     try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
     try { if(currentUser) checkDevStatus(); } catch(e){}
@@ -2445,4 +2479,4 @@ setTimeout(()=>{
 console.log('WarungDigital v4.0 — Ready!');
 </script>
 </body>
-                                           </html>
+  </html>
