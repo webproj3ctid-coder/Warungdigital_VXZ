@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>WarungDigital — Marketplace Produk Digital</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2325d366'/%3E%3Cstop offset='100%25' stop-color='%236c5ce7'/%3E%3C/linearGradient%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='2' stdDeviation='3' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='white' stroke-opacity='0.15' stroke-width='1'/%3E%3Ctext x='50' y='68' font-size='55' font-weight='900' text-anchor='middle' fill='white' font-family='Arial, sans-serif' filter='url(%23s)'%3EW%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="WarungDigital — Marketplace Produk Digital">
@@ -11,24 +11,29 @@
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;max-width:100%}
+html,body{width:100%;max-width:100vw;overflow-x:hidden;position:relative}
 html{scroll-behavior:smooth}
-body{background:#070a0f;color:#e0e6ed;min-height:100vh;overflow-x:hidden}
+body{background:#070a0f;color:#e0e6ed;min-height:100vh}
 button{cursor:pointer;font-family:inherit}
 input,textarea,select{font-family:inherit}
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 20%,rgba(37,211,102,.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(108,92,231,.06) 0%,transparent 40%);z-index:-1;pointer-events:none}
 .em{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.15em;fill:currentColor}
 .em-lg{width:1.5em;height:1.5em}.em-xl{width:2.5em;height:2.5em}.em-2xl{width:4em;height:4em}
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,.8);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:1002}
+.clock-top{display:flex;flex-direction:column;gap:2px;font-size:11px;font-weight:700}
+.clock-top .row{display:flex;gap:8px;align-items:center;color:#e0e6ed;opacity:.7}
+.clock-top .row span{color:#25d366;font-weight:800}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,.8);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:1002;overflow-x:hidden;gap:10px;flex-wrap:wrap}
+.navbar .left{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .navbar .logo{font-size:20px;font-weight:900;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;display:flex;align-items:center;gap:8px}
 .navbar .menu{display:flex;gap:8px;align-items:center;position:relative;z-index:1003}
 .navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:12px;transition:.2s;opacity:.7;background:transparent;border:none;position:relative;display:flex;align-items:center;gap:6px}
 .navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
 .navbar .menu button[onclick*="openSidebar"]{position:relative;z-index:1004}
 .cart-badge{position:absolute;top:2px;right:2px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
-.container{max-width:1100px;margin:0 auto;padding:20px}
+.container{max-width:1100px;margin:0 auto;padding:20px;overflow-x:hidden}
 .hero{text-align:center;padding:60px 30px;position:relative;background:linear-gradient(135deg,rgba(20,26,34,.9),rgba(26,42,58,.9));border-radius:32px;margin-bottom:30px;border:1px solid #1f2a34;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(37,211,102,.1),transparent 30%);animation:rotate 8s linear infinite;z-index:0}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(37,211,102,.1),transparent 30%);animation:rotate 8s linear infinite;z-index:0;pointer-events:none}
 @keyframes rotate{to{transform:rotate(360deg)}}
 .hero>*{position:relative;z-index:1}
 .hero .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);color:#25d366;font-size:12px;font-weight:700;margin-bottom:16px}
@@ -81,9 +86,9 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .product-card .badge-habis{position:absolute;top:10px;left:10px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
 .empty{text-align:center;padding:50px 20px;opacity:.5;background:#141a22;border-radius:20px;border:1px dashed #2a3340}
 .empty svg{color:#25d366;opacity:.4;margin-bottom:12px}
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:9999;justify-content:center;align-items:center;padding:20px}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:9999;justify-content:center;align-items:center;padding:20px;overflow-x:hidden}
 .modal-overlay.show{display:flex}
-.modal{background:#141a22;border-radius:24px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid #2a3340}
+.modal{background:#141a22;border-radius:24px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;overflow-x:hidden;border:1px solid #2a3340}
 .modal .close-btn{float:right;font-size:26px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed}
 .modal h2{font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .modal label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8}
@@ -107,7 +112,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 #loadingOverlay .progress{width:100%;height:8px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:20px}
 #loadingOverlay .progress-bar{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);width:0%;transition:width 1s linear;border-radius:10px}
 @keyframes dbSpin{to{transform:rotate(360deg)}}
-.sidebar{position:fixed;top:0;right:-360px;width:340px;height:100%;background:#141a22;border-left:1px solid #2a3340;box-shadow:-4px 0 40px rgba(0,0,0,.5);transition:.4s;z-index:1001;padding:30px 20px;overflow-y:auto}
+.sidebar{position:fixed;top:0;right:-360px;width:340px;max-width:90vw;height:100%;background:#141a22;border-left:1px solid #2a3340;box-shadow:-4px 0 40px rgba(0,0,0,.5);transition:.4s;z-index:1001;padding:30px 20px;overflow-y:auto;overflow-x:hidden}
 .sidebar.open{right:0}
 .sidebar .close{float:right;font-size:28px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed}
 .sidebar .user-info{text-align:center;padding:12px 0 20px 0;border-bottom:1px solid #1f2a34;margin-bottom:16px}
@@ -147,7 +152,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .cart-total{display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid #1f2a34;margin-top:14px;font-weight:700;font-size:16px}
 .cart-total .total{color:#25d366;font-size:22px}
 .wallet-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:30px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
-.wallet-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,.1),transparent 50%);animation:pulse 4s ease-in-out infinite}
+.wallet-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,.1),transparent 50%);animation:pulse 4s ease-in-out infinite;pointer-events:none}
 @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
 .wallet-card>*{position:relative;z-index:1}
 .wallet-card .label{font-size:13px;opacity:.6;margin-bottom:8px}
@@ -167,18 +172,19 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .account-item .info{flex:1;min-width:0}
 .account-item .info .nama{font-weight:700;font-size:15px}
 .account-item .info .meta{font-size:12px;opacity:.6;margin-top:2px}
-.chat-container{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e14;z-index:9999;flex-direction:column}
+.chat-container{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;max-width:100%;max-height:100%;background:#0a0e14;z-index:9999;flex-direction:column;overflow:hidden}
 .chat-container.show{display:flex}
 .chat-header{display:flex;align-items:center;gap:12px;padding:14px 20px;background:#141a22;border-bottom:1px solid #1f2a34;flex-shrink:0}
 .chat-header .back{font-size:22px;cursor:pointer;opacity:.7;background:transparent;border:none;color:#e0e6ed;padding:4px}
 .chat-header .chat-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700;overflow:hidden}
 .chat-header .chat-name{font-weight:700;font-size:16px}
-.chat-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:8px;background:#0a0e14}
+.chat-body{flex:1;overflow-y:auto;overflow-x:hidden;padding:20px;display:flex;flex-direction:column;gap:8px;background:#0a0e14}
 .chat-msg{max-width:75%;padding:10px 16px;border-radius:18px;font-size:14px;word-wrap:break-word;animation:fadeIn .2s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .chat-msg.me{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .chat-msg.other{background:#1f2a34;color:#e0e6ed;align-self:flex-start;border-bottom-left-radius:4px}
 .chat-msg .time{font-size:10px;opacity:.6;margin-top:4px;display:block}
+.chat-msg img{max-width:100%;border-radius:12px;margin-top:6px}
 .chat-footer{display:flex;gap:8px;padding:12px 16px;background:#141a22;border-top:1px solid #1f2a34;flex-shrink:0}
 .chat-footer .attach{font-size:22px;cursor:pointer;opacity:.6;background:transparent;border:none;color:#e0e6ed;padding:4px}
 .chat-footer input{flex:1;padding:12px 16px;border-radius:24px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none}
@@ -204,6 +210,23 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .upload-area img{max-width:100%;max-height:150px;border-radius:12px;margin-top:8px}
 .upload-area .icon{font-size:32px;color:#25d366;margin-bottom:8px}
 .upload-area .text{font-size:13px;opacity:.7}
+.banner-dev{width:100%;aspect-ratio:16/5;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;overflow:hidden;margin-bottom:16px;position:relative;display:flex;align-items:center;justify-content:center;color:#2a3340;font-size:14px;cursor:pointer}
+.banner-dev img{width:100%;height:100%;object-fit:cover}
+.banner-dev .placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.4}
+.calc-display{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:20px;text-align:right;font-size:32px;font-weight:900;color:#25d366;margin-bottom:12px;min-height:60px;word-break:break-all}
+.calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.calc-buttons button{padding:16px;border-radius:12px;border:none;background:#1f2a34;color:#e0e6ed;font-size:18px;font-weight:700;cursor:pointer;transition:.2s}
+.calc-buttons button:hover{background:#2a3340}
+.calc-buttons button.op{background:#25d366;color:#fff}
+.calc-buttons button.op:hover{background:#20b858}
+.calc-buttons button.equals{background:#6c5ce7;color:#fff;grid-column:span 2}
+.income-list{max-height:300px;overflow-y:auto}
+.income-item{background:#0f151c;border:1px solid #1f2a34;border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.income-item .info{flex:1;min-width:0}
+.income-item .info .nama{font-weight:700;font-size:14px}
+.income-item .info .tanggal{font-size:11px;opacity:.5}
+.income-item .nominal{font-weight:900;font-size:16px;color:#25d366}
+.income-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:4px 8px}
 .footer{text-align:center;padding:30px 20px;opacity:.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#070a0f}
@@ -252,9 +275,10 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <symbol id="em-help" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></symbol>
 <symbol id="em-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
 <symbol id="em-crown" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></symbol>
-<symbol id="em-shield" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></symbol>
 <symbol id="em-eye" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></symbol>
 <symbol id="em-report" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+<symbol id="em-calc" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 16h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm-8 4H5v-2h4v2zm0-4H5v-2h4v2zm0-4H5V7h4v2zm8 0h-2V7h2v2zm2-6H5V3h14v2z"/></symbol>
+<symbol id="em-camera" viewBox="0 0 24 24"><path d="M12 15.2c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2 1.43 3.2 3.2 3.2zM9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></symbol>
 </svg>
 
 <div id="dbLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:999999;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease">
@@ -281,6 +305,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <button class="menu-item" onclick="showPage('cart');closeSidebar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
 <button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> History Pembelian</button>
 <button class="menu-item" onclick="showPage('dompet');closeSidebar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
+<button class="menu-item" onclick="showPage('calculator');closeSidebar()"><svg><use href="#em-calc"/></svg> Kalkulator Penghasilan</button>
 <button class="menu-item" onclick="showPage('accounts');closeSidebar()"><svg><use href="#em-user"/></svg> Liat Info Akun</button>
 <button class="menu-item" onclick="showPage('chatlist');closeSidebar()"><svg><use href="#em-send"/></svg> Chat</button>
 <button class="menu-item" onclick="showPage('account');closeSidebar()"><svg><use href="#em-user"/></svg> Setting Akun</button>
@@ -293,7 +318,13 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 
 <div class="container">
 <nav class="navbar">
-<div class="logo" onclick="showPage('home')"><svg class="em em-lg"><use href="#em-bag"/></svg> WarungDigital <span id="navbarDevBadge" style="display:none;background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px;margin-left:6px">👑 DEV</span></div>
+<div class="left">
+<div class="clock-top">
+<div class="row">🕐 <span id="clockWIB">--:--:--</span> WIB</div>
+<div class="row" style="font-size:10px">🌏 <span id="clockWITA">--:--:--</span> WITA</div>
+<div class="row" style="font-size:10px">🌏 <span id="clockWIT">--:--:--</span> WIT</div>
+</div>
+</div>
 <div class="menu">
 <a href="javascript:showPage('home')">Home</a>
 <a href="javascript:showPage('jualan')">Jualan</a>
@@ -370,6 +401,46 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <div class="section">
 <div class="section-header"><h2 style="font-size:18px"><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> Riwayat Transaksi</h2></div>
 <div id="walletHistory"><div class="empty"><svg class="em-2xl"><use href="#em-receipt"/></svg><p>Belum ada transaksi</p></div></div>
+</div>
+</div>
+
+<div id="page-calculator" class="hidden">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-calc"/></svg> Kalkulator Penghasilan</h2>
+</div>
+<div class="help-info-box">
+Kalkulator ini buat nyatet penghasilan lo. Bisa ditambah, dikurang, dikali, dibagi. Hasilnya bisa disimpen.
+</div>
+<div class="calc-display" id="calcDisplay">0</div>
+<div class="calc-buttons">
+<button onclick="calcInput('7')">7</button>
+<button onclick="calcInput('8')">8</button>
+<button onclick="calcInput('9')">9</button>
+<button class="op" onclick="calcInput('/')">÷</button>
+<button onclick="calcInput('4')">4</button>
+<button onclick="calcInput('5')">5</button>
+<button onclick="calcInput('6')">6</button>
+<button class="op" onclick="calcInput('*')">×</button>
+<button onclick="calcInput('1')">1</button>
+<button onclick="calcInput('2')">2</button>
+<button onclick="calcInput('3')">3</button>
+<button class="op" onclick="calcInput('-')">−</button>
+<button onclick="calcInput('0')">0</button>
+<button onclick="calcInput('.')">.</button>
+<button class="op" onclick="calcInput('=')">=</button>
+<button class="op" onclick="calcInput('+')">+</button>
+<button onclick="calcClear()" style="background:#e74c3c;color:#fff">C</button>
+<button onclick="calcBackspace()" style="background:#e74c3c;color:#fff">⌫</button>
+<button class="equals" onclick="saveCalcResult()">💾 Simpen ke Catatan</button>
+</div>
+<div class="section" style="margin-top:24px">
+<div class="section-header">
+<h2 style="font-size:16px"><svg class="em em-lg" style="color:#25d366"><use href="#em-wallet"/></svg> Catatan Penghasilan</h2>
+<span class="count" id="incomeCount">0</span>
+</div>
+<div class="income-list" id="incomeList">
+<div class="empty"><p>Belum ada catatan</p></div>
+</div>
 </div>
 </div>
 
@@ -491,6 +562,7 @@ let dbReady = false;
 let notifPermission = 'default';
 let isSubmitting = false;
 let isDev = false;
+let calcExpr = '';
 
 const DEV_NAME = "vardev";
 const DEV_PASS = "vardevanakganteng2";
@@ -509,6 +581,17 @@ function showToast(msg, type){
 }
 function openModal(html){ document.getElementById('modalContent').innerHTML = html; document.getElementById('modalOverlay').classList.add('show'); }
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
+
+setInterval(()=>{
+  const now = new Date();
+  const wib = new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jakarta'}));
+  const wita = new Date(now.toLocaleString('en-US',{timeZone:'Asia/Makassar'}));
+  const wit = new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jayapura'}));
+  const f = d => String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0');
+  const e1 = document.getElementById('clockWIB'); if(e1) e1.textContent = f(wib);
+  const e2 = document.getElementById('clockWITA'); if(e2) e2.textContent = f(wita);
+  const e3 = document.getElementById('clockWIT'); if(e3) e3.textContent = f(wit);
+}, 1000);
 
 function checkNotifPermission(){
   if(!('Notification' in window)){ notifPermission = 'unsupported'; return; }
@@ -812,6 +895,7 @@ function showPage(page){
     if(page==='cart') renderCart();
     if(page==='orders') renderOrders();
     if(page==='dompet') renderDompet();
+    if(page==='calculator') renderCalculator();
     if(page==='accounts') renderAccounts();
     if(page==='chatlist') renderChatList();
     if(page==='account') loadSettingAccount();
@@ -1326,6 +1410,68 @@ function confirmDeleteProduct(id){
   });
 }
 
+function renderCalculator(){
+  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  calcExpr = '';
+  const d = document.getElementById('calcDisplay');
+  if(d) d.textContent = '0';
+  db.ref('warungdigital/income').child(currentUser).once('value', snap=>{
+    const items = snap.val() || {};
+    const arr = Object.entries(items).map(([id,v])=>({id,...v}));
+    arr.sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
+    const el = document.getElementById('incomeList');
+    const ic = document.getElementById('incomeCount');
+    if(ic) ic.textContent = arr.length;
+    if(!el) return;
+    if(arr.length === 0){ el.innerHTML = '<div class="empty"><p>Belum ada catatan</p></div>'; return; }
+    el.innerHTML = arr.map(i=>`
+      <div class="income-item">
+        <div class="info">
+          <div class="nama">💰 ${formatRp(i.nominal)}</div>
+          <div class="tanggal">${new Date(i.timestamp).toLocaleString('id-ID')}</div>
+        </div>
+        <button class="del" onclick="hapusIncome('${i.id}')">${emoji('em-trash','em')}</button>
+      </div>
+    `).join('');
+  });
+}
+function calcInput(val){
+  const display = document.getElementById('calcDisplay');
+  if(val === '='){
+    try {
+      const result = Function('"use strict";return(' + calcExpr + ')')();
+      display.textContent = result;
+      calcExpr = String(result);
+    } catch(e) { display.textContent = 'Error'; calcExpr = ''; }
+    return;
+  }
+  calcExpr += val;
+  display.textContent = calcExpr;
+}
+function calcClear(){ calcExpr = ''; document.getElementById('calcDisplay').textContent = '0'; }
+function calcBackspace(){ calcExpr = calcExpr.slice(0, -1); document.getElementById('calcDisplay').textContent = calcExpr || '0'; }
+function saveCalcResult(){
+  if(!currentUser){ showToast('Login dulu!','error'); return; }
+  const display = document.getElementById('calcDisplay');
+  const result = parseFloat(display.textContent);
+  if(isNaN(result) || result === 0){ showToast('Hasil kalkulasi kosong!','error'); return; }
+  if(!confirm(`Simpen ${formatRp(result)} ke catatan penghasilan?`)) return;
+  db.ref('warungdigital/income').child(currentUser).push({
+    nominal: result,
+    timestamp: Date.now()
+  }).then(()=>{
+    showToast('✅ Catatan penghasilan tersimpan!','success');
+    renderCalculator();
+  });
+}
+function hapusIncome(id){
+  if(!confirm('Hapus catatan ini?')) return;
+  db.ref('warungdigital/income').child(currentUser).child(id).remove().then(()=>{
+    showToast('Catatan dihapus','success');
+    renderCalculator();
+  });
+}
+
 function renderOrders(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   const el = document.getElementById('ordersList');
@@ -1518,6 +1664,7 @@ function renderDev(){
     const orders = data.orders || {};
     const reports = data.reports || {};
     const activities = data.activities || {};
+    const banner = data.settings?.banner || '';
     const totalUsers = Object.keys(users).length;
     const totalProducts = Object.keys(products).length;
     const totalOrders = Object.keys(orders).length;
@@ -1529,6 +1676,10 @@ function renderDev(){
     });
     if(dc) dc.textContent = totalUsers + ' user';
     el.innerHTML = `
+      <div class="banner-dev" id="devBanner" onclick="changeDevBanner()">
+        ${banner ? `<img src="${banner}" />` : `<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik buat upload banner</div></div>`}
+        <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:4px 12px;border-radius:20px;font-size:11px;color:#fff">✏️ Ganti Banner</div>
+      </div>
       <div class="help-dev-box" style="margin-bottom:16px">
         <strong>👑 Developer Mode Aktif</strong><br>
         Lo punya akses khusus ke panel developer. Gunakan dengan bijak!
@@ -1557,6 +1708,26 @@ function renderDev(){
     renderDevReports(reports);
     renderDevBroadcast();
   });
+}
+function changeDevBanner(){
+  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    if(file.size > 2*1024*1024){ showToast('Banner max 2MB!','error'); return; }
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      db.ref('warungdigital/settings').update({ banner: ev.target.result }).then(()=>{
+        showToast('✅ Banner dashboard diganti!','success');
+        renderDev();
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
 }
 function switchDevTab(tab, el){
   document.querySelectorAll('#page-dev .tabs button').forEach(b=>b.classList.remove('active'));
@@ -1824,6 +1995,7 @@ function devDeleteUser(nama){
       });
     });
     db.ref('warungdigital/activities').child(nama).remove();
+    db.ref('warungdigital/income').child(nama).remove();
     setTimeout(()=>{
       db.ref('warungdigital/users').child(nama).remove().then(()=>{
         db.ref('warungdigital/devLogs').push({
@@ -2137,6 +2309,11 @@ function showHelp(){
       <div class="help-step"><div class="num">3</div><div class="text">Upload bukti, klik <strong>Kirim Pesanan</strong>.</div></div>
       <div class="help-step"><div class="num">4</div><div class="text">Penjual konfirmasi → lo dapet <strong>link download</strong>.</div></div>
     </div>
+    <div class="help-section"><h3>${emoji('em-calc','em')} Kalkulator Penghasilan</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>Kalkulator Penghasilan</strong> di sidebar.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Hitung pakai tombol + − × ÷.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Klik <strong>Simpen ke Catatan</strong> buat nyatet hasil.</div></div>
+    </div>
     <div class="help-warn-box"><strong>🔔 Notifikasi Web:</strong> Klik tombol <strong>Aktifkan Notif</strong> di Setting Akun, terus pilih <strong>Allow</strong> di browser.</div>
     <div class="help-info-box"><strong>Bantuan?</strong> Tako admin: <a href="https://tako.id/warungvaro" target="_blank" style="color:#25d366">tako.id/warungvaro</a></div>
     <button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti!</button>
@@ -2265,7 +2442,7 @@ setTimeout(()=>{
   }
 }, 8000);
 
-console.log('WarungDigital v3.0 — Ready!');
+console.log('WarungDigital v4.0 — Ready!');
 </script>
 </body>
-</html>
+                                           </html>
