@@ -17,7 +17,9 @@ html{scroll-behavior:smooth}
 body{background:#070a0f;color:#e0e6ed;min-height:100vh}
 button{cursor:pointer;font-family:inherit}
 input,textarea,select{font-family:inherit}
-body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 20%,rgba(37,211,102,.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(108,92,231,.06) 0%,transparent 40%);z-index:-1;pointer-events:none}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 20%,rgba(37,211,102,.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(108,92,231,.06) 0%,transparent 40%);z-index:-2;pointer-events:none}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity .5s}
+body.has-bg::after{opacity:.15}
 .em{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.15em;fill:currentColor}
 .em-lg{width:1.5em;height:1.5em}.em-xl{width:2.5em;height:2.5em}.em-2xl{width:4em;height:4em}
 .clock-top{display:flex;flex-direction:column;gap:2px;font-size:11px;font-weight:700}
@@ -100,6 +102,16 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 #toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b)}
 #toast.warn{background:linear-gradient(135deg,#f39c12,#e67e22)}
 #toast.dev{background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000}
+#topNotif{position:fixed;top:0;left:0;width:100%;z-index:999998;display:flex;flex-direction:column;gap:8px;padding:12px;pointer-events:none}
+.topNotifItem{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #25d366;border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 32px rgba(0,0,0,.5);animation:slideDown .4s ease;pointer-events:auto;max-width:600px;margin:0 auto;width:100%}
+@keyframes slideDown{from{transform:translateY(-120%);opacity:0}to{transform:translateY(0);opacity:1}}
+.topNotifItem.error{border-color:#e74c3c}
+.topNotifItem.info{border-color:#3498db}
+.topNotifItem .icon{font-size:24px;flex-shrink:0}
+.topNotifItem .content{flex:1;min-width:0}
+.topNotifItem .content .title{font-weight:700;font-size:14px}
+.topNotifItem .content .msg{font-size:13px;opacity:.8;margin-top:2px}
+.topNotifItem .close{background:transparent;border:none;color:#e0e6ed;font-size:18px;opacity:.5;cursor:pointer;padding:0 4px}
 #loadingOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);z-index:999999;justify-content:center;align-items:center;flex-direction:column;padding:20px}
 #loadingOverlay.show{display:flex}
 #loadingOverlay .load-box{background:#141a22;border:1px solid #2a3340;border-radius:24px;padding:36px;text-align:center;max-width:400px;width:100%}
@@ -127,6 +139,15 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .sidebar .menu-item.dev svg{color:#f1c40f}
 .sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999}
 .sidebar-overlay.show{display:block}
+.topbar{position:fixed;top:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-bottom:1px solid #1f2a34;z-index:10000;transform:translateY(-120%);transition:.4s cubic-bezier(0.4,0,0.2,1);padding:20px;overflow-y:auto;max-height:80vh}
+.topbar.open{transform:translateY(0)}
+.topbar h3{font-size:18px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#25d366}
+.topbar .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.topbar .menu-btn{padding:14px 12px;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.topbar .menu-btn:hover{border-color:#25d366;background:rgba(37,211,102,.05);transform:translateY(-3px)}
+.topbar .menu-btn svg{width:24px;height:24px;color:#25d366}
+.topbar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999}
+.topbar-overlay.show{display:block}
 .tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto}
 .tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:14px;transition:.3s;white-space:nowrap;opacity:.6;display:flex;align-items:center;justify-content:center;gap:6px}
 .tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
@@ -183,7 +204,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .chat-msg.me{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .chat-msg.other{background:#1f2a34;color:#e0e6ed;align-self:flex-start;border-bottom-left-radius:4px}
 .chat-msg .time{font-size:10px;opacity:.6;margin-top:4px;display:block}
-.chat-msg img{max-width:100%;border-radius:12px;margin-top:6px}
 .chat-footer{display:flex;gap:8px;padding:12px 16px;background:#141a22;border-top:1px solid #1f2a34;flex-shrink:0}
 .chat-footer .attach{font-size:22px;cursor:pointer;opacity:.6;background:transparent;border:none;color:#e0e6ed;padding:4px}
 .chat-footer input{flex:1;padding:12px 16px;border-radius:24px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none}
@@ -223,6 +243,25 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .income-item .info .nama{font-weight:700;font-size:14px}
 .income-item .info .tanggal{font-size:11px;opacity:.5}
 .income-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:4px 8px}
+.music-list{display:flex;flex-direction:column;gap:8px;max-height:400px;overflow-y:auto}
+.music-item{display:flex;gap:12px;align-items:center;padding:12px 16px;background:#0f151c;border:1px solid #1f2a34;border-radius:14px;transition:.3s}
+.music-item:hover{border-color:#25d366}
+.music-item.playing{border-color:#25d366;background:rgba(37,211,102,.08)}
+.music-item .info{flex:1;min-width:0}
+.music-item .info .nama{font-weight:700;font-size:14px}
+.music-item .info .meta{font-size:11px;opacity:.5;margin-top:2px}
+.music-item .actions{display:flex;gap:6px}
+.music-item .actions button{background:transparent;border:none;font-size:16px;padding:4px 8px;cursor:pointer;border-radius:8px;transition:.2s}
+.music-item .actions button:hover{background:#1f2a34}
+.music-player-bar{position:fixed;bottom:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-top:1px solid #1f2a34;padding:12px 20px;z-index:9998;display:none;align-items:center;gap:12px;transform:translateY(100%);transition:.4s}
+.music-player-bar.show{display:flex;transform:translateY(0)}
+.music-player-bar .icon{font-size:24px;color:#25d366;animation:musicPulse 1.5s ease-in-out infinite}
+@keyframes musicPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.music-player-bar .info{flex:1;min-width:0}
+.music-player-bar .info .nama{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music-player-bar .info .status{font-size:11px;opacity:.5}
+.music-player-bar button{background:transparent;border:none;color:#e0e6ed;font-size:20px;padding:6px;cursor:pointer;border-radius:8px;transition:.2s}
+.music-player-bar button:hover{background:#1f2a34}
 .footer{text-align:center;padding:30px 20px;opacity:.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#070a0f}
@@ -237,6 +276,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   .sidebar{width:300px;right:-320px}
   .wallet-card .saldo{font-size:32px}
   .chat-msg{max-width:85%}
+  .topbar .menu-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
 }
 </style>
 </head>
@@ -275,6 +315,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <symbol id="em-report" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
 <symbol id="em-calc" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 16h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm-8 4H5v-2h4v2zm0-4H5v-2h4v2zm0-4H5V7h4v2zm8 0h-2V7h2v2zm2-6H5V3h14v2z"/></symbol>
 <symbol id="em-camera" viewBox="0 0 24 24"><path d="M12 15.2c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2 1.43 3.2 3.2 3.2zM9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></symbol>
+<symbol id="em-music" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></symbol>
+<symbol id="em-menu" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></symbol>
+<symbol id="em-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></symbol>
+<symbol id="em-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+<symbol id="em-image" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></symbol>
 </svg>
 
 <div id="dbLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:999999;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease">
@@ -286,6 +331,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <div id="dbLoadingStatus" style="font-size:13px;opacity:.5">Menghubungkan ke database...</div>
 </div>
 </div>
+
+<div id="topNotif"></div>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
@@ -302,6 +349,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> History Pembelian</button>
 <button class="menu-item" onclick="showPage('dompet');closeSidebar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
 <button class="menu-item" onclick="showPage('calculator');closeSidebar()"><svg><use href="#em-calc"/></svg> Kalkulator Penghasilan</button>
+<button class="menu-item" onclick="showPage('music');closeSidebar()"><svg><use href="#em-music"/></svg> Musik</button>
 <button class="menu-item" onclick="showPage('accounts');closeSidebar()"><svg><use href="#em-user"/></svg> Liat Info Akun</button>
 <button class="menu-item" onclick="showPage('chatlist');closeSidebar()"><svg><use href="#em-send"/></svg> Chat</button>
 <button class="menu-item" onclick="showPage('account');closeSidebar()"><svg><use href="#em-user"/></svg> Setting Akun</button>
@@ -312,9 +360,31 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <button class="menu-item" onclick="showLoginModal();closeSidebar()" id="loginBtnSide" style="display:none"><svg><use href="#em-login"/></svg> Login / Daftar</button>
 </div>
 
+<div class="topbar-overlay" id="topbarOverlay" onclick="closeTopbar()"></div>
+
+<div class="topbar" id="topbar">
+<h3><svg class="em em-lg"><use href="#em-menu"/></svg> Menu Navigasi</h3>
+<div class="menu-grid">
+<button class="menu-btn" onclick="showPage('home');closeTopbar()"><svg><use href="#em-box"/></svg> Home</button>
+<button class="menu-btn" onclick="showPage('jualan');closeTopbar()"><svg><use href="#em-store"/></svg> Jualan</button>
+<button class="menu-btn" onclick="showPage('cart');closeTopbar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
+<button class="menu-btn" onclick="showPage('orders');closeTopbar()"><svg><use href="#em-receipt"/></svg> History</button>
+<button class="menu-btn" onclick="showPage('dompet');closeTopbar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
+<button class="menu-btn" onclick="showPage('calculator');closeTopbar()"><svg><use href="#em-calc"/></svg> Kalkulator</button>
+<button class="menu-btn" onclick="showPage('music');closeTopbar()"><svg><use href="#em-music"/></svg> Musik</button>
+<button class="menu-btn" onclick="showPage('accounts');closeTopbar()"><svg><use href="#em-user"/></svg> Info Akun</button>
+<button class="menu-btn" onclick="showPage('chatlist');closeTopbar()"><svg><use href="#em-send"/></svg> Chat</button>
+<button class="menu-btn" onclick="showPage('account');closeTopbar()"><svg><use href="#em-user"/></svg> Setting Akun</button>
+<button class="menu-btn" onclick="showRequestFitur();closeTopbar()"><svg><use href="#em-bulb"/></svg> Request</button>
+<button class="menu-btn" onclick="showHelp();closeTopbar()"><svg><use href="#em-help"/></svg> Help</button>
+<button class="menu-btn dev" id="devMenuBtn2" style="display:none" onclick="showPage('dev');closeTopbar()"><svg><use href="#em-crown"/></svg> Dev Panel</button>
+</div>
+</div>
+
 <div class="container">
 <nav class="navbar">
 <div class="left">
+<button onclick="openTopbar()" style="background:transparent;border:none;color:#e0e6ed;font-size:24px;padding:4px;position:relative;z-index:1000"><svg class="em em-lg"><use href="#em-menu"/></svg></button>
 <div class="clock-top">
 <div class="row">🕐 <span id="clockWIB">--:--:--</span> WIB</div>
 <div class="row" style="font-size:10px">🌏 <span id="clockWITA">--:--:--</span> WITA</div>
@@ -444,6 +514,19 @@ Kalkulator ini buat nyatet penghasilan lo. Bisa ditambah, dikurang, dikali, diba
 </div>
 </div>
 
+<div id="page-music" class="hidden">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-music"/></svg> Musik</h2>
+<span class="count" id="musicCount">0</span>
+</div>
+<div class="help-info-box">
+Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer.
+</div>
+<div class="music-list" id="musicList">
+<div class="empty"><p>Belum ada lagu</p></div>
+</div>
+</div>
+
 <div id="page-accounts" class="hidden">
 <div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Liat Info Akun</h2></div>
 <div class="account-list" id="accountsList">
@@ -487,6 +570,16 @@ Kalkulator ini buat nyatet penghasilan lo. Bisa ditambah, dikurang, dikali, diba
 
 </div>
 
+<div class="music-player-bar" id="musicBar">
+<svg class="em em-lg icon"><use href="#em-music"/></svg>
+<div class="info">
+<div class="nama" id="musicBarName">-</div>
+<div class="status" id="musicBarStatus">-</div>
+</div>
+<button onclick="toggleMusicPlay()" id="musicToggleBtn"><svg class="em em-lg"><use href="#em-pause"/></svg></button>
+<button onclick="stopMusic()"><svg class="em em-lg"><use href="#em-close"/></svg></button>
+</div>
+
 <div class="footer">Made with <svg class="em" style="color:#25d366"><use href="#em-heart"/></svg> by <strong>WarungDigital</strong> · © 2026</div>
 
 <div class="modal-overlay" id="modalOverlay">
@@ -522,6 +615,8 @@ Kalkulator ini buat nyatet penghasilan lo. Bisa ditambah, dikurang, dikali, diba
 <button class="send" onclick="sendChatMsg()"><svg class="em em-lg"><use href="#em-send"/></svg></button>
 </div>
 </div>
+
+<audio id="globalAudio" loop></audio>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
@@ -563,6 +658,9 @@ let notifPermission = 'default';
 let isSubmitting = false;
 let isDev = false;
 let calcExpr = '';
+let currentMusicId = null;
+let isMusicPlaying = false;
+let allMusic = [];
 
 const DEV_NAME = "vardev";
 const DEV_PASS = "vardevanakganteng2";
@@ -578,6 +676,25 @@ function showToast(msg, type){
   t.className = type === 'error' ? 'show error' : type === 'warn' ? 'show warn' : type === 'dev' ? 'show dev' : 'show';
   clearTimeout(t._t);
   t._t = setTimeout(()=>t.className='',4000);
+}
+function showTopNotif(title, msg, type){
+  const wrap = document.getElementById('topNotif');
+  const id = 'tn_' + Date.now();
+  const iconMap = { info:'📢', success:'✅', error:'❌', warn:'⚠️', dev:'👑' };
+  wrap.insertAdjacentHTML('beforeend', `
+    <div class="topNotifItem ${type||'info'}" id="${id}">
+      <div class="icon">${iconMap[type]||'📢'}</div>
+      <div class="content">
+        <div class="title">${escapeHtml(title)}</div>
+        <div class="msg">${escapeHtml(msg)}</div>
+      </div>
+      <button class="close" onclick="document.getElementById('${id}').remove()">✕</button>
+    </div>
+  `);
+  setTimeout(()=>{ const el = document.getElementById(id); if(el) el.remove(); }, 8000);
+  if('Notification' in window && Notification.permission === 'granted'){
+    sendWebNotif(title, msg, type === 'error' ? 'em-warning' : 'em-info');
+  }
 }
 function openModal(html){ document.getElementById('modalContent').innerHTML = html; document.getElementById('modalOverlay').classList.add('show'); }
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
@@ -701,11 +818,22 @@ function checkDevStatus(){
 
 function updateDevMenu(){
   const btn = document.getElementById('devMenuBtn');
+  const btn2 = document.getElementById('devMenuBtn2');
   if(btn) btn.style.display = isDev ? 'flex' : 'none';
+  if(btn2) btn2.style.display = isDev ? 'flex' : 'none';
 }
 function updateNavbarBadge(){
   const badge = document.getElementById('navbarDevBadge');
   if(badge) badge.style.display = isDev ? 'inline-block' : 'none';
+}
+
+function openTopbar(){
+  document.getElementById('topbar').classList.add('open');
+  document.getElementById('topbarOverlay').classList.add('show');
+}
+function closeTopbar(){
+  document.getElementById('topbar').classList.remove('open');
+  document.getElementById('topbarOverlay').classList.remove('show');
 }
 
 function loadHomeBanner(){
@@ -721,6 +849,7 @@ function loadHomeBanner(){
         img.style.display = 'none';
         vid.style.display = 'block';
         vid.src = s.banner;
+        vid.muted = true;
       } else {
         vid.style.display = 'none';
         img.style.display = 'block';
@@ -728,6 +857,39 @@ function loadHomeBanner(){
       }
     } else {
       wrap.style.display = 'none';
+    }
+  });
+}
+
+function applyBgWeb(){
+  db.ref('warungdigital/settings').once('value', snap=>{
+    const s = snap.val() || {};
+    const body = document.body;
+    if(s.bgWeb && s.bgType === 'image'){
+      body.classList.add('has-bg');
+      body.style.setProperty('--bg-img', `url(${s.bgWeb})`);
+      const afterEl = document.createElement('style');
+      afterEl.id = 'bgStyle';
+      const old = document.getElementById('bgStyle');
+      if(old) old.remove();
+      afterEl.textContent = `body.has-bg::after{background-image:url('${s.bgWeb}')}`;
+      document.head.appendChild(afterEl);
+    } else if(s.bgWeb && s.bgType === 'video'){
+      let vidBg = document.getElementById('bgVideoEl');
+      if(!vidBg){
+        vidBg = document.createElement('video');
+        vidBg.id = 'bgVideoEl';
+        vidBg.autoplay = true; vidBg.muted = true; vidBg.loop = true; vidBg.playsInline = true;
+        vidBg.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.15;pointer-events:none';
+        document.body.appendChild(vidBg);
+      }
+      vidBg.src = s.bgWeb;
+    } else {
+      body.classList.remove('has-bg');
+      const old = document.getElementById('bgStyle');
+      if(old) old.remove();
+      const vidBg = document.getElementById('bgVideoEl');
+      if(vidBg) vidBg.remove();
     }
   });
 }
@@ -862,7 +1024,6 @@ function submitCartOrder(){
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
     closeModal();
     showToast('✅ Pesanan dikirim! Nunggu konfirmasi penjual.','success');
-    if(document.hidden) sendWebNotif('✅ Pesanan Dikirim', 'Nunggu konfirmasi penjual', 'em-check');
     cart = []; saveCart(); selectedEwallet = null; buktiBase64 = ''; isSubmitting = false;
     showPage('orders');
   }).catch(e=>{
@@ -920,6 +1081,7 @@ function showPage(page){
     if(page==='orders') renderOrders();
     if(page==='dompet') renderDompet();
     if(page==='calculator') renderCalculator();
+    if(page==='music') renderMusicPage();
     if(page==='accounts') renderAccounts();
     if(page==='chatlist') renderChatList();
     if(page==='account') loadSettingAccount();
@@ -962,7 +1124,7 @@ db.ref('warungdigital/orders').on('value', snap=>{
     snap.forEach(child => {
       const o = child.val();
       if(o.penjual === currentUser && o.status === 'proof_uploaded'){
-        sendWebNotif('🛒 Pesanan Baru!', `${o.produkNama} - Rp ${o.total.toLocaleString('id-ID')}`, 'em-cart');
+        showTopNotif('🛒 Pesanan Baru!', `${o.produkNama} - Rp ${o.total.toLocaleString('id-ID')}`, 'success');
       }
     });
   }
@@ -973,10 +1135,7 @@ if(currentUser){
   db.ref('warungdigital/notifications').orderByChild('target').equalTo(currentUser).on('child_added', snap => {
     const notif = snap.val();
     if(!notif || notif.read) return;
-    showToast(notif.title + ': ' + notif.message, notif.type === 'danger' ? 'error' : 'success');
-    if('Notification' in window && Notification.permission === 'granted'){
-      sendWebNotif(notif.title, notif.message, notif.type === 'danger' ? 'em-warning' : 'em-check');
-    }
+    showTopNotif(notif.title, notif.message, notif.type === 'danger' ? 'error' : 'info');
     snap.ref.update({ read: true });
   });
 }
@@ -984,10 +1143,7 @@ if(currentUser){
 if(currentUser){
   db.ref('warungdigital/users').child(currentUser).on('value', snap => {
     if(!snap.exists()){
-      showToast('❌ Akun lo udah dihapus oleh Developer!','error');
-      if('Notification' in window && Notification.permission === 'granted'){
-        sendWebNotif('❌ Akun Dihapus', 'Akun lo udah dihapus oleh Developer', 'em-warning');
-      }
+      showTopNotif('❌ Akun Dihapus', 'Akun lo udah dihapus oleh Developer', 'error');
       setTimeout(()=>{
         currentUser = null;
         localStorage.removeItem('wd_user');
@@ -1153,7 +1309,6 @@ function submitBeliLangsung(id){
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
     closeModal();
     showToast('✅ Pesanan dikirim! Nunggu konfirmasi penjual.','success');
-    if(document.hidden) sendWebNotif('✅ Pesanan Dikirim', 'Nunggu konfirmasi penjual', 'em-check');
     buktiBase64 = ''; selectedEwallet = null; isSubmitting = false;
     showPage('orders');
   }).catch(e=>{
@@ -1496,6 +1651,126 @@ function hapusIncome(id){
   });
 }
 
+function renderMusicPage(){
+  const el = document.getElementById('musicList');
+  if(!el) return;
+  db.ref('warungdigital/music').once('value', snap=>{
+    const items = snap.val() || {};
+    allMusic = Object.entries(items).map(([id,v])=>({id,...v}));
+    allMusic.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    const mc = document.getElementById('musicCount');
+    if(mc) mc.textContent = allMusic.length;
+    if(allMusic.length === 0){
+      el.innerHTML = `<div class="empty">${emoji('em-music','em-2xl')}<p>Belum ada lagu. Dev bisa upload di panel.</p></div>`;
+      return;
+    }
+    el.innerHTML = allMusic.map(m=>`
+      <div class="music-item ${currentMusicId === m.id ? 'playing' : ''}">
+        <div style="font-size:24px;color:#25d366">${emoji('em-music','em-xl')}</div>
+        <div class="info">
+          <div class="nama">${escapeHtml(m.nama||'Lagu')}</div>
+          <div class="meta">${m.isDefault ? '⭐ Default' : '🎵 User upload'}</div>
+        </div>
+        <div class="actions">
+          <button onclick="playMusic('${m.id}')" title="Play">▶️</button>
+          ${isDev ? `<button onclick="hapusMusic('${m.id}')" title="Hapus">${emoji('em-trash','em')}</button>` : ''}
+        </div>
+      </div>
+    `).join('');
+  });
+}
+function playMusic(id){
+  const m = allMusic.find(x=>x.id===id);
+  if(!m || !m.data) return;
+  const audio = document.getElementById('globalAudio');
+  audio.src = m.data;
+  audio.play().then(()=>{
+    currentMusicId = id;
+    isMusicPlaying = true;
+    document.getElementById('musicBar').classList.add('show');
+    document.getElementById('musicBarName').textContent = m.nama || 'Lagu';
+    document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
+    document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
+    renderMusicPage();
+    localStorage.setItem('wd_music_id', id);
+  }).catch(e=>{
+    showToast('❌ Gagal muter lagu: ' + e.message,'error');
+  });
+}
+function toggleMusicPlay(){
+  const audio = document.getElementById('globalAudio');
+  if(isMusicPlaying){
+    audio.pause();
+    isMusicPlaying = false;
+    document.getElementById('musicBarStatus').textContent = 'Di-pause';
+    document.getElementById('musicToggleBtn').innerHTML = emoji('em-play','em-lg');
+  } else {
+    audio.play();
+    isMusicPlaying = true;
+    document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
+    document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
+  }
+}
+function stopMusic(){
+  const audio = document.getElementById('globalAudio');
+  audio.pause();
+  audio.src = '';
+  isMusicPlaying = false;
+  currentMusicId = null;
+  document.getElementById('musicBar').classList.remove('show');
+  localStorage.removeItem('wd_music_id');
+  renderMusicPage();
+}
+function autoLoadMusic(){
+  db.ref('warungdigital/music').once('value', snap=>{
+    const items = snap.val() || {};
+    allMusic = Object.entries(items).map(([id,v])=>({id,...v}));
+    if(allMusic.length === 0) return;
+    const savedId = localStorage.getItem('wd_music_id');
+    let playId = null;
+    if(savedId && allMusic.find(m=>m.id===savedId)){
+      playId = savedId;
+    } else {
+      const def = allMusic.find(m=>m.isDefault);
+      if(def) playId = def.id;
+    }
+    if(playId){
+      const m = allMusic.find(x=>x.id===playId);
+      if(m && m.data){
+        const audio = document.getElementById('globalAudio');
+        audio.src = m.data;
+        audio.volume = 0.5;
+        audio.play().then(()=>{
+          currentMusicId = playId;
+          isMusicPlaying = true;
+          document.getElementById('musicBar').classList.add('show');
+          document.getElementById('musicBarName').textContent = m.nama || 'Lagu';
+          document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
+          document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
+        }).catch(()=>{
+          showTopNotif('🎵 Musik Tersedia', 'Klik di mana aja buat play lagu', 'info');
+          document.addEventListener('click', function once(){
+            document.removeEventListener('click', once);
+            audio.play().then(()=>{
+              isMusicPlaying = true;
+              document.getElementById('musicBar').classList.add('show');
+              document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
+            }).catch(()=>{});
+          });
+        });
+      }
+    }
+  });
+}
+function hapusMusic(id){
+  if(!isDev){ showToast('Cuma Dev yang bisa hapus!','error'); return; }
+  if(!confirm('Hapus lagu ini?')) return;
+  db.ref('warungdigital/music').child(id).remove().then(()=>{
+    showToast('Lagu dihapus','success');
+    renderMusicPage();
+  });
+}
+
 function renderOrders(){
   if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
   const el = document.getElementById('ordersList');
@@ -1586,7 +1861,6 @@ function confirmOrder(orderKey){
         });
       }
       showToast('✅ Pesanan dikonfirmasi!','success');
-      if(document.hidden) sendWebNotif('✅ Pesanan Dikonfirmasi', 'Link download siap!', 'em-check');
       renderOrders(); renderJualanPesanan();
     });
   });
@@ -1626,7 +1900,6 @@ function submitCancelOrder(orderKey){
   }).then(()=>{
     closeModal();
     showToast('❌ Pesanan dibatalkan','success');
-    if(document.hidden) sendWebNotif('❌ Pesanan Dibatalkan', 'Alasan: ' + reason, 'em-warning');
     renderOrders(); renderJualanPesanan();
   }).catch(e=>showToast('❌ '+e.message,'error'));
 }
@@ -1690,6 +1963,8 @@ function renderDev(){
     const activities = data.activities || {};
     const banner = data.settings?.banner || '';
     const bannerType = data.settings?.bannerType || 'image';
+    const bgWeb = data.settings?.bgWeb || '';
+    const bgType = data.settings?.bgType || 'image';
     const totalUsers = Object.keys(users).length;
     const totalProducts = Object.keys(products).length;
     const totalOrders = Object.keys(orders).length;
@@ -1720,12 +1995,16 @@ function renderDev(){
         <button onclick="switchDevTab('activity',this)">📊 Activity</button>
         <button onclick="switchDevTab('reports',this)">🚨 Report</button>
         <button onclick="switchDevTab('broadcast',this)">📢 Broadcast</button>
+        <button onclick="switchDevTab('music',this)">🎵 Musik</button>
+        <button onclick="switchDevTab('bg',this)">🖼️ Background</button>
         <button onclick="switchDevTab('settings',this)">🚀 GitHub & Vercel</button>
       </div>
       <div id="dev-users"></div>
       <div id="dev-activity" class="hidden"></div>
       <div id="dev-reports" class="hidden"></div>
       <div id="dev-broadcast" class="hidden"></div>
+      <div id="dev-music" class="hidden"></div>
+      <div id="dev-bg" class="hidden"></div>
       <div id="dev-settings" class="hidden"></div>
     `;
     renderDevUsers(users, activities);
@@ -1764,11 +2043,175 @@ function changeDevBanner(){
 function switchDevTab(tab, el){
   document.querySelectorAll('#page-dev .tabs button').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
-  ['users','activity','reports','broadcast','settings'].forEach(t=>{
+  ['users','activity','reports','broadcast','music','bg','settings'].forEach(t=>{
     const e = document.getElementById('dev-'+t);
     if(e) e.classList.toggle('hidden', t !== tab);
   });
   if(tab === 'settings') renderDevSettings();
+  if(tab === 'music') renderDevMusic();
+  if(tab === 'bg') renderDevBg();
+}
+function renderDevMusic(){
+  const el = document.getElementById('dev-music');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="help-dev-box" style="margin-bottom:16px">
+      <strong>🎵 Kelola Musik Web</strong><br>
+      Upload MP3 atau video (bakal otomatis jadi audio). User bisa milih lagu, dan default-nya bisa diatur.
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">➕ Upload Lagu Baru</div></div>
+      <div class="form-group">
+        <label>Nama Lagu</label>
+        <input type="text" id="musicNama" placeholder="Contoh: Lofi Beats" />
+      </div>
+      <div class="form-group">
+        <label>File MP3 / Video</label>
+        <input type="file" id="musicFile" accept="audio/*,video/*" />
+        <div style="font-size:11px;opacity:.5;margin-top:4px">Max 5MB. Video bakal otomatis jadi audio.</div>
+      </div>
+      <div class="form-group">
+        <label style="display:flex;align-items:center;gap:8px">
+          <input type="checkbox" id="musicDefault" style="width:auto;margin:0" />
+          Set sebagai lagu default (auto-play buat user baru)
+        </label>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="uploadMusicDev()">${emoji('em-upload','em')} Upload Lagu</button>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">🎶 Daftar Lagu</div></div>
+      <div class="body" id="musicDevList" style="margin-top:12px"></div>
+    </div>
+  `;
+  db.ref('warungdigital/music').once('value', snap=>{
+    const items = snap.val() || {};
+    const arr = Object.entries(items).map(([id,v])=>({id,...v}));
+    arr.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    const list = document.getElementById('musicDevList');
+    if(!list) return;
+    if(arr.length === 0){ list.innerHTML = '<div class="empty"><p>Belum ada lagu</p></div>'; return; }
+    list.innerHTML = arr.map(m=>`
+      <div class="income-item">
+        <div class="info">
+          <div class="nama">🎵 ${escapeHtml(m.nama||'Lagu')} ${m.isDefault ? '<span style="color:#f1c40f;font-size:11px">⭐ DEFAULT</span>' : ''}</div>
+          <div class="tanggal">${new Date(m.createdAt||0).toLocaleString('id-ID')}</div>
+        </div>
+        <div style="display:flex;gap:4px">
+          <button class="del" onclick="setMusicDefault('${m.id}')" title="Set Default">⭐</button>
+          <button class="del" onclick="hapusMusic('${m.id}')" title="Hapus">${emoji('em-trash','em')}</button>
+        </div>
+      </div>
+    `).join('');
+  });
+}
+function uploadMusicDev(){
+  const nama = document.getElementById('musicNama').value.trim() || 'Lagu';
+  const file = document.getElementById('musicFile').files[0];
+  const isDefault = document.getElementById('musicDefault').checked;
+  if(!file){ showToast('Pilih file dulu!','error'); return; }
+  if(file.size > 5*1024*1024){ showToast('File max 5MB!','error'); return; }
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    const data = ev.target.result;
+    const musicData = {
+      nama: nama,
+      data: data,
+      isDefault: isDefault,
+      createdAt: Date.now()
+    };
+    const pushFn = ()=>{
+      db.ref('warungdigital/music').push(musicData).then(()=>{
+        showToast('✅ Lagu berhasil diupload!','success');
+        renderDevMusic();
+      }).catch(e=>showToast('❌ '+e.message,'error'));
+    };
+    if(isDefault){
+      db.ref('warungdigital/music').once('value', snap=>{
+        const updates = {};
+        snap.forEach(c=>{
+          if(c.val().isDefault) updates[c.key + '/isDefault'] = false;
+        });
+        if(Object.keys(updates).length > 0){
+          db.ref('warungdigital/music').update(updates).then(pushFn);
+        } else {
+          pushFn();
+        }
+      });
+    } else {
+      pushFn();
+    }
+  };
+  reader.readAsDataURL(file);
+}
+function setMusicDefault(id){
+  if(!isDev){ showToast('Cuma Dev!','error'); return; }
+  db.ref('warungdigital/music').once('value', snap=>{
+    const updates = {};
+    snap.forEach(c=>{
+      updates[c.key + '/isDefault'] = (c.key === id);
+    });
+    db.ref('warungdigital/music').update(updates).then(()=>{
+      showToast('✅ Lagu default diatur!','success');
+      renderDevMusic();
+    });
+  });
+}
+function renderDevBg(){
+  const el = document.getElementById('dev-bg');
+  if(!el) return;
+  db.ref('warungdigital/settings').once('value', snap=>{
+    const s = snap.val() || {};
+    el.innerHTML = `
+      <div class="help-dev-box" style="margin-bottom:16px">
+        <strong>🖼️ Background Web</strong><br>
+        Atur background web pake gambar atau video. User biasa gak bisa ganti.
+      </div>
+      <div class="order-item">
+        <div class="head"><div class="oid">🎨 Background Sekarang</div></div>
+        <div class="banner-dev" id="devBgPreview" onclick="changeDevBg()">
+          ${s.bgWeb ? (s.bgType === 'video' ? `<video src="${s.bgWeb}" autoplay muted loop playsinline></video>` : `<img src="${s.bgWeb}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik buat upload background</div></div>`}
+          <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:4px 12px;border-radius:20px;font-size:11px;color:#fff">✏️ Ganti Background</div>
+        </div>
+        <button class="btn btn-danger btn-block" onclick="hapusDevBg()">${emoji('em-trash','em')} Hapus Background</button>
+      </div>
+    `;
+  });
+}
+function changeDevBg(){
+  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*,video/mp4,video/webm';
+  input.onchange = e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const isVideo = file.type.startsWith('video/');
+    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
+    const maxLabel = isVideo ? '5MB' : '2MB';
+    if(file.size > maxSize){ showToast(`Background max ${maxLabel}!`,'error'); return; }
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      db.ref('warungdigital/settings').update({
+        bgWeb: ev.target.result,
+        bgType: isVideo ? 'video' : 'image'
+      }).then(()=>{
+        showToast('✅ Background diganti!','success');
+        applyBgWeb();
+        renderDevBg();
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+function hapusDevBg(){
+  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
+  if(!confirm('Hapus background web?')) return;
+  db.ref('warungdigital/settings').update({ bgWeb: '', bgType: '' }).then(()=>{
+    showToast('Background dihapus','success');
+    applyBgWeb();
+    renderDevBg();
+  });
 }
 function renderDevUsers(users, activities){
   const el = document.getElementById('dev-users');
@@ -1853,7 +2296,7 @@ function renderDevBroadcast(){
   el.innerHTML = `
     <div class="help-warn-box" style="margin-bottom:16px">
       <strong>📢 Kirim Pengumuman</strong><br>
-      Pesan bakal dikirim ke notif web SEMUA user yang lagi online & udah allow notif.
+      Pesan bakal muncul di notif atas + notif system HP semua user.
     </div>
     <div class="form-group">
       <label>Judul Pengumuman</label>
@@ -1885,10 +2328,8 @@ function sendBroadcast(){
       }));
     });
     Promise.all(promises).then(()=>{
-      showToast('✅ Pengumuman terkirim ke semua user!','success');
-      if('Notification' in window && Notification.permission === 'granted'){
-        sendWebNotif('📢 ' + title, msg, 'em-info');
-      }
+      showToast('✅ Pengumuman terkirim!','success');
+      showTopNotif('📢 ' + title, msg, 'info');
     });
   });
 }
@@ -1898,42 +2339,25 @@ function renderDevSettings(){
   el.innerHTML = `
     <div class="help-dev-box" style="margin-bottom:16px">
       <strong>🚀 Atur Web via GitHub & Vercel</strong><br>
-      Update HTML, CSS, JS, dan file lain lewat GitHub. Vercel bakal auto-deploy dalam ~30 detik.
+      Update HTML, CSS, JS, dan file lain lewat GitHub. Vercel bakal auto-deploy.
     </div>
     <div class="order-item">
       <div class="head"><div class="oid">🔗 Link Cepat</div></div>
-      <div class="body" style="margin-bottom:12px">Akses cepat ke repo & dashboard Vercel lo.</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/tree/main" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">📦 Buka Repo GitHub</a>
-        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/edit/main/index.html" target="_blank" class="btn btn-warning btn-sm" style="text-decoration:none">✏️ Edit index.html</a>
-        <a href="https://vercel.com/webproj3ctid/warungdigital-vxz" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">⚡ Dashboard Vercel</a>
-        <a href="https://vercel.com/webproj3ctid/warungdigital-vxz/deployments" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">🚀 Cek Deploy</a>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/tree/main" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">📦 Repo GitHub</a>
+        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/edit/main/index.html" target="_blank" class="btn btn-warning btn-sm" style="text-decoration:none">✏️ Edit HTML</a>
+        <a href="https://vercel.com/webproj3ctid/warungdigital-vxz" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">⚡ Vercel</a>
       </div>
     </div>
     <div class="order-item">
       <div class="head"><div class="oid">📝 Cara Update Web</div></div>
-      <div class="body">
-        <div class="help-step" style="margin-bottom:10px"><div class="num">1</div><div class="text">Minta AI (DeepSeek/ChatGPT) buat generate HTML baru, atau edit sendiri.</div></div>
-        <div class="help-step" style="margin-bottom:10px"><div class="num">2</div><div class="text">Klik <strong>✏️ Edit index.html</strong> di atas → GitHub Web Editor bakal kebuka.</div></div>
-        <div class="help-step" style="margin-bottom:10px"><div class="num">3</div><div class="text">Klik <strong>pensil ✏️</strong> atau langsung edit di Web Editor.</div></div>
-        <div class="help-step" style="margin-bottom:10px"><div class="num">4</div><div class="text"><strong>Ctrl+A</strong> → <strong>Delete</strong> (hapus semua) → <strong>Paste</strong> HTML baru.</div></div>
-        <div class="help-step" style="margin-bottom:10px"><div class="num">5</div><div class="text">Scroll bawah → klik <strong>Commit changes</strong>.</div></div>
-        <div class="help-step"><div class="num">6</div><div class="text">Vercel auto-deploy dalam <strong>~30 detik</strong>. Cek di <strong>🚀 Cek Deploy</strong>.</div></div>
+      <div class="body" style="margin-top:12px">
+        <div class="help-step"><div class="num">1</div><div class="text">Minta AI generate HTML baru.</div></div>
+        <div class="help-step"><div class="num">2</div><div class="text">Klik "Edit HTML" di atas.</div></div>
+        <div class="help-step"><div class="num">3</div><div class="text">Ctrl+A → Delete → Paste HTML baru.</div></div>
+        <div class="help-step"><div class="num">4</div><div class="text">Commit changes.</div></div>
+        <div class="help-step"><div class="num">5</div><div class="text">Tunggu Vercel auto-deploy ~30 detik.</div></div>
       </div>
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">💡 Tips</div></div>
-      <div class="body">
-        • <strong>Backup dulu</strong> — copy HTML lama ke notepad sebelum edit.<br>
-        • <strong>Test di Preview</strong> — GitHub Web Editor punya tab Preview.<br>
-        • <strong>Kalau rusak</strong> — tinggal balikin ke versi sebelumnya di <strong>Commit History</strong>.<br>
-        • <strong>File lain</strong> — bisa upload gambar ke folder <code>assets/</code> di repo.<br>
-        • <strong>Environment Variables</strong> — diatur di <strong>Vercel Settings</strong>, bukan di GitHub.
-      </div>
-    </div>
-    <div class="help-info-box">
-      <strong>💡 Kenapa gak ada editor HTML di web?</strong><br>
-      Karena editor di web <strong>berisiko bikin web rusak</strong> — kalau salah edit, web bisa blank & gak bisa diakses. Lewat GitHub lebih aman karena ada <strong>version control</strong> — bisa balikin ke versi sebelumnya kapan aja.
     </div>
   `;
 }
@@ -1984,7 +2408,7 @@ function showDevDeleteUser(nama){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2 style="color:#e74c3c">${emoji('em-warning','em-lg')} Hapus Akun?</h2>
-    <p style="font-size:14px;opacity:.8;margin-bottom:14px">Lo yakin mau hapus akun <strong>${escapeHtml(nama)}</strong>? Semua produk & order terkait bakal dihapus.</p>
+    <p style="font-size:14px;opacity:.8;margin-bottom:14px">Lo yakin mau hapus akun <strong>${escapeHtml(nama)}</strong>?</p>
     <label>Alasan Hapus Akun</label>
     <select id="deleteReasonSelect" onchange="document.getElementById('deleteReasonCustom').style.display = this.value === 'lainnya' ? 'block' : 'none'">
       <option value="">-- Pilih Alasan --</option>
@@ -2006,7 +2430,7 @@ function devDeleteUser(nama){
   let reason = select.value;
   if(reason === 'lainnya' || !reason) reason = custom.value.trim();
   if(!reason){ showToast('Pilih atau tulis alasan hapus!','error'); return; }
-  if(!confirm(`⚠️ Yakin hapus akun ${nama}? Data bakal ilang permanen!`)) return;
+  if(!confirm(`⚠️ Yakin hapus akun ${nama}?`)) return;
   startLoading('Menghapus Akun...', 'Sedang menghapus akun + data terkait', () => {
     db.ref('warungdigital/notifications').push({
       target: nama,
@@ -2034,7 +2458,7 @@ function devDeleteUser(nama){
           userName: nama, reason, deletedBy: currentUser, deletedAt: Date.now()
         });
         closeModal();
-        showToast(`✅ Akun ${nama} dihapus & notif terkirim`,'success');
+        showToast(`✅ Akun ${nama} dihapus`,'success');
         renderDev();
       });
     }, 1000);
@@ -2064,7 +2488,6 @@ function viewReportChat(reporter){
     openModal(`
       <button class="close-btn" onclick="closeModal()">✕</button>
       <h2>💬 Chat Terkait</h2>
-      <p style="font-size:13px;opacity:.7;margin-bottom:12px">Cuma chat yang berkaitan sama laporan yang ditampilin.</p>
       ${rooms.map(r => `
         <div class="verify-box" style="margin-bottom:10px">
           <div class="label">Room</div>
@@ -2260,7 +2683,7 @@ function openChatWith(user){
     const last = arr[arr.length - 1];
     if(last && last.from !== currentUser && last.timestamp > (window._lastChatTime || 0)){
       if(document.hidden || currentChatUser !== last.from){
-        sendWebNotif('💬 Chat Baru', `${last.from}: ${(last.text || '📎 File').substring(0, 80)}`, 'em-send');
+        showTopNotif('💬 Chat Baru', `${last.from}: ${(last.text || '📎 File').substring(0, 60)}`, 'info');
       }
     }
     window._lastChatTime = last.timestamp;
@@ -2325,28 +2748,27 @@ function showHelp(){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji('em-help','em-lg')} Help & Info</h2>
-    <div class="help-info-box"><strong>WarungDigital</strong> adalah marketplace produk digital. Jual produk digital via MediaFire atau via WhatsApp.</div>
+    <div class="help-info-box"><strong>WarungDigital</strong> adalah marketplace produk digital.</div>
     <div class="help-section"><h3>${emoji('em-user','em')} Cara Daftar & Login</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>Login / Daftar</strong> di sidebar.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Isi Nama & Password, klik <strong>Daftar</strong>.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik Login / Daftar di sidebar.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Isi Nama & Password, klik Daftar.</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-store','em')} Cara Jualan</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Upload file ke <strong>MediaFire</strong> manual.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Klik <strong>Jualan Saya</strong> → <strong>E-Wallet</strong> → tambah e-wallet lo.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Klik <strong>Tambah Produk</strong>, isi data + link MediaFire.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Upload file ke MediaFire manual.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Klik Jualan Saya → E-Wallet → tambah e-wallet.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Klik Tambah Produk.</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-cart','em')} Cara Beli</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>Beli Langsung</strong> di produk.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Pilih e-wallet penjual, transfer sesuai nominal.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Upload bukti, klik <strong>Kirim Pesanan</strong>.</div></div>
-      <div class="help-step"><div class="num">4</div><div class="text">Penjual konfirmasi → lo dapet <strong>link download</strong>.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik Beli Langsung.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Pilih e-wallet penjual, transfer.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Upload bukti, kirim pesanan.</div></div>
+      <div class="help-step"><div class="num">4</div><div class="text">Penjual konfirmasi → dapet link download.</div></div>
     </div>
-    <div class="help-section"><h3>${emoji('em-calc','em')} Kalkulator Penghasilan</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik <strong>Kalkulator Penghasilan</strong> di sidebar.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Hitung pakai tombol + − × ÷.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Klik <strong>Simpen ke Catatan</strong> buat nyatet hasil.</div></div>
+    <div class="help-section"><h3>${emoji('em-music','em')} Musik</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik menu Musik di sidebar.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Pilih lagu buat diputar.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Kalo gak pilih, lagu default bakal muter.</div></div>
     </div>
-    <div class="help-warn-box"><strong>🔔 Notifikasi Web:</strong> Klik tombol <strong>Aktifkan Notif</strong> di Setting Akun, terus pilih <strong>Allow</strong> di browser.</div>
     <div class="help-info-box"><strong>Bantuan?</strong> Tako admin: <a href="https://tako.id/warungvaro" target="_blank" style="color:#25d366">tako.id/warungvaro</a></div>
     <button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti!</button>
   `);
@@ -2370,7 +2792,7 @@ function doLogin(){
   const pass = document.getElementById('authPass').value.trim();
   if(!nama||!pass){showToast('Isi semua!','error');return}
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
-    if(!snap.exists()){showToast('❌ Akun ini udah dihapus / gak terdaftar!','error');return}
+    if(!snap.exists()){showToast('❌ Akun gak terdaftar!','error');return}
     if(snap.val().password!==pass){showToast('Password salah!','error');return}
     currentUser = nama; localStorage.setItem('wd_user', nama);
     closeModal();
@@ -2380,7 +2802,6 @@ function doLogin(){
       updateDevMenu(); updateSidebar(); updateNavbarBadge();
       if(userIsDev){
         showToast('👑 Selamat datang, Developer!','dev');
-        sendWebNotif('👑 Developer Mode', 'Selamat datang kembali, Developer!', 'em-crown');
       } else {
         showToast('Login berhasil!','success');
       }
@@ -2454,10 +2875,12 @@ function checkDbReady() {
       hideDbLoading();
       try { ensureDevAccount(); } catch(e){ console.warn(e); }
       try { loadHomeBanner(); } catch(e){}
+      try { applyBgWeb(); } catch(e){}
       try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
       try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
       try { if(currentUser) checkDevStatus(); } catch(e){}
       try { updateCartBadge(); } catch(e){}
+      setTimeout(()=>{ try { autoLoadMusic(); } catch(e){} }, 1500);
     }, 600);
   }
 }
@@ -2469,14 +2892,16 @@ setTimeout(()=>{
     hideDbLoading();
     try { ensureDevAccount(); } catch(e){}
     try { loadHomeBanner(); } catch(e){}
+    try { applyBgWeb(); } catch(e){}
     try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
     try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
     try { if(currentUser) checkDevStatus(); } catch(e){}
     try { updateCartBadge(); } catch(e){}
+    setTimeout(()=>{ try { autoLoadMusic(); } catch(e){} }, 1500);
   }
 }, 8000);
 
-console.log('WarungDigital v4.0 — Ready!');
+console.log('WarungDigital v5.0 — Ready!');
 </script>
 </body>
-  </html>
+                                          </html>
