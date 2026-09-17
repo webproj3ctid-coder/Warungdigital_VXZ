@@ -29,15 +29,19 @@ body.has-bg::after{opacity:.15}
 .judul-web-banner{width:100%;aspect-ratio:16/4;max-height:140px;border-radius:20px 20px 0 0;overflow:hidden;background:#0f151c;border:1px solid #1f2a34;border-bottom:none;display:none;position:relative}
 .judul-web-banner.show{display:block}
 .judul-web-banner img,.judul-web-banner video{width:100%;height:100%;object-fit:cover}
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;gap:10px;flex-wrap:wrap;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;gap:10px;flex-wrap:wrap;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,.35);position:relative}
 .judul-web-banner.show + .navbar{border-radius:0 0 20px 20px;border-top:1px solid #141a22}
 .navbar .left{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .navbar .menu{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:12px;transition:.3s;opacity:.7;background:transparent;border:none;position:relative;display:flex;align-items:center;gap:6px}
 .navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1;transform:translateY(-2px)}
-.banner-1-1{width:40px;height:40px;border-radius:12px;overflow:hidden;background:#0f151c;border:1px solid #2a3340;flex-shrink:0;display:none;align-items:center;justify-content:center;color:#25d366;font-size:16px}
+.navbar-right-stack{display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-left:auto}
+.banner-1-1{width:48px;height:48px;border-radius:12px;overflow:hidden;background:#0f151c;border:1px solid #2a3340;flex-shrink:0;display:none;align-items:center;justify-content:center;color:#25d366;font-size:16px}
 .banner-1-1.show{display:flex}
 .banner-1-1 img,.banner-1-1 video{width:100%;height:100%;object-fit:cover}
+.banner-logo-web{width:44px;height:44px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#25d366,#6c5ce7);flex-shrink:0;display:none;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;box-shadow:0 6px 18px rgba(37,211,102,.35)}
+.banner-logo-web.show{display:flex}
+.banner-logo-web img,.banner-logo-web video{width:100%;height:100%;object-fit:cover}
 .cart-badge{position:absolute;top:0px;right:0px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
 .container{max-width:1100px;margin:0 auto;padding:20px;overflow-x:hidden}
 .hero{text-align:center;padding:60px 30px;position:relative;background:linear-gradient(135deg,rgba(20,26,34,.9),rgba(26,42,58,.9));border-radius:32px;margin-bottom:30px;border:1px solid #1f2a34;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.3)}
@@ -123,17 +127,6 @@ body.has-bg::after{opacity:.15}
 .topNotifItem .content .title{font-weight:700;font-size:14px}
 .topNotifItem .content .msg{font-size:13px;opacity:.8;margin-top:2px}
 .topNotifItem .close{background:transparent;border:none;color:#e0e6ed;font-size:18px;opacity:.5;cursor:pointer;padding:0 4px}
-#loadingOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);z-index:999999;justify-content:center;align-items:center;flex-direction:column;padding:20px}
-#loadingOverlay.show{display:flex}
-#loadingOverlay .load-box{background:#141a22;border:1px solid #2a3340;border-radius:24px;padding:36px;text-align:center;max-width:400px;width:100%;animation:slideUp .3s ease}
-#loadingOverlay .spinner{width:64px;height:64px;border:5px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-#loadingOverlay h3{font-size:18px;margin-bottom:8px}
-#loadingOverlay p{font-size:14px;opacity:.7;margin-bottom:16px}
-#loadingOverlay .countdown{font-size:48px;font-weight:900;color:#25d366;margin:16px 0}
-#loadingOverlay .progress{width:100%;height:8px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:20px}
-#loadingOverlay .progress-bar{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);width:0%;transition:width 1s linear;border-radius:10px}
-@keyframes dbSpin{to{transform:rotate(360deg)}}
 .miniLoader{position:fixed;bottom:20px;left:20px;background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #25d366;border-radius:14px;padding:10px 14px;z-index:999997;display:none;align-items:center;gap:10px;box-shadow:0 12px 32px rgba(0,0,0,.5);animation:miniIn .4s cubic-bezier(0.4,0,0.2,1);max-width:260px;overflow:hidden}
 @keyframes miniIn{from{transform:translateX(-120%);opacity:0}to{transform:translateX(0);opacity:1}}
 .miniLoader.show{display:flex}
@@ -141,6 +134,7 @@ body.has-bg::after{opacity:.15}
 .miniLoader .miniText{font-size:12px;font-weight:600;flex:1;min-width:0}
 .miniLoader .miniText .miniStatus{opacity:.7;font-size:11px;display:block}
 .miniLoader .miniBar{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,#25d366,#6c5ce7);border-radius:0 0 14px 14px;transition:width .4s ease;width:0%}
+@keyframes spin{to{transform:rotate(360deg)}}
 .topbar{position:fixed;top:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-bottom:1px solid #1f2a34;z-index:10000;transform:translateY(-120%);transition:.4s cubic-bezier(0.4,0,0.2,1);padding:20px;overflow-y:auto;max-height:80vh;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 .topbar.open{transform:translateY(0)}
 .topbar h3{font-size:18px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#25d366}
@@ -272,13 +266,30 @@ body.has-bg::after{opacity:.15}
 ::-webkit-scrollbar-track{background:#070a0f}
 ::-webkit-scrollbar-thumb{background:#2a3340;border-radius:10px}
 .hidden{display:none!important}
-#introOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999999;display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
-#introOverlay.show{display:flex}
-.intro-media-wrap{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#000}
-.intro-media-wrap img,.intro-media-wrap video{width:100%;height:100%;object-fit:contain}
-.intro-info-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(7,10,15,.95),rgba(7,10,15,.98));backdrop-filter:blur(10px);z-index:3;display:none;flex-direction:column;padding:30px 20px;overflow-y:auto;animation:fadeIn .5s ease}
-.intro-info-panel.show{display:flex}
-.intro-info-inner{max-width:640px;margin:auto;width:100%}
+
+/* ===== PAGE-BASED FLOW (bukan overlay) ===== */
+.page-flow{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999999;background:#070a0f;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow-y:auto;transition:opacity .4s ease,transform .4s ease}
+.page-flow.show{display:flex}
+.page-flow.exit{opacity:0;transform:scale(1.02);pointer-events:none}
+.page-flow .flow-box{text-align:center;max-width:400px;width:100%}
+.page-flow .flow-spinner{width:80px;height:80px;border:6px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;margin:0 auto 24px;animation:spin .9s linear infinite}
+.page-flow .flow-title{font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-flow .flow-desc{font-size:14px;opacity:.6;margin-bottom:24px}
+.page-flow .flow-progress{width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px}
+.page-flow .flow-progress-bar{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#25d366,#6c5ce7);transition:width .3s ease}
+.page-flow .flow-skip-btn{padding:8px 20px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid #2a3340;color:#e0e6ed;font-size:12px;font-weight:600;cursor:pointer;transition:.3s}
+.page-flow .flow-skip-btn:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+
+/* Intro pages */
+#pageIntroMedia{background:#000;padding:0}
+#pageIntroMedia .intro-media-wrap{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+#pageIntroMedia img,#pageIntroMedia video{width:100%;height:100%;object-fit:contain}
+#pageIntroMedia .intro-sound-hint{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);color:#fff;background:rgba(37,211,102,.9);padding:10px 20px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;display:none;z-index:5}
+#pageIntroMedia .intro-sound-hint.show{display:block;animation:pulse 1.5s infinite}
+#pageIntroMedia .intro-skip-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:#fff;opacity:.5;font-size:12px;z-index:5}
+
+#pageIntroInfo{background:linear-gradient(180deg,rgba(7,10,15,.98),rgba(7,10,15,1));padding:30px 20px;justify-content:flex-start}
+#pageIntroInfo .intro-info-inner{max-width:640px;margin:auto;width:100%}
 .intro-info-header{text-align:center;margin-bottom:24px}
 .intro-info-header .logo-big{width:80px;height:80px;border-radius:22px;background:linear-gradient(135deg,#25d366,#6c5ce7);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:900;color:#fff;box-shadow:0 12px 40px rgba(37,211,102,.4)}
 .intro-info-header h1{font-size:28px;font-weight:900;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
@@ -296,15 +307,25 @@ body.has-bg::after{opacity:.15}
 .badge-offline{background:rgba(231,76,60,.2);color:#e74c3c}
 .intro-enter-btn{margin-top:16px;width:100%;padding:16px;border-radius:16px;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 12px 32px rgba(37,211,102,.4);transition:.3s}
 .intro-enter-btn:hover{transform:translateY(-3px);box-shadow:0 16px 44px rgba(37,211,102,.5)}
-.intro-choice-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(7,10,15,.97),rgba(7,10,15,.99));z-index:4;display:none;flex-direction:column;align-items:center;justify-content:center;padding:30px 20px;animation:fadeIn .5s ease}
-.intro-choice-panel.show{display:flex}
-.intro-choice-inner{max-width:420px;width:100%}
-.intro-choice-inner h2{text-align:center;font-size:22px;font-weight:900;margin-bottom:24px}
+
+#pageIntroChoice{background:linear-gradient(180deg,rgba(7,10,15,.97),rgba(7,10,15,.99))}
+#pageIntroChoice .intro-choice-inner{max-width:420px;width:100%}
+#pageIntroChoice h2{text-align:center;font-size:22px;font-weight:900;margin-bottom:24px}
 .choice-btn{width:100%;padding:16px;border-radius:16px;font-weight:800;font-size:15px;border:none;cursor:pointer;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px;transition:.3s}
 .choice-btn:hover{transform:translateY(-3px)}
 .choice-guest{background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;box-shadow:0 8px 24px rgba(52,152,219,.4)}
 .choice-login{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4)}
 .choice-register{background:linear-gradient(135deg,#6c5ce7,#5f4fd6);color:#fff;box-shadow:0 8px 24px rgba(108,92,231,.4)}
+
+/* Login/Register Page */
+#pageAuth{background:linear-gradient(180deg,rgba(7,10,15,.98),rgba(7,10,15,1));padding:30px 20px;justify-content:flex-start;align-items:center}
+#pageAuth .auth-inner{max-width:420px;width:100%;margin:auto}
+#pageAuth .auth-tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34}
+#pageAuth .auth-tabs button{flex:1;padding:12px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:700;font-size:14px;cursor:pointer;transition:.3s;opacity:.5}
+#pageAuth .auth-tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1;box-shadow:0 6px 16px rgba(37,211,102,.3)}
+#pageAuth .auth-box{background:#141a22;border:1px solid #1f2a34;border-radius:24px;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+
+/* ===== PROMO SLIDER ===== */
 .promo-slider-wrap{position:relative;margin-bottom:24px;border-radius:20px;overflow:hidden;border:1px solid #1f2a34;background:#0f151c}
 .promo-slider-title{position:absolute;top:10px;left:14px;z-index:3;background:rgba(0,0,0,.6);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;color:#25d366;backdrop-filter:blur(6px)}
 .promo-slider-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:12px;padding:12px;cursor:grab;-webkit-overflow-scrolling:touch}
@@ -316,10 +337,14 @@ body.has-bg::after{opacity:.15}
 .promo-slide .slide-label{position:absolute;bottom:0;left:0;width:100%;padding:8px 12px;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);color:#fff;font-size:12px;font-weight:700;pointer-events:none}
 .promo-add-btn{flex:0 0 auto;width:120px;height:150px;border-radius:14px;border:2px dashed #2a3340;background:transparent;color:#25d366;font-size:12px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:.3s}
 .promo-add-btn:hover{border-color:#25d366;background:rgba(37,211,102,.05)}
-#bannerAnimasiRB{position:fixed;bottom:20px;right:20px;max-width:200px;max-height:200px;z-index:9997;cursor:default;pointer-events:none;display:none;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
+
+/* Banner Animasi RB — lebih kecil */
+#bannerAnimasiRB{position:fixed;bottom:20px;right:20px;max-width:150px;max-height:150px;z-index:9997;cursor:default;pointer-events:none;display:none;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
 #bannerAnimasiRB.show{display:block;animation:floatIn .6s cubic-bezier(0.4,0,0.2,1)}
 @keyframes floatIn{from{transform:translateY(100px) scale(.7);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
-#bannerAnimasiRB img,#bannerAnimasiRB video{max-width:100%;max-height:200px;object-fit:contain;display:block}
+#bannerAnimasiRB img,#bannerAnimasiRB video{max-width:100%;max-height:150px;object-fit:contain;display:block}
+
+/* Download card */
 .download-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:.4s;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .download-card:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 20px 45px rgba(37,211,102,.2)}
 .download-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;color:#25d366}
@@ -330,10 +355,22 @@ body.has-bg::after{opacity:.15}
 .download-card .info .desk{font-size:12px;opacity:.7;line-height:1.5;margin-bottom:10px;max-height:54px;overflow:hidden}
 .download-card .info .btn-dl{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:700;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:6px;transition:.3s}
 .download-card .info .btn-dl:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.4)}
+.file-size-label{font-size:10px;opacity:.5;text-align:center;margin-top:6px}
+
+/* Upload progress modal */
+.upload-progress{width:100%;height:8px;background:#0f151c;border-radius:10px;overflow:hidden;margin:12px 0}
+.upload-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#25d366,#6c5ce7);border-radius:10px;transition:width .2s ease}
+.upload-progress-text{text-align:center;font-size:13px;font-weight:700;color:#25d366}
+
 @media(max-width:600px){
   .container{padding:14px}
-  .navbar{padding:10px 14px}
-  .navbar .menu a,.navbar .menu button{padding:6px 10px;font-size:13px}
+  .navbar{padding:10px 12px;gap:8px}
+  .navbar .menu a,.navbar .menu button{padding:5px 8px;font-size:12px}
+  .navbar-right-stack{gap:4px}
+  .banner-1-1{width:36px;height:36px}
+  .banner-logo-web{width:34px;height:34px;font-size:16px}
+  .clock-top{font-size:10px}
+  .clock-top .row{font-size:9px}
   .hero{padding:40px 20px}
   .product-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
   .wallet-card .saldo{font-size:32px}
@@ -341,8 +378,8 @@ body.has-bg::after{opacity:.15}
   .topbar .menu-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
   .promo-slide{width:220px;height:120px}
   .promo-add-btn{width:100px;height:120px}
-  #bannerAnimasiRB{max-width:120px;max-height:120px}
-  #bannerAnimasiRB img,#bannerAnimasiRB video{max-height:120px}
+  #bannerAnimasiRB{max-width:90px;max-height:90px}
+  #bannerAnimasiRB img,#bannerAnimasiRB video{max-height:90px}
   .judul-web-banner{aspect-ratio:16/6;max-height:100px}
 }
 </style>
@@ -390,65 +427,99 @@ body.has-bg::after{opacity:.15}
 <symbol id="em-cloud" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
 <symbol id="em-link" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></symbol>
 <symbol id="em-play-circle" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></symbol>
+<symbol id="em-volume" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></symbol>
+<symbol id="em-volume-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></symbol>
 </svg>
 
-<div id="introOverlay">
-  <div class="intro-media-wrap" id="introMediaWrap">
+<!-- ============ FLOW PAGES (mandiri, bukan overlay) ============ -->
+
+<!-- 1. LOADING DATABASE -->
+<div class="page-flow show" id="pageFlowDb">
+  <div class="flow-box">
+    <div class="flow-spinner"></div>
+    <h2 class="flow-title">WarungDigital</h2>
+    <p class="flow-desc" id="flowDbStatus">Menghubungkan ke database...</p>
+    <div class="flow-progress"><div class="flow-progress-bar" id="flowDbBar"></div></div>
+    <button class="flow-skip-btn" onclick="skipFlowDb()">⏭️ Skip</button>
+  </div>
+</div>
+
+<!-- 2. LOADING BACKGROUND & BANNER -->
+<div class="page-flow" id="pageFlowBanner">
+  <div class="flow-box">
+    <div class="flow-spinner" style="border-top-color:#6c5ce7"></div>
+    <h2 class="flow-title" style="background:linear-gradient(135deg,#6c5ce7,#25d366);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Memuat Tampilan</h2>
+    <p class="flow-desc" id="flowBannerStatus">Memuat background & banner...</p>
+    <div class="flow-progress"><div class="flow-progress-bar" id="flowBannerBar" style="background:linear-gradient(90deg,#6c5ce7,#25d366)"></div></div>
+    <button class="flow-skip-btn" onclick="skipFlowBanner()">⏭️ Skip</button>
+  </div>
+</div>
+
+<!-- 3. INTRO MEDIA -->
+<div class="page-flow" id="pageIntroMedia">
+  <div class="intro-media-wrap">
     <img id="introImg" style="display:none" />
-    <video id="introVid" style="display:none" autoplay muted playsinline></video>
+    <video id="introVid" style="display:none" playsinline></video>
   </div>
-  <div class="intro-info-panel" id="introInfoPanel">
-    <div class="intro-info-inner">
-      <div class="intro-info-header">
-        <div class="logo-big">W</div>
-        <h1 id="introInfoTitle">WarungDigital</h1>
-        <p id="introInfoSubtitle">Marketplace Produk Digital</p>
-      </div>
-      <div id="introInfoContent"></div>
-      <button class="intro-enter-btn" onclick="introGoToChoice()">
-        <svg class="em em-lg"><use href="#em-login"/></svg> Masuk ke Web
-      </button>
+  <button class="intro-sound-hint" id="introSoundHint" onclick="enableIntroSound()">
+    <svg class="em"><use href="#em-volume"/></svg> Nyalakan Suara
+  </button>
+  <div class="intro-skip-hint">Video akan lanjut otomatis...</div>
+</div>
+
+<!-- 4. INTRO INFO UI -->
+<div class="page-flow" id="pageIntroInfo">
+  <div class="intro-info-inner">
+    <div class="intro-info-header">
+      <div class="logo-big">W</div>
+      <h1 id="introInfoTitle">WarungDigital</h1>
+      <p id="introInfoSubtitle">Marketplace Produk Digital</p>
+    </div>
+    <div id="introInfoContent"></div>
+    <button class="intro-enter-btn" onclick="introGoToChoice()">
+      <svg class="em em-lg"><use href="#em-login"/></svg> Masuk ke Web
+    </button>
+  </div>
+</div>
+
+<!-- 5. INTRO CHOICE -->
+<div class="page-flow" id="pageIntroChoice">
+  <div class="intro-choice-inner">
+    <h2>Mau Ngapain Dulu? 🚀</h2>
+    <button class="choice-btn choice-guest" onclick="introChoose('guest')">
+      <svg class="em em-lg"><use href="#em-eye"/></svg> Langsung Masuk (Guest)
+    </button>
+    <button class="choice-btn choice-login" onclick="introChoose('login')">
+      <svg class="em em-lg"><use href="#em-login"/></svg> Login
+    </button>
+    <button class="choice-btn choice-register" onclick="introChoose('register')">
+      <svg class="em em-lg"><use href="#em-user"/></svg> Daftar
+    </button>
+    <div style="text-align:center;font-size:12px;opacity:.5;margin-top:14px">
+      Guest bisa lihat & keranjang, tapi checkout/chat wajib login
     </div>
   </div>
-  <div class="intro-choice-panel" id="introChoicePanel">
-    <div class="intro-choice-inner">
-      <h2>Mau Ngapain Dulu? 🚀</h2>
-      <button class="choice-btn choice-guest" onclick="introChoose('guest')">
-        <svg class="em em-lg"><use href="#em-eye"/></svg> Langsung Masuk (Guest)
-      </button>
-      <button class="choice-btn choice-login" onclick="introChoose('login')">
-        <svg class="em em-lg"><use href="#em-login"/></svg> Login
-      </button>
-      <button class="choice-btn choice-register" onclick="introChoose('register')">
-        <svg class="em em-lg"><use href="#em-user"/></svg> Daftar
-      </button>
-      <div style="text-align:center;font-size:12px;opacity:.5;margin-top:14px">
-        Guest bisa lihat & keranjang, tapi checkout/chat wajib login
-      </div>
+</div>
+
+<!-- 6. AUTH (Login/Register) -->
+<div class="page-flow" id="pageAuth">
+  <div class="auth-inner">
+    <div class="auth-tabs">
+      <button id="authTabLogin" class="active" onclick="switchAuthTab('login')">Login</button>
+      <button id="authTabRegister" onclick="switchAuthTab('register')">Daftar</button>
+    </div>
+    <div class="auth-box">
+      <label style="font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8">Nama</label>
+      <input type="text" id="authNama" placeholder="Nama lo" style="width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;margin-bottom:12px" />
+      <label style="font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8">Password</label>
+      <input type="password" id="authPass" placeholder="Password" style="width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;margin-bottom:12px" />
+      <button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="doAuthSubmit()">Login</button>
+      <button class="btn btn-secondary btn-block" onclick="backToChoice()" style="margin-top:8px">Kembali</button>
     </div>
   </div>
 </div>
 
-<div id="dbLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:9999998;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease,transform .5s ease">
-<div style="text-align:center;max-width:400px">
-<div style="width:80px;height:80px;margin:0 auto 24px;border:6px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;animation:dbSpin .9s linear infinite"></div>
-<h2 style="font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent">WarungDigital</h2>
-<p id="dbLoadingStatus" style="font-size:14px;opacity:.6;margin-bottom:24px">Menghubungkan ke database...</p>
-<div style="width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px"><div id="dbLoadingBar" style="height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#25d366,#6c5ce7);transition:width .3s ease"></div></div>
-<button class="btn btn-secondary btn-sm" onclick="skipDbLoading()">⏭️ Skip</button>
-</div>
-</div>
-
-<div id="bannerLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:9999997;display:none;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease,transform .5s ease">
-<div style="text-align:center;max-width:400px">
-<div style="width:80px;height:80px;margin:0 auto 24px;border:6px solid rgba(108,92,231,.15);border-top-color:#6c5ce7;border-radius:50%;animation:dbSpin .9s linear infinite"></div>
-<h2 style="font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#6c5ce7,#25d366);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Memuat Tampilan</h2>
-<p id="bannerLoadingStatus" style="font-size:14px;opacity:.6;margin-bottom:24px">Memuat background & banner...</p>
-<div style="width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px"><div id="bannerLoadingBar" style="height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#6c5ce7,#25d366);transition:width .3s ease"></div></div>
-<button class="btn btn-secondary btn-sm" onclick="skipBannerLoading()">⏭️ Skip</button>
-</div>
-</div>
-
+<!-- ============ MINI LOADER ============ -->
 <div class="miniLoader" id="miniLoader">
   <div class="miniSpinner"></div>
   <div class="miniText">
@@ -460,8 +531,8 @@ body.has-bg::after{opacity:.15}
 
 <div id="topNotif"></div>
 
+<!-- ============ TOPBAR ============ -->
 <div class="topbar-overlay" id="topbarOverlay" onclick="closeTopbar()"></div>
-
 <div class="topbar" id="topbar">
 <h3><svg class="em em-lg"><use href="#em-menu"/></svg> Menu Navigasi</h3>
 <div class="menu-grid">
@@ -480,10 +551,11 @@ body.has-bg::after{opacity:.15}
 <button class="menu-btn" onclick="showHelp();closeTopbar()"><svg><use href="#em-help"/></svg> Help</button>
 <button class="menu-btn dev" id="devMenuBtn2" style="display:none" onclick="showPage('dev');closeTopbar()"><svg><use href="#em-crown"/></svg> Dev Panel</button>
 <button class="menu-btn" onclick="logoutUser();closeTopbar()" id="logoutBtn2" style="display:none"><svg><use href="#em-logout"/></svg> Logout</button>
-<button class="menu-btn" onclick="showLoginModal();closeTopbar()" id="loginBtn2" style="display:flex"><svg><use href="#em-login"/></svg> Login</button>
+<button class="menu-btn" onclick="showAuthPage('login');closeTopbar()" id="loginBtn2" style="display:flex"><svg><use href="#em-login"/></svg> Login</button>
 </div>
 </div>
 
+<!-- ============ BANNER ANIMASI POJOK KANAN BAWAH ============ -->
 <div id="bannerAnimasiRB">
   <img id="bannerAnimasiImg" style="display:none" />
   <video id="bannerAnimasiVid" style="display:none" autoplay muted loop playsinline></video>
@@ -491,6 +563,7 @@ body.has-bg::after{opacity:.15}
 
 <div class="container">
 
+<!-- ============ NAVBAR ============ -->
 <div class="navbar-wrap">
   <div class="judul-web-banner" id="judulWebBanner">
     <img id="judulWebImg" style="display:none" />
@@ -506,29 +579,35 @@ body.has-bg::after{opacity:.15}
       </div>
     </div>
     <div class="menu">
-      <div class="banner-1-1" id="banner11">
-        <img id="banner11Img" style="display:none" />
-        <video id="banner11Vid" style="display:none" autoplay muted loop playsinline></video>
-      </div>
       <a href="javascript:showPage('home')">Home</a>
       <a href="javascript:showPage('jualan')">Jualan</a>
       <a href="javascript:showPage('download')">Download</a>
       <button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
     </div>
+    <div class="navbar-right-stack">
+      <div class="banner-1-1" id="banner11">
+        <img id="banner11Img" style="display:none" />
+        <video id="banner11Vid" style="display:none" autoplay muted loop playsinline></video>
+      </div>
+      <div class="banner-logo-web" id="bannerLogoWeb">
+        <img id="bannerLogoImg" style="display:none" />
+        <video id="bannerLogoVid" style="display:none" autoplay muted loop playsinline></video>
+        <span id="bannerLogoFallback">W</span>
+      </div>
+    </div>
   </nav>
 </div>
 
+<!-- ============ PAGE HOME ============ -->
 <div id="page-home">
   <div class="promo-slider-wrap" id="promoJualanWrap">
     <div class="promo-slider-title">🔥 Promo Jualan</div>
     <div class="promo-slider-track" id="promoJualanTrack"></div>
   </div>
-
   <div class="promo-slider-wrap" id="promoMedsosWrap">
     <div class="promo-slider-title">📱 Sosial Media</div>
     <div class="promo-slider-track" id="promoMedsosTrack"></div>
   </div>
-
   <div class="hero">
     <div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
     <h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
@@ -605,7 +684,7 @@ body.has-bg::after{opacity:.15}
 <button class="btn btn-primary btn-sm" onclick="showAddDownload()"><svg class="em"><use href="#em-plus"/></svg> Upload Gratisan</button>
 </div>
 <div class="help-info-box">
-Disini tempatnya produk digital <strong>GRATIS</strong>! Siapa aja bisa upload, entah lewat link atau file langsung. Bisa pasang banner preview juga.
+Disini tempatnya produk digital <strong>GRATIS</strong>! Siapa aja bisa upload, entah lewat link atau file langsung (max 25MB). Bisa pasang banner preview juga.
 </div>
 <div id="downloadGrid" class="product-grid">
 <div class="empty"><svg class="em-2xl"><use href="#em-cloud"/></svg><p>Memuat...</p></div>
@@ -616,9 +695,7 @@ Disini tempatnya produk digital <strong>GRATIS</strong>! Siapa aja bisa upload, 
 <div class="section-header">
 <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-calc"/></svg> Kalkulator Penghasilan</h2>
 </div>
-<div class="help-info-box">
-Kalkulator ini buat nyatet penghasilan lo. Hasilnya bisa disimpen.
-</div>
+<div class="help-info-box">Kalkulator ini buat nyatet penghasilan lo. Hasilnya bisa disimpen.</div>
 <div class="calc-display" id="calcDisplay">0</div>
 <div class="calc-buttons">
 <button onclick="calcInput('7')">7</button>
@@ -646,9 +723,7 @@ Kalkulator ini buat nyatet penghasilan lo. Hasilnya bisa disimpen.
 <h2 style="font-size:16px"><svg class="em em-lg" style="color:#25d366"><use href="#em-wallet"/></svg> Catatan Penghasilan</h2>
 <span class="count" id="incomeCount">0</span>
 </div>
-<div id="incomeList">
-<div class="empty"><p>Belum ada catatan</p></div>
-</div>
+<div id="incomeList"><div class="empty"><p>Belum ada catatan</p></div></div>
 </div>
 </div>
 
@@ -657,12 +732,8 @@ Kalkulator ini buat nyatet penghasilan lo. Hasilnya bisa disimpen.
 <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-music"/></svg> Musik</h2>
 <span class="count" id="musicCount">0</span>
 </div>
-<div class="help-info-box">
-Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer.
-</div>
-<div class="music-list" id="musicList">
-<div class="empty"><p>Belum ada lagu</p></div>
-</div>
+<div class="help-info-box">Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer.</div>
+<div class="music-list" id="musicList"><div class="empty"><p>Belum ada lagu</p></div></div>
 </div>
 
 <div id="page-accounts" class="hidden">
@@ -690,7 +761,6 @@ Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer
 <div class="form-group">
 <label>Notifikasi Browser</label>
 <button type="button" class="btn btn-secondary btn-block" onclick="requestNotifPermission()">🔔 Aktifkan Notifikasi</button>
-<div style="font-size:11px;opacity:.5;margin-top:4px">Dapet notif pas ada chat/order/donasi</div>
 </div>
 <button class="btn btn-primary btn-block" onclick="saveSettingAccount()"><svg class="em"><use href="#em-check"/></svg> Simpan Akun</button>
 <button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px"><svg class="em"><use href="#em-logout"/></svg> Logout</button>
@@ -701,9 +771,7 @@ Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer
 <h2 style="color:#f1c40f"><svg class="em em-lg" style="color:#f1c40f"><use href="#em-crown"/></svg> Developer Panel</h2>
 <span class="count" id="devCount">0 user</span>
 </div>
-<div id="devContent">
-<div class="empty"><p>Memuat panel developer...</p></div>
-</div>
+<div id="devContent"><div class="empty"><p>Memuat panel developer...</p></div></div>
 </div>
 
 </div>
@@ -725,17 +793,6 @@ Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer
 </div>
 
 <div id="toast"></div>
-
-<div id="loadingOverlay">
-<div class="load-box">
-<div class="spinner"></div>
-<h3 id="loadTitle">Memproses...</h3>
-<p id="loadDesc">Mohon tunggu sebentar</p>
-<div class="progress"><div class="progress-bar" id="loadBar"></div></div>
-<div class="countdown" id="loadCountdown">10</div>
-<button class="btn btn-danger btn-block" onclick="cancelProcess()"><svg class="em"><use href="#em-close"/></svg> Batal</button>
-</div>
-</div>
 
 <div class="chat-container" id="chatContainer">
 <div class="chat-header">
@@ -759,6 +816,7 @@ Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script>
+/* ============ FIREBASE ============ */
 const firebaseConfig = {
   apiKey: "AIzaSyDp_3SDiQUAGX0_gw8BYtO2Ecnypl1GlgE",
   authDomain: "project1-f57d6.firebaseapp.com",
@@ -771,9 +829,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+/* ============ CLOUDINARY ============ */
+const CLOUD_NAME = 'lcceusqr';
+const UPLOAD_PRESET = 'Warungdigital_Unsigned';
+const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
+const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
+
+/* ============ STATE ============ */
 const DEV_NAME = "vardev";
 const DEV_PASS = "vardevanakganteng2";
-const INTRO_SKIP_KEY = 'wd_intro_done_session';
 
 let currentUser = localStorage.getItem('wd_user') || null;
 let currentPage = 'home';
@@ -781,14 +845,11 @@ let products = {};
 let downloadItems = {};
 let cart = JSON.parse(localStorage.getItem('wd_cart') || '[]');
 let selectedEwallet = null;
-let bannerBase64 = '';
 let currentChatUser = null;
 let chatRef = null;
-let loadInterval = null;
 let pendingDeleteId = null;
-let buktiBase64 = '';
+let buktiUrl = '';
 let dbReady = false;
-let notifPermission = 'default';
 let isSubmitting = false;
 let isDev = false;
 let isGuest = false;
@@ -801,35 +862,16 @@ let allPromoMedsos = [];
 let introData = {};
 let uiInfoData = {};
 let lastOrderCount = 0;
-let musicUnlockReady = false;
-let dbLoaded = false;
-let bannerLoaded = false;
+let authMode = 'login';
+let lastRenderedProductsHash = '';
+let lastRenderedDownloadHash = '';
+let musicUnlockAdded = false;
 
+/* ============ HELPERS ============ */
 function formatRp(n){return 'Rp ' + Number(n||0).toLocaleString('id-ID')}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function emoji(id, cls){return `<svg class="em ${cls||''}"><use href="#${id}"/></svg>`}
-
-async function compressImage(file, maxW=800, quality=0.7){
-  return new Promise((resolve, reject)=>{
-    const reader = new FileReader();
-    reader.onload = e=>{
-      const img = new Image();
-      img.onload = ()=>{
-        const canvas = document.createElement('canvas');
-        let w = img.width, h = img.height;
-        if(w > maxW){ h = h * (maxW / w); w = maxW; }
-        canvas.width = w; canvas.height = h;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, w, h);
-        resolve(canvas.toDataURL('image/jpeg', quality));
-      };
-      img.onerror = reject;
-      img.src = e.target.result;
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
+function formatBytes(b){ if(b<1024) return b+' B'; if(b<1048576) return (b/1024).toFixed(1)+' KB'; return (b/1048576).toFixed(2)+' MB'; }
 
 function showToast(msg, type){
   const t = document.getElementById('toast');
@@ -855,20 +897,69 @@ function showTopNotif(title, msg, type){
   `);
   setTimeout(()=>{ const el = document.getElementById(id); if(el) el.remove(); }, 8000);
   if('Notification' in window && Notification.permission === 'granted'){
-    sendWebNotif(title, msg);
+    try { new Notification(title, { body: msg, tag: 'wd-'+Date.now() }); } catch(e){}
   }
-}
-function sendWebNotif(title, body){
-  if(!('Notification' in window) || Notification.permission !== 'granted') return;
-  try {
-    const notif = new Notification(title, { body, tag: 'wd-' + Date.now(), silent: false });
-    setTimeout(()=>notif.close(), 8000);
-    notif.onclick = ()=>{ window.focus(); notif.close(); };
-  } catch(e){ console.warn(e); }
 }
 function openModal(html){ document.getElementById('modalContent').innerHTML = html; document.getElementById('modalOverlay').classList.add('show'); }
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
 
+/* ============ CLOUDINARY UPLOAD (real progress) ============ */
+function uploadToCloudinary(file, onProgress) {
+  return new Promise((resolve, reject) => {
+    if (file.size > MAX_FILE_SIZE) {
+      reject(new Error(`File max 25MB! File kamu ${formatBytes(file.size)}`));
+      return;
+    }
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', UPLOAD_PRESET);
+    fd.append('folder', 'warungdigital');
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', CLOUDINARY_URL, true);
+    if (onProgress && xhr.upload) {
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) onProgress(Math.round((e.loaded / e.total) * 100));
+      };
+    }
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try { resolve(JSON.parse(xhr.responseText)); }
+        catch(e) { reject(new Error('Response Cloudinary invalid')); }
+      } else {
+        let msg = 'Upload gagal';
+        try { msg = JSON.parse(xhr.responseText).error?.message || msg; } catch(e){}
+        reject(new Error(msg));
+      }
+    };
+    xhr.onerror = () => reject(new Error('Koneksi gagal'));
+    xhr.ontimeout = () => reject(new Error('Timeout'));
+    xhr.send(fd);
+  });
+}
+
+function showUploadProgress(title, onCancel) {
+  openModal(`
+    <h2>${emoji('em-upload','em-lg')} ${escapeHtml(title)}</h2>
+    <div class="upload-progress"><div class="upload-progress-bar" id="upBar"></div></div>
+    <div class="upload-progress-text" id="upText">0%</div>
+    <button class="btn btn-danger btn-block" onclick="closeModal()" style="margin-top:12px">Batal</button>
+  `);
+}
+function updateUploadProgress(pct) {
+  const bar = document.getElementById('upBar');
+  const txt = document.getElementById('upText');
+  if(bar) bar.style.width = pct + '%';
+  if(txt) txt.textContent = pct + '%';
+}
+
+/* ============ CLOUDINARY URL OPTIMIZE ============ */
+function cdnImg(url, w) {
+  if (!url) return '';
+  if (!url.includes('res.cloudinary.com')) return url;
+  return url.replace('/upload/', `/upload/f_auto,q_auto,w_${w||800}/`);
+}
+
+/* ============ CLOCK (5 detik) ============ */
 setInterval(()=>{
   const now = new Date();
   const wib = new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jakarta'}));
@@ -878,120 +969,24 @@ setInterval(()=>{
   const e1 = document.getElementById('clockWIB'); if(e1) e1.textContent = f(wib);
   const e2 = document.getElementById('clockWITA'); if(e2) e2.textContent = f(wita);
   const e3 = document.getElementById('clockWIT'); if(e3) e3.textContent = f(wit);
-}, 1000);
+}, 5000);
 
-function checkNotifPermission(){
-  if(!('Notification' in window)){ notifPermission = 'unsupported'; return; }
-  notifPermission = Notification.permission;
-}
+/* ============ NOTIF PERMISSION ============ */
 function requestNotifPermission(){
-  if(!('Notification' in window)){ showToast('Browser gak support notifikasi','error'); return; }
-  if(Notification.permission === 'granted'){ showToast('Notifikasi udah aktif ✅','success'); return; }
-  Notification.requestPermission().then(permission => {
-    notifPermission = permission;
-    if(permission === 'granted'){
-      showToast('✅ Notifikasi aktif!','success');
-      sendWebNotif('WarungDigital', 'Notifikasi berhasil diaktifkan! 🎉');
-    } else if(permission === 'denied'){
-      showToast('❌ Notifikasi ditolak.','error');
-    }
+  if(!('Notification' in window)){ showToast('Browser gak support','error'); return; }
+  if(Notification.permission === 'granted'){ showToast('Notif udah aktif ✅','success'); return; }
+  Notification.requestPermission().then(p => {
+    if(p === 'granted') showToast('✅ Notif aktif!','success');
+    else showToast('❌ Notif ditolak','error');
   });
 }
-checkNotifPermission();
 
-function updateDbLoading(percent, status){
-  const bar = document.getElementById('dbLoadingBar');
-  const st = document.getElementById('dbLoadingStatus');
-  if(bar) bar.style.width = percent + '%';
-  if(st && status) st.textContent = status;
-}
-function updateBannerLoading(percent, status){
-  const bar = document.getElementById('bannerLoadingBar');
-  const st = document.getElementById('bannerLoadingStatus');
-  if(bar) bar.style.width = percent + '%';
-  if(st && status) st.textContent = status;
-}
-function hideDbLoading(){
-  const el = document.getElementById('dbLoading');
-  if(!el) return;
-  el.style.opacity = '0';
-  el.style.transform = 'scale(1.05)';
-  setTimeout(()=>{ el.style.display = 'none'; }, 500);
-}
-function hideBannerLoading(){
-  const el = document.getElementById('bannerLoading');
-  if(!el) return;
-  el.style.opacity = '0';
-  el.style.transform = 'scale(1.05)';
-  setTimeout(()=>{ el.style.display = 'none'; }, 500);
-}
-function showMiniLoader(main, status){
-  const ml = document.getElementById('miniLoader');
-  const m1 = document.getElementById('miniLoaderMain');
-  const m2 = document.getElementById('miniLoaderStatus');
-  if(ml) ml.classList.add('show');
-  if(m1) m1.textContent = main;
-  if(m2) m2.textContent = status;
-}
-function updateMiniLoader(percent){
-  const bar = document.getElementById('miniLoaderBar');
-  if(bar) bar.style.width = percent + '%';
-}
-function hideMiniLoader(){
-  const ml = document.getElementById('miniLoader');
-  if(ml) ml.classList.remove('show');
-}
-function skipDbLoading(){
-  const el = document.getElementById('dbLoading');
-  if(!el || el.style.display === 'none') return;
-  el.style.opacity = '0';
-  el.style.transform = 'scale(0.9)';
-  setTimeout(()=>{ el.style.display = 'none'; }, 500);
-  showMiniLoader('Memuat Database', 'Masih loading...');
-  updateMiniLoader(50);
-}
-function skipBannerLoading(){
-  const el = document.getElementById('bannerLoading');
-  if(!el || el.style.display === 'none') return;
-  el.style.opacity = '0';
-  el.style.transform = 'scale(0.9)';
-  setTimeout(()=>{ el.style.display = 'none'; }, 500);
-  showMiniLoader('Memuat Tampilan', 'Background & banner...');
-  updateMiniLoader(50);
-}
-
-function startLoading(title, desc, onDone) {
-  document.getElementById('loadTitle').textContent = title;
-  document.getElementById('loadDesc').textContent = desc;
-  document.getElementById('loadingOverlay').classList.add('show');
-  document.getElementById('loadBar').style.width = '0%';
-  let count = 10;
-  document.getElementById('loadCountdown').textContent = count;
-  loadInterval = setInterval(()=>{
-    count--;
-    document.getElementById('loadCountdown').textContent = count;
-    document.getElementById('loadBar').style.width = ((10-count)*10) + '%';
-    if(count <= 0){
-      clearInterval(loadInterval);
-      document.getElementById('loadingOverlay').classList.remove('show');
-      if(onDone) onDone();
-    }
-  }, 1000);
-}
-function cancelProcess(){
-  if(!confirm('Batalkan proses?')) return;
-  clearInterval(loadInterval);
-  document.getElementById('loadingOverlay').classList.remove('show');
-  pendingDeleteId = null;
-  isSubmitting = false;
-  showToast('Proses dibatalkan','error');
-}
-
+/* ============ DEV ACCOUNT ============ */
 function ensureDevAccount(){
   db.ref('warungdigital/users').child(DEV_NAME).once('value', snap=>{
     if(!snap.exists()){
       db.ref('warungdigital/users').child(DEV_NAME).set({
-        password: DEV_PASS, createdAt: Date.now(), ewallets: [], wa: '', avatar: '', banner: '', status: 'Developer', isDev: true
+        password: DEV_PASS, createdAt: Date.now(), ewallets: [], wa: '', status: 'Developer', isDev: true
       });
     } else {
       const u = snap.val();
@@ -1005,15 +1000,15 @@ function checkDevStatus(){
   if(!currentUser){ isDev = false; updateDevMenu(); return; }
   db.ref('warungdigital/users').child(currentUser).child('isDev').once('value', snap=>{
     isDev = snap.val() === true || currentUser === DEV_NAME;
-    updateDevMenu(); updateNavbarBadge();
+    updateDevMenu();
   });
 }
 function updateDevMenu(){
   const btn = document.getElementById('devMenuBtn2');
   if(btn) btn.style.display = isDev ? 'flex' : 'none';
 }
-function updateNavbarBadge(){}
 
+/* ============ TOPBAR ============ */
 function openTopbar(){
   document.getElementById('topbar').classList.add('open');
   document.getElementById('topbarOverlay').classList.add('show');
@@ -1023,6 +1018,383 @@ function closeTopbar(){
   document.getElementById('topbarOverlay').classList.remove('show');
 }
 
+/* ============ FLOW PAGES (mandiri) ============ */
+function showFlow(id){
+  document.querySelectorAll('.page-flow').forEach(el=>el.classList.remove('show'));
+  const el = document.getElementById(id);
+  if(el){ el.classList.remove('exit'); el.classList.add('show'); }
+}
+function hideFlow(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.add('exit');
+  setTimeout(()=>{ el.classList.remove('show','exit'); }, 400);
+}
+
+/* ============ MINI LOADER ============ */
+function showMiniLoader(main, status){
+  const ml = document.getElementById('miniLoader');
+  if(ml) ml.classList.add('show');
+  const m1 = document.getElementById('miniLoaderMain'); if(m1) m1.textContent = main;
+  const m2 = document.getElementById('miniLoaderStatus'); if(m2) m2.textContent = status;
+}
+function updateMiniLoader(pct){
+  const bar = document.getElementById('miniLoaderBar');
+  if(bar) bar.style.width = pct + '%';
+}
+function hideMiniLoader(){
+  const ml = document.getElementById('miniLoader');
+  if(ml) ml.classList.remove('show');
+}
+
+/* ============ LOADING PROGRESS REAL ============ */
+let dbLoadProgress = 0;
+let dbLoadDone = false;
+let dbSkipClicked = false;
+function updateFlowDb(pct, status){
+  dbLoadProgress = pct;
+  const bar = document.getElementById('flowDbBar');
+  const st = document.getElementById('flowDbStatus');
+  if(bar) bar.style.width = pct + '%';
+  if(st && status) st.textContent = status;
+  if(dbSkipClicked) updateMiniLoader(pct);
+}
+function skipFlowDb(){
+  dbSkipClicked = true;
+  hideFlow('pageFlowDb');
+  showMiniLoader('Memuat Database', 'Masih loading...');
+  updateMiniLoader(dbLoadProgress);
+}
+function skipFlowBanner(){
+  hideFlow('pageFlowBanner');
+  showMiniLoader('Memuat Tampilan', 'Background & banner...');
+  updateMiniLoader(30);
+}
+
+/* ============ BOOT ============ */
+async function bootStart(){
+  // 1. Loading DB (real, pakai .once multi-path)
+  showFlow('pageFlowDb');
+  updateFlowDb(10, 'Menghubungkan ke database...');
+  try {
+    const paths = [
+      'warungdigital/products',
+      'warungdigital/users',
+      'warungdigital/orders',
+      'warungdigital/download',
+      'warungdigital/settings',
+      'warungdigital/introWeb',
+      'warungdigital/uiInfo'
+    ];
+    let done = 0;
+    for (const p of paths) {
+      await db.ref(p).once('value');
+      done++;
+      updateFlowDb(10 + Math.round((done / paths.length) * 85), `Memuat ${p.split('/').pop()}...`);
+    }
+    updateFlowDb(100, 'Selesai!');
+    dbReady = true;
+    await new Promise(r => setTimeout(r, 300));
+    if(!dbSkipClicked) hideFlow('pageFlowDb');
+    hideMiniLoader();
+    // 2. Loading Banner
+    await loadBannerStage();
+  } catch(e) {
+    console.warn('Boot error:', e);
+    dbReady = true;
+    if(!dbSkipClicked) hideFlow('pageFlowDb');
+    hideMiniLoader();
+    await loadBannerStage();
+  }
+}
+async function loadBannerStage(){
+  showFlow('pageFlowBanner');
+  const set = (pct, txt)=>{
+    const bar = document.getElementById('flowBannerBar');
+    const st = document.getElementById('flowBannerStatus');
+    if(bar) bar.style.width = pct + '%';
+    if(st) st.textContent = txt;
+  };
+  set(10, 'Memuat background...');
+  await new Promise(r => setTimeout(r, 200));
+  await loadAllBannersAndBg();
+  set(40, 'Memuat intro...');
+  await loadIntroData();
+  set(60, 'Memuat info UI...');
+  await loadUiInfo();
+  set(80, 'Memuat banner promo...');
+  await Promise.all([loadPromoJualan(), loadPromoMedsos()]);
+  set(100, 'Selesai!');
+  await new Promise(r => setTimeout(r, 200));
+  hideFlow('pageFlowBanner');
+  hideMiniLoader();
+  // 3. Intro Media
+  startIntro();
+}
+
+/* ============ DATA LOADERS (cache, no listener re-render) ============ */
+async function loadAllBannersAndBg(){
+  try {
+    const snap = await db.ref('warungdigital/settings').once('value');
+    const s = snap.val() || {};
+    applyBanner('banner11','banner11Img','banner11Vid', s.banner11, s.banner11Type, 'banner11');
+    applyBanner('judulWebBanner','judulWebImg','judulWebVid', s.bannerJudul, s.bannerJudulType, 'judulWebBanner');
+    applyBanner('bannerAnimasiRB','bannerAnimasiImg','bannerAnimasiVid', s.bannerAnimasi, s.bannerAnimasiType, 'bannerAnimasiRB');
+    applyBanner('bannerLogoWeb','bannerLogoImg','bannerLogoVid', s.bannerLogo, s.bannerLogoType, 'bannerLogoWeb');
+    applyBg(s.bgWeb, s.bgType);
+  } catch(e){ console.warn(e); }
+}
+function applyBanner(wrapId, imgId, vidId, url, type, classShow){
+  const wrap = document.getElementById(wrapId);
+  const img = document.getElementById(imgId);
+  const vid = document.getElementById(vidId);
+  if(!wrap) return;
+  if(url){
+    wrap.classList.add('show');
+    if(type === 'video'){
+      if(img) img.style.display = 'none';
+      if(vid){ vid.style.display = 'block'; vid.src = url; vid.play().catch(()=>{}); }
+    } else {
+      if(vid) vid.style.display = 'none';
+      if(img){ img.style.display = 'block'; img.src = cdnImg(url, 400); img.loading = 'lazy'; }
+    }
+  } else {
+    wrap.classList.remove('show');
+  }
+}
+function applyBg(url, type){
+  document.body.classList.remove('has-bg');
+  const oldStyle = document.getElementById('bgStyle'); if(oldStyle) oldStyle.remove();
+  const oldVid = document.getElementById('bgVideoEl'); if(oldVid) oldVid.remove();
+  if(!url) return;
+  if(type === 'video'){
+    const v = document.createElement('video');
+    v.id = 'bgVideoEl';
+    v.autoplay = true; v.muted = true; v.loop = true; v.playsInline = true;
+    v.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.15;pointer-events:none';
+    v.src = url;
+    document.body.appendChild(v);
+  } else {
+    document.body.classList.add('has-bg');
+    const st = document.createElement('style');
+    st.id = 'bgStyle';
+    st.textContent = `body.has-bg::after{background-image:url('${cdnImg(url, 1200)}')}`;
+    document.head.appendChild(st);
+  }
+}
+async function loadIntroData(){
+  try {
+    const s = await db.ref('warungdigital/introWeb').once('value');
+    introData = s.val() || {};
+  } catch(e){ introData = {}; }
+}
+async function loadUiInfo(){
+  try {
+    const s = await db.ref('warungdigital/uiInfo').once('value');
+    uiInfoData = s.val() || {};
+  } catch(e){ uiInfoData = {}; }
+}
+async function loadPromoJualan(){
+  try {
+    const s = await db.ref('warungdigital/banners/promosiJualan').limitToLast(20).once('value');
+    const items = s.val() || {};
+    allPromoJualan = Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    renderPromoJualan();
+  } catch(e){}
+}
+async function loadPromoMedsos(){
+  try {
+    const s = await db.ref('warungdigital/banners/promosiMedsos').limitToLast(20).once('value');
+    const items = s.val() || {};
+    allPromoMedsos = Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    renderPromoMedsos();
+  } catch(e){}
+}
+
+/* ============ INTRO ============ */
+function startIntro(){
+  const hasMedia = introData.media && introData.mediaType;
+  if(!hasMedia){
+    showIntroInfo();
+    return;
+  }
+  showFlow('pageIntroMedia');
+  const img = document.getElementById('introImg');
+  const vid = document.getElementById('introVid');
+  const soundHint = document.getElementById('introSoundHint');
+  img.style.display = 'none'; vid.style.display = 'none';
+  if(introData.mediaType === 'video'){
+    vid.style.display = 'block';
+    vid.src = introData.media;
+    vid.muted = false;
+    vid.volume = 1;
+    vid.playsInline = true;
+    vid.onended = ()=> showIntroInfo();
+    vid.onerror = ()=> showIntroInfo();
+    vid.play().catch(()=>{
+      vid.muted = true;
+      vid.play().then(()=>{ if(soundHint) soundHint.classList.add('show'); }).catch(()=>{
+        if(soundHint) soundHint.classList.add('show');
+        setTimeout(()=>showIntroInfo(), 3000);
+      });
+    });
+    setTimeout(()=>{ if(document.getElementById('pageIntroMedia').classList.contains('show')) showIntroInfo(); }, 30000);
+  } else {
+    img.style.display = 'block';
+    img.src = introData.media;
+    setTimeout(()=> showIntroInfo(), 3000);
+  }
+}
+function enableIntroSound(){
+  const vid = document.getElementById('introVid');
+  if(vid){ vid.muted = false; vid.volume = 1; vid.play().catch(()=>{}); }
+  const h = document.getElementById('introSoundHint');
+  if(h) h.classList.remove('show');
+}
+function showIntroInfo(){
+  hideFlow('pageIntroMedia');
+  setTimeout(()=>{
+    showFlow('pageIntroInfo');
+    const t = document.getElementById('introInfoTitle');
+    const s = document.getElementById('introInfoSubtitle');
+    if(t) t.textContent = uiInfoData.title || 'WarungDigital';
+    if(s) s.textContent = uiInfoData.subtitle || 'Marketplace Produk Digital';
+    const content = document.getElementById('introInfoContent');
+    const updates = uiInfoData.updates ? Object.values(uiInfoData.updates) : [];
+    const features = uiInfoData.features ? Object.values(uiInfoData.features) : [];
+    let html = '';
+    if(updates.length > 0){
+      html += `<div class="intro-info-card"><h3>📝 Update Terbaru</h3>`;
+      updates.forEach(u => { html += `<div class="intro-update-item"><div class="dot"></div><div>${escapeHtml(u)}</div></div>`; });
+      html += `</div>`;
+    } else {
+      html += `<div class="intro-info-card"><h3>📝 Update Terbaru</h3><div class="intro-update-item"><div class="dot"></div><div>WarungDigital v7.0 — Cloudinary, halaman mandiri, banner baru, loading akurat!</div></div></div>`;
+    }
+    if(features.length > 0){
+      html += `<div class="intro-info-card"><h3>🎯 Status Fitur</h3>`;
+      features.forEach(f => {
+        const cls = f.status === 'online' ? 'badge-online' : (f.status === 'bug' ? 'badge-bug' : 'badge-offline');
+        const label = f.status === 'online' ? '🟢 Online' : (f.status === 'bug' ? '🟡 Bug' : '🔴 Offline');
+        html += `<div class="intro-feature-status"><div class="name">${escapeHtml(f.nama)}</div><div class="badge-status ${cls}">${label}</div></div>`;
+      });
+      html += `</div>`;
+    }
+    content.innerHTML = html;
+  }, 400);
+}
+function introGoToChoice(){
+  hideFlow('pageIntroInfo');
+  setTimeout(()=> showFlow('pageIntroChoice'), 400);
+}
+function introChoose(mode){
+  hideFlow('pageIntroChoice');
+  setTimeout(()=>{
+    if(mode === 'guest'){
+      isGuest = true; currentUser = null;
+      localStorage.removeItem('wd_user');
+      afterAuthGo();
+    } else if(mode === 'login'){
+      authMode = 'login';
+      showAuthPage('login');
+    } else if(mode === 'register'){
+      authMode = 'register';
+      showAuthPage('register');
+    }
+  }, 400);
+}
+function backToChoice(){
+  hideFlow('pageAuth');
+  setTimeout(()=> showFlow('pageIntroChoice'), 400);
+}
+function showAuthPage(mode){
+  authMode = mode;
+  showFlow('pageAuth');
+  const tabL = document.getElementById('authTabLogin');
+  const tabR = document.getElementById('authTabRegister');
+  const btn = document.getElementById('authSubmitBtn');
+  if(mode === 'login'){
+    tabL.classList.add('active'); tabR.classList.remove('active');
+    btn.textContent = 'Login';
+  } else {
+    tabR.classList.add('active'); tabL.classList.remove('active');
+    btn.textContent = 'Daftar';
+  }
+  document.getElementById('authNama').value = '';
+  document.getElementById('authPass').value = '';
+}
+function switchAuthTab(mode){ showAuthPage(mode); }
+function doAuthSubmit(){
+  const nama = document.getElementById('authNama').value.trim();
+  const pass = document.getElementById('authPass').value.trim();
+  if(!nama || !pass){ showToast('Isi semua!','error'); return; }
+  if(authMode === 'register'){
+    if(pass.length < 4){ showToast('Password min 4 karakter!','error'); return; }
+    db.ref('warungdigital/users').child(nama).once('value', snap=>{
+      if(snap.exists()){ showToast('Nama udah dipake!','error'); return; }
+      db.ref('warungdigital/users').child(nama).set({
+        password: pass, createdAt: Date.now(), ewallets: [], wa: '', status: ''
+      }).then(()=>{
+        currentUser = nama; isGuest = false;
+        localStorage.setItem('wd_user', nama);
+        showToast('Daftar berhasil!','success');
+        hideFlow('pageAuth');
+        setTimeout(afterAuthGo, 400);
+      });
+    });
+  } else {
+    db.ref('warungdigital/users').child(nama).once('value', snap=>{
+      if(!snap.exists()){ showToast('❌ Akun gak terdaftar!','error'); return; }
+      if(snap.val().password !== pass){ showToast('Password salah!','error'); return; }
+      currentUser = nama; isGuest = false;
+      localStorage.setItem('wd_user', nama);
+      showToast('Login berhasil!','success');
+      hideFlow('pageAuth');
+      setTimeout(afterAuthGo, 400);
+    });
+  }
+}
+function afterAuthGo(){
+  updateLoginBtns();
+  showPage('home');
+  if(currentUser){
+    checkDevStatus();
+    db.ref('warungdigital/users').child(currentUser).on('value', snap=>{
+      if(!snap.exists()){
+        showTopNotif('❌ Akun Dihapus', 'Akun lo dihapus Developer', 'error');
+        setTimeout(()=>{ currentUser = null; localStorage.removeItem('wd_user'); location.reload(); }, 3000);
+      }
+    });
+    db.ref('warungdigital/notifications').orderByChild('target').equalTo(currentUser).limitToLast(10).on('child_added', snap=>{
+      const n = snap.val();
+      if(!n || n.read) return;
+      showTopNotif(n.title, n.message, n.type === 'danger' ? 'error' : 'info');
+      snap.ref.update({ read: true });
+    });
+  }
+  // Auto-play music
+  setTimeout(()=> autoLoadMusic(), 800);
+}
+function updateLoginBtns(){
+  const logoutBtn = document.getElementById('logoutBtn2');
+  const loginBtn = document.getElementById('loginBtn2');
+  if(currentUser){
+    if(logoutBtn) logoutBtn.style.display = 'flex';
+    if(loginBtn) loginBtn.style.display = 'none';
+  } else {
+    if(logoutBtn) logoutBtn.style.display = 'none';
+    if(loginBtn) loginBtn.style.display = 'flex';
+  }
+}
+function logoutUser(){
+  if(!confirm('Yakin logout?')) return;
+  currentUser = null; isGuest = false;
+  localStorage.removeItem('wd_user');
+  isDev = false; updateDevMenu(); updateLoginBtns();
+  showToast('Logout!','success');
+  location.reload();
+}
+
+/* ============ CART ============ */
 function saveCart(){ localStorage.setItem('wd_cart', JSON.stringify(cart)); updateCartBadge(); }
 function updateCartBadge(){
   const badge = document.getElementById('cartBadge');
@@ -1033,18 +1405,18 @@ function updateCartBadge(){
 }
 function addToCart(id){
   const p = products[id]; if(!p) return;
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
   if(p.penjual === currentUser){ showToast('Gak bisa beli produk sendiri!','error'); return; }
   if(p.stock !== undefined && p.stock <= 0){ showToast('Stok habis!','error'); return; }
-  const exist = cart.find(c=>c.id===id);
-  if(exist) exist.qty++;
+  const ex = cart.find(c=>c.id===id);
+  if(ex) ex.qty++;
   else cart.push({id, nama:p.nama, harga:p.harga, penjual:p.penjual, qty:1});
   saveCart(); showToast('Masuk keranjang!','success');
   if(currentPage==='cart') renderCart();
 }
 function removeFromCart(i){ cart.splice(i,1); saveCart(); renderCart(); }
-function changeQty(i, delta){ cart[i].qty += delta; if(cart[i].qty <= 0) cart.splice(i,1); saveCart(); renderCart(); }
-function clearCart(){ if(!confirm('Kosongin keranjang?')) return; cart = []; saveCart(); renderCart(); }
+function changeQty(i, d){ cart[i].qty += d; if(cart[i].qty <= 0) cart.splice(i,1); saveCart(); renderCart(); }
+function clearCart(){ if(!confirm('Kosongin keranjang?')) return; cart=[]; saveCart(); renderCart(); }
 function renderCart(){
   const el = document.getElementById('cartList');
   const cc = document.getElementById('cartCount');
@@ -1073,49 +1445,49 @@ function renderCart(){
     <button class="btn btn-danger btn-block" onclick="clearCart()" style="margin-top:8px">${emoji('em-trash','em')} Kosongin Keranjang</button>
   `;
 }
-function checkoutCart(){
+async function checkoutCart(){
   if(cart.length === 0){ showToast('Keranjang kosong!','error'); return; }
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
   const firstSeller = cart[0].penjual;
-  db.ref('warungdigital/users').child(firstSeller).once('value', snap=>{
-    const u = snap.val() || {};
-    const ewallets = (u.ewallets || []).filter(e => e.verified);
-    if(ewallets.length === 0){ showToast('Penjual belum punya e-wallet terverifikasi!','error'); return; }
-    openModal(`
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2>${emoji('em-cart','em-lg')} Checkout</h2>
-      <div class="verify-box">
-        <div class="label">Bayar ke Penjual</div>
-        <div class="val">${escapeHtml(firstSeller)}</div>
-        <div class="label" style="margin-top:8px">Total</div>
-        <div class="val big">${formatRp(total)}</div>
-      </div>
-      <label>Pilih E-Wallet Penjual</label>
-      <div class="metode-list" id="ewalletList">
-        ${ewallets.map((e,i)=>`
-          <div class="metode-item" onclick="pilihEwalletCart(${i},'${escapeHtml(e.jenis)}','${escapeHtml(e.namaAkun)}','${escapeHtml(e.nomor)}')">
-            ${e.icon||'💳'} ${escapeHtml(e.jenis)} — ${escapeHtml(e.namaAkun)}
-          </div>
-        `).join('')}
-      </div>
-      <div id="ewalletDetail"></div>
-      <label style="margin-top:14px">Upload Bukti Transfer</label>
-      <div class="upload-area" id="uploadArea" onclick="document.getElementById('buktiInput').click()">
-        <div class="icon">${emoji('em-upload','em-2xl')}</div>
-        <div class="text">Klik buat upload foto bukti transfer</div>
-        <img id="buktiPreview" style="display:none" />
-      </div>
-      <input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFile(this)" />
-      <div class="verify-box" style="margin-top:14px">
-        <div class="label">Nama Tujuan Transfer</div>
-        <div class="val" id="autoNamaTujuan">-</div>
-        <div class="label" style="margin-top:8px">Nominal Transfer</div>
-        <div class="val big">${formatRp(total)}</div>
-      </div>
-      <button class="btn btn-primary btn-block" onclick="submitCartOrder()">${emoji('em-check','em')} Kirim Pesanan</button>
-    `);
-  });
+  const snap = await db.ref('warungdigital/users').child(firstSeller).once('value');
+  const u = snap.val() || {};
+  const ewallets = (u.ewallets || []).filter(e => e.verified);
+  if(ewallets.length === 0){ showToast('Penjual belum punya e-wallet terverifikasi!','error'); return; }
+  buktiUrl = '';
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h2>${emoji('em-cart','em-lg')} Checkout</h2>
+    <div class="verify-box">
+      <div class="label">Bayar ke Penjual</div>
+      <div class="val">${escapeHtml(firstSeller)}</div>
+      <div class="label" style="margin-top:8px">Total</div>
+      <div class="val big">${formatRp(total)}</div>
+    </div>
+    <label>Pilih E-Wallet Penjual</label>
+    <div class="metode-list" id="ewalletList">
+      ${ewallets.map((e,i)=>`
+        <div class="metode-item" onclick="pilihEwalletCart(${i},'${escapeHtml(e.jenis)}','${escapeHtml(e.namaAkun)}','${escapeHtml(e.nomor)}')">
+          ${e.icon||'💳'} ${escapeHtml(e.jenis)} — ${escapeHtml(e.namaAkun)}
+        </div>
+      `).join('')}
+    </div>
+    <div id="ewalletDetail"></div>
+    <label style="margin-top:14px">Upload Bukti Transfer</label>
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('buktiInput').click()">
+      <div class="icon">${emoji('em-upload','em-2xl')}</div>
+      <div class="text">Klik buat upload foto bukti transfer</div>
+      <img id="buktiPreview" style="display:none" />
+    </div>
+    <input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFile(this)" />
+    <div class="verify-box" style="margin-top:14px">
+      <div class="label">Nama Tujuan Transfer</div>
+      <div class="val" id="autoNamaTujuan">-</div>
+      <div class="label" style="margin-top:8px">Nominal Transfer</div>
+      <div class="val big">${formatRp(total)}</div>
+    </div>
+    <button class="btn btn-primary btn-block" onclick="submitCartOrder()">${emoji('em-check','em')} Kirim Pesanan</button>
+  `);
 }
 function pilihEwalletCart(i, jenis, namaAkun, nomor){
   selectedEwallet = { jenis, namaAkun, nomor };
@@ -1132,23 +1504,31 @@ function pilihEwalletCart(i, jenis, namaAkun, nomor){
   document.getElementById('autoNamaTujuan').textContent = namaAkun;
 }
 async function readBuktiFile(input){
-  const file = input.files[0];
-  if(!file) return;
-  if(file.size > 5*1024*1024){ showToast('Foto max 5MB!','error'); input.value=''; return; }
+  const file = input.files[0]; if(!file) return;
+  if(file.size > MAX_FILE_SIZE){ showToast('Foto max 25MB!','error'); input.value=''; return; }
+  showUploadProgress('Upload Bukti Transfer');
   try {
-    const compressed = await compressImage(file, 1000, 0.75);
-    buktiBase64 = compressed;
-    const area = document.getElementById('uploadArea');
-    const img = document.getElementById('buktiPreview');
-    img.src = compressed;
-    img.style.display = 'block';
-    area.classList.add('has-file');
-  } catch(e){ showToast('Gagal proses gambar','error'); }
+    const res = await uploadToCloudinary(file, updateUploadProgress);
+    buktiUrl = res.secure_url;
+    closeModal();
+    setTimeout(()=>{
+      openModal(`
+        <button class="close-btn" onclick="closeModal()">✕</button>
+        <h2>${emoji('em-check','em-lg')} Bukti Terupload</h2>
+        <img src="${cdnImg(buktiUrl, 600)}" style="width:100%;border-radius:12px;margin-bottom:12px" />
+        <div style="font-size:12px;opacity:.6;text-align:center">Bukti tersimpan. Klik "Kirim Pesanan" di bawah.</div>
+        <button class="btn btn-secondary btn-block" onclick="closeModal();checkoutCart()" style="margin-top:12px">Kembali ke Checkout</button>
+      `);
+    }, 200);
+  } catch(e){
+    showToast('❌ '+e.message,'error');
+    closeModal();
+  }
 }
 function submitCartOrder(){
   if(isSubmitting){ showToast('Tunggu bentar...','warn'); return; }
-  if(!selectedEwallet){ showToast('Pilih e-wallet penjual dulu!','error'); return; }
-  if(!buktiBase64){ showToast('Upload bukti transfer dulu!','error'); return; }
+  if(!selectedEwallet){ showToast('Pilih e-wallet!','error'); return; }
+  if(!buktiUrl){ showToast('Upload bukti transfer!','error'); return; }
   isSubmitting = true;
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
   const orderId = 'ORD-'+Date.now();
@@ -1156,18 +1536,22 @@ function submitCartOrder(){
     orderId, items: cart.map(c=>({nama:c.nama, harga:c.harga, qty:c.qty, penjual:c.penjual})),
     produkNama: cart.map(c=>c.nama).join(', '), total, pembeli: currentUser, penjual: cart[0].penjual,
     ewallet: selectedEwallet, nominal: total, namaTujuan: selectedEwallet.namaAkun,
-    bukti: buktiBase64, status: 'proof_uploaded', createdAt: Date.now()
+    bukti: buktiUrl, status: 'proof_uploaded', createdAt: Date.now()
   };
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
     closeModal(); showToast('✅ Pesanan dikirim!','success');
-    cart = []; saveCart(); selectedEwallet = null; buktiBase64 = ''; isSubmitting = false;
+    cart = []; saveCart(); selectedEwallet = null; buktiUrl = ''; isSubmitting = false;
     showPage('orders');
   }).catch(e=>{ showToast('❌ '+e.message,'error'); isSubmitting = false; });
 }
 
+/* ============ PAGE NAV ============ */
 function showPage(page){
   currentPage = page;
-  document.querySelectorAll('[id^="page-"]').forEach(el=>el.classList.add('hidden'));
+  document.querySelectorAll('[id^="page-"]').forEach(el=>{
+    if(el.classList.contains('page-flow')) return;
+    el.classList.add('hidden');
+  });
   const el = document.getElementById('page-'+page);
   if(el) el.classList.remove('hidden');
   if(page==='home') renderHome();
@@ -1183,15 +1567,15 @@ function showPage(page){
   if(page==='account') loadSettingAccount();
   if(page==='dev') renderDev();
   window.scrollTo({top:0,behavior:'smooth'});
-  if(currentUser && !isGuest) trackActivity(page);
-}
-function trackActivity(page){
-  if(!currentUser) return;
-  db.ref('warungdigital/activities').child(currentUser).update({ page, lastSeen: Date.now(), device: navigator.userAgent.substring(0,100) });
 }
 
+/* ============ DATA LISTENER — MINIM LISTENER ============ */
+// Products: pakai .once, hanya refresh manual saat perlu
 db.ref('warungdigital/products').on('value', snap=>{
   products = snap.val() || {};
+  const hash = JSON.stringify(Object.keys(products).sort());
+  if(hash === lastRenderedProductsHash) return;
+  lastRenderedProductsHash = hash;
   const sp = document.getElementById('statProduk');
   const pc = document.getElementById('produkCount');
   if(sp) sp.textContent = Object.keys(products).length;
@@ -1201,13 +1585,18 @@ db.ref('warungdigital/products').on('value', snap=>{
 });
 db.ref('warungdigital/download').on('value', snap=>{
   downloadItems = snap.val() || {};
+  const hash = JSON.stringify(Object.keys(downloadItems).sort());
+  if(hash === lastRenderedDownloadHash) return;
+  lastRenderedDownloadHash = hash;
   if(dbReady && currentPage==='download') renderDownload();
 });
-db.ref('warungdigital/users').on('value', snap=>{
+// Users count
+db.ref('warungdigital/users').once('value', snap=>{
   const el = document.getElementById('statUser');
   if(el) el.textContent = snap.numChildren();
 });
-db.ref('warungdigital/orders').on('value', snap=>{
+// Orders count + notif penjual (limit)
+db.ref('warungdigital/orders').limitToLast(100).on('value', snap=>{
   const count = snap.numChildren();
   const el = document.getElementById('statOrder');
   if(el) el.textContent = count;
@@ -1222,23 +1611,7 @@ db.ref('warungdigital/orders').on('value', snap=>{
   lastOrderCount = count;
 });
 
-if(currentUser){
-  db.ref('warungdigital/notifications').orderByChild('target').equalTo(currentUser).on('child_added', snap=>{
-    const notif = snap.val();
-    if(!notif || notif.read) return;
-    showTopNotif(notif.title, notif.message, notif.type === 'danger' ? 'error' : 'info');
-    snap.ref.update({ read: true });
-  });
-}
-if(currentUser){
-  db.ref('warungdigital/users').child(currentUser).on('value', snap=>{
-    if(!snap.exists()){
-      showTopNotif('❌ Akun Dihapus', 'Akun lo udah dihapus oleh Developer', 'error');
-      setTimeout(()=>{ currentUser = null; localStorage.removeItem('wd_user'); location.reload(); }, 3000);
-    }
-  });
-}
-
+/* ============ HOME ============ */
 function renderHome(){
   const grid = document.getElementById('productGrid');
   if(!grid) return;
@@ -1250,7 +1623,7 @@ function renderHome(){
   grid.innerHTML = list.reverse().map(p=>{
     const inCart = cart.find(c=>c.id===p.id);
     const habis = p.stock !== undefined && p.stock <= 0;
-    const thumbContent = p.banner ? `<img src="${p.banner}" alt="banner">` : emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl');
+    const thumbContent = p.banner ? `<img src="${cdnImg(p.banner, 500)}" loading="lazy" alt="banner">` : emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl');
     return `
     <div class="product-card" onclick="showDetail('${p.id}')">
       <div class="thumb">${thumbContent}</div>
@@ -1272,10 +1645,9 @@ function renderHome(){
     </div>
   `}).join('');
 }
-
 function showDetail(id){
   const p = products[id]; if(!p) return;
-  const banner = p.banner ? `<img src="${p.banner}" style="width:100%;border-radius:16px;margin-bottom:14px;max-height:200px;object-fit:cover" />` : '';
+  const banner = p.banner ? `<img src="${cdnImg(p.banner, 800)}" style="width:100%;border-radius:16px;margin-bottom:14px;max-height:200px;object-fit:cover" />` : '';
   const habis = p.stock !== undefined && p.stock <= 0;
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
@@ -1294,54 +1666,53 @@ function showDetail(id){
     <button class="btn btn-secondary btn-block" onclick="closeModal();openChatWith('${escapeHtml(p.penjual)}')">${emoji('em-send','em')} Chat Penjual</button>
   `);
 }
-
-function beliLangsung(id){
-  if(!currentUser || isGuest){ showToast('Login dulu buat beli!','error'); showLoginModal(); return; }
+async function beliLangsung(id){
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
   const p = products[id]; if(!p) return;
   if(p.penjual === currentUser){ showToast('Gak bisa beli produk sendiri!','error'); return; }
   if(p.stock !== undefined && p.stock <= 0){ showToast('Stok habis!','error'); return; }
   if(p.tipe === 'wa' && p.waLink){ window.open(p.waLink,'_blank'); return; }
   closeModal();
-  db.ref('warungdigital/users').child(p.penjual).once('value', usnap=>{
-    const u = usnap.val() || {};
-    const ewallets = (u.ewallets || []).filter(e => e.verified);
-    if(ewallets.length === 0){ showToast('Penjual belum punya e-wallet terverifikasi!','error'); return; }
-    openModal(`
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2>${emoji('em-cart','em-lg')} Beli Langsung</h2>
-      <div class="verify-box">
-        <div class="label">Produk</div>
-        <div class="val">${escapeHtml(p.nama)}</div>
-        <div class="label" style="margin-top:8px">Penjual</div>
-        <div class="val">${escapeHtml(p.penjual)}</div>
-        <div class="label" style="margin-top:8px">Nominal</div>
-        <div class="val big">${formatRp(p.harga)}</div>
-      </div>
-      <label>Pilih E-Wallet Penjual</label>
-      <div class="metode-list" id="ewalletList">
-        ${ewallets.map((e,i)=>`
-          <div class="metode-item" onclick="pilihEwalletPenjual(${i},'${escapeHtml(e.jenis)}','${escapeHtml(e.namaAkun)}','${escapeHtml(e.nomor)}')">
-            ${e.icon||'💳'} ${escapeHtml(e.jenis)} — ${escapeHtml(e.namaAkun)}
-          </div>
-        `).join('')}
-      </div>
-      <div id="ewalletDetail"></div>
-      <label style="margin-top:14px">Upload Bukti Transfer</label>
-      <div class="upload-area" id="uploadArea" onclick="document.getElementById('buktiInput').click()">
-        <div class="icon">${emoji('em-upload','em-2xl')}</div>
-        <div class="text">Klik buat upload foto bukti transfer</div>
-        <img id="buktiPreview" style="display:none" />
-      </div>
-      <input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFile(this)" />
-      <div class="verify-box" style="margin-top:14px">
-        <div class="label">Nama Tujuan Transfer</div>
-        <div class="val" id="autoNamaTujuan">-</div>
-        <div class="label" style="margin-top:8px">Nominal Transfer</div>
-        <div class="val big">${formatRp(p.harga)}</div>
-      </div>
-      <button class="btn btn-primary btn-block" onclick="submitBeliLangsung('${id}')">${emoji('em-check','em')} Kirim Pesanan</button>
-    `);
-  });
+  const snap = await db.ref('warungdigital/users').child(p.penjual).once('value');
+  const u = snap.val() || {};
+  const ewallets = (u.ewallets || []).filter(e => e.verified);
+  if(ewallets.length === 0){ showToast('Penjual belum punya e-wallet terverifikasi!','error'); return; }
+  buktiUrl = '';
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h2>${emoji('em-cart','em-lg')} Beli Langsung</h2>
+    <div class="verify-box">
+      <div class="label">Produk</div>
+      <div class="val">${escapeHtml(p.nama)}</div>
+      <div class="label" style="margin-top:8px">Penjual</div>
+      <div class="val">${escapeHtml(p.penjual)}</div>
+      <div class="label" style="margin-top:8px">Nominal</div>
+      <div class="val big">${formatRp(p.harga)}</div>
+    </div>
+    <label>Pilih E-Wallet Penjual</label>
+    <div class="metode-list" id="ewalletList">
+      ${ewallets.map((e,i)=>`
+        <div class="metode-item" onclick="pilihEwalletPenjual(${i},'${escapeHtml(e.jenis)}','${escapeHtml(e.namaAkun)}','${escapeHtml(e.nomor)}')">
+          ${e.icon||'💳'} ${escapeHtml(e.jenis)} — ${escapeHtml(e.namaAkun)}
+        </div>
+      `).join('')}
+    </div>
+    <div id="ewalletDetail"></div>
+    <label style="margin-top:14px">Upload Bukti Transfer</label>
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('buktiInput').click()">
+      <div class="icon">${emoji('em-upload','em-2xl')}</div>
+      <div class="text">Klik buat upload foto bukti transfer</div>
+      <img id="buktiPreview" style="display:none" />
+    </div>
+    <input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFileBL(this,'${id}')" />
+    <div class="verify-box" style="margin-top:14px">
+      <div class="label">Nama Tujuan Transfer</div>
+      <div class="val" id="autoNamaTujuan">-</div>
+      <div class="label" style="margin-top:8px">Nominal Transfer</div>
+      <div class="val big">${formatRp(p.harga)}</div>
+    </div>
+    <button class="btn btn-primary btn-block" onclick="submitBeliLangsung('${id}')">${emoji('em-check','em')} Kirim Pesanan</button>
+  `);
 }
 function pilihEwalletPenjual(i, jenis, namaAkun, nomor){
   selectedEwallet = { jenis, namaAkun, nomor };
@@ -1357,10 +1728,24 @@ function pilihEwalletPenjual(i, jenis, namaAkun, nomor){
   `;
   document.getElementById('autoNamaTujuan').textContent = namaAkun;
 }
+async function readBuktiFileBL(input, produkId){
+  const file = input.files[0]; if(!file) return;
+  if(file.size > MAX_FILE_SIZE){ showToast('Foto max 25MB!','error'); input.value=''; return; }
+  showUploadProgress('Upload Bukti Transfer');
+  try {
+    const res = await uploadToCloudinary(file, updateUploadProgress);
+    buktiUrl = res.secure_url;
+    closeModal();
+    setTimeout(()=> beliLangsung(produkId), 200);
+  } catch(e){
+    showToast('❌ '+e.message,'error');
+    closeModal();
+  }
+}
 function submitBeliLangsung(id){
   if(isSubmitting){ showToast('Tunggu bentar...','warn'); return; }
-  if(!selectedEwallet){ showToast('Pilih e-wallet penjual dulu!','error'); return; }
-  if(!buktiBase64){ showToast('Upload bukti transfer dulu!','error'); return; }
+  if(!selectedEwallet){ showToast('Pilih e-wallet!','error'); return; }
+  if(!buktiUrl){ showToast('Upload bukti transfer!','error'); return; }
   isSubmitting = true;
   const p = products[id];
   const orderId = 'ORD-'+Date.now();
@@ -1368,20 +1753,19 @@ function submitBeliLangsung(id){
     orderId, produkId: id, produkNama: p.nama, harga: p.harga, total: p.harga,
     pembeli: currentUser, penjual: p.penjual, ewallet: selectedEwallet,
     nominal: p.harga, namaTujuan: selectedEwallet.namaAkun,
-    bukti: buktiBase64, status: 'proof_uploaded', createdAt: Date.now()
+    bukti: buktiUrl, status: 'proof_uploaded', createdAt: Date.now()
   };
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
     closeModal(); showToast('✅ Pesanan dikirim!','success');
-    buktiBase64 = ''; selectedEwallet = null; isSubmitting = false;
+    buktiUrl = ''; selectedEwallet = null; isSubmitting = false;
     showPage('orders');
   }).catch(e=>{ showToast('❌ '+e.message,'error'); isSubmitting = false; });
 }
 
+/* ============ JUALAN ============ */
 function renderJualan(){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
-  renderJualanProduk();
-  renderJualanPesanan();
-  renderJualanPembayaran();
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
+  renderJualanProduk(); renderJualanPesanan(); renderJualanPembayaran();
 }
 function switchJualanTab(tab, el){
   document.querySelectorAll('#page-jualan .tabs button').forEach(b=>b.classList.remove('active'));
@@ -1391,86 +1775,80 @@ function switchJualanTab(tab, el){
     if(e) e.classList.toggle('hidden', t!==tab);
   });
 }
-function renderJualanProduk(){
+async function renderJualanProduk(){
   const el = document.getElementById('jualan-produk');
   if(!el) return;
-  if(!currentUser){ el.innerHTML = `<div class="empty">${emoji('em-box','em-2xl')}<p>Login dulu!</p></div>`; return; }
-  db.ref('warungdigital/users').child(currentUser).child('ewallets').once('value', esnap=>{
-    const ewallets = esnap.val() || [];
-    const hasEwallet = ewallets.length > 0;
-    let warningHtml = '';
-    if(!hasEwallet){
-      warningHtml = `
-        <div class="help-warn-box" style="margin-bottom:16px">
-          <strong>⚠️ Peringatan!</strong><br>
-          Lo belum daftarin E-Wallet. Produk lo <strong>gak bisa dibeli</strong> sampai lo daftarin e-wallet dulu.<br>
-          <button class="btn btn-warning btn-sm" style="margin-top:8px" onclick="switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin E-Wallet Sekarang</button>
-        </div>
-      `;
-    }
-    const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
-    if(my.length===0){
-      el.innerHTML = warningHtml + `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`;
-      return;
-    }
-    el.innerHTML = warningHtml + '<div class="product-grid">' + my.map(([id,p])=>`
-      <div class="product-card">
-        <div class="thumb">${p.banner?`<img src="${p.banner}">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div>
-        <div class="info">
-          <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
-          <div class="nama">${escapeHtml(p.nama)}</div>
-          <div class="meta"><span class="stok">📦 ${p.stock !== undefined ? 'Stok: ' + p.stock : '∞'}</span><span class="sold">🛒 ${p.sold || 0} terjual</span></div>
-          <div class="harga">${formatRp(p.harga)}</div>
-          <div style="display:flex;gap:6px;margin-top:10px">
-            <button class="btn btn-sm btn-danger" style="flex:1" onclick="requestDeleteProduct('${id}')">${emoji('em-trash','em')}</button>
-          </div>
-        </div>
-      </div>
-    `).join('') + '</div>';
-  });
-}
-function renderJualanPesanan(){
-  const el = document.getElementById('jualan-pesanan');
-  if(!el) return;
-  db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
-    if(!snap.exists()){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada penjualan</p></div>`;return}
-    let html = '';
-    const orders = [];
-    snap.forEach(child=>{ orders.push({key:child.key, ...child.val()}); });
-    orders.sort((a,b)=>b.createdAt-a.createdAt);
-    orders.forEach(o => { html += renderOrderCard(o, 'penjual'); });
-    el.innerHTML = html;
-  });
-}
-function renderJualanPembayaran(){
-  const el = document.getElementById('jualan-pembayaran');
-  if(!el) return;
-  db.ref('warungdigital/users').child(currentUser).once('value', snap=>{
-    const u = snap.val() || {};
-    const ewallets = u.ewallets || [];
-    el.innerHTML = `
-      <div class="form-group">
-        <label>E-Wallet / Bank yang Lo Punya</label>
-        <div id="ewalletList">
-          ${ewallets.length === 0 ? '<div style="opacity:.5;text-align:center;padding:12px;font-size:13px">Belum ada e-wallet. Tambah dulu!</div>' :
-            ewallets.map((e,i)=>`
-              <div class="cart-item" style="margin-bottom:8px">
-                <div class="thumb" style="font-size:20px">${e.icon||'💳'}</div>
-                <div class="info">
-                  <div class="nama">${escapeHtml(e.jenis)}</div>
-                  <div style="font-size:12px;opacity:.7">${escapeHtml(e.namaAkun)}</div>
-                  <div style="font-size:12px;opacity:.7">${escapeHtml(e.nomor)}</div>
-                  <div style="font-size:11px;margin-top:4px;color:${e.verified?'#25d366':'#f39c12'}">${e.verified?'✅ Terverifikasi':'⏳ Belum diverifikasi'}</div>
-                </div>
-                <button class="del" onclick="hapusEwallet(${i})">${emoji('em-trash','em')}</button>
-              </div>
-            `).join('')
-          }
-        </div>
-        <button class="btn btn-primary btn-block" onclick="showAddEwallet()">${emoji('em-plus','em')} Tambah E-Wallet</button>
+  if(!currentUser){ el.innerHTML = `<div class="empty"><p>Login dulu!</p></div>`; return; }
+  const eSnap = await db.ref('warungdigital/users').child(currentUser).child('ewallets').once('value');
+  const ewallets = eSnap.val() || [];
+  const hasEwallet = ewallets.length > 0;
+  let warningHtml = '';
+  if(!hasEwallet){
+    warningHtml = `
+      <div class="help-warn-box" style="margin-bottom:16px">
+        <strong>⚠️ Peringatan!</strong><br>
+        Lo belum daftarin E-Wallet. Produk lo <strong>gak bisa dibeli</strong>.<br>
+        <button class="btn btn-warning btn-sm" style="margin-top:8px" onclick="switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin E-Wallet</button>
       </div>
     `;
-  });
+  }
+  const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
+  if(my.length===0){
+    el.innerHTML = warningHtml + `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`;
+    return;
+  }
+  el.innerHTML = warningHtml + '<div class="product-grid">' + my.map(([id,p])=>`
+    <div class="product-card">
+      <div class="thumb">${p.banner?`<img src="${cdnImg(p.banner,500)}" loading="lazy">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div>
+      <div class="info">
+        <div class="kategori">${escapeHtml(p.kategori||'Umum')}</div>
+        <div class="nama">${escapeHtml(p.nama)}</div>
+        <div class="meta"><span class="stok">📦 ${p.stock !== undefined ? 'Stok: ' + p.stock : '∞'}</span><span class="sold">🛒 ${p.sold || 0} terjual</span></div>
+        <div class="harga">${formatRp(p.harga)}</div>
+        <div style="display:flex;gap:6px;margin-top:10px">
+          <button class="btn btn-sm btn-danger" style="flex:1" onclick="requestDeleteProduct('${id}')">${emoji('em-trash','em')}</button>
+        </div>
+      </div>
+    </div>
+  `).join('') + '</div>';
+}
+async function renderJualanPesanan(){
+  const el = document.getElementById('jualan-pesanan');
+  if(!el) return;
+  const snap = await db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).limitToLast(50).once('value');
+  if(!snap.exists()){ el.innerHTML=`<div class="empty"><p>Belum ada penjualan</p></div>`; return; }
+  const orders = [];
+  snap.forEach(c=>orders.push({key:c.key, ...c.val()}));
+  orders.sort((a,b)=>b.createdAt-a.createdAt);
+  el.innerHTML = orders.map(o => renderOrderCard(o, 'penjual')).join('');
+}
+async function renderJualanPembayaran(){
+  const el = document.getElementById('jualan-pembayaran');
+  if(!el) return;
+  const snap = await db.ref('warungdigital/users').child(currentUser).once('value');
+  const u = snap.val() || {};
+  const ewallets = u.ewallets || [];
+  el.innerHTML = `
+    <div class="form-group">
+      <label>E-Wallet / Bank yang Lo Punya</label>
+      <div id="ewalletList">
+        ${ewallets.length === 0 ? '<div style="opacity:.5;text-align:center;padding:12px;font-size:13px">Belum ada e-wallet. Tambah dulu!</div>' :
+          ewallets.map((e,i)=>`
+            <div class="cart-item" style="margin-bottom:8px">
+              <div class="thumb" style="font-size:20px">${e.icon||'💳'}</div>
+              <div class="info">
+                <div class="nama">${escapeHtml(e.jenis)}</div>
+                <div style="font-size:12px;opacity:.7">${escapeHtml(e.namaAkun)}</div>
+                <div style="font-size:12px;opacity:.7">${escapeHtml(e.nomor)}</div>
+                <div style="font-size:11px;margin-top:4px;color:${e.verified?'#25d366':'#f39c12'}">${e.verified?'✅ Terverifikasi':'⏳ Belum diverifikasi'}</div>
+              </div>
+              <button class="del" onclick="hapusEwallet(${i})">${emoji('em-trash','em')}</button>
+            </div>
+          `).join('')}
+      </div>
+      <button class="btn btn-primary btn-block" onclick="showAddEwallet()">${emoji('em-plus','em')} Tambah E-Wallet</button>
+    </div>
+  `;
 }
 function showAddEwallet(){
   openModal(`
@@ -1493,86 +1871,79 @@ function showAddEwallet(){
     <input type="text" id="ewNamaAkun" placeholder="Contoh: Varoo" />
     <label>Nomor E-Wallet / Rekening</label>
     <input type="text" id="ewNomor" placeholder="08xxxxxxxxxx" />
-    <button class="btn btn-primary btn-block" onclick="simpanEwallet()">${emoji('em-check','em')} Simpan E-Wallet</button>
+    <button class="btn btn-primary btn-block" onclick="simpanEwallet()">${emoji('em-check','em')} Simpan</button>
   `);
 }
-function simpanEwallet(){
+async function simpanEwallet(){
   const jenis = document.getElementById('ewJenis').value;
   const namaAkun = document.getElementById('ewNamaAkun').value.trim();
   const nomor = document.getElementById('ewNomor').value.trim();
-  if(!jenis || !namaAkun || !nomor){showToast('Isi semua data!','error');return}
-  db.ref('warungdigital/users').child(currentUser).once('value', snap=>{
-    const u = snap.val() || {};
-    const ewallets = u.ewallets || [];
-    ewallets.push({ jenis, namaAkun, nomor, verified: true, createdAt: Date.now() });
-    db.ref('warungdigital/users').child(currentUser).update({ ewallets }).then(()=>{
-      closeModal(); showToast('✅ E-Wallet ditambah!','success'); renderJualanPembayaran();
-    });
-  });
+  if(!jenis || !namaAkun || !nomor){ showToast('Isi semua!','error'); return; }
+  const snap = await db.ref('warungdigital/users').child(currentUser).once('value');
+  const u = snap.val() || {};
+  const ewallets = u.ewallets || [];
+  ewallets.push({ jenis, namaAkun, nomor, verified: true, createdAt: Date.now() });
+  await db.ref('warungdigital/users').child(currentUser).update({ ewallets });
+  closeModal(); showToast('✅ E-Wallet ditambah!','success'); renderJualanPembayaran();
 }
-function hapusEwallet(i){
+async function hapusEwallet(i){
   if(!confirm('Hapus e-wallet ini?')) return;
-  db.ref('warungdigital/users').child(currentUser).once('value', snap=>{
-    const u = snap.val() || {};
-    const ewallets = u.ewallets || [];
-    ewallets.splice(i, 1);
-    db.ref('warungdigital/users').child(currentUser).update({ ewallets }).then(()=>{
-      showToast('E-Wallet dihapus','success'); renderJualanPembayaran();
-    });
-  });
+  const snap = await db.ref('warungdigital/users').child(currentUser).once('value');
+  const u = snap.val() || {};
+  const ewallets = u.ewallets || [];
+  ewallets.splice(i, 1);
+  await db.ref('warungdigital/users').child(currentUser).update({ ewallets });
+  showToast('E-Wallet dihapus','success'); renderJualanPembayaran();
 }
-
-function showAddProduct(){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
-  db.ref('warungdigital/users').child(currentUser).child('ewallets').once('value', snap=>{
-    const ewallets = snap.val() || [];
-    if(ewallets.length === 0){
-      openModal(`
-        <button class="close-btn" onclick="closeModal()">✕</button>
-        <h2 style="color:#f39c12">${emoji('em-warning','em-lg')} E-Wallet Belum Ada</h2>
-        <p style="font-size:14px;opacity:.8;margin-bottom:14px">Lo harus daftarin <strong>E-Wallet</strong> dulu sebelum bisa jualan.</p>
-        <button class="btn btn-warning btn-block" onclick="closeModal();switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin E-Wallet Sekarang</button>
-        <button class="btn btn-secondary btn-block" onclick="closeModal()">Nanti Aja</button>
-      `);
-      return;
-    }
-    bannerBase64 = '';
+async function showAddProduct(){
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
+  const snap = await db.ref('warungdigital/users').child(currentUser).child('ewallets').once('value');
+  const ewallets = snap.val() || [];
+  if(ewallets.length === 0){
     openModal(`
       <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2>${emoji('em-plus','em-lg')} Tambah Produk</h2>
-      <label>Tipe Jualan</label>
-      <select id="pType" onchange="toggleProductType()">
-        <option value="digital">Produk Digital (link MediaFire)</option>
-        <option value="wa">Via WhatsApp (chat langsung)</option>
-      </select>
-      <label>Nama Produk</label>
-      <input type="text" id="pNama" placeholder="Contoh: Template Canva Pro" />
-      <label>Harga (Rp)</label>
-      <input type="number" id="pHarga" placeholder="25000" />
-      <label>Stok (kosongin kalau unlimited)</label>
-      <input type="number" id="pStock" placeholder="contoh: 10" />
-      <label>Kategori</label>
-      <input type="text" id="pKategori" placeholder="Template / E-book / Preset / dll" />
-      <label>Deskripsi</label>
-      <textarea id="pDeskripsi" rows="3" placeholder="Deskripsi produk..."></textarea>
-      <div id="pDigitalSection">
-        <label>Link MediaFire (upload manual dulu)</label>
-        <input type="text" id="pLinkMediafire" placeholder="https://www.mediafire.com/file/xxx" />
-        <div style="font-size:12px;opacity:.5;margin-top:4px">Link ini cuma keliatan setelah pembeli lolos konfirmasi penjual</div>
-        <label style="margin-top:12px">Banner Promosi (opsional)</label>
-        <input type="file" id="pBanner" accept="image/*" onchange="readBannerFile(this)" />
-        <div id="pBannerInfo" style="font-size:12px;opacity:.6;margin-top:4px"></div>
-      </div>
-      <div id="pWASection" class="hidden">
-        <label>Nomor WhatsApp Penjual</label>
-        <input type="text" id="pWANumber" placeholder="628xxxxxxxxxx" oninput="autoFillWA()" />
-        <label>Link WhatsApp (auto)</label>
-        <input type="text" id="pWALink" placeholder="https://wa.me/..." readonly style="opacity:.7" />
-      </div>
-      <button class="btn btn-primary btn-block" onclick="requestSaveProduct()">${emoji('em-check','em')} Simpan Produk</button>
+      <h2 style="color:#f39c12">${emoji('em-warning','em-lg')} E-Wallet Belum Ada</h2>
+      <p style="font-size:14px;opacity:.8;margin-bottom:14px">Daftarin E-Wallet dulu sebelum jualan.</p>
+      <button class="btn btn-warning btn-block" onclick="closeModal();switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin Sekarang</button>
+      <button class="btn btn-secondary btn-block" onclick="closeModal()">Nanti Aja</button>
     `);
-  });
+    return;
+  }
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h2>${emoji('em-plus','em-lg')} Tambah Produk</h2>
+    <label>Tipe Jualan</label>
+    <select id="pType" onchange="toggleProductType()">
+      <option value="digital">Produk Digital (link MediaFire)</option>
+      <option value="wa">Via WhatsApp (chat langsung)</option>
+    </select>
+    <label>Nama Produk</label>
+    <input type="text" id="pNama" placeholder="Contoh: Template Canva Pro" />
+    <label>Harga (Rp)</label>
+    <input type="number" id="pHarga" placeholder="25000" />
+    <label>Stok (kosongin kalau unlimited)</label>
+    <input type="number" id="pStock" placeholder="10" />
+    <label>Kategori</label>
+    <input type="text" id="pKategori" placeholder="Template / E-book / Preset" />
+    <label>Deskripsi</label>
+    <textarea id="pDeskripsi" rows="3"></textarea>
+    <div id="pDigitalSection">
+      <label>Link MediaFire</label>
+      <input type="text" id="pLinkMediafire" placeholder="https://www.mediafire.com/file/xxx" />
+      <label style="margin-top:12px">Banner Produk (max 25MB)</label>
+      <input type="file" id="pBanner" accept="image/*" onchange="uploadProductBanner(this)" />
+      <div id="pBannerInfo" style="font-size:12px;opacity:.6;margin-top:4px"></div>
+    </div>
+    <div id="pWASection" class="hidden">
+      <label>Nomor WhatsApp</label>
+      <input type="text" id="pWANumber" placeholder="628xxxxxxxxxx" oninput="autoFillWA()" />
+      <label>Link WhatsApp (auto)</label>
+      <input type="text" id="pWALink" readonly style="opacity:.7" />
+    </div>
+    <button class="btn btn-primary btn-block" onclick="saveProduct()">${emoji('em-check','em')} Simpan Produk</button>
+  `);
 }
+let pendingProductBannerUrl = '';
 function toggleProductType(){
   const t = document.getElementById('pType').value;
   document.getElementById('pDigitalSection').classList.toggle('hidden', t!=='digital');
@@ -1584,20 +1955,26 @@ function autoFillWA(){
   if(num.length >= 10) link.value = `https://wa.me/${num}?text=Halo,%20saya%20mau%20beli%20produk%20lo`;
   else link.value = '';
 }
-async function readBannerFile(input){
-  const file = input.files[0];
-  if(!file) return;
-  if(file.size > 5*1024*1024){ showToast('Banner max 5MB!','error'); input.value=''; return; }
+async function uploadProductBanner(input){
+  const file = input.files[0]; if(!file) return;
+  if(file.size > MAX_FILE_SIZE){ showToast('Banner max 25MB!','error'); input.value=''; return; }
+  showUploadProgress('Upload Banner Produk');
   try {
-    const compressed = await compressImage(file, 1000, 0.75);
-    bannerBase64 = compressed;
-    document.getElementById('pBannerInfo').textContent = `✅ ${file.name}`;
-  } catch(e){ showToast('Gagal proses gambar','error'); }
+    const res = await uploadToCloudinary(file, updateUploadProgress);
+    pendingProductBannerUrl = res.secure_url;
+    closeModal();
+    setTimeout(()=>{ 
+      openModal(`
+        <button class="close-btn" onclick="closeModal()">✕</button>
+        <h2>${emoji('em-check','em-lg')} Banner Terupload</h2>
+        <img src="${cdnImg(pendingProductBannerUrl,400)}" style="width:100%;border-radius:12px" />
+        <div style="font-size:12px;opacity:.6;text-align:center;margin-top:8px">Banner siap dipakai</div>
+        <button class="btn btn-secondary btn-block" onclick="closeModal()">OK</button>
+      `);
+    }, 200);
+  } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
 }
-function requestSaveProduct(){
-  startLoading('Menyimpan Produk...', 'Sedang menyimpan produk lo', () => { saveProduct(); });
-}
-function saveProduct(){
+async function saveProduct(){
   const tipe = document.getElementById('pType').value;
   const nama = document.getElementById('pNama').value.trim();
   const harga = parseInt(document.getElementById('pHarga').value)||0;
@@ -1613,12 +1990,11 @@ function saveProduct(){
   const data = {
     nama, harga, kategori, deskripsi, stock, sold: 0, penjual: currentUser, tipe,
     linkMediafire: tipe==='digital'?linkMediafire:'', waLink: tipe==='wa'?waLink:'',
-    banner: bannerBase64, createdAt: Date.now()
+    banner: pendingProductBannerUrl || '', createdAt: Date.now()
   };
-  db.ref('warungdigital/products').push(data).then(()=>{
-    closeModal(); bannerBase64 = '';
-    showToast('Produk ditambah!','success'); renderJualanProduk();
-  }).catch(e=>showToast('❌ '+e.message,'error'));
+  await db.ref('warungdigital/products').push(data);
+  closeModal(); pendingProductBannerUrl = '';
+  showToast('Produk ditambah!','success');
 }
 function requestDeleteProduct(id){
   const p = products[id]; if(!p) return;
@@ -1628,31 +2004,28 @@ function requestDeleteProduct(id){
     <h2>${emoji('em-warning','em-lg')} Hapus Produk?</h2>
     <p style="font-size:14px;opacity:.8;margin-bottom:16px">Produk "<strong>${escapeHtml(p.nama)}</strong>" bakal dihapus permanen.</p>
     <button class="btn btn-danger btn-block" onclick="closeModal();confirmDeleteProduct('${id}')">${emoji('em-trash','em')} Ya, Hapus</button>
-    <button class="btn btn-secondary btn-block" onclick="closeModal()">${emoji('em-close','em')} Batal</button>
+    <button class="btn btn-secondary btn-block" onclick="closeModal()">Batal</button>
   `);
 }
-function confirmDeleteProduct(id){
-  pendingDeleteId = id;
-  startLoading('Menghapus Produk...', 'Sedang menghapus produk lo', () => {
-    if(!pendingDeleteId) return;
-    db.ref('warungdigital/products').child(pendingDeleteId).remove().then(()=>{
-      showToast('Produk dihapus','success'); renderJualanProduk(); pendingDeleteId = null;
-    }).catch(e=>showToast('❌ '+e.message,'error'));
-  });
+async function confirmDeleteProduct(id){
+  if(!confirm('Yakin hapus?')) return;
+  await db.ref('warungdigital/products').child(id).remove();
+  showToast('Produk dihapus','success');
 }
 
+/* ============ DOWNLOAD ============ */
 function renderDownload(){
   const el = document.getElementById('downloadGrid');
   if(!el) return;
   const list = Object.entries(downloadItems).map(([id,v])=>({id,...v}));
   if(list.length === 0){
-    el.innerHTML = `<div class="empty">${emoji('em-cloud','em-2xl')}<p>Belum ada file gratisan. Jadilah yang pertama upload!</p></div>`;
+    el.innerHTML = `<div class="empty">${emoji('em-cloud','em-2xl')}<p>Belum ada file gratisan.</p></div>`;
     return;
   }
   el.innerHTML = list.reverse().map(d=>`
     <div class="download-card">
       <div class="thumb">
-        ${d.banner?`<img src="${d.banner}" />`:emoji('em-cloud','em-2xl')}
+        ${d.banner?`<img src="${cdnImg(d.banner,400)}" loading="lazy" />`:emoji('em-cloud','em-2xl')}
         <div class="badge-free">FREE</div>
       </div>
       <div class="info">
@@ -1669,97 +2042,115 @@ function doDownload(id){
   if(d.tipe === 'link' && d.link){
     db.ref('warungdigital/download').child(id).child('downloads').transaction(c => (c || 0) + 1);
     window.open(d.link, '_blank');
-    showToast('Link download dibuka!','success');
+    showToast('Link dibuka!','success');
   } else if(d.tipe === 'file' && d.fileData){
     db.ref('warungdigital/download').child(id).child('downloads').transaction(c => (c || 0) + 1);
     const a = document.createElement('a');
     a.href = d.fileData;
     a.download = d.fileName || 'download';
+    a.target = '_blank';
     a.click();
     showToast('File lagi didownload!','success');
   }
 }
 function showAddDownload(){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
-  bannerBase64 = '';
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
+  pendingDownloadBannerUrl = '';
+  pendingDownloadFileUrl = '';
+  pendingDownloadFileName = '';
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji('em-cloud','em-lg')} Upload Gratisan</h2>
     <label>Nama File / Produk</label>
-    <input type="text" id="dlNama" placeholder="Contoh: Template CV Gratis" />
+    <input type="text" id="dlNama" placeholder="Template CV Gratis" />
     <label>Deskripsi</label>
-    <textarea id="dlDesk" rows="3" placeholder="Deskripsi singkat..."></textarea>
+    <textarea id="dlDesk" rows="3"></textarea>
     <label>Tipe Upload</label>
     <select id="dlTipe" onchange="toggleDlTipe()">
-      <option value="link">Link Download (MediaFire / Google Drive / dll)</option>
-      <option value="file">Upload File Langsung (max 5MB)</option>
+      <option value="link">Link Download (MediaFire / Drive / dll)</option>
+      <option value="file">Upload File (max 25MB via Cloudinary)</option>
     </select>
     <div id="dlLinkSection">
       <label>Link Download</label>
       <input type="text" id="dlLink" placeholder="https://..." />
     </div>
     <div id="dlFileSection" class="hidden">
-      <label>Pilih File (max 5MB)</label>
-      <input type="file" id="dlFile" onchange="readDlFile(this)" />
+      <label>Pilih File (max 25MB)</label>
+      <input type="file" id="dlFile" onchange="uploadDlFile(this)" />
       <div id="dlFileInfo" style="font-size:12px;opacity:.6;margin-top:6px"></div>
     </div>
-    <label style="margin-top:12px">Banner Preview Produk (opsional)</label>
-    <input type="file" id="dlBanner" accept="image/*" onchange="readDlBanner(this)" />
+    <label style="margin-top:12px">Banner Preview (max 25MB)</label>
+    <input type="file" id="dlBanner" accept="image/*" onchange="uploadDlBanner(this)" />
     <div id="dlBannerInfo" style="font-size:12px;opacity:.6;margin-top:4px"></div>
     <button class="btn btn-primary btn-block" onclick="saveDownload()">${emoji('em-check','em')} Upload</button>
   `);
 }
+let pendingDownloadBannerUrl = '';
+let pendingDownloadFileUrl = '';
+let pendingDownloadFileName = '';
 function toggleDlTipe(){
   const t = document.getElementById('dlTipe').value;
   document.getElementById('dlLinkSection').classList.toggle('hidden', t!=='link');
   document.getElementById('dlFileSection').classList.toggle('hidden', t!=='file');
 }
-let dlFileBase64 = '', dlFileName = '';
-function readDlFile(input){
+async function uploadDlFile(input){
   const file = input.files[0]; if(!file) return;
-  if(file.size > 5*1024*1024){ showToast('File max 5MB!','error'); input.value=''; return; }
-  const r = new FileReader();
-  r.onload = e=>{ dlFileBase64 = e.target.result; dlFileName = file.name; document.getElementById('dlFileInfo').textContent = `✅ ${file.name} (${(file.size/1024).toFixed(1)} KB)`; };
-  r.readAsDataURL(file);
-}
-async function readDlBanner(input){
-  const file = input.files[0]; if(!file) return;
-  if(file.size > 5*1024*1024){ showToast('Banner max 5MB!','error'); input.value=''; return; }
+  if(file.size > MAX_FILE_SIZE){ showToast('File max 25MB!','error'); input.value=''; return; }
+  showUploadProgress('Upload File');
   try {
-    const c = await compressImage(file, 1000, 0.75);
-    bannerBase64 = c;
-    document.getElementById('dlBannerInfo').textContent = `✅ ${file.name}`;
-  } catch(e){ showToast('Gagal proses','error'); }
+    const res = await uploadToCloudinary(file, updateUploadProgress);
+    pendingDownloadFileUrl = res.secure_url;
+    pendingDownloadFileName = file.name;
+    closeModal();
+    setTimeout(()=>{
+      openModal(`
+        <h2>${emoji('em-check','em-lg')} File Terupload</h2>
+        <div style="font-size:13px;opacity:.7;text-align:center">${escapeHtml(file.name)} — ${formatBytes(file.size)}</div>
+        <button class="btn btn-secondary btn-block" onclick="closeModal()" style="margin-top:12px">OK</button>
+      `);
+    }, 200);
+  } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
 }
-function saveDownload(){
+async function uploadDlBanner(input){
+  const file = input.files[0]; if(!file) return;
+  if(file.size > MAX_FILE_SIZE){ showToast('Banner max 25MB!','error'); input.value=''; return; }
+  showUploadProgress('Upload Banner');
+  try {
+    const res = await uploadToCloudinary(file, updateUploadProgress);
+    pendingDownloadBannerUrl = res.secure_url;
+    closeModal();
+    setTimeout(()=> showAddDownload(), 200);
+  } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
+}
+async function saveDownload(){
   const nama = document.getElementById('dlNama').value.trim();
   const deskripsi = document.getElementById('dlDesk').value.trim();
   const tipe = document.getElementById('dlTipe').value;
   if(!nama){ showToast('Nama wajib!','error'); return; }
-  const data = { nama, deskripsi, tipe, uploader: currentUser, createdAt: Date.now(), downloads: 0, banner: bannerBase64 };
+  const data = { nama, deskripsi, tipe, uploader: currentUser, createdAt: Date.now(), downloads: 0, banner: pendingDownloadBannerUrl || '' };
   if(tipe === 'link'){
     const link = document.getElementById('dlLink').value.trim();
     if(!link){ showToast('Link wajib!','error'); return; }
     data.link = link;
   } else {
-    if(!dlFileBase64){ showToast('Pilih file dulu!','error'); return; }
-    data.fileData = dlFileBase64; data.fileName = dlFileName;
+    if(!pendingDownloadFileUrl){ showToast('Upload file dulu!','error'); return; }
+    data.fileData = pendingDownloadFileUrl;
+    data.fileName = pendingDownloadFileName;
   }
-  db.ref('warungdigital/download').push(data).then(()=>{
-    closeModal(); bannerBase64 = ''; dlFileBase64 = ''; dlFileName = '';
-    showToast('✅ Upload berhasil!','success'); renderDownload();
-  }).catch(e=>showToast('❌ '+e.message,'error'));
+  await db.ref('warungdigital/download').push(data);
+  closeModal();
+  pendingDownloadBannerUrl = ''; pendingDownloadFileUrl = ''; pendingDownloadFileName = '';
+  showToast('✅ Upload berhasil!','success');
 }
 
+/* ============ CALCULATOR ============ */
 function renderCalculator(){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
   calcExpr = '';
-  const d = document.getElementById('calcDisplay');
-  if(d) d.textContent = '0';
+  const d = document.getElementById('calcDisplay'); if(d) d.textContent = '0';
   db.ref('warungdigital/income').child(currentUser).once('value', snap=>{
     const items = snap.val() || {};
-    const arr = Object.entries(items).map(([id,v])=>({id,...v}));
-    arr.sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
+    const arr = Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
     const el = document.getElementById('incomeList');
     const ic = document.getElementById('incomeCount');
     if(ic) ic.textContent = arr.length;
@@ -1792,8 +2183,7 @@ function calcClear(){ calcExpr = ''; document.getElementById('calcDisplay').text
 function calcBackspace(){ calcExpr = calcExpr.slice(0, -1); document.getElementById('calcDisplay').textContent = calcExpr || '0'; }
 function saveCalcResult(){
   if(!currentUser){ showToast('Login dulu!','error'); return; }
-  const display = document.getElementById('calcDisplay');
-  const result = parseFloat(display.textContent);
+  const result = parseFloat(document.getElementById('calcDisplay').textContent);
   if(isNaN(result) || result === 0){ showToast('Hasil kosong!','error'); return; }
   if(!confirm(`Simpen ${formatRp(result)} ke catatan?`)) return;
   db.ref('warungdigital/income').child(currentUser).push({ nominal: result, timestamp: Date.now() }).then(()=>{
@@ -1801,25 +2191,22 @@ function saveCalcResult(){
   });
 }
 function hapusIncome(id){
-  if(!confirm('Hapus catatan ini?')) return;
+  if(!confirm('Hapus?')) return;
   db.ref('warungdigital/income').child(currentUser).child(id).remove().then(()=>{
-    showToast('Catatan dihapus','success'); renderCalculator();
+    showToast('Dihapus','success'); renderCalculator();
   });
 }
 
+/* ============ MUSIC ============ */
 function renderMusicPage(){
   const el = document.getElementById('musicList');
   if(!el) return;
-  db.ref('warungdigital/music').once('value', snap=>{
+  db.ref('warungdigital/music').limitToLast(50).once('value', snap=>{
     const items = snap.val() || {};
-    allMusic = Object.entries(items).map(([id,v])=>({id,...v}));
-    allMusic.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    allMusic = Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
     const mc = document.getElementById('musicCount');
     if(mc) mc.textContent = allMusic.length;
-    if(allMusic.length === 0){
-      el.innerHTML = `<div class="empty">${emoji('em-music','em-2xl')}<p>Belum ada lagu. Dev bisa upload di panel.</p></div>`;
-      return;
-    }
+    if(allMusic.length === 0){ el.innerHTML = `<div class="empty"><p>Belum ada lagu.</p></div>`; return; }
     el.innerHTML = allMusic.map(m=>`
       <div class="music-item ${currentMusicId === m.id ? 'playing' : ''}">
         <div style="font-size:24px;color:#25d366">${emoji('em-music','em-xl')}</div>
@@ -1836,8 +2223,7 @@ function renderMusicPage(){
   });
 }
 function playMusic(id){
-  const m = allMusic.find(x=>x.id===id);
-  if(!m || !m.data) return;
+  const m = allMusic.find(x=>x.id===id); if(!m || !m.data) return;
   const audio = document.getElementById('globalAudio');
   audio.src = m.data;
   audio.play().then(()=>{
@@ -1848,7 +2234,7 @@ function playMusic(id){
     document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
     renderMusicPage();
     localStorage.setItem('wd_music_id', id);
-  }).catch(e=>showToast('❌ Gagal muter: ' + e.message,'error'));
+  }).catch(e=>showToast('❌ Gagal muter','error'));
 }
 function toggleMusicPlay(){
   const audio = document.getElementById('globalAudio');
@@ -1870,84 +2256,69 @@ function stopMusic(){
   localStorage.removeItem('wd_music_id');
   renderMusicPage();
 }
-function autoLoadMusic(){
-  db.ref('warungdigital/music').once('value', snap=>{
-    const items = snap.val() || {};
-    allMusic = Object.entries(items).map(([id,v])=>({id,...v}));
-    if(allMusic.length === 0) return;
-    const savedId = localStorage.getItem('wd_music_id');
-    let playId = null;
-    if(savedId && allMusic.find(m=>m.id===savedId)) playId = savedId;
-    else {
-      const def = allMusic.find(m=>m.isDefault);
-      if(def) playId = def.id;
-      else playId = allMusic[0].id;
+async function autoLoadMusic(){
+  const snap = await db.ref('warungdigital/music').limitToLast(50).once('value');
+  const items = snap.val() || {};
+  allMusic = Object.entries(items).map(([id,v])=>({id,...v}));
+  if(allMusic.length === 0) return;
+  const saved = localStorage.getItem('wd_music_id');
+  let playId = null;
+  if(saved && allMusic.find(m=>m.id===saved)) playId = saved;
+  else { const def = allMusic.find(m=>m.isDefault); playId = def ? def.id : allMusic[0].id; }
+  if(playId){
+    const m = allMusic.find(x=>x.id===playId);
+    if(m && m.data){
+      const audio = document.getElementById('globalAudio');
+      audio.src = m.data;
+      audio.volume = 0.5;
+      currentMusicId = playId;
+      document.getElementById('musicBarName').textContent = m.nama || 'Lagu';
+      document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
+      tryAutoPlayMusic(audio);
     }
-    if(playId){
-      const m = allMusic.find(x=>x.id===playId);
-      if(m && m.data){
-        const audio = document.getElementById('globalAudio');
-        audio.src = m.data;
-        audio.volume = 0.5;
-        currentMusicId = playId;
-        document.getElementById('musicBarName').textContent = m.nama || 'Lagu';
-        document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
-        tryAutoPlay(audio, m);
-      }
-    }
-  });
+  }
 }
-function tryAutoPlay(audio, m){
+function tryAutoPlayMusic(audio){
   audio.play().then(()=>{
     isMusicPlaying = true;
     document.getElementById('musicBar').classList.add('show');
     document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
   }).catch(()=>{
-    const unlockEvents = ['click','touchstart','keydown','scroll','pointerdown'];
+    if(musicUnlockAdded) return;
+    musicUnlockAdded = true;
     const tryPlay = ()=>{
       audio.play().then(()=>{
         isMusicPlaying = true;
         document.getElementById('musicBar').classList.add('show');
         document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
-        unlockEvents.forEach(ev => document.removeEventListener(ev, tryPlay));
+        ['click','touchstart','keydown','scroll','pointerdown'].forEach(ev => document.removeEventListener(ev, tryPlay));
       }).catch(()=>{});
     };
-    unlockEvents.forEach(ev => document.addEventListener(ev, tryPlay, { once: false, passive: true }));
-    const muteUnlock = ()=>{
-      audio.muted = true;
-      audio.play().then(()=>{
-        audio.muted = false;
-        isMusicPlaying = true;
-        document.getElementById('musicBar').classList.add('show');
-        document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
-        unlockEvents.forEach(ev => document.removeEventListener(ev, muteUnlock));
-      }).catch(()=>{});
-    };
-    unlockEvents.forEach(ev => document.addEventListener(ev, muteUnlock, { once: false, passive: true }));
+    ['click','touchstart','keydown','scroll','pointerdown'].forEach(ev => document.addEventListener(ev, tryPlay, { passive: true }));
   });
 }
 function hapusMusic(id){
-  if(!isDev){ showToast('Cuma Dev yang bisa hapus!','error'); return; }
-  if(!confirm('Hapus lagu ini?')) return;
-  db.ref('warungdigital/music').child(id).remove().then(()=>{ showToast('Lagu dihapus','success'); renderMusicPage(); });
+  if(!isDev){ showToast('Dev only!','error'); return; }
+  if(!confirm('Hapus lagu?')) return;
+  db.ref('warungdigital/music').child(id).remove().then(()=>{ showToast('Dihapus','success'); renderMusicPage(); });
 }
 
-function renderOrders(){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+/* ============ ORDERS ============ */
+async function renderOrders(){
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
   const el = document.getElementById('ordersList');
   if(!el) return;
-  db.ref('warungdigital/orders').once('value', snap=>{
-    const orders = [];
-    snap.forEach(child=>{
-      const o = child.val();
-      if(o.pembeli===currentUser || o.penjual===currentUser) orders.push({key:child.key,...o});
-    });
-    orders.sort((a,b)=>b.createdAt-a.createdAt);
-    const oc = document.getElementById('ordersCount');
-    if(oc) oc.textContent = orders.length + ' transaksi';
-    if(orders.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada history</p></div>`;return}
-    el.innerHTML = orders.map(o=>renderOrderCard(o, o.penjual===currentUser?'penjual':'pembeli')).join('');
+  const snap = await db.ref('warungdigital/orders').limitToLast(100).once('value');
+  const orders = [];
+  snap.forEach(c=>{
+    const o = c.val();
+    if(o.pembeli===currentUser || o.penjual===currentUser) orders.push({key:c.key, ...o});
   });
+  orders.sort((a,b)=>b.createdAt-a.createdAt);
+  const oc = document.getElementById('ordersCount');
+  if(oc) oc.textContent = orders.length + ' transaksi';
+  if(orders.length===0){ el.innerHTML=`<div class="empty"><p>Belum ada history</p></div>`; return; }
+  el.innerHTML = orders.map(o=>renderOrderCard(o, o.penjual===currentUser?'penjual':'pembeli')).join('');
 }
 function renderOrderCard(o, role){
   const statusMap = {
@@ -1962,7 +2333,7 @@ function renderOrderCard(o, role){
   const buktiHtml = o.bukti ? `
     <div style="margin-top:10px">
       <div style="font-size:11px;opacity:.6;margin-bottom:4px">📸 Bukti Transfer:</div>
-      <img src="${o.bukti}" style="max-width:100%;max-height:200px;border-radius:12px;cursor:pointer;border:1px solid #2a3340" onclick="previewBukti('${o.key}')" />
+      <img src="${cdnImg(o.bukti, 400)}" loading="lazy" style="max-width:100%;max-height:200px;border-radius:12px;cursor:pointer;border:1px solid #2a3340" onclick="previewBukti('${o.key}')" />
     </div>
   ` : '';
   return `
@@ -1986,7 +2357,6 @@ function renderOrderCard(o, role){
         `:''}
         ${o.status==='verified' && role==='pembeli' && o.linkProduk ? `<a class="btn btn-sm btn-success" href="${o.linkProduk}" target="_blank">${emoji('em-download','em')} Download Produk</a>`:''}
         <button class="btn btn-sm btn-secondary" onclick="openChatWith('${role==='pembeli'?o.penjual:o.pembeli}')">${emoji('em-send','em')} Chat</button>
-        ${currentUser && !isDev ? `<button class="btn btn-sm btn-warning" onclick="reportOrder('${o.key}')">${emoji('em-report','em')} Lapor</button>`:''}
       </div>
     </div>
   `;
@@ -1998,7 +2368,7 @@ function previewBukti(orderKey){
     openModal(`
       <button class="close-btn" onclick="closeModal()">✕</button>
       <h2>📸 Bukti Transfer</h2>
-      <img src="${o.bukti}" style="width:100%;border-radius:16px;margin-top:8px" />
+      <img src="${cdnImg(o.bukti, 800)}" style="width:100%;border-radius:16px;margin-top:8px" />
       <div class="verify-box" style="margin-top:12px">
         <div class="label">Nominal</div>
         <div class="val big">${formatRp(o.nominal || o.total)}</div>
@@ -2022,7 +2392,7 @@ function confirmOrder(orderKey){
           stock: Math.max(0, (produk.stock || 0) - 1), sold: (produk.sold || 0) + 1
         });
       }
-      showToast('✅ Pesanan dikonfirmasi!','success');
+      showToast('✅ Dikonfirmasi!','success');
       renderOrders(); renderJualanPesanan();
     });
   });
@@ -2031,18 +2401,18 @@ function showCancelOrder(orderKey){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2 style="color:#e74c3c">${emoji('em-warning','em-lg')} Cancel Pesanan</h2>
-    <label>Alasan Cancel</label>
+    <label>Alasan</label>
     <select id="cancelReasonSelect" onchange="document.getElementById('cancelReasonCustom').style.display = this.value === 'lainnya' ? 'block' : 'none'">
-      <option value="">-- Pilih Alasan --</option>
-      <option value="Bukti transfer palsu / diedit">Bukti transfer palsu / diedit</option>
+      <option value="">-- Pilih --</option>
+      <option value="Bukti transfer palsu">Bukti transfer palsu</option>
       <option value="Nominal gak sesuai">Nominal gak sesuai</option>
       <option value="Nama tujuan gak sesuai">Nama tujuan gak sesuai</option>
-      <option value="Bukti transfer gak jelas">Bukti transfer gak jelas</option>
+      <option value="Bukti gak jelas">Bukti gak jelas</option>
       <option value="Stok habis">Stok habis</option>
       <option value="lainnya">Lainnya</option>
     </select>
-    <textarea id="cancelReasonCustom" rows="2" placeholder="Tulis alasan..." style="display:none;margin-top:8px"></textarea>
-    <button class="btn btn-danger btn-block" onclick="submitCancelOrder('${orderKey}')">${emoji('em-trash','em')} Cancel Pesanan</button>
+    <textarea id="cancelReasonCustom" rows="2" style="display:none;margin-top:8px"></textarea>
+    <button class="btn btn-danger btn-block" onclick="submitCancelOrder('${orderKey}')">${emoji('em-trash','em')} Cancel</button>
     <button class="btn btn-secondary btn-block" onclick="closeModal()">Batal</button>
   `);
 }
@@ -2055,97 +2425,67 @@ function submitCancelOrder(orderKey){
   db.ref('warungdigital/orders').child(orderKey).update({
     status: 'cancelled', cancelReason: reason, cancelledAt: Date.now(), cancelledBy: currentUser
   }).then(()=>{
-    closeModal(); showToast('❌ Pesanan dibatalkan','success');
+    closeModal(); showToast('❌ Dibatalkan','success');
     renderOrders(); renderJualanPesanan();
   });
 }
-function reportOrder(orderKey){
-  db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
-    const o = snap.val(); if(!o) return;
-    openModal(`
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2>${emoji('em-report','em-lg')} Lapor ke Developer</h2>
-      <label>Alasan Lapor</label>
-      <select id="reportReasonSelect" onchange="document.getElementById('reportReasonCustom').style.display = this.value === 'lainnya' ? 'block' : 'none'">
-        <option value="">-- Pilih --</option>
-        <option value="Penjual gak konfirmasi">Penjual gak konfirmasi</option>
-        <option value="Barang gak sesuai">Barang gak sesuai</option>
-        <option value="Penjual scam">Penjual scam</option>
-        <option value="lainnya">Lainnya</option>
-      </select>
-      <textarea id="reportReasonCustom" rows="2" style="display:none;margin-top:8px"></textarea>
-      <button class="btn btn-warning btn-block" onclick="submitReport('${orderKey}')">${emoji('em-send','em')} Kirim</button>
-    `);
-  });
-}
-function submitReport(orderKey){
-  const select = document.getElementById('reportReasonSelect');
-  const custom = document.getElementById('reportReasonCustom');
-  let reason = select.value;
-  if(reason === 'lainnya' || !reason) reason = custom.value.trim();
-  if(!reason){ showToast('Pilih alasan!','error'); return; }
-  db.ref('warungdigital/reports').push({ orderKey, reason, reporter: currentUser, timestamp: Date.now(), status: 'pending' }).then(()=>{
-    closeModal(); showToast('✅ Laporan terkirim!','success');
-  });
-}
 
-function renderDompet(){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
-  db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
-    let total = 0; let history = [];
-    snap.forEach(child=>{
-      const o = child.val();
-      if(o.status==='verified'){ total += o.total; history.push(o); }
-    });
-    const ws = document.getElementById('walletSaldo');
-    if(ws) ws.textContent = formatRp(total);
-    const el = document.getElementById('walletHistory');
-    if(!el) return;
-    if(history.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada transaksi</p></div>`;return}
-    el.innerHTML = history.reverse().map(o=>`
-      <div class="order-item">
-        <div class="head">
-          <div class="oid">${escapeHtml(o.produkNama)}</div>
-          <div class="status status-verified">+${formatRp(o.total)}</div>
-        </div>
-        <div class="body">${emoji('em-user','em')} ${escapeHtml(o.pembeli)} · ${new Date(o.confirmedAt||o.createdAt).toLocaleString('id-ID')}</div>
+/* ============ DOMPET ============ */
+async function renderDompet(){
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
+  const snap = await db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).limitToLast(100).once('value');
+  let total = 0; const history = [];
+  snap.forEach(c=>{
+    const o = c.val();
+    if(o.status==='verified'){ total += o.total; history.push(o); }
+  });
+  const ws = document.getElementById('walletSaldo');
+  if(ws) ws.textContent = formatRp(total);
+  const el = document.getElementById('walletHistory');
+  if(!el) return;
+  if(history.length===0){ el.innerHTML=`<div class="empty"><p>Belum ada transaksi</p></div>`; return; }
+  el.innerHTML = history.reverse().map(o=>`
+    <div class="order-item">
+      <div class="head">
+        <div class="oid">${escapeHtml(o.produkNama)}</div>
+        <div class="status status-verified">+${formatRp(o.total)}</div>
       </div>
-    `).join('');
-  });
+      <div class="body">${emoji('em-user','em')} ${escapeHtml(o.pembeli)} · ${new Date(o.confirmedAt||o.createdAt).toLocaleString('id-ID')}</div>
+    </div>
+  `).join('');
 }
 
-function renderAccounts(){
+/* ============ ACCOUNTS ============ */
+async function renderAccounts(){
   const el = document.getElementById('accountsList');
   if(!el) return;
-  db.ref('warungdigital/users').once('value', snap=>{
-    if(!snap.exists()){el.innerHTML=`<div class="empty">${emoji('em-user','em-2xl')}<p>Belum ada akun</p></div>`;return}
-    const arr = [];
-    snap.forEach(child=>{
-      const nama = child.key;
-      const u = child.val();
-      if(nama === currentUser) return;
-      arr.push({nama, ...u});
-    });
-    arr.sort((a,b)=>{
-      if(a.isDev && !b.isDev) return -1;
-      if(!a.isDev && b.isDev) return 1;
-      return (b.createdAt||0) - (a.createdAt||0);
-    });
-    el.innerHTML = arr.map(u=>{
-      const isDevUser = u.isDev || u.nama === DEV_NAME;
-      return `
-        <div class="account-item" onclick="showAccountDetail('${escapeHtml(u.nama)}')" style="${isDevUser?'border-color:rgba(241,196,15,0.4);background:rgba(241,196,15,0.05)':''}">
-          <div class="avatar" style="${isDevUser?'background:linear-gradient(135deg,#f1c40f,#e67e22);border:2px solid #f1c40f':''}">
-            ${u.avatar?`<img src="${u.avatar}">`:u.nama.charAt(0).toUpperCase()}
-          </div>
-          <div class="info">
-            <div class="nama">${escapeHtml(u.nama)} ${isDevUser?'<span style="color:#f1c40f;font-size:12px">👑 DEVELOPER</span>':''}</div>
-            <div class="meta">${emoji('em-store','em')} ${isDevUser?'Pembuat web ini':'Lihat profil & produk'}</div>
-          </div>
-        </div>
-      `;
-    }).join('') || `<div class="empty">${emoji('em-user','em-2xl')}<p>Belum ada akun lain</p></div>`;
+  const snap = await db.ref('warungdigital/users').once('value');
+  if(!snap.exists()){ el.innerHTML=`<div class="empty"><p>Belum ada akun</p></div>`; return; }
+  const arr = [];
+  snap.forEach(c=>{
+    const nama = c.key;
+    if(nama === currentUser) return;
+    arr.push({nama, ...c.val()});
   });
+  arr.sort((a,b)=>{
+    if(a.isDev && !b.isDev) return -1;
+    if(!a.isDev && b.isDev) return 1;
+    return (b.createdAt||0) - (a.createdAt||0);
+  });
+  el.innerHTML = arr.map(u=>{
+    const isDevUser = u.isDev || u.nama === DEV_NAME;
+    return `
+      <div class="account-item" onclick="showAccountDetail('${escapeHtml(u.nama)}')" style="${isDevUser?'border-color:rgba(241,196,15,0.4);background:rgba(241,196,15,0.05)':''}">
+        <div class="avatar" style="${isDevUser?'background:linear-gradient(135deg,#f1c40f,#e67e22);border:2px solid #f1c40f':''}">
+          ${u.nama.charAt(0).toUpperCase()}
+        </div>
+        <div class="info">
+          <div class="nama">${escapeHtml(u.nama)} ${isDevUser?'<span style="color:#f1c40f;font-size:12px">👑</span>':''}</div>
+          <div class="meta">${emoji('em-store','em')} ${isDevUser?'Pembuat web ini':'Lihat profil'}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 function showAccountDetail(nama){
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
@@ -2159,8 +2499,8 @@ function showAccountDetail(nama){
         <button class="close-btn" onclick="closeModal()">✕</button>
         <div style="text-align:center;margin-bottom:16px">
           ${isDevUser?'<div style="background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-size:11px;font-weight:900;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:12px">👑 DEVELOPER</div>':''}
-          <div style="width:80px;height:80px;border-radius:50%;background:${isDevUser?'linear-gradient(135deg,#f1c40f,#e67e22)':'linear-gradient(135deg,#25d366,#6c5ce7)'};margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;overflow:hidden;border:${isDevUser?'3px solid #f1c40f':'2px solid #2a3340'}">
-            ${u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover">`:nama.charAt(0).toUpperCase()}
+          <div style="width:80px;height:80px;border-radius:50%;background:${isDevUser?'linear-gradient(135deg,#f1c40f,#e67e22)':'linear-gradient(135deg,#25d366,#6c5ce7)'};margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;border:${isDevUser?'3px solid #f1c40f':'2px solid #2a3340'}">
+            ${nama.charAt(0).toUpperCase()}
           </div>
           <h2 style="margin-top:12px;${isDevUser?'color:#f1c40f':''}">${escapeHtml(nama)} ${isDevUser?'👑':''}</h2>
         </div>
@@ -2169,53 +2509,52 @@ function showAccountDetail(nama){
           <div class="tabungan-item"><div class="label">Penjualan</div><div class="val">${count}</div></div>
           <div class="tabungan-item"><div class="label">Total</div><div class="val">${formatRp(total)}</div></div>
         </div>
-        <button class="btn btn-primary btn-block" onclick="closeModal();openChatWith('${escapeHtml(nama)}')">${emoji('em-send','em')} Chat ${escapeHtml(nama)}</button>
+        <button class="btn btn-primary btn-block" onclick="closeModal();openChatWith('${escapeHtml(nama)}')">${emoji('em-send','em')} Chat</button>
       `);
     });
   });
 }
 
-function renderChatList(){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+/* ============ CHAT ============ */
+async function renderChatList(){
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
   const el = document.getElementById('chatListContainer');
   const cc = document.getElementById('chatListCount');
   if(!el) return;
-  db.ref('warungdigital/chats').once('value', snap=>{
-    const rooms = [];
-    snap.forEach(child=>{
-      const roomId = child.key;
-      if(roomId.includes(currentUser)){
-        const other = roomId.split('_').find(u => u !== currentUser);
-        if(other){
-          const msgs = child.val() || {};
-          const arr = Object.values(msgs).sort((a,b)=>b.timestamp-a.timestamp);
-          if(arr.length > 0){ rooms.push({ other, lastMsg: arr[0] }); }
-        }
+  const snap = await db.ref('warungdigital/chats').once('value');
+  const rooms = [];
+  snap.forEach(c=>{
+    const roomId = c.key;
+    if(roomId.includes(currentUser)){
+      const other = roomId.split('_').find(u => u !== currentUser);
+      if(other){
+        const msgs = c.val() || {};
+        const arr = Object.values(msgs).sort((a,b)=>b.timestamp-a.timestamp);
+        if(arr.length > 0){ rooms.push({other, lastMsg: arr[0]}); }
       }
-    });
-    rooms.sort((a,b)=>b.lastMsg.timestamp-a.lastMsg.timestamp);
-    if(cc) cc.textContent = rooms.length + ' chat';
-    if(rooms.length === 0){ el.innerHTML = `<div class="empty">${emoji('em-send','em-2xl')}<p>Belum ada chat</p></div>`; return; }
-    el.innerHTML = rooms.map(r=>{
-      const time = new Date(r.lastMsg.timestamp).toLocaleString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
-      const preview = r.lastMsg.text || (r.lastMsg.file ? '📎 File' : '');
-      return `
-        <div class="account-item" onclick="openChatWith('${escapeHtml(r.other)}')">
-          <div class="avatar">${r.other.charAt(0).toUpperCase()}</div>
-          <div class="info">
-            <div class="nama">${escapeHtml(r.other)}</div>
-            <div class="meta">${escapeHtml(preview).substring(0,40)}</div>
-            <div class="meta" style="font-size:10px">${time}</div>
-          </div>
-        </div>
-      `;
-    }).join('');
+    }
   });
+  rooms.sort((a,b)=>b.lastMsg.timestamp-a.lastMsg.timestamp);
+  if(cc) cc.textContent = rooms.length + ' chat';
+  if(rooms.length === 0){ el.innerHTML = `<div class="empty"><p>Belum ada chat</p></div>`; return; }
+  el.innerHTML = rooms.map(r=>{
+    const time = new Date(r.lastMsg.timestamp).toLocaleString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+    const preview = r.lastMsg.text || (r.lastMsg.file ? '📎 File' : '');
+    return `
+      <div class="account-item" onclick="openChatWith('${escapeHtml(r.other)}')">
+        <div class="avatar">${r.other.charAt(0).toUpperCase()}</div>
+        <div class="info">
+          <div class="nama">${escapeHtml(r.other)}</div>
+          <div class="meta">${escapeHtml(preview).substring(0,40)}</div>
+          <div class="meta" style="font-size:10px">${time}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
-
 function openChatWith(user){
-  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
-  if(user === currentUser){ showToast('Gak bisa chat diri sendiri!','error'); return; }
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
+  if(user === currentUser){ showToast('Gak bisa chat sendiri!','error'); return; }
   currentChatUser = user;
   const roomId = [currentUser, user].sort().join('_');
   document.getElementById('chatName').textContent = user;
@@ -2226,17 +2565,17 @@ function openChatWith(user){
   chatRef = db.ref('warungdigital/chats').child(roomId);
   chatRef.orderByChild('timestamp').limitToLast(100).on('value', snap=>{
     const body = document.getElementById('chatBody');
-    if(!snap.exists()){body.innerHTML=`<div style="text-align:center;padding:20px;opacity:.5;font-size:13px">Belum ada chat. Mulai ngobrol!</div>`;return}
+    if(!snap.exists()){ body.innerHTML=`<div style="text-align:center;padding:20px;opacity:.5;font-size:13px">Belum ada chat. Mulai ngobrol!</div>`; return; }
     let html = '';
     const arr = [];
-    snap.forEach(child=>{ arr.push(child.val()); });
+    snap.forEach(c=>arr.push(c.val()));
     arr.forEach(m=>{
       const isMe = m.from === currentUser;
       const time = new Date(m.timestamp).toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
       html += `<div class="chat-msg ${isMe?'me':'other'}">`;
       if(m.file){
-        if(m.fileType?.startsWith('image/')) html += `<img src="${m.file}" alt="file">`;
-        else html += `<div class="file">${emoji('em-upload','em')} ${escapeHtml(m.fileName||'File')}</div>`;
+        if(m.fileType?.startsWith('image/')) html += `<img src="${cdnImg(m.file, 400)}" loading="lazy">`;
+        else html += `<div class="file">${emoji('em-upload','em')} <a href="${m.file}" target="_blank" style="color:inherit">${escapeHtml(m.fileName||'File')}</a></div>`;
       }
       if(m.text) html += `<div>${escapeHtml(m.text)}</div>`;
       html += `<span class="time">${time}</span></div>`;
@@ -2261,218 +2600,144 @@ function attachChatFile(){
   if(!currentChatUser) return;
   const input = document.createElement('input');
   input.type = 'file';
-  input.accept = 'image/*,application/pdf,.zip,.rar,.doc,.docx,.xls,.xlsx,.txt';
-  input.onchange = e=>{
+  input.accept = 'image/*,application/pdf,.zip,.rar,.doc,.docx,.txt';
+  input.onchange = async e=>{
     const file = e.target.files[0]; if(!file) return;
-    if(file.size > 5*1024*1024){ showToast('File max 5MB!','error'); return; }
-    const reader = new FileReader();
-    reader.onload = ev=>{
+    if(file.size > MAX_FILE_SIZE){ showToast('File max 25MB!','error'); return; }
+    showUploadProgress('Upload File Chat');
+    try {
+      const res = await uploadToCloudinary(file, updateUploadProgress);
+      closeModal();
       const roomId = [currentUser, currentChatUser].sort().join('_');
-      db.ref('warungdigital/chats').child(roomId).push({ from: currentUser, file: ev.target.result, fileType: file.type, fileName: file.name, timestamp: Date.now() }).then(()=>showToast('File terkirim!','success'));
-    };
-    reader.readAsDataURL(file);
+      await db.ref('warungdigital/chats').child(roomId).push({
+        from: currentUser, file: res.secure_url, fileType: file.type, fileName: file.name, timestamp: Date.now()
+      });
+      showToast('File terkirim!','success');
+    } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
   };
   input.click();
 }
 
+/* ============ ACCOUNT SETTING ============ */
 function loadSettingAccount(){
   if(!currentUser) return;
   db.ref('warungdigital/users').child(currentUser).once('value', snap=>{
     const u = snap.val() || {};
-    const el = id => document.getElementById(id);
-    if(el('accNama')) el('accNama').value = currentUser;
-    if(el('accWA')) el('accWA').value = u.wa || '';
+    const n = document.getElementById('accNama'); if(n) n.value = currentUser;
+    const w = document.getElementById('accWA'); if(w) w.value = u.wa || '';
   });
 }
 function saveSettingAccount(){
   const nama = document.getElementById('accNama').value.trim();
   const pass = document.getElementById('accPass').value.trim();
   const wa = document.getElementById('accWA').value.trim();
-  if(!nama){showToast('Nama wajib!','error');return}
+  if(!nama){ showToast('Nama wajib!','error'); return; }
   const update = {wa};
   if(pass) update.password = pass;
-  startLoading('Menyimpan Akun...', 'Menyimpan perubahan', () => {
-    db.ref('warungdigital/users').child(currentUser).update(update).then(()=>{
-      showToast('Akun disimpan!','success');
-      document.getElementById('accPass').value='';
-    });
+  db.ref('warungdigital/users').child(currentUser).update(update).then(()=>{
+    showToast('Akun disimpan!','success');
+    document.getElementById('accPass').value='';
   });
 }
 
+/* ============ HELP ============ */
 function showHelp(){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji('em-help','em-lg')} Help & Info</h2>
-    <div class="help-info-box"><strong>WarungDigital</strong> adalah marketplace produk digital.</div>
+    <div class="help-info-box"><strong>WarungDigital v7.0</strong> — Marketplace produk digital dengan Cloudinary + Firebase.</div>
     <div class="help-section"><h3>${emoji('em-user','em')} Cara Daftar & Login</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Pilih Login/Daftar di intro atau topbar.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Pilih Login/Daftar di intro.</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-store','em')} Cara Jualan</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Upload file ke MediaFire manual.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Daftarin e-wallet di Jualan Saya → E-Wallet.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Tambah Produk.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Daftarin e-wallet di Jualan Saya.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Tambah Produk + upload banner (max 25MB).</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-cloud','em')} Download Gratis</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Masuk menu Download di topbar.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Upload via link atau file langsung.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Upload via link atau file langsung (max 25MB).</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-cart','em')} Cara Beli</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik Beli Langsung.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Transfer ke e-wallet penjual, upload bukti.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Penjual konfirmasi → dapet link download.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Klik Beli Langsung → pilih e-wallet penjual.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Upload bukti TF → kirim pesanan.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Penjual konfirmasi → link download muncul.</div></div>
     </div>
     <button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti!</button>
   `);
 }
 
-function showLoginModal(){
-  if(currentUser){ showToast('Udah login!'); return; }
-  openModal(`
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2>${emoji('em-lock','em-lg')} Login / Daftar</h2>
-    <label>Nama</label>
-    <input type="text" id="authNama" placeholder="Nama lo" />
-    <label>Password</label>
-    <input type="password" id="authPass" placeholder="Password" />
-    <button class="btn btn-primary btn-block" onclick="doLogin()">${emoji('em-login','em')} Login</button>
-    <button class="btn btn-secondary btn-block" onclick="doRegister()">${emoji('em-user','em')} Daftar</button>
-  `);
-}
-function doLogin(){
-  const nama = document.getElementById('authNama').value.trim();
-  const pass = document.getElementById('authPass').value.trim();
-  if(!nama||!pass){showToast('Isi semua!','error');return}
-  db.ref('warungdigital/users').child(nama).once('value', snap=>{
-    if(!snap.exists()){showToast('❌ Akun gak terdaftar!','error');return}
-    if(snap.val().password!==pass){showToast('Password salah!','error');return}
-    currentUser = nama; isGuest = false; localStorage.setItem('wd_user', nama);
-    closeModal();
-    db.ref('warungdigital/users').child(nama).child('isDev').once('value', dsnap=>{
-      const userIsDev = dsnap.val() === true || nama === DEV_NAME;
-      isDev = userIsDev;
-      updateDevMenu();
-      updateLoginBtns();
-      if(userIsDev) showToast('👑 Selamat datang, Developer!','dev');
-      else showToast('Login berhasil!','success');
-      showPage('home');
-    });
-  });
-}
-function doRegister(){
-  const nama = document.getElementById('authNama').value.trim();
-  const pass = document.getElementById('authPass').value.trim();
-  if(!nama||!pass){showToast('Isi semua!','error');return}
-  if(pass.length<4){showToast('Password min 4 karakter!','error');return}
-  db.ref('warungdigital/users').child(nama).once('value', snap=>{
-    if(snap.exists()){showToast('Nama udah dipake!','error');return}
-    db.ref('warungdigital/users').child(nama).set({
-      password: pass, createdAt: Date.now(), ewallets: [], wa: '', avatar: '', banner: '', status: ''
-    }).then(()=>{
-      currentUser = nama; isGuest = false; localStorage.setItem('wd_user', nama);
-      closeModal(); showToast('Daftar & login berhasil!','success');
-      updateLoginBtns(); showPage('home');
-    });
-  });
-}
-function updateLoginBtns(){
-  const logoutBtn = document.getElementById('logoutBtn2');
-  const loginBtn = document.getElementById('loginBtn2');
-  if(currentUser){
-    if(logoutBtn) logoutBtn.style.display = 'flex';
-    if(loginBtn) loginBtn.style.display = 'none';
-  } else {
-    if(logoutBtn) logoutBtn.style.display = 'none';
-    if(loginBtn) loginBtn.style.display = 'flex';
-  }
-}
-function logoutUser(){
-  if(!confirm('Yakin logout?')) return;
-  currentUser = null; isGuest = false; localStorage.removeItem('wd_user');
-  isDev = false; updateDevMenu(); updateLoginBtns();
-  showToast('Logout!','success'); showPage('home');
-}
-
+/* ============ REQUEST FITUR ============ */
 function showRequestFitur(){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(!currentUser){ showToast('Login dulu!','error'); showAuthPage('login'); return; }
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji('em-bulb','em-lg')} Request Fitur</h2>
     <label>Nama Lo</label>
     <input type="text" id="reqNama" value="${escapeHtml(currentUser||'')}" />
     <label>Fitur yang Dimau</label>
-    <textarea id="reqFitur" rows="3" placeholder="Contoh: fitur rating, dll"></textarea>
-    <button class="btn btn-primary btn-block" onclick="submitRequestFitur()">${emoji('em-send','em')} Kirim Request</button>
+    <textarea id="reqFitur" rows="3"></textarea>
+    <button class="btn btn-primary btn-block" onclick="submitRequestFitur()">${emoji('em-send','em')} Kirim</button>
   `);
 }
 function submitRequestFitur(){
   const nama = document.getElementById('reqNama').value.trim()||'Anonim';
   const fitur = document.getElementById('reqFitur').value.trim();
-  if(!fitur){showToast('Tulis fitur!','error');return}
-  startLoading('Mengirim...', 'Mengirim request', () => {
-    db.ref('warungdigital/requests').push({ nama, fitur, user: currentUser, timestamp: Date.now() }).then(()=>{ closeModal(); showToast('Request terkirim!','success'); });
+  if(!fitur){ showToast('Tulis fitur!','error'); return; }
+  db.ref('warungdigital/requests').push({ nama, fitur, user: currentUser, timestamp: Date.now() }).then(()=>{
+    closeModal(); showToast('Request terkirim!','success');
   });
 }
 
+/* ============ PROMO RENDER ============ */
 function renderPromoJualan(){
   const track = document.getElementById('promoJualanTrack');
   if(!track) return;
-  db.ref('warungdigital/banners/promosiJualan').once('value', snap=>{
-    const items = snap.val() || {};
-    allPromoJualan = Object.entries(items).map(([id,v])=>({id,...v}));
-    allPromoJualan.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-    let html = '';
-    allPromoJualan.forEach(p=>{
-      html += `
-        <div class="promo-slide" onclick="clickPromoJualan('${p.id}','${escapeHtml(p.user||'')}','${escapeHtml(p.produkId||'')}','${escapeHtml(p.link||'')}')">
-          ${p.banner?`<img src="${p.banner}" />`:emoji('em-store','em-2xl')}
-          <div class="slide-label">${escapeHtml(p.judul||p.user||'Promo')}</div>
-        </div>
-      `;
-    });
-    if(currentUser && !isGuest){
-      html += `<button class="promo-add-btn" onclick="showAddPromo('jualan')">${emoji('em-plus','em-lg')}<div>Tambah Promo</div></button>`;
-    }
-    if(allPromoJualan.length === 0 && (!currentUser || isGuest)){
-      html = `<div style="padding:20px;opacity:.5;font-size:13px">Belum ada promo</div>`;
-    }
-    track.innerHTML = html;
-    enableDragScroll(track);
+  let html = '';
+  allPromoJualan.forEach(p=>{
+    html += `
+      <div class="promo-slide" onclick="clickPromoJualan('${p.id}','${escapeHtml(p.user||'')}','${escapeHtml(p.produkId||'')}','${escapeHtml(p.link||'')}')">
+        ${p.banner?`<img src="${cdnImg(p.banner, 400)}" loading="lazy" />`:emoji('em-store','em-2xl')}
+        <div class="slide-label">${escapeHtml(p.judul||p.user||'Promo')}</div>
+      </div>
+    `;
   });
+  if(currentUser && !isGuest){
+    html += `<button class="promo-add-btn" onclick="showAddPromo('jualan')">${emoji('em-plus','em-lg')}<div>Tambah Promo</div></button>`;
+  }
+  if(allPromoJualan.length === 0 && (!currentUser || isGuest)){
+    html = `<div style="padding:20px;opacity:.5;font-size:13px">Belum ada promo</div>`;
+  }
+  track.innerHTML = html;
+  enableDragScroll(track);
 }
 function clickPromoJualan(id, user, produkId, link){
   if(produkId && products[produkId]){ showDetail(produkId); return; }
   if(link){ window.open(link, '_blank'); return; }
   if(user){
-    const userProduk = Object.entries(products).find(([k,v])=>v.penjual === user);
-    if(userProduk){ showPage('home'); setTimeout(()=>showDetail(userProduk[0]), 300); return; }
+    const up = Object.entries(products).find(([k,v])=>v.penjual === user);
+    if(up){ showPage('home'); setTimeout(()=>showDetail(up[0]), 300); return; }
   }
-  showToast('Promo ini gak ada link','warn');
+  showToast('Promo gak ada link','warn');
 }
 function renderPromoMedsos(){
   const track = document.getElementById('promoMedsosTrack');
   if(!track) return;
-  db.ref('warungdigital/banners/promosiMedsos').once('value', snap=>{
-    const items = snap.val() || {};
-    allPromoMedsos = Object.entries(items).map(([id,v])=>({id,...v}));
-    allPromoMedsos.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-    let html = '';
-    allPromoMedsos.forEach(p=>{
-      html += `
-        <div class="promo-slide" onclick="clickPromoMedsos('${escapeHtml(p.link||'')}')">
-          ${p.banner?`<img src="${p.banner}" />`:emoji('em-wa','em-2xl')}
-          <div class="slide-label">${escapeHtml(p.judul||'Sosmed')}</div>
-        </div>
-      `;
-    });
-    if(currentUser && !isGuest){
-      html += `<button class="promo-add-btn" onclick="showAddPromo('medsos')">${emoji('em-plus','em-lg')}<div>Tambah Sosmed</div></button>`;
-    }
-    if(allPromoMedsos.length === 0 && (!currentUser || isGuest)){
-      html = `<div style="padding:20px;opacity:.5;font-size:13px">Belum ada promo sosmed</div>`;
-    }
-    track.innerHTML = html;
-    enableDragScroll(track);
+  let html = '';
+  allPromoMedsos.forEach(p=>{
+    html += `
+      <div class="promo-slide" onclick="clickPromoMedsos('${escapeHtml(p.link||'')}')">
+        ${p.banner?`<img src="${cdnImg(p.banner, 400)}" loading="lazy" />`:emoji('em-wa','em-2xl')}
+        <div class="slide-label">${escapeHtml(p.judul||'Sosmed')}</div>
+      </div>
+    `;
   });
+  if(currentUser && !isGuest){
+    html += `<button class="promo-add-btn" onclick="showAddPromo('medsos')">${emoji('em-plus','em-lg')}<div>Tambah Sosmed</div></button>`;
+  }
+  if(allPromoMedsos.length === 0 && (!currentUser || isGuest)){
+    html = `<div style="padding:20px;opacity:.5;font-size:13px">Belum ada promo sosmed</div>`;
+  }
+  track.innerHTML = html;
+  enableDragScroll(track);
 }
 function clickPromoMedsos(link){
   if(!link){ showToast('Gak ada link','warn'); return; }
@@ -2487,67 +2752,68 @@ function enableDragScroll(track){
     if(!isDown) return;
     e.preventDefault();
     const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 2;
-    track.scrollLeft = scrollLeft - walk;
+    track.scrollLeft = scrollLeft - (x - startX) * 2;
   });
 }
 function showAddPromo(jenis){
   if(!currentUser || isGuest){ showToast('Login dulu!','error'); return; }
-  bannerBase64 = '';
+  pendingPromoBannerUrl = '';
   const isJualan = jenis === 'jualan';
   const myProducts = Object.entries(products).filter(([id,p])=>p.penjual === currentUser);
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji(isJualan?'em-store':'em-wa','em-lg')} Tambah Promo ${isJualan?'Jualan':'Sosmed'}</h2>
-    <label>Judul Promo</label>
-    <input type="text" id="promoJudul" placeholder="${isJualan?'Promo Toko A':'Saluran WA'}" />
-    <label>Upload Banner</label>
-    <input type="file" id="promoBanner" accept="image/*" onchange="readPromoBanner(this)" />
+    <label>Judul</label>
+    <input type="text" id="promoJudul" />
+    <label>Upload Banner (max 25MB)</label>
+    <input type="file" id="promoBanner" accept="image/*" onchange="uploadPromoBanner(this,'${jenis}')" />
     <div id="promoBannerInfo" style="font-size:12px;opacity:.6;margin-top:6px"></div>
     ${isJualan ? `
-      <label style="margin-top:12px">Link ke Produk Lo (opsional)</label>
+      <label style="margin-top:12px">Link ke Produk Lo</label>
       <select id="promoProduk">
-        <option value="">-- Pilih Produk --</option>
+        <option value="">-- Pilih --</option>
         ${myProducts.map(([id,p])=>`<option value="${id}">${escapeHtml(p.nama)}</option>`).join('')}
       </select>
-      <label style="margin-top:12px">Atau Link External (opsional)</label>
+      <label style="margin-top:12px">Atau Link External</label>
       <input type="text" id="promoLink" placeholder="https://..." />
     ` : `
       <label style="margin-top:12px">Link Sosmed (WA/IG/TikTok/dll)</label>
       <input type="text" id="promoLink" placeholder="https://wa.me/..." />
     `}
-    <button class="btn btn-primary btn-block" onclick="savePromo('${jenis}')">${emoji('em-check','em')} Simpan Promo</button>
+    <button class="btn btn-primary btn-block" onclick="savePromo('${jenis}')">${emoji('em-check','em')} Simpan</button>
   `);
 }
-async function readPromoBanner(input){
+let pendingPromoBannerUrl = '';
+async function uploadPromoBanner(input, jenis){
   const file = input.files[0]; if(!file) return;
-  if(file.size > 5*1024*1024){ showToast('Banner max 5MB!','error'); input.value=''; return; }
+  if(file.size > MAX_FILE_SIZE){ showToast('Banner max 25MB!','error'); input.value=''; return; }
+  showUploadProgress('Upload Banner Promo');
   try {
-    const c = await compressImage(file, 800, 0.75);
-    bannerBase64 = c;
-    document.getElementById('promoBannerInfo').textContent = `✅ ${file.name}`;
-  } catch(e){ showToast('Gagal','error'); }
+    const res = await uploadToCloudinary(file, updateUploadProgress);
+    pendingPromoBannerUrl = res.secure_url;
+    closeModal();
+    setTimeout(()=> showAddPromo(jenis), 200);
+  } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
 }
-function savePromo(jenis){
+async function savePromo(jenis){
   const judul = document.getElementById('promoJudul').value.trim();
   const link = document.getElementById('promoLink')?.value.trim() || '';
   const produkId = document.getElementById('promoProduk')?.value || '';
   if(!judul){ showToast('Judul wajib!','error'); return; }
-  if(!bannerBase64){ showToast('Upload banner!','error'); return; }
+  if(!pendingPromoBannerUrl){ showToast('Upload banner!','error'); return; }
   const path = jenis === 'jualan' ? 'promosiJualan' : 'promosiMedsos';
-  db.ref('warungdigital/banners/'+path).push({
-    judul, banner: bannerBase64, user: currentUser, produkId, link,
-    createdAt: Date.now()
-  }).then(()=>{
-    closeModal(); bannerBase64 = '';
-    showToast('✅ Promo ditambahkan!','success');
-    if(jenis === 'jualan') renderPromoJualan();
-    else renderPromoMedsos();
+  await db.ref('warungdigital/banners/'+path).push({
+    judul, banner: pendingPromoBannerUrl, user: currentUser, produkId, link, createdAt: Date.now()
   });
+  closeModal(); pendingPromoBannerUrl = '';
+  showToast('✅ Promo ditambahkan!','success');
+  if(jenis === 'jualan') loadPromoJualan();
+  else loadPromoMedsos();
 }
 
+/* ============ DEV PANEL ============ */
 function renderDev(){
-  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
+  if(!isDev){ showToast('Dev only!','error'); return; }
   const el = document.getElementById('devContent');
   const dc = document.getElementById('devCount');
   if(!el) return;
@@ -2557,7 +2823,6 @@ function renderDev(){
     const products = data.products || {};
     const orders = data.orders || {};
     const reports = data.reports || {};
-    const activities = data.activities || {};
     const intro = data.introWeb || {};
     const uiInfo = data.uiInfo || {};
     const totalUsers = Object.keys(users).length;
@@ -2568,11 +2833,10 @@ function renderDev(){
     if(dc) dc.textContent = totalUsers + ' user';
     el.innerHTML = `
       <div class="help-dev-box" style="margin-bottom:16px">
-        <strong>👑 Developer Mode Aktif</strong><br>
-        Lo punya akses khusus. Gunakan dengan bijak!
+        <strong>👑 Developer Mode</strong><br>v7.0 — Cloudinary + Firebase, halaman mandiri, anti-ngelag.
       </div>
       <div class="stats" style="margin-bottom:20px">
-        <div class="stat"><div class="icon">👥</div><div class="num">${totalUsers}</div><div class="label">Total User</div></div>
+        <div class="stat"><div class="icon">👥</div><div class="num">${totalUsers}</div><div class="label">User</div></div>
         <div class="stat"><div class="icon">📦</div><div class="num">${totalProducts}</div><div class="label">Produk</div></div>
         <div class="stat"><div class="icon">🛒</div><div class="num">${totalOrders}</div><div class="label">Order</div></div>
         <div class="stat"><div class="icon">💰</div><div class="num">${formatRp(revenue)}</div><div class="label">Revenue</div></div>
@@ -2599,7 +2863,7 @@ function renderDev(){
     renderDevIntro(intro);
     renderDevUiInfo(uiInfo);
     renderDevBanner(data.settings || {});
-    renderDevUsers(users, activities);
+    renderDevUsers(users);
     renderDevReports(reports);
     renderDevBroadcast();
   });
@@ -2619,14 +2883,12 @@ function renderDevIntro(intro){
   if(!el) return;
   el.innerHTML = `
     <div class="help-dev-box" style="margin-bottom:16px">
-      <strong>🎬 Intro Web</strong><br>
-      Atur video/foto intro + info UI yang muncul setelahnya.
+      <strong>🎬 Intro Web</strong><br>Upload video/foto intro. Muncul sebagai halaman mandiri.
     </div>
     <div class="order-item">
       <div class="head"><div class="oid">🎥 Media Intro</div></div>
-      <div class="banner-dev" id="devIntroPreview" onclick="changeDevIntro()">
-        ${intro.media ? (intro.mediaType === 'video' ? `<video src="${intro.media}" autoplay muted loop playsinline></video>` : `<img src="${intro.media}" />`) : `<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik buat upload intro</div></div>`}
-        <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:4px 12px;border-radius:20px;font-size:11px;color:#fff">✏️ Ganti</div>
+      <div class="banner-dev" onclick="changeDevIntro()">
+        ${intro.media ? (intro.mediaType === 'video' ? `<video src="${intro.media}" autoplay muted loop playsinline></video>` : `<img src="${cdnImg(intro.media, 600)}" />`) : `<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik upload</div></div>`}
       </div>
       <button class="btn btn-danger btn-block" onclick="hapusDevIntro()">${emoji('em-trash','em')} Hapus Intro</button>
     </div>
@@ -2637,23 +2899,22 @@ function changeDevIntro(){
   const input = document.createElement('input');
   input.type = 'file';
   input.accept = 'image/*,video/mp4,video/webm';
-  input.onchange = e=>{
+  input.onchange = async e=>{
     const file = e.target.files[0]; if(!file) return;
-    const isVideo = file.type.startsWith('video/');
-    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
-    if(file.size > maxSize){ showToast(`Max ${isVideo?'5MB':'2MB'}!`,'error'); return; }
-    const reader = new FileReader();
-    reader.onload = ev=>{
-      db.ref('warungdigital/introWeb').update({
-        media: ev.target.result, mediaType: isVideo ? 'video' : 'image'
-      }).then(()=>{ showToast('✅ Intro diganti!','success'); renderDev(); });
-    };
-    reader.readAsDataURL(file);
+    if(file.size > MAX_FILE_SIZE){ showToast('Max 25MB!','error'); return; }
+    showUploadProgress('Upload Intro');
+    try {
+      const res = await uploadToCloudinary(file, updateUploadProgress);
+      const isVideo = file.type.startsWith('video/');
+      await db.ref('warungdigital/introWeb').update({ media: res.secure_url, mediaType: isVideo ? 'video' : 'image' });
+      closeModal(); showToast('✅ Intro diganti!','success');
+      await loadIntroData(); renderDev();
+    } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
   };
   input.click();
 }
 function hapusDevIntro(){
-  if(!isDev){ showToast('Dev only!','error'); return; }
+  if(!isDev) return;
   if(!confirm('Hapus intro?')) return;
   db.ref('warungdigital/introWeb').update({ media: '', mediaType: '' }).then(()=>{
     showToast('Intro dihapus','success'); renderDev();
@@ -2662,220 +2923,133 @@ function hapusDevIntro(){
 function renderDevUiInfo(uiInfo){
   const el = document.getElementById('dev-uiinfo');
   if(!el) return;
-  const updates = uiInfo.updates || [];
-  const features = uiInfo.features || [];
+  const updates = uiInfo.updates ? Object.entries(uiInfo.updates) : [];
+  const features = uiInfo.features ? Object.entries(uiInfo.features) : [];
   el.innerHTML = `
     <div class="help-dev-box" style="margin-bottom:16px">
-      <strong>📢 UI Info Web</strong><br>
-      Info update + status fitur yang muncul setelah intro video.
+      <strong>📢 UI Info Web</strong><br>Muncul setelah intro.
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">📝 Info Utama</div></div>
+      <div class="form-group"><label>Judul</label><input type="text" id="uiInfoTitle" value="${escapeHtml(uiInfo.title||'WarungDigital')}" /></div>
+      <div class="form-group"><label>Subtitle</label><input type="text" id="uiInfoSubtitle" value="${escapeHtml(uiInfo.subtitle||'Marketplace Produk Digital')}" /></div>
+      <button class="btn btn-primary btn-block" onclick="simpanUiInfo()">${emoji('em-check','em')} Simpan Info</button>
     </div>
     <div class="order-item">
       <div class="head"><div class="oid">📝 Update Terbaru</div></div>
-      <div class="form-group">
-        <label>Judul Info</label>
-        <input type="text" id="uiInfoTitle" value="${escapeHtml(uiInfo.title||'WarungDigital v6.0')}" />
-        <label>Subtitle</label>
-        <input type="text" id="uiInfoSubtitle" value="${escapeHtml(uiInfo.subtitle||'Marketplace Produk Digital')}" />
-      </div>
       <div id="uiUpdatesList">
-        ${updates.map((u,i)=>`
+        ${updates.map(([id,u])=>`
           <div class="income-item">
-            <div class="info">
-              <div class="nama">• ${escapeHtml(u)}</div>
-            </div>
-            <button class="del" onclick="hapusUiUpdate(${i})">${emoji('em-trash','em')}</button>
+            <div class="info"><div class="nama">• ${escapeHtml(u)}</div></div>
+            <button class="del" onclick="hapusUiUpdate('${id}')">${emoji('em-trash','em')}</button>
           </div>
         `).join('') || '<div style="opacity:.5;font-size:13px;padding:8px">Belum ada update</div>'}
       </div>
-      <button class="btn btn-primary btn-block" onclick="tambahUiUpdate()">${emoji('em-plus','em')} Tambah Update</button>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <input type="text" id="newUiUpdate" placeholder="Update baru..." style="flex:1" />
+        <button class="btn btn-primary btn-sm" onclick="tambahUiUpdate()">Tambah</button>
+      </div>
     </div>
     <div class="order-item">
       <div class="head"><div class="oid">🎯 Status Fitur</div></div>
       <div id="uiFeaturesList">
-        ${features.map((f,i)=>`
+        ${features.map(([id,f])=>`
           <div class="income-item">
-            <div class="info">
-              <div class="nama">${escapeHtml(f.nama)}</div>
-              <div class="tanggal">Status: ${f.status}</div>
-            </div>
-            <button class="del" onclick="hapusUiFeature(${i})">${emoji('em-trash','em')}</button>
+            <div class="info"><div class="nama">${escapeHtml(f.nama)}</div><div class="tanggal">Status: ${f.status}</div></div>
+            <button class="del" onclick="hapusUiFeature('${id}')">${emoji('em-trash','em')}</button>
           </div>
         `).join('') || '<div style="opacity:.5;font-size:13px;padding:8px">Belum ada fitur</div>'}
       </div>
-      <button class="btn btn-primary btn-block" onclick="tambahUiFeature()">${emoji('em-plus','em')} Tambah Fitur</button>
+      <div class="form-group" style="margin-top:8px">
+        <input type="text" id="newFeatureName" placeholder="Nama fitur..." />
+        <select id="newFeatureStatus">
+          <option value="online">🟢 Online</option>
+          <option value="bug">🟡 Bug</option>
+          <option value="offline">🔴 Offline</option>
+        </select>
+        <button class="btn btn-primary btn-block" onclick="tambahUiFeature()">Tambah Fitur</button>
+      </div>
     </div>
-    <button class="btn btn-success btn-block" onclick="simpanUiInfo()">${emoji('em-check','em')} Simpan Info UI</button>
   `;
 }
 function tambahUiUpdate(){
-  const t = prompt('Update baru:');
-  if(!t) return;
-  db.ref('warungdigital/uiInfo/updates').push(t).then(()=>{ showToast('Update ditambah','success'); renderDev(); });
+  const v = document.getElementById('newUiUpdate').value.trim();
+  if(!v) return;
+  db.ref('warungdigital/uiInfo/updates').push(v).then(()=>{ showToast('Ditambah','success'); renderDev(); });
 }
-function hapusUiUpdate(i){
+function hapusUiUpdate(id){
   if(!confirm('Hapus?')) return;
-  db.ref('warungdigital/uiInfo/updates').once('value', s=>{
-    const arr = s.val() || [];
-    if(Array.isArray(arr)){ arr.splice(i,1); db.ref('warungdigital/uiInfo/updates').set(arr).then(()=>renderDev()); }
-  });
+  db.ref('warungdigital/uiInfo/updates').child(id).remove().then(()=>renderDev());
 }
 function tambahUiFeature(){
-  const nama = prompt('Nama fitur:');
+  const nama = document.getElementById('newFeatureName').value.trim();
+  const status = document.getElementById('newFeatureStatus').value;
   if(!nama) return;
-  const status = prompt('Status (online/bug/offline):','online');
-  if(!status) return;
-  db.ref('warungdigital/uiInfo/features').push({ nama, status: status.toLowerCase() }).then(()=>{ showToast('Fitur ditambah','success'); renderDev(); });
+  db.ref('warungdigital/uiInfo/features').push({ nama, status }).then(()=>{ showToast('Ditambah','success'); renderDev(); });
 }
-function hapusUiFeature(i){
+function hapusUiFeature(id){
   if(!confirm('Hapus?')) return;
-  db.ref('warungdigital/uiInfo/features').once('value', s=>{
-    const arr = s.val() || [];
-    if(Array.isArray(arr)){ arr.splice(i,1); db.ref('warungdigital/uiInfo/features').set(arr).then(()=>renderDev()); }
-  });
+  db.ref('warungdigital/uiInfo/features').child(id).remove().then(()=>renderDev());
 }
 function simpanUiInfo(){
   const title = document.getElementById('uiInfoTitle').value.trim();
   const subtitle = document.getElementById('uiInfoSubtitle').value.trim();
-  db.ref('warungdigital/uiInfo').update({ title, subtitle }).then(()=>{
-    showToast('Info UI disimpan!','success');
-  });
+  db.ref('warungdigital/uiInfo').update({ title, subtitle }).then(()=> showToast('Info disimpan!','success'));
 }
 function renderDevBanner(settings){
   const el = document.getElementById('dev-banner');
   if(!el) return;
   el.innerHTML = `
     <div class="help-dev-box" style="margin-bottom:16px">
-      <strong>🖼️ Atur Banner Web</strong><br>
-      Banner 1:1 (navbar), Banner Judul Web, Banner Animasi Pojok Kanan Bawah, Background Web.
+      <strong>🖼️ Atur Banner</strong><br>Semua banner max 25MB via Cloudinary.
     </div>
+    ${bannerBlock('1️⃣ Banner 1:1 (Pojok Kanan Atas)', 'banner11', settings.banner11, settings.banner11Type)}
+    ${bannerBlock('📰 Banner Judul Web (Atas Navbar)', 'bannerJudul', settings.bannerJudul, settings.bannerJudulType)}
+    ${bannerBlock('🏷️ Banner Logo Web (Navbar Kanan)', 'bannerLogo', settings.bannerLogo, settings.bannerLogoType)}
+    ${bannerBlock('✨ Banner Animasi Pojok Kanan Bawah (kecil)', 'bannerAnimasi', settings.bannerAnimasi, settings.bannerAnimasiType)}
+    ${bannerBlock('🌄 Background Web', 'bgWeb', settings.bgWeb, settings.bgType)}
+  `;
+}
+function bannerBlock(label, key, url, type){
+  return `
     <div class="order-item">
-      <div class="head"><div class="oid">1️⃣ Banner 1:1 (Navbar)</div></div>
-      <div class="banner-dev" onclick="changeBanner11()">
-        ${settings.banner11 ? (settings.banner11Type === 'video' ? `<video src="${settings.banner11}" autoplay muted loop playsinline></video>` : `<img src="${settings.banner11}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
+      <div class="head"><div class="oid">${label}</div></div>
+      <div class="banner-dev" onclick="uploadBannerFile('${key}')">
+        ${url ? (type === 'video' ? `<video src="${url}" autoplay muted loop playsinline></video>` : `<img src="${cdnImg(url, 600)}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
       </div>
-      <button class="btn btn-danger btn-block" onclick="hapusBanner('banner11')">${emoji('em-trash','em')} Hapus</button>
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">📰 Banner Judul Web (Atas Navbar)</div></div>
-      <div class="banner-dev" onclick="changeBannerJudul()">
-        ${settings.bannerJudul ? (settings.bannerJudulType === 'video' ? `<video src="${settings.bannerJudul}" autoplay muted loop playsinline></video>` : `<img src="${settings.bannerJudul}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
-      </div>
-      <button class="btn btn-danger btn-block" onclick="hapusBanner('bannerJudul')">${emoji('em-trash','em')} Hapus</button>
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">✨ Banner Animasi Pojok Kanan Bawah</div></div>
-      <div style="font-size:12px;opacity:.6;margin-bottom:8px">Support PNG transparan / WebM alpha</div>
-      <div class="banner-dev" onclick="changeBannerAnimasi()">
-        ${settings.bannerAnimasi ? (settings.bannerAnimasiType === 'video' ? `<video src="${settings.bannerAnimasi}" autoplay muted loop playsinline></video>` : `<img src="${settings.bannerAnimasi}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
-      </div>
-      <button class="btn btn-danger btn-block" onclick="hapusBanner('bannerAnimasi')">${emoji('em-trash','em')} Hapus</button>
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">🌄 Background Web</div></div>
-      <div class="banner-dev" onclick="changeBgWeb()">
-        ${settings.bgWeb ? (settings.bgType === 'video' ? `<video src="${settings.bgWeb}" autoplay muted loop playsinline></video>` : `<img src="${settings.bgWeb}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
-      </div>
-      <button class="btn btn-danger btn-block" onclick="hapusBgWeb()">${emoji('em-trash','em')} Hapus</button>
+      <button class="btn btn-danger btn-block" onclick="hapusBanner('${key}')">${emoji('em-trash','em')} Hapus</button>
     </div>
   `;
 }
-function changeBanner11(){ uploadBannerFile('banner11'); }
-function changeBannerJudul(){ uploadBannerFile('bannerJudul'); }
-function changeBannerAnimasi(){ uploadBannerFile('bannerAnimasi', true); }
-function changeBgWeb(){ uploadBannerFile('bgWeb'); }
-function uploadBannerFile(key, allowTransparent){
+function uploadBannerFile(key){
   if(!isDev){ showToast('Dev only!','error'); return; }
   const input = document.createElement('input');
   input.type = 'file';
-  input.accept = allowTransparent ? 'image/*,video/webm,video/mp4' : 'image/*,video/mp4,video/webm';
-  input.onchange = e=>{
+  input.accept = 'image/*,video/mp4,video/webm';
+  input.onchange = async e=>{
     const file = e.target.files[0]; if(!file) return;
-    const isVideo = file.type.startsWith('video/');
-    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
-    if(file.size > maxSize){ showToast(`Max ${isVideo?'5MB':'2MB'}!`,'error'); return; }
-    const reader = new FileReader();
-    reader.onload = ev=>{
-      db.ref('warungdigital/settings').update({
-        [key]: ev.target.result,
-        [key + 'Type']: isVideo ? 'video' : 'image'
-      }).then(()=>{
-        showToast('✅ Banner diganti!','success');
-        loadAllBanners();
-        renderDev();
-      });
-    };
-    reader.readAsDataURL(file);
+    if(file.size > MAX_FILE_SIZE){ showToast('Max 25MB!','error'); return; }
+    showUploadProgress('Upload Banner');
+    try {
+      const res = await uploadToCloudinary(file, updateUploadProgress);
+      const isVideo = file.type.startsWith('video/');
+      await db.ref('warungdigital/settings').update({ [key]: res.secure_url, [key + 'Type']: isVideo ? 'video' : 'image' });
+      closeModal(); showToast('✅ Banner diganti!','success');
+      await loadAllBannersAndBg(); renderDev();
+    } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
   };
   input.click();
 }
 function hapusBanner(key){
-  if(!isDev){ showToast('Dev only!','error'); return; }
-  if(!confirm('Hapus banner ini?')) return;
+  if(!isDev) return;
+  if(!confirm('Hapus banner?')) return;
   db.ref('warungdigital/settings').update({ [key]: '', [key + 'Type']: '' }).then(()=>{
-    showToast('Banner dihapus','success');
-    loadAllBanners();
+    showToast('Dihapus','success');
+    if(key === 'bgWeb') applyBg('', ''); else loadAllBannersAndBg();
     renderDev();
   });
 }
-function hapusBgWeb(){
-  if(!isDev){ showToast('Dev only!','error'); return; }
-  if(!confirm('Hapus background?')) return;
-  db.ref('warungdigital/settings').update({ bgWeb: '', bgType: '' }).then(()=>{
-    showToast('BG dihapus','success');
-    loadAllBanners();
-    renderDev();
-  });
-}
-function loadAllBanners(){
-  db.ref('warungdigital/settings').once('value', snap=>{
-    const s = snap.val() || {};
-    const setBanner = (wrapId, imgId, vidId, key, typeKey)=>{
-      const wrap = document.getElementById(wrapId);
-      const img = document.getElementById(imgId);
-      const vid = document.getElementById(vidId);
-      if(!wrap || !img || !vid) return;
-      if(s[key]){
-        wrap.classList.add('show');
-        if(s[typeKey] === 'video'){
-          img.style.display = 'none'; vid.style.display = 'block'; vid.src = s[key];
-        } else {
-          vid.style.display = 'none'; img.style.display = 'block'; img.src = s[key];
-        }
-      } else {
-        wrap.classList.remove('show');
-      }
-    };
-    setBanner('banner11','banner11Img','banner11Vid','banner11','banner11Type');
-    setBanner('judulWebBanner','judulWebImg','judulWebVid','bannerJudul','bannerJudulType');
-    setBanner('bannerAnimasiRB','bannerAnimasiImg','bannerAnimasiVid','bannerAnimasi','bannerAnimasiType');
-    if(s.bgWeb && s.bgType === 'image'){
-      document.body.classList.add('has-bg');
-      const old = document.getElementById('bgStyle');
-      if(old) old.remove();
-      const st = document.createElement('style');
-      st.id = 'bgStyle';
-      st.textContent = `body.has-bg::after{background-image:url('${s.bgWeb}')}`;
-      document.head.appendChild(st);
-    } else if(s.bgWeb && s.bgType === 'video'){
-      let vidBg = document.getElementById('bgVideoEl');
-      if(!vidBg){
-        vidBg = document.createElement('video');
-        vidBg.id = 'bgVideoEl';
-        vidBg.autoplay = true; vidBg.muted = true; vidBg.loop = true; vidBg.playsInline = true;
-        vidBg.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.15;pointer-events:none';
-        document.body.appendChild(vidBg);
-      }
-      vidBg.src = s.bgWeb;
-    } else {
-      document.body.classList.remove('has-bg');
-      const old = document.getElementById('bgStyle');
-      if(old) old.remove();
-      const vidBg = document.getElementById('bgVideoEl');
-      if(vidBg) vidBg.remove();
-    }
-  });
-}
-function renderDevUsers(users, activities){
+function renderDevUsers(users){
   const el = document.getElementById('dev-users');
   if(!el) return;
   const arr = Object.entries(users).map(([nama, u])=>({nama, ...u}));
@@ -2885,13 +3059,8 @@ function renderDevUsers(users, activities){
     const isDevUser = u.isDev || u.nama === DEV_NAME;
     return `
     <div class="order-item">
-      <div class="head">
-        <div class="oid">${escapeHtml(u.nama)} ${isDevUser ? '<span style="color:#f1c40f;font-size:11px">👑</span>' : ''}</div>
-      </div>
-      <div class="body">
-        📅 ${new Date(u.createdAt||0).toLocaleString('id-ID')}<br>
-        💳 E-Wallet: ${(u.ewallets||[]).length}
-      </div>
+      <div class="head"><div class="oid">${escapeHtml(u.nama)} ${isDevUser?'<span style="color:#f1c40f;font-size:11px">👑</span>':''}</div></div>
+      <div class="body">📅 ${new Date(u.createdAt||0).toLocaleString('id-ID')}<br>💳 E-Wallet: ${(u.ewallets||[]).length}</div>
       <div class="actions">
         <button class="btn btn-sm btn-warning" onclick="devResetPassword('${escapeHtml(u.nama)}')">${emoji('em-lock','em')} Reset Pass</button>
         <button class="btn btn-sm btn-danger" onclick="showDevDeleteUser('${escapeHtml(u.nama)}')">${emoji('em-trash','em')} Hapus</button>
@@ -2902,8 +3071,7 @@ function renderDevUsers(users, activities){
 function renderDevReports(reports){
   const el = document.getElementById('dev-reports');
   if(!el) return;
-  const arr = Object.entries(reports).map(([id, r])=>({id, ...r}));
-  arr.sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
+  const arr = Object.entries(reports).map(([id, r])=>({id, ...r})).sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
   if(arr.length === 0){ el.innerHTML = '<div class="empty"><p>Belum ada laporan</p></div>'; return; }
   el.innerHTML = arr.map(r=>`
     <div class="order-item">
@@ -2917,10 +3085,10 @@ function renderDevReports(reports){
   `).join('');
 }
 function devResetPassword(nama){
-  const newPass = prompt(`Password baru buat ${nama}:`);
-  if(!newPass || newPass.length < 6){ showToast('Min 6 karakter!','error'); return; }
-  db.ref('warungdigital/users').child(nama).update({ password: newPass }).then(()=>{
-    db.ref('warungdigital/notifications').push({ target: nama, title: '🔑 Password Direset', message: 'Password baru: ' + newPass, type: 'info', from: 'Developer', timestamp: Date.now(), read: false });
+  const np = prompt(`Password baru buat ${nama}:`);
+  if(!np || np.length < 6){ showToast('Min 6 karakter!','error'); return; }
+  db.ref('warungdigital/users').child(nama).update({ password: np }).then(()=>{
+    db.ref('warungdigital/notifications').push({ target: nama, title: '🔑 Password Direset', message: 'Password baru: ' + np, type: 'info', from: 'Developer', timestamp: Date.now(), read: false });
     showToast('✅ Password direset','success');
   });
 }
@@ -2931,20 +3099,18 @@ function showDevDeleteUser(nama){
     <h2 style="color:#e74c3c">${emoji('em-warning','em-lg')} Hapus Akun?</h2>
     <p>Yakin hapus <strong>${escapeHtml(nama)}</strong>?</p>
     <label>Alasan</label>
-    <input type="text" id="deleteReasonInput" placeholder="Alasan hapus..." />
+    <input type="text" id="deleteReasonInput" />
     <button class="btn btn-danger btn-block" onclick="devDeleteUser('${escapeHtml(nama)}')">${emoji('em-trash','em')} Hapus</button>
     <button class="btn btn-secondary btn-block" onclick="closeModal()">Batal</button>
   `);
 }
 function devDeleteUser(nama){
   const reason = document.getElementById('deleteReasonInput').value.trim() || 'Tanpa alasan';
-  if(!confirm(`⚠️ Hapus ${nama}?`)) return;
-  startLoading('Menghapus...', 'Menghapus akun', () => {
-    db.ref('warungdigital/notifications').push({ target: nama, title: '❌ Akun Dihapus', message: `Alasan: ${reason}`, type: 'danger', from: 'Developer', timestamp: Date.now(), read: false });
-    db.ref('warungdigital/products').orderByChild('penjual').equalTo(nama).once('value', psnap=>{ psnap.forEach(c => c.ref.remove()); });
-    db.ref('warungdigital/users').child(nama).remove().then(()=>{
-      closeModal(); showToast(`Akun ${nama} dihapus`,'success'); renderDev();
-    });
+  if(!confirm(`Hapus ${nama}?`)) return;
+  db.ref('warungdigital/notifications').push({ target: nama, title: '❌ Akun Dihapus', message: `Alasan: ${reason}`, type: 'danger', from: 'Developer', timestamp: Date.now(), read: false });
+  db.ref('warungdigital/products').orderByChild('penjual').equalTo(nama).once('value', psnap=>{ psnap.forEach(c => c.ref.remove()); });
+  db.ref('warungdigital/users').child(nama).remove().then(()=>{
+    closeModal(); showToast(`Akun ${nama} dihapus`,'success'); renderDev();
   });
 }
 function devMarkReport(id){
@@ -2952,70 +3118,56 @@ function devMarkReport(id){
 }
 function devDeleteReport(id){
   if(!confirm('Hapus report?')) return;
-  db.ref('warungdigital/reports').child(id).remove().then(()=>{ showToast('Report dihapus','success'); renderDev(); });
+  db.ref('warungdigital/reports').child(id).remove().then(()=>{ showToast('Dihapus','success'); renderDev(); });
 }
 function renderDevBroadcast(){
   const el = document.getElementById('dev-broadcast');
   if(!el) return;
   el.innerHTML = `
-    <div class="help-warn-box" style="margin-bottom:16px">
-      <strong>📢 Broadcast</strong><br>
-      Kirim pengumuman ke semua user.
-    </div>
-    <div class="form-group">
-      <label>Judul</label>
-      <input type="text" id="broadcastTitle" />
-    </div>
-    <div class="form-group">
-      <label>Isi</label>
-      <textarea id="broadcastMsg" rows="4"></textarea>
-    </div>
+    <div class="help-warn-box" style="margin-bottom:16px"><strong>📢 Broadcast</strong><br>Kirim ke semua user.</div>
+    <div class="form-group"><label>Judul</label><input type="text" id="broadcastTitle" /></div>
+    <div class="form-group"><label>Isi</label><textarea id="broadcastMsg" rows="4"></textarea></div>
     <button class="btn btn-primary btn-block" onclick="sendBroadcast()">${emoji('em-send','em')} Kirim</button>
   `;
 }
 function sendBroadcast(){
   const title = document.getElementById('broadcastTitle').value.trim();
   const msg = document.getElementById('broadcastMsg').value.trim();
-  if(!title || !msg){ showToast('Isi judul & pesan!','error'); return; }
+  if(!title || !msg){ showToast('Isi semua!','error'); return; }
   db.ref('warungdigital/users').once('value', snap=>{
     const promises = [];
     Object.keys(snap.val() || {}).forEach(nama => {
       promises.push(db.ref('warungdigital/notifications').push({ target: nama, title, message: msg, type: 'info', from: 'Developer', timestamp: Date.now(), read: false }));
     });
-    Promise.all(promises).then(()=>{ showToast('✅ Terkirim!','success'); showTopNotif('📢 ' + title, msg, 'info'); });
+    Promise.all(promises).then(()=>{ showToast('✅ Terkirim!','success'); showTopNotif('📢 '+title, msg, 'info'); });
   });
 }
 function renderDevMusic(){
   const el = document.getElementById('dev-music');
   if(!el) return;
   el.innerHTML = `
-    <div class="help-dev-box" style="margin-bottom:16px">
-      <strong>🎵 Musik Web</strong>
-    </div>
+    <div class="help-dev-box" style="margin-bottom:16px"><strong>🎵 Musik</strong><br>Upload max 25MB via Cloudinary.</div>
     <div class="order-item">
       <div class="head"><div class="oid">➕ Upload Lagu</div></div>
       <div class="form-group"><label>Nama</label><input type="text" id="musicNama" /></div>
-      <div class="form-group"><label>File (max 5MB)</label><input type="file" id="musicFile" accept="audio/*,video/*" /></div>
+      <div class="form-group"><label>File Audio/Video (max 25MB)</label><input type="file" id="musicFile" accept="audio/*,video/*" /></div>
       <div class="form-group"><label><input type="checkbox" id="musicDefault" style="width:auto;margin-right:8px" /> Set default</label></div>
       <button class="btn btn-primary btn-block" onclick="uploadMusicDev()">${emoji('em-upload','em')} Upload</button>
     </div>
     <div class="order-item">
-      <div class="head"><div class="oid">🎶 Daftar</div></div>
+      <div class="head"><div class="oid">🎶 Daftar Lagu</div></div>
       <div id="musicDevList"></div>
     </div>
   `;
-  db.ref('warungdigital/music').once('value', snap=>{
+  db.ref('warungdigital/music').limitToLast(50).once('value', snap=>{
     const items = snap.val() || {};
-    const arr = Object.entries(items).map(([id,v])=>({id,...v}));
-    arr.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    const arr = Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
     const list = document.getElementById('musicDevList');
     if(!list) return;
     if(arr.length === 0){ list.innerHTML = '<div class="empty"><p>Belum ada lagu</p></div>'; return; }
     list.innerHTML = arr.map(m=>`
       <div class="income-item">
-        <div class="info">
-          <div class="nama">🎵 ${escapeHtml(m.nama||'Lagu')} ${m.isDefault ? '⭐' : ''}</div>
-        </div>
+        <div class="info"><div class="nama">🎵 ${escapeHtml(m.nama||'Lagu')} ${m.isDefault ? '⭐' : ''}</div></div>
         <div style="display:flex;gap:4px">
           <button class="del" onclick="setMusicDefault('${m.id}')">⭐</button>
           <button class="del" onclick="hapusMusic('${m.id}')">${emoji('em-trash','em')}</button>
@@ -3024,32 +3176,27 @@ function renderDevMusic(){
     `).join('');
   });
 }
-function uploadMusicDev(){
+async function uploadMusicDev(){
   const nama = document.getElementById('musicNama').value.trim() || 'Lagu';
   const file = document.getElementById('musicFile').files[0];
   const isDefault = document.getElementById('musicDefault').checked;
   if(!file){ showToast('Pilih file!','error'); return; }
-  if(file.size > 5*1024*1024){ showToast('Max 5MB!','error'); return; }
-  const reader = new FileReader();
-  reader.onload = ev=>{
-    const pushFn = ()=>{
-      db.ref('warungdigital/music').push({ nama, data: ev.target.result, isDefault, createdAt: Date.now() }).then(()=>{
-        showToast('✅ Upload!','success'); renderDevMusic();
-      });
-    };
+  if(file.size > MAX_FILE_SIZE){ showToast('Max 25MB!','error'); return; }
+  showUploadProgress('Upload Lagu');
+  try {
+    const res = await uploadToCloudinary(file, updateUploadProgress);
     if(isDefault){
-      db.ref('warungdigital/music').once('value', snap=>{
-        const updates = {};
-        snap.forEach(c=>{ if(c.val().isDefault) updates[c.key + '/isDefault'] = false; });
-        if(Object.keys(updates).length > 0) db.ref('warungdigital/music').update(updates).then(pushFn);
-        else pushFn();
-      });
-    } else pushFn();
-  };
-  reader.readAsDataURL(file);
+      const snap = await db.ref('warungdigital/music').once('value');
+      const updates = {};
+      snap.forEach(c=>{ if(c.val().isDefault) updates[c.key + '/isDefault'] = false; });
+      if(Object.keys(updates).length > 0) await db.ref('warungdigital/music').update(updates);
+    }
+    await db.ref('warungdigital/music').push({ nama, data: res.secure_url, isDefault, createdAt: Date.now() });
+    closeModal(); showToast('✅ Upload!','success'); renderDevMusic();
+  } catch(e){ showToast('❌ '+e.message,'error'); closeModal(); }
 }
 function setMusicDefault(id){
-  if(!isDev){ showToast('Dev only!','error'); return; }
+  if(!isDev) return;
   db.ref('warungdigital/music').once('value', snap=>{
     const updates = {};
     snap.forEach(c=>{ updates[c.key + '/isDefault'] = (c.key === id); });
@@ -3060,11 +3207,9 @@ function renderDevSettings(){
   const el = document.getElementById('dev-settings');
   if(!el) return;
   el.innerHTML = `
-    <div class="help-dev-box" style="margin-bottom:16px">
-      <strong>🚀 GitHub & Vercel</strong>
-    </div>
+    <div class="help-dev-box" style="margin-bottom:16px"><strong>🚀 GitHub & Vercel</strong></div>
     <div class="order-item">
-      <div class="head"><div class="oid">🔗 Link Cepat</div></div>
+      <div class="head"><div class="oid">🔗 Link</div></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
         <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/tree/main" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">📦 Repo</a>
         <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/edit/main/index.html" target="_blank" class="btn btn-warning btn-sm" style="text-decoration:none">✏️ Edit HTML</a>
@@ -3074,145 +3219,9 @@ function renderDevSettings(){
   `;
 }
 
-/* ============ INTRO WEB FLOW ============ */
-function initIntroWeb(){
-  db.ref('warungdigital/introWeb').once('value', snap=>{
-    introData = snap.val() || {};
-    db.ref('warungdigital/uiInfo').once('value', s2=>{
-      uiInfoData = s2.val() || {};
-      showIntroMedia();
-    });
-  });
-}
-function showIntroMedia(){
-  const ov = document.getElementById('introOverlay');
-  ov.classList.add('show');
-  const wrap = document.getElementById('introMediaWrap');
-  const img = document.getElementById('introImg');
-  const vid = document.getElementById('introVid');
-  img.style.display = 'none'; vid.style.display = 'none';
-  const hasMedia = introData.media && introData.mediaType;
-  if(!hasMedia){
-    setTimeout(()=>{ showIntroInfo(); }, 500);
-    return;
-  }
-  if(introData.mediaType === 'video'){
-    vid.style.display = 'block';
-    vid.src = introData.media;
-    vid.muted = true;
-    vid.onended = ()=>{ showIntroInfo(); };
-    vid.onerror = ()=>{ showIntroInfo(); };
-    vid.play().catch(()=>{ setTimeout(()=>showIntroInfo(), 2000); });
-    setTimeout(()=>{ if(ov.classList.contains('show')) showIntroInfo(); }, 15000);
-  } else {
-    img.style.display = 'block';
-    img.src = introData.media;
-    setTimeout(()=>{ showIntroInfo(); }, 3000);
-  }
-}
-function showIntroInfo(){
-  document.getElementById('introMediaWrap').style.display = 'none';
-  document.getElementById('introInfoPanel').classList.add('show');
-  const title = document.getElementById('introInfoTitle');
-  const sub = document.getElementById('introInfoSubtitle');
-  if(title) title.textContent = uiInfoData.title || 'WarungDigital';
-  if(sub) sub.textContent = uiInfoData.subtitle || 'Marketplace Produk Digital';
-  const content = document.getElementById('introInfoContent');
-  const updates = uiInfoData.updates ? Object.values(uiInfoData.updates) : [];
-  const features = uiInfoData.features ? Object.values(uiInfoData.features) : [];
-  let html = '';
-  if(updates.length > 0){
-    html += `<div class="intro-info-card"><h3>📝 Update Terbaru</h3>`;
-    updates.forEach(u => { html += `<div class="intro-update-item"><div class="dot"></div><div>${escapeHtml(u)}</div></div>`; });
-    html += `</div>`;
-  } else {
-    html += `<div class="intro-info-card"><h3>📝 Update Terbaru</h3><div class="intro-update-item"><div class="dot"></div><div>WarungDigital v6.0 — Intro web, banner baru, halaman Download, promosi slider!</div></div></div>`;
-  }
-  if(features.length > 0){
-    html += `<div class="intro-info-card"><h3>🎯 Status Fitur</h3>`;
-    features.forEach(f => {
-      const cls = f.status === 'online' ? 'badge-online' : (f.status === 'bug' ? 'badge-bug' : 'badge-offline');
-      const label = f.status === 'online' ? '🟢 Online' : (f.status === 'bug' ? '🟡 Bug' : '🔴 Offline');
-      html += `<div class="intro-feature-status"><div class="name">${escapeHtml(f.nama)}</div><div class="badge-status ${cls}">${label}</div></div>`;
-    });
-    html += `</div>`;
-  }
-  content.innerHTML = html;
-}
-function introGoToChoice(){
-  document.getElementById('introInfoPanel').classList.remove('show');
-  document.getElementById('introChoicePanel').classList.add('show');
-}
-function introChoose(mode){
-  const ov = document.getElementById('introOverlay');
-  if(mode === 'guest'){
-    isGuest = true; currentUser = null;
-    localStorage.removeItem('wd_user');
-    ov.classList.remove('show');
-    afterIntroGo();
-  } else if(mode === 'login'){
-    ov.classList.remove('show');
-    afterIntroGo();
-    setTimeout(()=>{ showLoginModal(); }, 300);
-  } else if(mode === 'register'){
-    ov.classList.remove('show');
-    afterIntroGo();
-    setTimeout(()=>{ showLoginModal(); }, 300);
-  }
-}
-function afterIntroGo(){
-  // Start banner loading -> then show home
-  document.getElementById('bannerLoading').style.display = 'flex';
-  updateBannerLoading(20, 'Memuat background...');
-  setTimeout(()=>updateBannerLoading(60, 'Memuat banner...'), 400);
-  setTimeout(()=>updateBannerLoading(90, 'Hampir selesai...'), 900);
-  setTimeout(()=>{
-    hideBannerLoading();
-    hideMiniLoader();
-    loadAllBanners();
-    renderHome();
-    renderPromoJualan();
-    renderPromoMedsos();
-    updateLoginBtns();
-    updateCartBadge();
-    if(currentUser) checkDevStatus();
-    setTimeout(()=>{ try { autoLoadMusic(); } catch(e){} }, 500);
-    showToast('Selamat datang di WarungDigital! 🎉','success');
-  }, 1400);
-}
-
 /* ============ BOOT ============ */
-function startBoot(){
-  // DB Loading
-  document.getElementById('dbLoading').style.display = 'flex';
-  updateDbLoading(20, 'Menghubungkan ke database...');
-  db.ref('warungdigital/products').once('value', ()=>{
-    updateDbLoading(50, 'Memuat produk...');
-    db.ref('warungdigital/users').once('value', ()=>{
-      updateDbLoading(80, 'Memuat pengguna...');
-      setTimeout(()=>{
-        updateDbLoading(100, 'Selesai!');
-        ensureDevAccount();
-        dbReady = true;
-        setTimeout(()=>{
-          hideDbLoading();
-          hideMiniLoader();
-          initIntroWeb();
-        }, 500);
-      }, 400);
-    });
-  });
-  // Fallback timeout
-  setTimeout(()=>{
-    if(!dbReady){
-      dbReady = true;
-      hideDbLoading();
-      initIntroWeb();
-    }
-  }, 8000);
-}
-startBoot();
-console.log('WarungDigital v6.0 — Ready!');
+bootStart();
+console.log('WarungDigital v7.0 — Ready! (Cloudinary + Firebase)');
 </script>
 </body>
   </html>
