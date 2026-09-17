@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>WarungDigital — Marketplace Produk Digital</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2325d366'/%3E%3Cstop offset='100%25' stop-color='%236c5ce7'/%3E%3C/linearGradient%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='2' stdDeviation='3' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='white' stroke-opacity='0.15' stroke-width='1'/%3E%3Ctext x='50' y='68' font-size='55' font-weight='900' text-anchor='middle' fill='white' font-family='Arial, sans-serif' filter='url(%23s)'%3EW%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2325d366'/%3E%3Cstop offset='100%25' stop-color='%236c5ce7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-size='55' font-weight='900' text-anchor='middle' fill='white' font-family='Arial, sans-serif'%3EW%3C/text%3E%3C/svg%3E">
 <meta property="og:title" content="WarungDigital — Marketplace Produk Digital">
 <meta property="og:description" content="Jual beli produk digital dengan verifikasi manual.">
 <meta property="og:url" content="https://warungdigital-vxz.vercel.app">
@@ -18,22 +18,29 @@ body{background:#070a0f;color:#e0e6ed;min-height:100vh}
 button{cursor:pointer;font-family:inherit}
 input,textarea,select{font-family:inherit}
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 20%,rgba(37,211,102,.08) 0%,transparent 40%),radial-gradient(circle at 80% 60%,rgba(108,92,231,.06) 0%,transparent 40%);z-index:-2;pointer-events:none}
-body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity .5s}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity .6s ease}
 body.has-bg::after{opacity:.15}
 .em{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.15em;fill:currentColor}
 .em-lg{width:1.5em;height:1.5em}.em-xl{width:2.5em;height:2.5em}.em-2xl{width:4em;height:4em}
 .clock-top{display:flex;flex-direction:column;gap:2px;font-size:11px;font-weight:700}
-.clock-top .row{display:flex;gap:8px;align-items:center;color:#e0e6ed;opacity:.7}
+.clock-top .row{display:flex;gap:6px;align-items:center;color:#e0e6ed;opacity:.7}
 .clock-top .row span{color:#25d366;font-weight:800}
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;margin-bottom:30px;position:sticky;top:14px;z-index:999;overflow-x:hidden;gap:10px;flex-wrap:wrap}
-.navbar .left{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.navbar .logo{font-size:20px;font-weight:900;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;display:flex;align-items:center;gap:8px}
-.navbar .menu{display:flex;gap:8px;align-items:center;position:relative}
-.navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border-radius:12px;transition:.2s;opacity:.7;background:transparent;border:none;position:relative;display:flex;align-items:center;gap:6px}
-.navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
-.cart-badge{position:absolute;top:2px;right:2px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
+.navbar-wrap{position:sticky;top:8px;z-index:999;margin-bottom:24px}
+.judul-web-banner{width:100%;aspect-ratio:16/4;max-height:140px;border-radius:20px 20px 0 0;overflow:hidden;background:#0f151c;border:1px solid #1f2a34;border-bottom:none;display:none;position:relative}
+.judul-web-banner.show{display:block}
+.judul-web-banner img,.judul-web-banner video{width:100%;height:100%;object-fit:cover}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;gap:10px;flex-wrap:wrap;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.judul-web-banner.show + .navbar{border-radius:0 0 20px 20px;border-top:1px solid #141a22}
+.navbar .left{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.navbar .menu{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:12px;transition:.3s;opacity:.7;background:transparent;border:none;position:relative;display:flex;align-items:center;gap:6px}
+.navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1;transform:translateY(-2px)}
+.banner-1-1{width:40px;height:40px;border-radius:12px;overflow:hidden;background:#0f151c;border:1px solid #2a3340;flex-shrink:0;display:none;align-items:center;justify-content:center;color:#25d366;font-size:16px}
+.banner-1-1.show{display:flex}
+.banner-1-1 img,.banner-1-1 video{width:100%;height:100%;object-fit:cover}
+.cart-badge{position:absolute;top:0px;right:0px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
 .container{max-width:1100px;margin:0 auto;padding:20px;overflow-x:hidden}
-.hero{text-align:center;padding:60px 30px;position:relative;background:linear-gradient(135deg,rgba(20,26,34,.9),rgba(26,42,58,.9));border-radius:32px;margin-bottom:30px;border:1px solid #1f2a34;overflow:hidden}
+.hero{text-align:center;padding:60px 30px;position:relative;background:linear-gradient(135deg,rgba(20,26,34,.9),rgba(26,42,58,.9));border-radius:32px;margin-bottom:30px;border:1px solid #1f2a34;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.3)}
 .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(37,211,102,.1),transparent 30%);animation:rotate 8s linear infinite;z-index:0;pointer-events:none}
 @keyframes rotate{to{transform:rotate(360deg)}}
 .hero>*{position:relative;z-index:1}
@@ -42,26 +49,25 @@ body.has-bg::after{opacity:.15}
 .hero h1 span{background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{opacity:.7;font-size:16px;max-width:500px;margin:0 auto 24px;line-height:1.6}
 .hero .btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{padding:14px 28px;border-radius:40px;border:none;font-weight:700;font-size:15px;cursor:pointer;transition:.3s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+.btn{padding:14px 28px;border-radius:40px;border:none;font-weight:700;font-size:15px;cursor:pointer;transition:.3s cubic-bezier(0.4,0,0.2,1);text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.btn:active{transform:translateY(-1px)}
 .btn-primary{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.3)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,.4)}
+.btn-primary:hover{box-shadow:0 12px 32px rgba(37,211,102,.45)}
 .btn-secondary{background:rgba(255,255,255,.05);color:#e0e6ed;border:1px solid #2a3340}
-.btn-secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.btn-secondary:hover{background:rgba(255,255,255,.1)}
 .btn-danger{background:#e74c3c;color:#fff}
-.btn-danger:hover{background:#c0392b;transform:translateY(-3px)}
+.btn-danger:hover{background:#c0392b}
 .btn-success{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff}
-.btn-success:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,.4)}
 .btn-warning{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff}
-.btn-warning:hover{transform:translateY(-3px)}
 .btn-dev{background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-weight:900}
-.btn-dev:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(241,196,15,.4)}
 .btn-sm{padding:8px 16px;font-size:13px;border-radius:12px}
 .btn-block{width:100%;margin-top:8px}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px}
-.stat{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;padding:22px;text-align:center;transition:.3s;position:relative;overflow:hidden}
+.stat{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;padding:22px;text-align:center;transition:.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .stat::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#25d366,#6c5ce7)}
-.stat:hover{transform:translateY(-4px);border-color:#25d366}
+.stat:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 16px 40px rgba(37,211,102,.2)}
 .stat .icon{display:flex;justify-content:center;margin-bottom:8px;color:#25d366}
 .stat .num{font-size:26px;font-weight:900;color:#25d366}
 .stat .label{font-size:12px;opacity:.6;margin-top:6px;font-weight:600}
@@ -70,8 +76,8 @@ body.has-bg::after{opacity:.15}
 .section-header h2{font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px}
 .section-header .count{background:rgba(37,211,102,.15);color:#25d366;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:.3s;cursor:pointer;position:relative}
-.product-card:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 20px 40px rgba(37,211,102,.15)}
+.product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:.4s cubic-bezier(0.4,0,0.2,1);cursor:pointer;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.product-card:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 20px 45px rgba(37,211,102,.2)}
 .product-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;color:#25d366}
 .product-card .thumb img{width:100%;height:100%;object-fit:cover}
 .product-card .info{padding:16px}
@@ -82,22 +88,27 @@ body.has-bg::after{opacity:.15}
 .product-card .info .meta .stok{color:#25d366}
 .product-card .info .meta .sold{color:#e74c3c}
 .product-card .info .harga{color:#25d366;font-weight:900;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px}
-.product-card .badge-cart{position:absolute;top:10px;right:10px;background:#25d366;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
-.product-card .badge-habis{position:absolute;top:10px;left:10px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
+.product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;transition:.3s}
+.product-card .info .btn-beli:hover{background:#20b858;transform:scale(1.05)}
+.badge-cart{position:absolute;top:10px;right:10px;background:#25d366;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
+.badge-habis{position:absolute;top:10px;left:10px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
+.badge-free{position:absolute;top:10px;left:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:10px}
 .empty{text-align:center;padding:50px 20px;opacity:.5;background:#141a22;border-radius:20px;border:1px dashed #2a3340}
 .empty svg{color:#25d366;opacity:.4;margin-bottom:12px}
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:10001;justify-content:center;align-items:center;padding:20px;overflow-x:hidden}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:10001;justify-content:center;align-items:center;padding:20px;overflow-x:hidden;animation:fadeIn .3s ease}
 .modal-overlay.show{display:flex}
-.modal{background:#141a22;border-radius:24px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;overflow-x:hidden;border:1px solid #2a3340}
-.modal .close-btn{float:right;font-size:26px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:#141a22;border-radius:24px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;overflow-x:hidden;border:1px solid #2a3340;animation:slideUp .3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal .close-btn{float:right;font-size:26px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed;transition:.3s}
+.modal .close-btn:hover{opacity:1;transform:rotate(90deg)}
 .modal h2{font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .modal label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8}
 .modal input,.modal textarea,.modal select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;margin-bottom:12px;transition:.3s}
-.modal input:focus,.modal textarea:focus,.modal select:focus{border-color:#25d366}
+.modal input:focus,.modal textarea:focus,.modal select:focus{border-color:#25d366;box-shadow:0 0 0 3px rgba(37,211,102,.1)}
 .modal .btn-primary{width:100%;padding:12px;border-radius:14px}
 .modal .btn-secondary{width:100%;padding:12px;border-radius:14px;margin-top:8px}
-#toast{position:fixed;bottom:24px;right:24px;z-index:999999;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;padding:14px 24px;border-radius:16px;font-weight:700;font-size:14px;box-shadow:0 12px 32px rgba(37,211,102,.4);transform:translateX(400px);transition:.4s;display:flex;align-items:center;gap:10px;max-width:90vw}
+#toast{position:fixed;bottom:24px;right:24px;z-index:999999;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;padding:14px 24px;border-radius:16px;font-weight:700;font-size:14px;box-shadow:0 12px 32px rgba(37,211,102,.4);transform:translateX(400px);transition:.4s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;gap:10px;max-width:90vw}
 #toast.show{transform:translateX(0)}
 #toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b)}
 #toast.warn{background:linear-gradient(135deg,#f39c12,#e67e22)}
@@ -114,7 +125,7 @@ body.has-bg::after{opacity:.15}
 .topNotifItem .close{background:transparent;border:none;color:#e0e6ed;font-size:18px;opacity:.5;cursor:pointer;padding:0 4px}
 #loadingOverlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);z-index:999999;justify-content:center;align-items:center;flex-direction:column;padding:20px}
 #loadingOverlay.show{display:flex}
-#loadingOverlay .load-box{background:#141a22;border:1px solid #2a3340;border-radius:24px;padding:36px;text-align:center;max-width:400px;width:100%}
+#loadingOverlay .load-box{background:#141a22;border:1px solid #2a3340;border-radius:24px;padding:36px;text-align:center;max-width:400px;width:100%;animation:slideUp .3s ease}
 #loadingOverlay .spinner{width:64px;height:64px;border:5px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 #loadingOverlay h3{font-size:18px;margin-bottom:8px}
@@ -123,35 +134,29 @@ body.has-bg::after{opacity:.15}
 #loadingOverlay .progress{width:100%;height:8px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:20px}
 #loadingOverlay .progress-bar{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);width:0%;transition:width 1s linear;border-radius:10px}
 @keyframes dbSpin{to{transform:rotate(360deg)}}
-.sidebar{position:fixed;top:0;right:-360px;width:340px;max-width:90vw;height:100%;background:#141a22;border-left:1px solid #2a3340;box-shadow:-4px 0 40px rgba(0,0,0,.8);transition:.4s;z-index:10000;padding:30px 20px;overflow-y:auto;overflow-x:hidden}
-.sidebar.open{right:0}
-.sidebar .close{float:right;font-size:28px;cursor:pointer;opacity:.5;background:transparent;border:none;color:#e0e6ed}
-.sidebar .user-info{text-align:center;padding:12px 0 20px 0;border-bottom:1px solid #1f2a34;margin-bottom:16px}
-.sidebar .user-info .avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;overflow:hidden;cursor:pointer;border:2px solid #2a3340}
-.sidebar .user-info .name{font-weight:700;font-size:18px;margin-top:8px}
-.sidebar .user-info .role{font-size:12px;opacity:.5;margin-top:2px}
-.sidebar .menu-item{padding:14px 16px;border-radius:14px;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:12px;font-weight:600;margin-bottom:4px;color:#e0e6ed;background:transparent;border:none;width:100%;text-align:left;font-size:14px}
-.sidebar .menu-item:hover{background:rgba(37,211,102,.08);transform:translateX(-4px)}
-.sidebar .menu-item svg{width:20px;height:20px;color:#25d366;flex-shrink:0}
-.sidebar .menu-item.danger{color:#e74c3c}
-.sidebar .menu-item.danger svg{color:#e74c3c}
-.sidebar .menu-item.dev{color:#f1c40f;background:rgba(241,196,15,.08);border:1px solid rgba(241,196,15,.2)}
-.sidebar .menu-item.dev svg{color:#f1c40f}
-.sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999}
-.sidebar-overlay.show{display:block}
-.topbar{position:fixed;top:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-bottom:1px solid #1f2a34;z-index:10000;transform:translateY(-120%);transition:.4s cubic-bezier(0.4,0,0.2,1);padding:20px;overflow-y:auto;max-height:80vh}
+.miniLoader{position:fixed;bottom:20px;left:20px;background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #25d366;border-radius:14px;padding:10px 14px;z-index:999997;display:none;align-items:center;gap:10px;box-shadow:0 12px 32px rgba(0,0,0,.5);animation:miniIn .4s cubic-bezier(0.4,0,0.2,1);max-width:260px;overflow:hidden}
+@keyframes miniIn{from{transform:translateX(-120%);opacity:0}to{transform:translateX(0);opacity:1}}
+.miniLoader.show{display:flex}
+.miniLoader .miniSpinner{width:20px;height:20px;border:3px solid rgba(37,211,102,.2);border-top-color:#25d366;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+.miniLoader .miniText{font-size:12px;font-weight:600;flex:1;min-width:0}
+.miniLoader .miniText .miniStatus{opacity:.7;font-size:11px;display:block}
+.miniLoader .miniBar{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,#25d366,#6c5ce7);border-radius:0 0 14px 14px;transition:width .4s ease;width:0%}
+.topbar{position:fixed;top:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-bottom:1px solid #1f2a34;z-index:10000;transform:translateY(-120%);transition:.4s cubic-bezier(0.4,0,0.2,1);padding:20px;overflow-y:auto;max-height:80vh;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 .topbar.open{transform:translateY(0)}
 .topbar h3{font-size:18px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#25d366}
 .topbar .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
-.topbar .menu-btn{padding:14px 12px;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.topbar .menu-btn:hover{border-color:#25d366;background:rgba(37,211,102,.05);transform:translateY(-3px)}
+.topbar .menu-btn{padding:14px 12px;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.topbar .menu-btn:hover{border-color:#25d366;background:rgba(37,211,102,.05);transform:translateY(-4px);box-shadow:0 12px 28px rgba(37,211,102,.2)}
 .topbar .menu-btn svg{width:24px;height:24px;color:#25d366}
+.topbar .menu-btn.dev{color:#f1c40f;border-color:rgba(241,196,15,.3)}
+.topbar .menu-btn.dev svg{color:#f1c40f}
 .topbar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999}
 .topbar-overlay.show{display:block}
 .tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto}
 .tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:14px;transition:.3s;white-space:nowrap;opacity:.6;display:flex;align-items:center;justify-content:center;gap:6px}
-.tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
-.order-item{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;padding:18px;margin-bottom:12px}
+.tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1;box-shadow:0 6px 16px rgba(37,211,102,.3)}
+.order-item{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;padding:18px;margin-bottom:12px;transition:.3s;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.order-item:hover{border-color:#2a3340}
 .order-item .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px}
 .order-item .head .oid{font-weight:800;font-size:15px}
 .order-item .head .status{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700}
@@ -160,18 +165,18 @@ body.has-bg::after{opacity:.15}
 .status-cancelled{background:#e74c3c;color:#fff}
 .order-item .body{font-size:13px;opacity:.8;line-height:1.8}
 .order-item .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.cart-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;margin-bottom:10px;border:1px solid #1f2a34}
+.cart-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;margin-bottom:10px;border:1px solid #1f2a34;transition:.3s}
+.cart-item:hover{border-color:#2a3340}
 .cart-item .thumb{width:60px;height:60px;border-radius:12px;background:#141a22;display:flex;align-items:center;justify-content:center;color:#25d366;flex-shrink:0;overflow:hidden;font-size:24px}
 .cart-item .info{flex:1;min-width:0}
 .cart-item .info .nama{font-weight:700;font-size:14px}
 .cart-item .info .harga{color:#25d366;font-weight:700;font-size:13px;margin-top:2px}
 .cart-item .qty{display:flex;align-items:center;gap:8px;background:#141a22;border-radius:10px;padding:4px}
 .cart-item .qty button{background:transparent;border:none;color:#e0e6ed;font-size:16px;padding:4px 8px;border-radius:6px;font-weight:700}
-.cart-item .qty .val{min-width:24px;text-align:center;font-weight:700}
 .cart-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:6px}
 .cart-total{display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid #1f2a34;margin-top:14px;font-weight:700;font-size:16px}
 .cart-total .total{color:#25d366;font-size:22px}
-.wallet-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:30px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
+.wallet-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:30px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 .wallet-card::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,.1),transparent 50%);animation:pulse 4s ease-in-out infinite;pointer-events:none}
 @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
 .wallet-card>*{position:relative;z-index:1}
@@ -181,10 +186,10 @@ body.has-bg::after{opacity:.15}
 .form-group{margin-bottom:14px}
 .form-group label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8}
 .form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;transition:.3s}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#25d366}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#25d366;box-shadow:0 0 0 3px rgba(37,211,102,.1)}
 .metode-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .metode-item{padding:10px 16px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:6px}
-.metode-item.selected{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border-color:#25d366}
+.metode-item.selected{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border-color:#25d366;box-shadow:0 6px 16px rgba(37,211,102,.3)}
 .account-list{display:flex;flex-direction:column;gap:10px}
 .account-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;border:1px solid #1f2a34;cursor:pointer;transition:.3s}
 .account-item:hover{border-color:#25d366;transform:translateX(4px)}
@@ -199,11 +204,11 @@ body.has-bg::after{opacity:.15}
 .chat-header .chat-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700;overflow:hidden}
 .chat-header .chat-name{font-weight:700;font-size:16px}
 .chat-body{flex:1;overflow-y:auto;overflow-x:hidden;padding:20px;display:flex;flex-direction:column;gap:8px;background:#0a0e14}
-.chat-msg{max-width:75%;padding:10px 16px;border-radius:18px;font-size:14px;word-wrap:break-word;animation:fadeIn .2s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg{max-width:75%;padding:10px 16px;border-radius:18px;font-size:14px;word-wrap:break-word;animation:fadeIn .25s ease}
 .chat-msg.me{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .chat-msg.other{background:#1f2a34;color:#e0e6ed;align-self:flex-start;border-bottom-left-radius:4px}
 .chat-msg .time{font-size:10px;opacity:.6;margin-top:4px;display:block}
+.chat-msg img{max-width:100%;border-radius:12px;margin-top:4px}
 .chat-footer{display:flex;gap:8px;padding:12px 16px;background:#141a22;border-top:1px solid #1f2a34;flex-shrink:0}
 .chat-footer .attach{font-size:22px;cursor:pointer;opacity:.6;background:transparent;border:none;color:#e0e6ed;padding:4px}
 .chat-footer input{flex:1;padding:12px 16px;border-radius:24px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none}
@@ -235,7 +240,7 @@ body.has-bg::after{opacity:.15}
 .calc-display{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:20px;text-align:right;font-size:32px;font-weight:900;color:#25d366;margin-bottom:12px;min-height:60px;word-break:break-all}
 .calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .calc-buttons button{padding:16px;border-radius:12px;border:none;background:#1f2a34;color:#e0e6ed;font-size:18px;font-weight:700;cursor:pointer;transition:.2s}
-.calc-buttons button:hover{background:#2a3340}
+.calc-buttons button:hover{background:#2a3340;transform:scale(1.05)}
 .calc-buttons button.op{background:#25d366;color:#fff}
 .calc-buttons button.equals{background:#6c5ce7;color:#fff;grid-column:span 2}
 .income-item{background:#0f151c;border:1px solid #1f2a34;border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
@@ -253,7 +258,7 @@ body.has-bg::after{opacity:.15}
 .music-item .actions{display:flex;gap:6px}
 .music-item .actions button{background:transparent;border:none;font-size:16px;padding:4px 8px;cursor:pointer;border-radius:8px;transition:.2s}
 .music-item .actions button:hover{background:#1f2a34}
-.music-player-bar{position:fixed;bottom:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-top:1px solid #1f2a34;padding:12px 20px;z-index:9998;display:none;align-items:center;gap:12px;transform:translateY(100%);transition:.4s}
+.music-player-bar{position:fixed;bottom:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-top:1px solid #1f2a34;padding:12px 20px;z-index:9998;display:none;align-items:center;gap:12px;transform:translateY(100%);transition:.4s cubic-bezier(0.4,0,0.2,1)}
 .music-player-bar.show{display:flex;transform:translateY(0)}
 .music-player-bar .icon{font-size:24px;color:#25d366;animation:musicPulse 1.5s ease-in-out infinite}
 @keyframes musicPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
@@ -267,16 +272,78 @@ body.has-bg::after{opacity:.15}
 ::-webkit-scrollbar-track{background:#070a0f}
 ::-webkit-scrollbar-thumb{background:#2a3340;border-radius:10px}
 .hidden{display:none!important}
+#introOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999999;display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+#introOverlay.show{display:flex}
+.intro-media-wrap{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#000}
+.intro-media-wrap img,.intro-media-wrap video{width:100%;height:100%;object-fit:contain}
+.intro-info-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(7,10,15,.95),rgba(7,10,15,.98));backdrop-filter:blur(10px);z-index:3;display:none;flex-direction:column;padding:30px 20px;overflow-y:auto;animation:fadeIn .5s ease}
+.intro-info-panel.show{display:flex}
+.intro-info-inner{max-width:640px;margin:auto;width:100%}
+.intro-info-header{text-align:center;margin-bottom:24px}
+.intro-info-header .logo-big{width:80px;height:80px;border-radius:22px;background:linear-gradient(135deg,#25d366,#6c5ce7);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:900;color:#fff;box-shadow:0 12px 40px rgba(37,211,102,.4)}
+.intro-info-header h1{font-size:28px;font-weight:900;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.intro-info-header p{font-size:14px;opacity:.6}
+.intro-info-card{background:#141a22;border:1px solid #1f2a34;border-radius:20px;padding:20px;margin-bottom:14px;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.intro-info-card h3{font-size:15px;color:#25d366;margin-bottom:12px;display:flex;align-items:center;gap:8px;font-weight:800}
+.intro-update-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #1a222c;font-size:13px;line-height:1.5}
+.intro-update-item:last-child{border-bottom:none}
+.intro-update-item .dot{width:8px;height:8px;border-radius:50%;background:#25d366;flex-shrink:0;margin-top:6px}
+.intro-feature-status{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#0f151c;border-radius:12px;margin-bottom:8px;font-size:13px}
+.intro-feature-status .name{font-weight:600}
+.intro-feature-status .badge-status{padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.badge-online{background:rgba(37,211,102,.2);color:#25d366}
+.badge-bug{background:rgba(243,156,18,.2);color:#f39c12}
+.badge-offline{background:rgba(231,76,60,.2);color:#e74c3c}
+.intro-enter-btn{margin-top:16px;width:100%;padding:16px;border-radius:16px;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 12px 32px rgba(37,211,102,.4);transition:.3s}
+.intro-enter-btn:hover{transform:translateY(-3px);box-shadow:0 16px 44px rgba(37,211,102,.5)}
+.intro-choice-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(7,10,15,.97),rgba(7,10,15,.99));z-index:4;display:none;flex-direction:column;align-items:center;justify-content:center;padding:30px 20px;animation:fadeIn .5s ease}
+.intro-choice-panel.show{display:flex}
+.intro-choice-inner{max-width:420px;width:100%}
+.intro-choice-inner h2{text-align:center;font-size:22px;font-weight:900;margin-bottom:24px}
+.choice-btn{width:100%;padding:16px;border-radius:16px;font-weight:800;font-size:15px;border:none;cursor:pointer;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px;transition:.3s}
+.choice-btn:hover{transform:translateY(-3px)}
+.choice-guest{background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;box-shadow:0 8px 24px rgba(52,152,219,.4)}
+.choice-login{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4)}
+.choice-register{background:linear-gradient(135deg,#6c5ce7,#5f4fd6);color:#fff;box-shadow:0 8px 24px rgba(108,92,231,.4)}
+.promo-slider-wrap{position:relative;margin-bottom:24px;border-radius:20px;overflow:hidden;border:1px solid #1f2a34;background:#0f151c}
+.promo-slider-title{position:absolute;top:10px;left:14px;z-index:3;background:rgba(0,0,0,.6);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;color:#25d366;backdrop-filter:blur(6px)}
+.promo-slider-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:12px;padding:12px;cursor:grab;-webkit-overflow-scrolling:touch}
+.promo-slider-track::-webkit-scrollbar{height:4px}
+.promo-slider-track:active{cursor:grabbing}
+.promo-slide{flex:0 0 auto;scroll-snap-align:start;width:280px;height:150px;border-radius:14px;overflow:hidden;position:relative;background:#141a22;border:1px solid #2a3340;cursor:pointer;transition:.3s;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.promo-slide:hover{transform:scale(1.03);border-color:#25d366}
+.promo-slide img,.promo-slide video{width:100%;height:100%;object-fit:cover}
+.promo-slide .slide-label{position:absolute;bottom:0;left:0;width:100%;padding:8px 12px;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);color:#fff;font-size:12px;font-weight:700;pointer-events:none}
+.promo-add-btn{flex:0 0 auto;width:120px;height:150px;border-radius:14px;border:2px dashed #2a3340;background:transparent;color:#25d366;font-size:12px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:.3s}
+.promo-add-btn:hover{border-color:#25d366;background:rgba(37,211,102,.05)}
+#bannerAnimasiRB{position:fixed;bottom:20px;right:20px;max-width:200px;max-height:200px;z-index:9997;cursor:default;pointer-events:none;display:none;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
+#bannerAnimasiRB.show{display:block;animation:floatIn .6s cubic-bezier(0.4,0,0.2,1)}
+@keyframes floatIn{from{transform:translateY(100px) scale(.7);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+#bannerAnimasiRB img,#bannerAnimasiRB video{max-width:100%;max-height:200px;object-fit:contain;display:block}
+.download-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;transition:.4s;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.download-card:hover{transform:translateY(-6px);border-color:#25d366;box-shadow:0 20px 45px rgba(37,211,102,.2)}
+.download-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;color:#25d366}
+.download-card .thumb img{width:100%;height:100%;object-fit:cover}
+.download-card .info{padding:16px}
+.download-card .info .nama{font-weight:700;font-size:15px;margin:4px 0}
+.download-card .info .uploader{font-size:11px;opacity:.5;margin-bottom:6px}
+.download-card .info .desk{font-size:12px;opacity:.7;line-height:1.5;margin-bottom:10px;max-height:54px;overflow:hidden}
+.download-card .info .btn-dl{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:700;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:6px;transition:.3s}
+.download-card .info .btn-dl:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.4)}
 @media(max-width:600px){
   .container{padding:14px}
-  .navbar{padding:12px 16px}
+  .navbar{padding:10px 14px}
   .navbar .menu a,.navbar .menu button{padding:6px 10px;font-size:13px}
   .hero{padding:40px 20px}
   .product-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-  .sidebar{width:300px;right:-320px}
   .wallet-card .saldo{font-size:32px}
   .chat-msg{max-width:85%}
   .topbar .menu-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .promo-slide{width:220px;height:120px}
+  .promo-add-btn{width:100px;height:120px}
+  #bannerAnimasiRB{max-width:120px;max-height:120px}
+  #bannerAnimasiRB img,#bannerAnimasiRB video{max-height:120px}
+  .judul-web-banner{aspect-ratio:16/6;max-height:100px}
 }
 </style>
 </head>
@@ -320,45 +387,78 @@ body.has-bg::after{opacity:.15}
 <symbol id="em-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></symbol>
 <symbol id="em-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
 <symbol id="em-image" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></symbol>
+<symbol id="em-cloud" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
+<symbol id="em-link" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></symbol>
+<symbol id="em-play-circle" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></symbol>
 </svg>
 
-<div id="dbLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:999999;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease">
+<div id="introOverlay">
+  <div class="intro-media-wrap" id="introMediaWrap">
+    <img id="introImg" style="display:none" />
+    <video id="introVid" style="display:none" autoplay muted playsinline></video>
+  </div>
+  <div class="intro-info-panel" id="introInfoPanel">
+    <div class="intro-info-inner">
+      <div class="intro-info-header">
+        <div class="logo-big">W</div>
+        <h1 id="introInfoTitle">WarungDigital</h1>
+        <p id="introInfoSubtitle">Marketplace Produk Digital</p>
+      </div>
+      <div id="introInfoContent"></div>
+      <button class="intro-enter-btn" onclick="introGoToChoice()">
+        <svg class="em em-lg"><use href="#em-login"/></svg> Masuk ke Web
+      </button>
+    </div>
+  </div>
+  <div class="intro-choice-panel" id="introChoicePanel">
+    <div class="intro-choice-inner">
+      <h2>Mau Ngapain Dulu? 🚀</h2>
+      <button class="choice-btn choice-guest" onclick="introChoose('guest')">
+        <svg class="em em-lg"><use href="#em-eye"/></svg> Langsung Masuk (Guest)
+      </button>
+      <button class="choice-btn choice-login" onclick="introChoose('login')">
+        <svg class="em em-lg"><use href="#em-login"/></svg> Login
+      </button>
+      <button class="choice-btn choice-register" onclick="introChoose('register')">
+        <svg class="em em-lg"><use href="#em-user"/></svg> Daftar
+      </button>
+      <div style="text-align:center;font-size:12px;opacity:.5;margin-top:14px">
+        Guest bisa lihat & keranjang, tapi checkout/chat wajib login
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dbLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:9999998;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease,transform .5s ease">
 <div style="text-align:center;max-width:400px">
 <div style="width:80px;height:80px;margin:0 auto 24px;border:6px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;animation:dbSpin .9s linear infinite"></div>
 <h2 style="font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent">WarungDigital</h2>
-<p style="font-size:14px;opacity:.6;margin-bottom:24px">Sedang memuat data...</p>
+<p id="dbLoadingStatus" style="font-size:14px;opacity:.6;margin-bottom:24px">Menghubungkan ke database...</p>
 <div style="width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px"><div id="dbLoadingBar" style="height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#25d366,#6c5ce7);transition:width .3s ease"></div></div>
-<div id="dbLoadingStatus" style="font-size:13px;opacity:.5">Menghubungkan ke database...</div>
+<button class="btn btn-secondary btn-sm" onclick="skipDbLoading()">⏭️ Skip</button>
 </div>
+</div>
+
+<div id="bannerLoading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#070a0f;z-index:9999997;display:none;justify-content:center;align-items:center;flex-direction:column;padding:20px;transition:opacity .5s ease,transform .5s ease">
+<div style="text-align:center;max-width:400px">
+<div style="width:80px;height:80px;margin:0 auto 24px;border:6px solid rgba(108,92,231,.15);border-top-color:#6c5ce7;border-radius:50%;animation:dbSpin .9s linear infinite"></div>
+<h2 style="font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#6c5ce7,#25d366);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Memuat Tampilan</h2>
+<p id="bannerLoadingStatus" style="font-size:14px;opacity:.6;margin-bottom:24px">Memuat background & banner...</p>
+<div style="width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px"><div id="bannerLoadingBar" style="height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#6c5ce7,#25d366);transition:width .3s ease"></div></div>
+<button class="btn btn-secondary btn-sm" onclick="skipBannerLoading()">⏭️ Skip</button>
+</div>
+</div>
+
+<div class="miniLoader" id="miniLoader">
+  <div class="miniSpinner"></div>
+  <div class="miniText">
+    <span id="miniLoaderMain">Memuat...</span>
+    <span class="miniStatus" id="miniLoaderStatus">Database</span>
+  </div>
+  <div class="miniBar" id="miniLoaderBar"></div>
 </div>
 
 <div id="topNotif"></div>
-
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
-
-<div class="sidebar" id="sidebar">
-<button class="close" onclick="closeSidebar()"><svg class="em" style="width:1em;height:1em"><use href="#em-close"/></svg></button>
-<div class="user-info">
-<div class="avatar" id="sidebarAvatar" onclick="showLoginModal()">👤</div>
-<div class="name" id="sidebarName">Belum Login</div>
-<div class="role" id="sidebarRole">Guest</div>
-</div>
-<button class="menu-item" onclick="showPage('home');closeSidebar()"><svg><use href="#em-box"/></svg> Home</button>
-<button class="menu-item" onclick="showPage('jualan');closeSidebar()"><svg><use href="#em-store"/></svg> Jualan Saya</button>
-<button class="menu-item" onclick="showPage('cart');closeSidebar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
-<button class="menu-item" onclick="showPage('orders');closeSidebar()"><svg><use href="#em-receipt"/></svg> History Pembelian</button>
-<button class="menu-item" onclick="showPage('dompet');closeSidebar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
-<button class="menu-item" onclick="showPage('calculator');closeSidebar()"><svg><use href="#em-calc"/></svg> Kalkulator Penghasilan</button>
-<button class="menu-item" onclick="showPage('music');closeSidebar()"><svg><use href="#em-music"/></svg> Musik</button>
-<button class="menu-item" onclick="showPage('accounts');closeSidebar()"><svg><use href="#em-user"/></svg> Liat Info Akun</button>
-<button class="menu-item" onclick="showPage('chatlist');closeSidebar()"><svg><use href="#em-send"/></svg> Chat</button>
-<button class="menu-item" onclick="showPage('account');closeSidebar()"><svg><use href="#em-user"/></svg> Setting Akun</button>
-<button class="menu-item" onclick="showRequestFitur();closeSidebar()"><svg><use href="#em-bulb"/></svg> Request Fitur</button>
-<button class="menu-item" onclick="showHelp();closeSidebar()"><svg><use href="#em-help"/></svg> Help & Info</button>
-<button class="menu-item dev" id="devMenuBtn" style="display:none" onclick="showPage('dev');closeSidebar()"><svg><use href="#em-crown"/></svg> Developer Panel</button>
-<button class="menu-item danger" onclick="logoutUser();closeSidebar()" id="logoutBtn" style="display:none"><svg><use href="#em-logout"/></svg> Logout</button>
-<button class="menu-item" onclick="showLoginModal();closeSidebar()" id="loginBtnSide" style="display:none"><svg><use href="#em-login"/></svg> Login / Daftar</button>
-</div>
 
 <div class="topbar-overlay" id="topbarOverlay" onclick="closeTopbar()"></div>
 
@@ -370,6 +470,7 @@ body.has-bg::after{opacity:.15}
 <button class="menu-btn" onclick="showPage('cart');closeTopbar()"><svg><use href="#em-cart"/></svg> Keranjang</button>
 <button class="menu-btn" onclick="showPage('orders');closeTopbar()"><svg><use href="#em-receipt"/></svg> History</button>
 <button class="menu-btn" onclick="showPage('dompet');closeTopbar()"><svg><use href="#em-wallet"/></svg> Dompet</button>
+<button class="menu-btn" onclick="showPage('download');closeTopbar()"><svg><use href="#em-cloud"/></svg> Download</button>
 <button class="menu-btn" onclick="showPage('calculator');closeTopbar()"><svg><use href="#em-calc"/></svg> Kalkulator</button>
 <button class="menu-btn" onclick="showPage('music');closeTopbar()"><svg><use href="#em-music"/></svg> Musik</button>
 <button class="menu-btn" onclick="showPage('accounts');closeTopbar()"><svg><use href="#em-user"/></svg> Info Akun</button>
@@ -378,56 +479,80 @@ body.has-bg::after{opacity:.15}
 <button class="menu-btn" onclick="showRequestFitur();closeTopbar()"><svg><use href="#em-bulb"/></svg> Request</button>
 <button class="menu-btn" onclick="showHelp();closeTopbar()"><svg><use href="#em-help"/></svg> Help</button>
 <button class="menu-btn dev" id="devMenuBtn2" style="display:none" onclick="showPage('dev');closeTopbar()"><svg><use href="#em-crown"/></svg> Dev Panel</button>
+<button class="menu-btn" onclick="logoutUser();closeTopbar()" id="logoutBtn2" style="display:none"><svg><use href="#em-logout"/></svg> Logout</button>
+<button class="menu-btn" onclick="showLoginModal();closeTopbar()" id="loginBtn2" style="display:flex"><svg><use href="#em-login"/></svg> Login</button>
 </div>
+</div>
+
+<div id="bannerAnimasiRB">
+  <img id="bannerAnimasiImg" style="display:none" />
+  <video id="bannerAnimasiVid" style="display:none" autoplay muted loop playsinline></video>
 </div>
 
 <div class="container">
-<nav class="navbar">
-<div class="left">
-<button onclick="openTopbar()" style="background:transparent;border:none;color:#e0e6ed;font-size:24px;padding:4px;position:relative;z-index:1000"><svg class="em em-lg"><use href="#em-menu"/></svg></button>
-<div class="clock-top">
-<div class="row">🕐 <span id="clockWIB">--:--:--</span> WIB</div>
-<div class="row" style="font-size:10px">🌏 <span id="clockWITA">--:--:--</span> WITA</div>
-<div class="row" style="font-size:10px">🌏 <span id="clockWIT">--:--:--</span> WIT</div>
+
+<div class="navbar-wrap">
+  <div class="judul-web-banner" id="judulWebBanner">
+    <img id="judulWebImg" style="display:none" />
+    <video id="judulWebVid" style="display:none" autoplay muted loop playsinline></video>
+  </div>
+  <nav class="navbar">
+    <div class="left">
+      <button onclick="openTopbar()" style="background:transparent;border:none;color:#e0e6ed;font-size:24px;padding:4px"><svg class="em em-lg"><use href="#em-menu"/></svg></button>
+      <div class="clock-top">
+        <div class="row">🕐 <span id="clockWIB">--:--:--</span> WIB</div>
+        <div class="row" style="font-size:10px">🌏 <span id="clockWITA">--:--:--</span> WITA</div>
+        <div class="row" style="font-size:10px">🌏 <span id="clockWIT">--:--:--</span> WIT</div>
+      </div>
+    </div>
+    <div class="menu">
+      <div class="banner-1-1" id="banner11">
+        <img id="banner11Img" style="display:none" />
+        <video id="banner11Vid" style="display:none" autoplay muted loop playsinline></video>
+      </div>
+      <a href="javascript:showPage('home')">Home</a>
+      <a href="javascript:showPage('jualan')">Jualan</a>
+      <a href="javascript:showPage('download')">Download</a>
+      <button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
+    </div>
+  </nav>
 </div>
-</div>
-<div class="menu">
-<a href="javascript:showPage('home')">Home</a>
-<a href="javascript:showPage('jualan')">Jualan</a>
-<button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
-<button onclick="openSidebar()" style="font-size:20px;padding:8px 14px;position:relative;z-index:1000"><svg class="em em-lg"><use href="#em-dots"/></svg></button>
-</div>
-</nav>
 
 <div id="page-home">
-<div id="homeBanner" style="display:none;width:100%;aspect-ratio:16/5;border-radius:24px;overflow:hidden;margin-bottom:20px;border:1px solid #1f2a34;background:#0f151c">
-<img id="homeBannerImg" style="width:100%;height:100%;object-fit:cover;display:none" />
-<video id="homeBannerVid" style="width:100%;height:100%;object-fit:cover;display:none" autoplay muted loop playsinline></video>
-</div>
-<div class="hero">
-<div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
-<h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
-<p>Platform jual-beli produk digital dengan verifikasi manual. Aman, cepat, dan terpercaya.</p>
-<div class="btn-group">
-<a href="#produk" class="btn btn-primary"><svg class="em em-lg"><use href="#em-bag"/></svg> Lihat Produk</a>
-<a href="javascript:showPage('jualan')" class="btn btn-secondary"><svg class="em em-lg"><use href="#em-store"/></svg> Mulai Jualan</a>
-</div>
-</div>
-<div class="stats">
-<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
-<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
-<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
-<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num">4.9</div><div class="label">Rating</div></div>
-</div>
-<div class="section" id="produk">
-<div class="section-header">
-<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2>
-<span class="count" id="produkCount">0 produk</span>
-</div>
-<div class="product-grid" id="productGrid">
-<div class="empty"><svg class="em-2xl"><use href="#em-box"/></svg><p>Memuat produk...</p></div>
-</div>
-</div>
+  <div class="promo-slider-wrap" id="promoJualanWrap">
+    <div class="promo-slider-title">🔥 Promo Jualan</div>
+    <div class="promo-slider-track" id="promoJualanTrack"></div>
+  </div>
+
+  <div class="promo-slider-wrap" id="promoMedsosWrap">
+    <div class="promo-slider-title">📱 Sosial Media</div>
+    <div class="promo-slider-track" id="promoMedsosTrack"></div>
+  </div>
+
+  <div class="hero">
+    <div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
+    <h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
+    <p>Platform jual-beli produk digital dengan verifikasi manual. Aman, cepat, dan terpercaya.</p>
+    <div class="btn-group">
+      <a href="#produk" class="btn btn-primary"><svg class="em em-lg"><use href="#em-bag"/></svg> Lihat Produk</a>
+      <a href="javascript:showPage('jualan')" class="btn btn-secondary"><svg class="em em-lg"><use href="#em-store"/></svg> Mulai Jualan</a>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
+    <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
+    <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
+    <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num">4.9</div><div class="label">Rating</div></div>
+  </div>
+  <div class="section" id="produk">
+    <div class="section-header">
+      <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2>
+      <span class="count" id="produkCount">0 produk</span>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <div class="empty"><svg class="em-2xl"><use href="#em-box"/></svg><p>Memuat produk...</p></div>
+    </div>
+  </div>
 </div>
 
 <div id="page-jualan" class="hidden">
@@ -437,7 +562,7 @@ body.has-bg::after{opacity:.15}
 </div>
 <div class="tabs">
 <button class="active" onclick="switchJualanTab('produk',this)"><svg class="em"><use href="#em-box"/></svg> Produk</button>
-<button onclick="switchJualanTab('pesanan',this)"><svg class="em"><use href="#em-receipt"/></svg> History Penjualan</button>
+<button onclick="switchJualanTab('pesanan',this)"><svg class="em"><use href="#em-receipt"/></svg> Penjualan</button>
 <button onclick="switchJualanTab('pembayaran',this)"><svg class="em"><use href="#em-tag"/></svg> E-Wallet</button>
 </div>
 <div id="jualan-produk"></div>
@@ -474,12 +599,25 @@ body.has-bg::after{opacity:.15}
 </div>
 </div>
 
+<div id="page-download" class="hidden">
+<div class="section-header">
+<h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cloud"/></svg> Download Gratis</h2>
+<button class="btn btn-primary btn-sm" onclick="showAddDownload()"><svg class="em"><use href="#em-plus"/></svg> Upload Gratisan</button>
+</div>
+<div class="help-info-box">
+Disini tempatnya produk digital <strong>GRATIS</strong>! Siapa aja bisa upload, entah lewat link atau file langsung. Bisa pasang banner preview juga.
+</div>
+<div id="downloadGrid" class="product-grid">
+<div class="empty"><svg class="em-2xl"><use href="#em-cloud"/></svg><p>Memuat...</p></div>
+</div>
+</div>
+
 <div id="page-calculator" class="hidden">
 <div class="section-header">
 <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-calc"/></svg> Kalkulator Penghasilan</h2>
 </div>
 <div class="help-info-box">
-Kalkulator ini buat nyatet penghasilan lo. Bisa ditambah, dikurang, dikali, dibagi. Hasilnya bisa disimpen.
+Kalkulator ini buat nyatet penghasilan lo. Hasilnya bisa disimpen.
 </div>
 <div class="calc-display" id="calcDisplay">0</div>
 <div class="calc-buttons">
@@ -551,8 +689,8 @@ Pilih lagu buat diputar. Kalo gak pilih, bakal muter lagu default dari Developer
 <div class="form-group"><label>Nomor WA</label><input type="text" id="accWA" placeholder="628xxxxxxxxxx" /></div>
 <div class="form-group">
 <label>Notifikasi Browser</label>
-<button type="button" class="btn btn-secondary btn-block" id="notifPermBtn2" onclick="requestNotifPermission()">🔔 Aktifkan Notifikasi</button>
-<div style="font-size:11px;opacity:.5;margin-top:4px">Dapet notif dari sistem HP pas ada chat/order/donasi</div>
+<button type="button" class="btn btn-secondary btn-block" onclick="requestNotifPermission()">🔔 Aktifkan Notifikasi</button>
+<div style="font-size:11px;opacity:.5;margin-top:4px">Dapet notif pas ada chat/order/donasi</div>
 </div>
 <button class="btn btn-primary btn-block" onclick="saveSettingAccount()"><svg class="em"><use href="#em-check"/></svg> Simpan Akun</button>
 <button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px"><svg class="em"><use href="#em-logout"/></svg> Logout</button>
@@ -633,18 +771,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-const METODE_BAYAR = [
-  { id: 'dana', nama: 'DANA', icon: '💳' },
-  { id: 'ovo', nama: 'OVO', icon: '🟣' },
-  { id: 'gopay', nama: 'GoPay', icon: '🟢' },
-  { id: 'shopeepay', nama: 'ShopeePay', icon: '🟠' },
-  { id: 'saweria', nama: 'Saweria', icon: '🎁' },
-  { id: 'tako', nama: 'Tako', icon: '💚' }
-];
+const DEV_NAME = "vardev";
+const DEV_PASS = "vardevanakganteng2";
+const INTRO_SKIP_KEY = 'wd_intro_done_session';
 
 let currentUser = localStorage.getItem('wd_user') || null;
 let currentPage = 'home';
 let products = {};
+let downloadItems = {};
 let cart = JSON.parse(localStorage.getItem('wd_cart') || '[]');
 let selectedEwallet = null;
 let bannerBase64 = '';
@@ -657,17 +791,45 @@ let dbReady = false;
 let notifPermission = 'default';
 let isSubmitting = false;
 let isDev = false;
+let isGuest = false;
 let calcExpr = '';
 let currentMusicId = null;
 let isMusicPlaying = false;
 let allMusic = [];
-
-const DEV_NAME = "vardev";
-const DEV_PASS = "vardevanakganteng2";
+let allPromoJualan = [];
+let allPromoMedsos = [];
+let introData = {};
+let uiInfoData = {};
+let lastOrderCount = 0;
+let musicUnlockReady = false;
+let dbLoaded = false;
+let bannerLoaded = false;
 
 function formatRp(n){return 'Rp ' + Number(n||0).toLocaleString('id-ID')}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function emoji(id, cls){return `<svg class="em ${cls||''}"><use href="#${id}"/></svg>`}
+
+async function compressImage(file, maxW=800, quality=0.7){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = e=>{
+      const img = new Image();
+      img.onload = ()=>{
+        const canvas = document.createElement('canvas');
+        let w = img.width, h = img.height;
+        if(w > maxW){ h = h * (maxW / w); w = maxW; }
+        canvas.width = w; canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 function showToast(msg, type){
   const t = document.getElementById('toast');
@@ -679,7 +841,7 @@ function showToast(msg, type){
 }
 function showTopNotif(title, msg, type){
   const wrap = document.getElementById('topNotif');
-  const id = 'tn_' + Date.now();
+  const id = 'tn_' + Date.now() + Math.random().toString(36).substr(2,4);
   const iconMap = { info:'📢', success:'✅', error:'❌', warn:'⚠️', dev:'👑' };
   wrap.insertAdjacentHTML('beforeend', `
     <div class="topNotifItem ${type||'info'}" id="${id}">
@@ -693,8 +855,16 @@ function showTopNotif(title, msg, type){
   `);
   setTimeout(()=>{ const el = document.getElementById(id); if(el) el.remove(); }, 8000);
   if('Notification' in window && Notification.permission === 'granted'){
-    sendWebNotif(title, msg, type === 'error' ? 'em-warning' : 'em-info');
+    sendWebNotif(title, msg);
   }
+}
+function sendWebNotif(title, body){
+  if(!('Notification' in window) || Notification.permission !== 'granted') return;
+  try {
+    const notif = new Notification(title, { body, tag: 'wd-' + Date.now(), silent: false });
+    setTimeout(()=>notif.close(), 8000);
+    notif.onclick = ()=>{ window.focus(); notif.close(); };
+  } catch(e){ console.warn(e); }
 }
 function openModal(html){ document.getElementById('modalContent').innerHTML = html; document.getElementById('modalOverlay').classList.add('show'); }
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('show'); }
@@ -721,40 +891,73 @@ function requestNotifPermission(){
     notifPermission = permission;
     if(permission === 'granted'){
       showToast('✅ Notifikasi aktif!','success');
-      sendWebNotif('WarungDigital', 'Notifikasi berhasil diaktifkan! 🎉', 'em-heart');
+      sendWebNotif('WarungDigital', 'Notifikasi berhasil diaktifkan! 🎉');
     } else if(permission === 'denied'){
-      showToast('❌ Notifikasi ditolak. Aktifkan manual di setting browser.','error');
+      showToast('❌ Notifikasi ditolak.','error');
     }
   });
 }
-function sendWebNotif(title, body, iconId){
-  if(!('Notification' in window)) return;
-  if(Notification.permission !== 'granted') return;
-  try {
-    const iconSvg = iconId ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325d366"><use href="#${iconId}"/></svg>` : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2325d366"><circle cx="12" cy="12" r="10"/></svg>';
-    const notif = new Notification(title, {
-      body: body,
-      icon: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(iconSvg),
-      tag: 'wd-' + Date.now(),
-      silent: false
-    });
-    setTimeout(() => notif.close(), 8000);
-    notif.onclick = () => { window.focus(); notif.close(); };
-  } catch(e) { console.warn('Notif error:', e.message); }
-}
 checkNotifPermission();
 
-function updateLoadingBar(percent, status) {
+function updateDbLoading(percent, status){
   const bar = document.getElementById('dbLoadingBar');
-  const stat = document.getElementById('dbLoadingStatus');
+  const st = document.getElementById('dbLoadingStatus');
   if(bar) bar.style.width = percent + '%';
-  if(stat && status) stat.textContent = status;
+  if(st && status) st.textContent = status;
 }
-function hideDbLoading() {
+function updateBannerLoading(percent, status){
+  const bar = document.getElementById('bannerLoadingBar');
+  const st = document.getElementById('bannerLoadingStatus');
+  if(bar) bar.style.width = percent + '%';
+  if(st && status) st.textContent = status;
+}
+function hideDbLoading(){
   const el = document.getElementById('dbLoading');
   if(!el) return;
   el.style.opacity = '0';
+  el.style.transform = 'scale(1.05)';
   setTimeout(()=>{ el.style.display = 'none'; }, 500);
+}
+function hideBannerLoading(){
+  const el = document.getElementById('bannerLoading');
+  if(!el) return;
+  el.style.opacity = '0';
+  el.style.transform = 'scale(1.05)';
+  setTimeout(()=>{ el.style.display = 'none'; }, 500);
+}
+function showMiniLoader(main, status){
+  const ml = document.getElementById('miniLoader');
+  const m1 = document.getElementById('miniLoaderMain');
+  const m2 = document.getElementById('miniLoaderStatus');
+  if(ml) ml.classList.add('show');
+  if(m1) m1.textContent = main;
+  if(m2) m2.textContent = status;
+}
+function updateMiniLoader(percent){
+  const bar = document.getElementById('miniLoaderBar');
+  if(bar) bar.style.width = percent + '%';
+}
+function hideMiniLoader(){
+  const ml = document.getElementById('miniLoader');
+  if(ml) ml.classList.remove('show');
+}
+function skipDbLoading(){
+  const el = document.getElementById('dbLoading');
+  if(!el || el.style.display === 'none') return;
+  el.style.opacity = '0';
+  el.style.transform = 'scale(0.9)';
+  setTimeout(()=>{ el.style.display = 'none'; }, 500);
+  showMiniLoader('Memuat Database', 'Masih loading...');
+  updateMiniLoader(50);
+}
+function skipBannerLoading(){
+  const el = document.getElementById('bannerLoading');
+  if(!el || el.style.display === 'none') return;
+  el.style.opacity = '0';
+  el.style.transform = 'scale(0.9)';
+  setTimeout(()=>{ el.style.display = 'none'; }, 500);
+  showMiniLoader('Memuat Tampilan', 'Background & banner...');
+  updateMiniLoader(50);
 }
 
 function startLoading(title, desc, onDone) {
@@ -788,15 +991,8 @@ function ensureDevAccount(){
   db.ref('warungdigital/users').child(DEV_NAME).once('value', snap=>{
     if(!snap.exists()){
       db.ref('warungdigital/users').child(DEV_NAME).set({
-        password: DEV_PASS,
-        createdAt: Date.now(),
-        ewallets: [],
-        wa: '',
-        avatar: '',
-        banner: '',
-        status: 'Developer',
-        isDev: true
-      }).then(()=>console.log('✅ Dev account created'));
+        password: DEV_PASS, createdAt: Date.now(), ewallets: [], wa: '', avatar: '', banner: '', status: 'Developer', isDev: true
+      });
     } else {
       const u = snap.val();
       if(u.password !== DEV_PASS || !u.isDev){
@@ -805,27 +1001,18 @@ function ensureDevAccount(){
     }
   });
 }
-
 function checkDevStatus(){
-  if(!currentUser){ isDev = false; updateDevMenu(); updateNavbarBadge(); return; }
+  if(!currentUser){ isDev = false; updateDevMenu(); return; }
   db.ref('warungdigital/users').child(currentUser).child('isDev').once('value', snap=>{
     isDev = snap.val() === true || currentUser === DEV_NAME;
-    updateDevMenu();
-    updateNavbarBadge();
-    updateSidebar();
+    updateDevMenu(); updateNavbarBadge();
   });
 }
-
 function updateDevMenu(){
-  const btn = document.getElementById('devMenuBtn');
-  const btn2 = document.getElementById('devMenuBtn2');
+  const btn = document.getElementById('devMenuBtn2');
   if(btn) btn.style.display = isDev ? 'flex' : 'none';
-  if(btn2) btn2.style.display = isDev ? 'flex' : 'none';
 }
-function updateNavbarBadge(){
-  const badge = document.getElementById('navbarDevBadge');
-  if(badge) badge.style.display = isDev ? 'inline-block' : 'none';
-}
+function updateNavbarBadge(){}
 
 function openTopbar(){
   document.getElementById('topbar').classList.add('open');
@@ -834,64 +1021,6 @@ function openTopbar(){
 function closeTopbar(){
   document.getElementById('topbar').classList.remove('open');
   document.getElementById('topbarOverlay').classList.remove('show');
-}
-
-function loadHomeBanner(){
-  db.ref('warungdigital/settings').once('value', snap=>{
-    const s = snap.val() || {};
-    const wrap = document.getElementById('homeBanner');
-    const img = document.getElementById('homeBannerImg');
-    const vid = document.getElementById('homeBannerVid');
-    if(!wrap || !img || !vid) return;
-    if(s.banner){
-      wrap.style.display = 'block';
-      if(s.bannerType === 'video'){
-        img.style.display = 'none';
-        vid.style.display = 'block';
-        vid.src = s.banner;
-        vid.muted = true;
-      } else {
-        vid.style.display = 'none';
-        img.style.display = 'block';
-        img.src = s.banner;
-      }
-    } else {
-      wrap.style.display = 'none';
-    }
-  });
-}
-
-function applyBgWeb(){
-  db.ref('warungdigital/settings').once('value', snap=>{
-    const s = snap.val() || {};
-    const body = document.body;
-    if(s.bgWeb && s.bgType === 'image'){
-      body.classList.add('has-bg');
-      body.style.setProperty('--bg-img', `url(${s.bgWeb})`);
-      const afterEl = document.createElement('style');
-      afterEl.id = 'bgStyle';
-      const old = document.getElementById('bgStyle');
-      if(old) old.remove();
-      afterEl.textContent = `body.has-bg::after{background-image:url('${s.bgWeb}')}`;
-      document.head.appendChild(afterEl);
-    } else if(s.bgWeb && s.bgType === 'video'){
-      let vidBg = document.getElementById('bgVideoEl');
-      if(!vidBg){
-        vidBg = document.createElement('video');
-        vidBg.id = 'bgVideoEl';
-        vidBg.autoplay = true; vidBg.muted = true; vidBg.loop = true; vidBg.playsInline = true;
-        vidBg.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.15;pointer-events:none';
-        document.body.appendChild(vidBg);
-      }
-      vidBg.src = s.bgWeb;
-    } else {
-      body.classList.remove('has-bg');
-      const old = document.getElementById('bgStyle');
-      if(old) old.remove();
-      const vidBg = document.getElementById('bgVideoEl');
-      if(vidBg) vidBg.remove();
-    }
-  });
 }
 
 function saveCart(){ localStorage.setItem('wd_cart', JSON.stringify(cart)); updateCartBadge(); }
@@ -903,16 +1032,14 @@ function updateCartBadge(){
   else badge.style.display = 'none';
 }
 function addToCart(id){
-  const p = products[id];
-  if(!p) return;
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
-  if(p.penjual === currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
-  if(p.stock !== undefined && p.stock <= 0){showToast('Stok habis!','error');return}
+  const p = products[id]; if(!p) return;
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+  if(p.penjual === currentUser){ showToast('Gak bisa beli produk sendiri!','error'); return; }
+  if(p.stock !== undefined && p.stock <= 0){ showToast('Stok habis!','error'); return; }
   const exist = cart.find(c=>c.id===id);
   if(exist) exist.qty++;
   else cart.push({id, nama:p.nama, harga:p.harga, penjual:p.penjual, qty:1});
-  saveCart();
-  showToast('Masuk keranjang!','success');
+  saveCart(); showToast('Masuk keranjang!','success');
   if(currentPage==='cart') renderCart();
 }
 function removeFromCart(i){ cart.splice(i,1); saveCart(); renderCart(); }
@@ -947,8 +1074,8 @@ function renderCart(){
   `;
 }
 function checkoutCart(){
-  if(cart.length === 0){showToast('Keranjang kosong!','error');return}
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(cart.length === 0){ showToast('Keranjang kosong!','error'); return; }
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
   const firstSeller = cart[0].penjual;
   db.ref('warungdigital/users').child(firstSeller).once('value', snap=>{
@@ -981,7 +1108,7 @@ function checkoutCart(){
       </div>
       <input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFile(this)" />
       <div class="verify-box" style="margin-top:14px">
-        <div class="label">Nama Tujuan Transfer (dari penjual)</div>
+        <div class="label">Nama Tujuan Transfer</div>
         <div class="val" id="autoNamaTujuan">-</div>
         <div class="label" style="margin-top:8px">Nominal Transfer</div>
         <div class="val big">${formatRp(total)}</div>
@@ -1004,127 +1131,91 @@ function pilihEwalletCart(i, jenis, namaAkun, nomor){
   `;
   document.getElementById('autoNamaTujuan').textContent = namaAkun;
 }
+async function readBuktiFile(input){
+  const file = input.files[0];
+  if(!file) return;
+  if(file.size > 5*1024*1024){ showToast('Foto max 5MB!','error'); input.value=''; return; }
+  try {
+    const compressed = await compressImage(file, 1000, 0.75);
+    buktiBase64 = compressed;
+    const area = document.getElementById('uploadArea');
+    const img = document.getElementById('buktiPreview');
+    img.src = compressed;
+    img.style.display = 'block';
+    area.classList.add('has-file');
+  } catch(e){ showToast('Gagal proses gambar','error'); }
+}
 function submitCartOrder(){
-  if(isSubmitting){ showToast('Tunggu bentar, masih proses...','warn'); return; }
-  if(!selectedEwallet){showToast('Pilih e-wallet penjual dulu!','error');return}
-  if(!buktiBase64){showToast('Upload bukti transfer dulu!','error');return}
+  if(isSubmitting){ showToast('Tunggu bentar...','warn'); return; }
+  if(!selectedEwallet){ showToast('Pilih e-wallet penjual dulu!','error'); return; }
+  if(!buktiBase64){ showToast('Upload bukti transfer dulu!','error'); return; }
   isSubmitting = true;
   const total = cart.reduce((a,b)=>a+b.harga*b.qty,0);
-  const namaTujuan = selectedEwallet.namaAkun;
   const orderId = 'ORD-'+Date.now();
   const order = {
     orderId, items: cart.map(c=>({nama:c.nama, harga:c.harga, qty:c.qty, penjual:c.penjual})),
-    produkNama: cart.map(c=>c.nama).join(', '),
-    total, pembeli: currentUser, penjual: cart[0].penjual,
-    ewallet: selectedEwallet, nominal: total, namaTujuan,
-    bukti: buktiBase64.substring(0,5000),
-    status: 'proof_uploaded',
-    createdAt: Date.now()
+    produkNama: cart.map(c=>c.nama).join(', '), total, pembeli: currentUser, penjual: cart[0].penjual,
+    ewallet: selectedEwallet, nominal: total, namaTujuan: selectedEwallet.namaAkun,
+    bukti: buktiBase64, status: 'proof_uploaded', createdAt: Date.now()
   };
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
-    closeModal();
-    showToast('✅ Pesanan dikirim! Nunggu konfirmasi penjual.','success');
+    closeModal(); showToast('✅ Pesanan dikirim!','success');
     cart = []; saveCart(); selectedEwallet = null; buktiBase64 = ''; isSubmitting = false;
     showPage('orders');
-  }).catch(e=>{
-    showToast('❌ '+e.message,'error');
-    isSubmitting = false;
-  });
-}
-
-function openSidebar(){ document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebarOverlay').classList.add('show'); updateSidebar(); }
-function closeSidebar(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('show'); }
-function updateSidebar(){
-  try {
-    const av = document.getElementById('sidebarAvatar');
-    const nm = document.getElementById('sidebarName');
-    const rl = document.getElementById('sidebarRole');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const loginBtn = document.getElementById('loginBtnSide');
-    if(!av || !nm) return;
-    if(currentUser){
-      av.textContent = currentUser.charAt(0).toUpperCase();
-      if(isDev){
-        av.style.border = '3px solid #f1c40f';
-        av.style.boxShadow = '0 0 20px rgba(241,196,15,0.5)';
-        nm.innerHTML = `${escapeHtml(currentUser)} <span style="color:#f1c40f;font-size:12px">👑</span>`;
-        if(rl) rl.innerHTML = '<span style="color:#f1c40f;font-weight:800">👑 DEVELOPER</span>';
-      } else {
-        av.style.border = '2px solid #2a3340';
-        av.style.boxShadow = 'none';
-        nm.textContent = currentUser;
-        if(rl) rl.textContent = 'Member';
-      }
-      if(logoutBtn) logoutBtn.style.display = 'flex';
-      if(loginBtn) loginBtn.style.display = 'none';
-    } else {
-      av.textContent = '👤';
-      av.style.border = '2px solid #2a3340';
-      av.style.boxShadow = 'none';
-      nm.textContent = 'Belum Login';
-      if(rl) rl.textContent = 'Guest';
-      if(logoutBtn) logoutBtn.style.display = 'none';
-      if(loginBtn) loginBtn.style.display = 'flex';
-    }
-  } catch(e) { console.warn(e.message); }
+  }).catch(e=>{ showToast('❌ '+e.message,'error'); isSubmitting = false; });
 }
 
 function showPage(page){
-  try {
-    currentPage = page;
-    document.querySelectorAll('[id^="page-"]').forEach(el=>el.classList.add('hidden'));
-    const el = document.getElementById('page-'+page);
-    if(el) el.classList.remove('hidden');
-    if(page==='home'){ renderHome(); loadHomeBanner(); }
-    if(page==='jualan') renderJualan();
-    if(page==='cart') renderCart();
-    if(page==='orders') renderOrders();
-    if(page==='dompet') renderDompet();
-    if(page==='calculator') renderCalculator();
-    if(page==='music') renderMusicPage();
-    if(page==='accounts') renderAccounts();
-    if(page==='chatlist') renderChatList();
-    if(page==='account') loadSettingAccount();
-    if(page==='dev') renderDev();
-    window.scrollTo({top:0,behavior:'smooth'});
-    if(currentUser) trackActivity(page);
-  } catch(e) { console.warn(e.message); }
+  currentPage = page;
+  document.querySelectorAll('[id^="page-"]').forEach(el=>el.classList.add('hidden'));
+  const el = document.getElementById('page-'+page);
+  if(el) el.classList.remove('hidden');
+  if(page==='home') renderHome();
+  if(page==='jualan') renderJualan();
+  if(page==='cart') renderCart();
+  if(page==='orders') renderOrders();
+  if(page==='dompet') renderDompet();
+  if(page==='download') renderDownload();
+  if(page==='calculator') renderCalculator();
+  if(page==='music') renderMusicPage();
+  if(page==='accounts') renderAccounts();
+  if(page==='chatlist') renderChatList();
+  if(page==='account') loadSettingAccount();
+  if(page==='dev') renderDev();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(currentUser && !isGuest) trackActivity(page);
 }
-
 function trackActivity(page){
   if(!currentUser) return;
-  db.ref('warungdigital/activities').child(currentUser).update({
-    page: page,
-    lastSeen: Date.now(),
-    device: navigator.userAgent.substring(0, 100)
-  });
+  db.ref('warungdigital/activities').child(currentUser).update({ page, lastSeen: Date.now(), device: navigator.userAgent.substring(0,100) });
 }
 
 db.ref('warungdigital/products').on('value', snap=>{
   products = snap.val() || {};
-  if(dbReady) {
-    if(currentPage==='home') renderHome();
-    if(currentPage==='jualan') renderJualan();
-  }
   const sp = document.getElementById('statProduk');
   const pc = document.getElementById('produkCount');
   if(sp) sp.textContent = Object.keys(products).length;
   if(pc) pc.textContent = Object.keys(products).length + ' produk';
+  if(dbReady && currentPage==='home') renderHome();
+  if(dbReady && currentPage==='jualan') renderJualanProduk();
+});
+db.ref('warungdigital/download').on('value', snap=>{
+  downloadItems = snap.val() || {};
+  if(dbReady && currentPage==='download') renderDownload();
 });
 db.ref('warungdigital/users').on('value', snap=>{
   const el = document.getElementById('statUser');
   if(el) el.textContent = snap.numChildren();
 });
-let lastOrderCount = 0;
 db.ref('warungdigital/orders').on('value', snap=>{
   const count = snap.numChildren();
   const el = document.getElementById('statOrder');
   if(el) el.textContent = count;
   if(lastOrderCount > 0 && count > lastOrderCount && currentUser){
-    snap.forEach(child => {
+    snap.forEach(child=>{
       const o = child.val();
       if(o.penjual === currentUser && o.status === 'proof_uploaded'){
-        showTopNotif('🛒 Pesanan Baru!', `${o.produkNama} - Rp ${o.total.toLocaleString('id-ID')}`, 'success');
+        showTopNotif('🛒 Pesanan Baru!', `${o.produkNama} - Rp ${(o.total||0).toLocaleString('id-ID')}`, 'success');
       }
     });
   }
@@ -1132,23 +1223,18 @@ db.ref('warungdigital/orders').on('value', snap=>{
 });
 
 if(currentUser){
-  db.ref('warungdigital/notifications').orderByChild('target').equalTo(currentUser).on('child_added', snap => {
+  db.ref('warungdigital/notifications').orderByChild('target').equalTo(currentUser).on('child_added', snap=>{
     const notif = snap.val();
     if(!notif || notif.read) return;
     showTopNotif(notif.title, notif.message, notif.type === 'danger' ? 'error' : 'info');
     snap.ref.update({ read: true });
   });
 }
-
 if(currentUser){
-  db.ref('warungdigital/users').child(currentUser).on('value', snap => {
+  db.ref('warungdigital/users').child(currentUser).on('value', snap=>{
     if(!snap.exists()){
       showTopNotif('❌ Akun Dihapus', 'Akun lo udah dihapus oleh Developer', 'error');
-      setTimeout(()=>{
-        currentUser = null;
-        localStorage.removeItem('wd_user');
-        location.reload();
-      }, 3000);
+      setTimeout(()=>{ currentUser = null; localStorage.removeItem('wd_user'); location.reload(); }, 3000);
     }
   });
 }
@@ -1188,8 +1274,7 @@ function renderHome(){
 }
 
 function showDetail(id){
-  const p = products[id];
-  if(!p) return;
+  const p = products[id]; if(!p) return;
   const banner = p.banner ? `<img src="${p.banner}" style="width:100%;border-radius:16px;margin-bottom:14px;max-height:200px;object-fit:cover" />` : '';
   const habis = p.stock !== undefined && p.stock <= 0;
   openModal(`
@@ -1211,11 +1296,10 @@ function showDetail(id){
 }
 
 function beliLangsung(id){
-  if(!currentUser){showToast('Login dulu buat beli!','error');showLoginModal();return}
-  const p = products[id];
-  if(!p) return;
-  if(p.penjual === currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
-  if(p.stock !== undefined && p.stock <= 0){showToast('Stok habis!','error');return}
+  if(!currentUser || isGuest){ showToast('Login dulu buat beli!','error'); showLoginModal(); return; }
+  const p = products[id]; if(!p) return;
+  if(p.penjual === currentUser){ showToast('Gak bisa beli produk sendiri!','error'); return; }
+  if(p.stock !== undefined && p.stock <= 0){ showToast('Stok habis!','error'); return; }
   if(p.tipe === 'wa' && p.waLink){ window.open(p.waLink,'_blank'); return; }
   closeModal();
   db.ref('warungdigital/users').child(p.penjual).once('value', usnap=>{
@@ -1230,10 +1314,10 @@ function beliLangsung(id){
         <div class="val">${escapeHtml(p.nama)}</div>
         <div class="label" style="margin-top:8px">Penjual</div>
         <div class="val">${escapeHtml(p.penjual)}</div>
-        <div class="label" style="margin-top:8px">Nominal (harus sama persis)</div>
+        <div class="label" style="margin-top:8px">Nominal</div>
         <div class="val big">${formatRp(p.harga)}</div>
       </div>
-      <label>Pilih E-Wallet / Bank Penjual</label>
+      <label>Pilih E-Wallet Penjual</label>
       <div class="metode-list" id="ewalletList">
         ${ewallets.map((e,i)=>`
           <div class="metode-item" onclick="pilihEwalletPenjual(${i},'${escapeHtml(e.jenis)}','${escapeHtml(e.namaAkun)}','${escapeHtml(e.nomor)}')">
@@ -1250,9 +1334,9 @@ function beliLangsung(id){
       </div>
       <input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFile(this)" />
       <div class="verify-box" style="margin-top:14px">
-        <div class="label">Nama Tujuan Transfer (dari penjual)</div>
+        <div class="label">Nama Tujuan Transfer</div>
         <div class="val" id="autoNamaTujuan">-</div>
-        <div class="label" style="margin-top:8px">Nominal Transfer (dari produk)</div>
+        <div class="label" style="margin-top:8px">Nominal Transfer</div>
         <div class="val big">${formatRp(p.harga)}</div>
       </div>
       <button class="btn btn-primary btn-block" onclick="submitBeliLangsung('${id}')">${emoji('em-check','em')} Kirim Pesanan</button>
@@ -1273,52 +1357,28 @@ function pilihEwalletPenjual(i, jenis, namaAkun, nomor){
   `;
   document.getElementById('autoNamaTujuan').textContent = namaAkun;
 }
-function readBuktiFile(input){
-  const file = input.files[0];
-  if(!file) return;
-  if(file.size > 2*1024*1024){showToast('Foto max 2MB!','error');input.value='';return}
-  const reader = new FileReader();
-  reader.onload = e=>{
-    buktiBase64 = e.target.result;
-    const area = document.getElementById('uploadArea');
-    const img = document.getElementById('buktiPreview');
-    img.src = e.target.result;
-    img.style.display = 'block';
-    area.classList.add('has-file');
-  };
-  reader.readAsDataURL(file);
-}
 function submitBeliLangsung(id){
-  if(isSubmitting){ showToast('Tunggu bentar, masih proses...','warn'); return; }
-  if(!selectedEwallet){showToast('Pilih e-wallet penjual dulu!','error');return}
-  if(!buktiBase64){showToast('Upload bukti transfer dulu!','error');return}
+  if(isSubmitting){ showToast('Tunggu bentar...','warn'); return; }
+  if(!selectedEwallet){ showToast('Pilih e-wallet penjual dulu!','error'); return; }
+  if(!buktiBase64){ showToast('Upload bukti transfer dulu!','error'); return; }
   isSubmitting = true;
   const p = products[id];
-  const namaTujuan = selectedEwallet.namaAkun;
-  const nominal = p.harga;
   const orderId = 'ORD-'+Date.now();
   const order = {
-    orderId, produkId: id, produkNama: p.nama,
-    harga: p.harga, total: p.harga,
-    pembeli: currentUser, penjual: p.penjual,
-    ewallet: selectedEwallet, nominal, namaTujuan,
-    bukti: buktiBase64.substring(0,5000),
-    status: 'proof_uploaded',
-    createdAt: Date.now()
+    orderId, produkId: id, produkNama: p.nama, harga: p.harga, total: p.harga,
+    pembeli: currentUser, penjual: p.penjual, ewallet: selectedEwallet,
+    nominal: p.harga, namaTujuan: selectedEwallet.namaAkun,
+    bukti: buktiBase64, status: 'proof_uploaded', createdAt: Date.now()
   };
   db.ref('warungdigital/orders').child(orderId).set(order).then(()=>{
-    closeModal();
-    showToast('✅ Pesanan dikirim! Nunggu konfirmasi penjual.','success');
+    closeModal(); showToast('✅ Pesanan dikirim!','success');
     buktiBase64 = ''; selectedEwallet = null; isSubmitting = false;
     showPage('orders');
-  }).catch(e=>{
-    showToast('❌ '+e.message,'error');
-    isSubmitting = false;
-  });
+  }).catch(e=>{ showToast('❌ '+e.message,'error'); isSubmitting = false; });
 }
 
 function renderJualan(){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
   renderJualanProduk();
   renderJualanPesanan();
   renderJualanPembayaran();
@@ -1349,9 +1409,9 @@ function renderJualanProduk(){
       `;
     }
     const my = Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
-    if(my.length===0){ 
-      el.innerHTML = warningHtml + `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`; 
-      return; 
+    if(my.length===0){
+      el.innerHTML = warningHtml + `<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk. Klik "Tambah Produk"!</p></div>`;
+      return;
     }
     el.innerHTML = warningHtml + '<div class="product-grid">' + my.map(([id,p])=>`
       <div class="product-card">
@@ -1392,7 +1452,7 @@ function renderJualanPembayaran(){
       <div class="form-group">
         <label>E-Wallet / Bank yang Lo Punya</label>
         <div id="ewalletList">
-          ${ewallets.length === 0 ? '<div style="opacity:.5;text-align:center;padding:12px;font-size:13px">Belum ada e-wallet. Tambah dulu!</div>' : 
+          ${ewallets.length === 0 ? '<div style="opacity:.5;text-align:center;padding:12px;font-size:13px">Belum ada e-wallet. Tambah dulu!</div>' :
             ewallets.map((e,i)=>`
               <div class="cart-item" style="margin-bottom:8px">
                 <div class="thumb" style="font-size:20px">${e.icon||'💳'}</div>
@@ -1429,7 +1489,7 @@ function showAddEwallet(){
       <option value="Mandiri">Bank Mandiri</option>
       <option value="Lainnya">Lainnya</option>
     </select>
-    <label>Nama Akun (harus sama persis)</label>
+    <label>Nama Akun</label>
     <input type="text" id="ewNamaAkun" placeholder="Contoh: Varoo" />
     <label>Nomor E-Wallet / Rekening</label>
     <input type="text" id="ewNomor" placeholder="08xxxxxxxxxx" />
@@ -1446,9 +1506,7 @@ function simpanEwallet(){
     const ewallets = u.ewallets || [];
     ewallets.push({ jenis, namaAkun, nomor, verified: true, createdAt: Date.now() });
     db.ref('warungdigital/users').child(currentUser).update({ ewallets }).then(()=>{
-      closeModal();
-      showToast('✅ E-Wallet ditambah!','success');
-      renderJualanPembayaran();
+      closeModal(); showToast('✅ E-Wallet ditambah!','success'); renderJualanPembayaran();
     });
   });
 }
@@ -1459,26 +1517,26 @@ function hapusEwallet(i){
     const ewallets = u.ewallets || [];
     ewallets.splice(i, 1);
     db.ref('warungdigital/users').child(currentUser).update({ ewallets }).then(()=>{
-      showToast('E-Wallet dihapus','success');
-      renderJualanPembayaran();
+      showToast('E-Wallet dihapus','success'); renderJualanPembayaran();
     });
   });
 }
 
 function showAddProduct(){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
   db.ref('warungdigital/users').child(currentUser).child('ewallets').once('value', snap=>{
     const ewallets = snap.val() || [];
     if(ewallets.length === 0){
       openModal(`
         <button class="close-btn" onclick="closeModal()">✕</button>
         <h2 style="color:#f39c12">${emoji('em-warning','em-lg')} E-Wallet Belum Ada</h2>
-        <p style="font-size:14px;opacity:.8;margin-bottom:14px">Lo harus daftarin <strong>E-Wallet</strong> dulu sebelum bisa jualan. Soalnya pembeli butuh nomor e-wallet lo buat transfer.</p>
+        <p style="font-size:14px;opacity:.8;margin-bottom:14px">Lo harus daftarin <strong>E-Wallet</strong> dulu sebelum bisa jualan.</p>
         <button class="btn btn-warning btn-block" onclick="closeModal();switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin E-Wallet Sekarang</button>
         <button class="btn btn-secondary btn-block" onclick="closeModal()">Nanti Aja</button>
       `);
       return;
     }
+    bannerBase64 = '';
     openModal(`
       <button class="close-btn" onclick="closeModal()">✕</button>
       <h2>${emoji('em-plus','em-lg')} Tambah Produk</h2>
@@ -1499,7 +1557,7 @@ function showAddProduct(){
       <textarea id="pDeskripsi" rows="3" placeholder="Deskripsi produk..."></textarea>
       <div id="pDigitalSection">
         <label>Link MediaFire (upload manual dulu)</label>
-        <input type="text" id="pLinkMediafire" placeholder="https://www.mediafire.com/file/xxx/namafile" />
+        <input type="text" id="pLinkMediafire" placeholder="https://www.mediafire.com/file/xxx" />
         <div style="font-size:12px;opacity:.5;margin-top:4px">Link ini cuma keliatan setelah pembeli lolos konfirmasi penjual</div>
         <label style="margin-top:12px">Banner Promosi (opsional)</label>
         <input type="file" id="pBanner" accept="image/*" onchange="readBannerFile(this)" />
@@ -1526,13 +1584,15 @@ function autoFillWA(){
   if(num.length >= 10) link.value = `https://wa.me/${num}?text=Halo,%20saya%20mau%20beli%20produk%20lo`;
   else link.value = '';
 }
-function readBannerFile(input){
+async function readBannerFile(input){
   const file = input.files[0];
   if(!file) return;
-  if(file.size > 2*1024*1024){showToast('Banner max 2MB!','error');input.value='';return}
-  const reader = new FileReader();
-  reader.onload = e=>{ bannerBase64 = e.target.result; document.getElementById('pBannerInfo').textContent = `✅ ${file.name}`; };
-  reader.readAsDataURL(file);
+  if(file.size > 5*1024*1024){ showToast('Banner max 5MB!','error'); input.value=''; return; }
+  try {
+    const compressed = await compressImage(file, 1000, 0.75);
+    bannerBase64 = compressed;
+    document.getElementById('pBannerInfo').textContent = `✅ ${file.name}`;
+  } catch(e){ showToast('Gagal proses gambar','error'); }
 }
 function requestSaveProduct(){
   startLoading('Menyimpan Produk...', 'Sedang menyimpan produk lo', () => { saveProduct(); });
@@ -1547,32 +1607,26 @@ function saveProduct(){
   const deskripsi = document.getElementById('pDeskripsi').value.trim();
   const linkMediafire = document.getElementById('pLinkMediafire').value.trim();
   const waLink = document.getElementById('pWALink').value.trim();
-  if(!nama||!harga){showToast('Nama & harga wajib!','error');return}
-  if(tipe==='wa'&&!waLink){showToast('Nomor WA wajib!','error');return}
-  if(tipe==='digital'&&!linkMediafire){showToast('Link MediaFire wajib!','error');return}
+  if(!nama||!harga){ showToast('Nama & harga wajib!','error'); return; }
+  if(tipe==='wa'&&!waLink){ showToast('Nomor WA wajib!','error'); return; }
+  if(tipe==='digital'&&!linkMediafire){ showToast('Link MediaFire wajib!','error'); return; }
   const data = {
-    nama, harga, kategori, deskripsi,
-    stock: stock, sold: 0,
-    penjual: currentUser, tipe,
-    linkMediafire: tipe==='digital'?linkMediafire:'',
-    waLink: tipe==='wa'?waLink:'',
-    banner: bannerBase64,
-    createdAt: Date.now()
+    nama, harga, kategori, deskripsi, stock, sold: 0, penjual: currentUser, tipe,
+    linkMediafire: tipe==='digital'?linkMediafire:'', waLink: tipe==='wa'?waLink:'',
+    banner: bannerBase64, createdAt: Date.now()
   };
   db.ref('warungdigital/products').push(data).then(()=>{
-    closeModal(); bannerBase64='';
-    showToast('Produk ditambah!','success');
-    renderJualanProduk();
+    closeModal(); bannerBase64 = '';
+    showToast('Produk ditambah!','success'); renderJualanProduk();
   }).catch(e=>showToast('❌ '+e.message,'error'));
 }
 function requestDeleteProduct(id){
-  const p = products[id];
-  if(!p) return;
-  if(p.penjual!==currentUser){showToast('Bukan produk lo!','error');return}
+  const p = products[id]; if(!p) return;
+  if(p.penjual!==currentUser){ showToast('Bukan produk lo!','error'); return; }
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji('em-warning','em-lg')} Hapus Produk?</h2>
-    <p style="font-size:14px;opacity:.8;margin-bottom:16px">Produk "<strong>${escapeHtml(p.nama)}</strong>" bakal dihapus permanen. Lo yakin?</p>
+    <p style="font-size:14px;opacity:.8;margin-bottom:16px">Produk "<strong>${escapeHtml(p.nama)}</strong>" bakal dihapus permanen.</p>
     <button class="btn btn-danger btn-block" onclick="closeModal();confirmDeleteProduct('${id}')">${emoji('em-trash','em')} Ya, Hapus</button>
     <button class="btn btn-secondary btn-block" onclick="closeModal()">${emoji('em-close','em')} Batal</button>
   `);
@@ -1582,15 +1636,123 @@ function confirmDeleteProduct(id){
   startLoading('Menghapus Produk...', 'Sedang menghapus produk lo', () => {
     if(!pendingDeleteId) return;
     db.ref('warungdigital/products').child(pendingDeleteId).remove().then(()=>{
-      showToast('Produk dihapus','success');
-      renderJualanProduk();
-      pendingDeleteId = null;
+      showToast('Produk dihapus','success'); renderJualanProduk(); pendingDeleteId = null;
     }).catch(e=>showToast('❌ '+e.message,'error'));
   });
 }
 
+function renderDownload(){
+  const el = document.getElementById('downloadGrid');
+  if(!el) return;
+  const list = Object.entries(downloadItems).map(([id,v])=>({id,...v}));
+  if(list.length === 0){
+    el.innerHTML = `<div class="empty">${emoji('em-cloud','em-2xl')}<p>Belum ada file gratisan. Jadilah yang pertama upload!</p></div>`;
+    return;
+  }
+  el.innerHTML = list.reverse().map(d=>`
+    <div class="download-card">
+      <div class="thumb">
+        ${d.banner?`<img src="${d.banner}" />`:emoji('em-cloud','em-2xl')}
+        <div class="badge-free">FREE</div>
+      </div>
+      <div class="info">
+        <div class="nama">${escapeHtml(d.nama)}</div>
+        <div class="uploader">${emoji('em-user','em')} ${escapeHtml(d.uploader||'Anonim')}</div>
+        <div class="desk">${escapeHtml(d.deskripsi||'')}</div>
+        <button class="btn-dl" onclick="doDownload('${d.id}')">${emoji('em-download','em')} Download Gratis</button>
+      </div>
+    </div>
+  `).join('');
+}
+function doDownload(id){
+  const d = downloadItems[id]; if(!d) return;
+  if(d.tipe === 'link' && d.link){
+    db.ref('warungdigital/download').child(id).child('downloads').transaction(c => (c || 0) + 1);
+    window.open(d.link, '_blank');
+    showToast('Link download dibuka!','success');
+  } else if(d.tipe === 'file' && d.fileData){
+    db.ref('warungdigital/download').child(id).child('downloads').transaction(c => (c || 0) + 1);
+    const a = document.createElement('a');
+    a.href = d.fileData;
+    a.download = d.fileName || 'download';
+    a.click();
+    showToast('File lagi didownload!','success');
+  }
+}
+function showAddDownload(){
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+  bannerBase64 = '';
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h2>${emoji('em-cloud','em-lg')} Upload Gratisan</h2>
+    <label>Nama File / Produk</label>
+    <input type="text" id="dlNama" placeholder="Contoh: Template CV Gratis" />
+    <label>Deskripsi</label>
+    <textarea id="dlDesk" rows="3" placeholder="Deskripsi singkat..."></textarea>
+    <label>Tipe Upload</label>
+    <select id="dlTipe" onchange="toggleDlTipe()">
+      <option value="link">Link Download (MediaFire / Google Drive / dll)</option>
+      <option value="file">Upload File Langsung (max 5MB)</option>
+    </select>
+    <div id="dlLinkSection">
+      <label>Link Download</label>
+      <input type="text" id="dlLink" placeholder="https://..." />
+    </div>
+    <div id="dlFileSection" class="hidden">
+      <label>Pilih File (max 5MB)</label>
+      <input type="file" id="dlFile" onchange="readDlFile(this)" />
+      <div id="dlFileInfo" style="font-size:12px;opacity:.6;margin-top:6px"></div>
+    </div>
+    <label style="margin-top:12px">Banner Preview Produk (opsional)</label>
+    <input type="file" id="dlBanner" accept="image/*" onchange="readDlBanner(this)" />
+    <div id="dlBannerInfo" style="font-size:12px;opacity:.6;margin-top:4px"></div>
+    <button class="btn btn-primary btn-block" onclick="saveDownload()">${emoji('em-check','em')} Upload</button>
+  `);
+}
+function toggleDlTipe(){
+  const t = document.getElementById('dlTipe').value;
+  document.getElementById('dlLinkSection').classList.toggle('hidden', t!=='link');
+  document.getElementById('dlFileSection').classList.toggle('hidden', t!=='file');
+}
+let dlFileBase64 = '', dlFileName = '';
+function readDlFile(input){
+  const file = input.files[0]; if(!file) return;
+  if(file.size > 5*1024*1024){ showToast('File max 5MB!','error'); input.value=''; return; }
+  const r = new FileReader();
+  r.onload = e=>{ dlFileBase64 = e.target.result; dlFileName = file.name; document.getElementById('dlFileInfo').textContent = `✅ ${file.name} (${(file.size/1024).toFixed(1)} KB)`; };
+  r.readAsDataURL(file);
+}
+async function readDlBanner(input){
+  const file = input.files[0]; if(!file) return;
+  if(file.size > 5*1024*1024){ showToast('Banner max 5MB!','error'); input.value=''; return; }
+  try {
+    const c = await compressImage(file, 1000, 0.75);
+    bannerBase64 = c;
+    document.getElementById('dlBannerInfo').textContent = `✅ ${file.name}`;
+  } catch(e){ showToast('Gagal proses','error'); }
+}
+function saveDownload(){
+  const nama = document.getElementById('dlNama').value.trim();
+  const deskripsi = document.getElementById('dlDesk').value.trim();
+  const tipe = document.getElementById('dlTipe').value;
+  if(!nama){ showToast('Nama wajib!','error'); return; }
+  const data = { nama, deskripsi, tipe, uploader: currentUser, createdAt: Date.now(), downloads: 0, banner: bannerBase64 };
+  if(tipe === 'link'){
+    const link = document.getElementById('dlLink').value.trim();
+    if(!link){ showToast('Link wajib!','error'); return; }
+    data.link = link;
+  } else {
+    if(!dlFileBase64){ showToast('Pilih file dulu!','error'); return; }
+    data.fileData = dlFileBase64; data.fileName = dlFileName;
+  }
+  db.ref('warungdigital/download').push(data).then(()=>{
+    closeModal(); bannerBase64 = ''; dlFileBase64 = ''; dlFileName = '';
+    showToast('✅ Upload berhasil!','success'); renderDownload();
+  }).catch(e=>showToast('❌ '+e.message,'error'));
+}
+
 function renderCalculator(){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
   calcExpr = '';
   const d = document.getElementById('calcDisplay');
   if(d) d.textContent = '0';
@@ -1619,8 +1781,7 @@ function calcInput(val){
   if(val === '='){
     try {
       const result = Function('"use strict";return(' + calcExpr + ')')();
-      display.textContent = result;
-      calcExpr = String(result);
+      display.textContent = result; calcExpr = String(result);
     } catch(e) { display.textContent = 'Error'; calcExpr = ''; }
     return;
   }
@@ -1633,21 +1794,16 @@ function saveCalcResult(){
   if(!currentUser){ showToast('Login dulu!','error'); return; }
   const display = document.getElementById('calcDisplay');
   const result = parseFloat(display.textContent);
-  if(isNaN(result) || result === 0){ showToast('Hasil kalkulasi kosong!','error'); return; }
-  if(!confirm(`Simpen ${formatRp(result)} ke catatan penghasilan?`)) return;
-  db.ref('warungdigital/income').child(currentUser).push({
-    nominal: result,
-    timestamp: Date.now()
-  }).then(()=>{
-    showToast('✅ Catatan penghasilan tersimpan!','success');
-    renderCalculator();
+  if(isNaN(result) || result === 0){ showToast('Hasil kosong!','error'); return; }
+  if(!confirm(`Simpen ${formatRp(result)} ke catatan?`)) return;
+  db.ref('warungdigital/income').child(currentUser).push({ nominal: result, timestamp: Date.now() }).then(()=>{
+    showToast('✅ Catatan tersimpan!','success'); renderCalculator();
   });
 }
 function hapusIncome(id){
   if(!confirm('Hapus catatan ini?')) return;
   db.ref('warungdigital/income').child(currentUser).child(id).remove().then(()=>{
-    showToast('Catatan dihapus','success');
-    renderCalculator();
+    showToast('Catatan dihapus','success'); renderCalculator();
   });
 }
 
@@ -1685,38 +1841,31 @@ function playMusic(id){
   const audio = document.getElementById('globalAudio');
   audio.src = m.data;
   audio.play().then(()=>{
-    currentMusicId = id;
-    isMusicPlaying = true;
+    currentMusicId = id; isMusicPlaying = true;
     document.getElementById('musicBar').classList.add('show');
     document.getElementById('musicBarName').textContent = m.nama || 'Lagu';
     document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
     document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
     renderMusicPage();
     localStorage.setItem('wd_music_id', id);
-  }).catch(e=>{
-    showToast('❌ Gagal muter lagu: ' + e.message,'error');
-  });
+  }).catch(e=>showToast('❌ Gagal muter: ' + e.message,'error'));
 }
 function toggleMusicPlay(){
   const audio = document.getElementById('globalAudio');
   if(isMusicPlaying){
-    audio.pause();
-    isMusicPlaying = false;
+    audio.pause(); isMusicPlaying = false;
     document.getElementById('musicBarStatus').textContent = 'Di-pause';
     document.getElementById('musicToggleBtn').innerHTML = emoji('em-play','em-lg');
   } else {
-    audio.play();
-    isMusicPlaying = true;
+    audio.play(); isMusicPlaying = true;
     document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
     document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
   }
 }
 function stopMusic(){
   const audio = document.getElementById('globalAudio');
-  audio.pause();
-  audio.src = '';
-  isMusicPlaying = false;
-  currentMusicId = null;
+  audio.pause(); audio.src = '';
+  isMusicPlaying = false; currentMusicId = null;
   document.getElementById('musicBar').classList.remove('show');
   localStorage.removeItem('wd_music_id');
   renderMusicPage();
@@ -1728,11 +1877,11 @@ function autoLoadMusic(){
     if(allMusic.length === 0) return;
     const savedId = localStorage.getItem('wd_music_id');
     let playId = null;
-    if(savedId && allMusic.find(m=>m.id===savedId)){
-      playId = savedId;
-    } else {
+    if(savedId && allMusic.find(m=>m.id===savedId)) playId = savedId;
+    else {
       const def = allMusic.find(m=>m.isDefault);
       if(def) playId = def.id;
+      else playId = allMusic[0].id;
     }
     if(playId){
       const m = allMusic.find(x=>x.id===playId);
@@ -1740,39 +1889,51 @@ function autoLoadMusic(){
         const audio = document.getElementById('globalAudio');
         audio.src = m.data;
         audio.volume = 0.5;
-        audio.play().then(()=>{
-          currentMusicId = playId;
-          isMusicPlaying = true;
-          document.getElementById('musicBar').classList.add('show');
-          document.getElementById('musicBarName').textContent = m.nama || 'Lagu';
-          document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
-          document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
-        }).catch(()=>{
-          showTopNotif('🎵 Musik Tersedia', 'Klik di mana aja buat play lagu', 'info');
-          document.addEventListener('click', function once(){
-            document.removeEventListener('click', once);
-            audio.play().then(()=>{
-              isMusicPlaying = true;
-              document.getElementById('musicBar').classList.add('show');
-              document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
-            }).catch(()=>{});
-          });
-        });
+        currentMusicId = playId;
+        document.getElementById('musicBarName').textContent = m.nama || 'Lagu';
+        document.getElementById('musicToggleBtn').innerHTML = emoji('em-pause','em-lg');
+        tryAutoPlay(audio, m);
       }
     }
+  });
+}
+function tryAutoPlay(audio, m){
+  audio.play().then(()=>{
+    isMusicPlaying = true;
+    document.getElementById('musicBar').classList.add('show');
+    document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
+  }).catch(()=>{
+    const unlockEvents = ['click','touchstart','keydown','scroll','pointerdown'];
+    const tryPlay = ()=>{
+      audio.play().then(()=>{
+        isMusicPlaying = true;
+        document.getElementById('musicBar').classList.add('show');
+        document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
+        unlockEvents.forEach(ev => document.removeEventListener(ev, tryPlay));
+      }).catch(()=>{});
+    };
+    unlockEvents.forEach(ev => document.addEventListener(ev, tryPlay, { once: false, passive: true }));
+    const muteUnlock = ()=>{
+      audio.muted = true;
+      audio.play().then(()=>{
+        audio.muted = false;
+        isMusicPlaying = true;
+        document.getElementById('musicBar').classList.add('show');
+        document.getElementById('musicBarStatus').textContent = 'Sedang diputar 🎵';
+        unlockEvents.forEach(ev => document.removeEventListener(ev, muteUnlock));
+      }).catch(()=>{});
+    };
+    unlockEvents.forEach(ev => document.addEventListener(ev, muteUnlock, { once: false, passive: true }));
   });
 }
 function hapusMusic(id){
   if(!isDev){ showToast('Cuma Dev yang bisa hapus!','error'); return; }
   if(!confirm('Hapus lagu ini?')) return;
-  db.ref('warungdigital/music').child(id).remove().then(()=>{
-    showToast('Lagu dihapus','success');
-    renderMusicPage();
-  });
+  db.ref('warungdigital/music').child(id).remove().then(()=>{ showToast('Lagu dihapus','success'); renderMusicPage(); });
 }
 
 function renderOrders(){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
   const el = document.getElementById('ordersList');
   if(!el) return;
   db.ref('warungdigital/orders').once('value', snap=>{
@@ -1784,7 +1945,7 @@ function renderOrders(){
     orders.sort((a,b)=>b.createdAt-a.createdAt);
     const oc = document.getElementById('ordersCount');
     if(oc) oc.textContent = orders.length + ' transaksi';
-    if(orders.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada history pembelian</p></div>`;return}
+    if(orders.length===0){el.innerHTML=`<div class="empty">${emoji('em-receipt','em-2xl')}<p>Belum ada history</p></div>`;return}
     el.innerHTML = orders.map(o=>renderOrderCard(o, o.penjual===currentUser?'penjual':'pembeli')).join('');
   });
 }
@@ -1794,10 +1955,16 @@ function renderOrderCard(o, role){
     verified: {label:'✅ Selesai', cls:'status-verified'},
     cancelled: {label:'❌ Dibatalkan', cls:'status-cancelled'}
   };
-  const st = statusMap[o.status] || {label:'⏳ Nunggu Konfirmasi', cls:'status-waiting'};
+  const st = statusMap[o.status] || statusMap.proof_uploaded;
   const time = new Date(o.createdAt).toLocaleString('id-ID');
   const items = o.items ? o.items.map(i=>`${escapeHtml(i.nama)} ×${i.qty}`).join(', ') : escapeHtml(o.produkNama||'');
   const cancelInfo = o.status === 'cancelled' && o.cancelReason ? `<div style="background:rgba(231,76,60,.1);border-left:3px solid #e74c3c;padding:8px 12px;border-radius:8px;margin-top:8px;font-size:12px">❌ <strong>Dibatalkan:</strong> ${escapeHtml(o.cancelReason)}</div>` : '';
+  const buktiHtml = o.bukti ? `
+    <div style="margin-top:10px">
+      <div style="font-size:11px;opacity:.6;margin-bottom:4px">📸 Bukti Transfer:</div>
+      <img src="${o.bukti}" style="max-width:100%;max-height:200px;border-radius:12px;cursor:pointer;border:1px solid #2a3340" onclick="previewBukti('${o.key}')" />
+    </div>
+  ` : '';
   return `
     <div class="order-item">
       <div class="head">
@@ -1811,12 +1978,7 @@ function renderOrderCard(o, role){
         ${emoji('em-receipt','em')} ${time}
         ${cancelInfo}
       </div>
-      ${o.bukti ? `
-        <div style="margin-top:10px">
-          <div style="font-size:11px;opacity:.6;margin-bottom:4px">📸 Bukti Transfer:</div>
-          <img src="${o.bukti}" style="max-width:100%;max-height:200px;border-radius:12px;cursor:pointer;border:1px solid #2a3340" onclick="previewBukti('${o.key}')" />
-        </div>
-      ` : ''}
+      ${buktiHtml}
       <div class="actions">
         ${o.status==='proof_uploaded' && role==='penjual' ? `
           <button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')">${emoji('em-check','em')} Konfirmasi</button>
@@ -1832,7 +1994,7 @@ function renderOrderCard(o, role){
 function previewBukti(orderKey){
   db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
     const o = snap.val();
-    if(!o || !o.bukti) return;
+    if(!o || !o.bukti){ showToast('Bukti gak ada','error'); return; }
     openModal(`
       <button class="close-btn" onclick="closeModal()">✕</button>
       <h2>📸 Bukti Transfer</h2>
@@ -1848,7 +2010,7 @@ function previewBukti(orderKey){
   });
 }
 function confirmOrder(orderKey){
-  if(!confirm('Konfirmasi pesanan ini? Link download bakal dikirim ke pembeli.')) return;
+  if(!confirm('Konfirmasi pesanan ini?')) return;
   db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
     const o = snap.val();
     const produk = products[o.produkId];
@@ -1869,7 +2031,6 @@ function showCancelOrder(orderKey){
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2 style="color:#e74c3c">${emoji('em-warning','em-lg')} Cancel Pesanan</h2>
-    <p style="font-size:14px;opacity:.8;margin-bottom:14px">Kenapa lo mau cancel pesanan ini?</p>
     <label>Alasan Cancel</label>
     <select id="cancelReasonSelect" onchange="document.getElementById('cancelReasonCustom').style.display = this.value === 'lainnya' ? 'block' : 'none'">
       <option value="">-- Pilih Alasan --</option>
@@ -1877,9 +2038,8 @@ function showCancelOrder(orderKey){
       <option value="Nominal gak sesuai">Nominal gak sesuai</option>
       <option value="Nama tujuan gak sesuai">Nama tujuan gak sesuai</option>
       <option value="Bukti transfer gak jelas">Bukti transfer gak jelas</option>
-      <option value="Bukan bukti transfer resmi">Bukan bukti transfer resmi</option>
       <option value="Stok habis">Stok habis</option>
-      <option value="lainnya">Lainnya (tulis sendiri)</option>
+      <option value="lainnya">Lainnya</option>
     </select>
     <textarea id="cancelReasonCustom" rows="2" placeholder="Tulis alasan..." style="display:none;margin-top:8px"></textarea>
     <button class="btn btn-danger btn-block" onclick="submitCancelOrder('${orderKey}')">${emoji('em-trash','em')} Cancel Pesanan</button>
@@ -1891,44 +2051,30 @@ function submitCancelOrder(orderKey){
   const custom = document.getElementById('cancelReasonCustom');
   let reason = select.value;
   if(reason === 'lainnya' || !reason) reason = custom.value.trim();
-  if(!reason){ showToast('Pilih atau tulis alasan cancel!','error'); return; }
+  if(!reason){ showToast('Pilih alasan!','error'); return; }
   db.ref('warungdigital/orders').child(orderKey).update({
-    status: 'cancelled',
-    cancelReason: reason,
-    cancelledAt: Date.now(),
-    cancelledBy: currentUser
+    status: 'cancelled', cancelReason: reason, cancelledAt: Date.now(), cancelledBy: currentUser
   }).then(()=>{
-    closeModal();
-    showToast('❌ Pesanan dibatalkan','success');
+    closeModal(); showToast('❌ Pesanan dibatalkan','success');
     renderOrders(); renderJualanPesanan();
-  }).catch(e=>showToast('❌ '+e.message,'error'));
+  });
 }
-
 function reportOrder(orderKey){
   db.ref('warungdigital/orders').child(orderKey).once('value', snap=>{
-    const o = snap.val();
-    if(!o) return;
+    const o = snap.val(); if(!o) return;
     openModal(`
       <button class="close-btn" onclick="closeModal()">✕</button>
       <h2>${emoji('em-report','em-lg')} Lapor ke Developer</h2>
-      <p style="font-size:13px;opacity:.7;margin-bottom:14px">Lapor order ini ke Developer kalau ada masalah.</p>
-      <div class="verify-box">
-        <div class="label">Order</div>
-        <div class="val">${escapeHtml(o.orderId)}</div>
-        <div class="label" style="margin-top:6px">Produk</div>
-        <div class="val">${escapeHtml(o.produkNama||'-')}</div>
-      </div>
       <label>Alasan Lapor</label>
       <select id="reportReasonSelect" onchange="document.getElementById('reportReasonCustom').style.display = this.value === 'lainnya' ? 'block' : 'none'">
         <option value="">-- Pilih --</option>
         <option value="Penjual gak konfirmasi">Penjual gak konfirmasi</option>
         <option value="Barang gak sesuai">Barang gak sesuai</option>
         <option value="Penjual scam">Penjual scam</option>
-        <option value="Chat mencurigakan">Chat mencurigakan</option>
         <option value="lainnya">Lainnya</option>
       </select>
-      <textarea id="reportReasonCustom" rows="2" placeholder="Tulis alasan..." style="display:none;margin-top:8px"></textarea>
-      <button class="btn btn-warning btn-block" onclick="submitReport('${orderKey}')">${emoji('em-send','em')} Kirim Laporan</button>
+      <textarea id="reportReasonCustom" rows="2" style="display:none;margin-top:8px"></textarea>
+      <button class="btn btn-warning btn-block" onclick="submitReport('${orderKey}')">${emoji('em-send','em')} Kirim</button>
     `);
   });
 }
@@ -1937,591 +2083,14 @@ function submitReport(orderKey){
   const custom = document.getElementById('reportReasonCustom');
   let reason = select.value;
   if(reason === 'lainnya' || !reason) reason = custom.value.trim();
-  if(!reason){ showToast('Pilih alasan lapor!','error'); return; }
-  db.ref('warungdigital/reports').push({
-    orderKey, reason,
-    reporter: currentUser,
-    timestamp: Date.now(),
-    status: 'pending'
-  }).then(()=>{
-    closeModal();
-    showToast('✅ Laporan terkirim ke Developer!','success');
-  });
-}
-
-function renderDev(){
-  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
-  const el = document.getElementById('devContent');
-  const dc = document.getElementById('devCount');
-  if(!el) return;
-  db.ref('warungdigital').once('value', snap=>{
-    const data = snap.val() || {};
-    const users = data.users || {};
-    const products = data.products || {};
-    const orders = data.orders || {};
-    const reports = data.reports || {};
-    const activities = data.activities || {};
-    const banner = data.settings?.banner || '';
-    const bannerType = data.settings?.bannerType || 'image';
-    const bgWeb = data.settings?.bgWeb || '';
-    const bgType = data.settings?.bgType || 'image';
-    const totalUsers = Object.keys(users).length;
-    const totalProducts = Object.keys(products).length;
-    const totalOrders = Object.keys(orders).length;
-    let revenue = 0, pending = 0, cancelled = 0, verified = 0;
-    Object.values(orders).forEach(o=>{
-      if(o.status === 'verified'){ revenue += o.total || 0; verified++; }
-      if(o.status === 'proof_uploaded') pending++;
-      if(o.status === 'cancelled') cancelled++;
-    });
-    if(dc) dc.textContent = totalUsers + ' user';
-    el.innerHTML = `
-      <div class="banner-dev" id="devBanner" onclick="changeDevBanner()">
-        ${banner ? (bannerType === 'video' ? `<video src="${banner}" autoplay muted loop playsinline></video>` : `<img src="${banner}" />`) : `<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik buat upload banner</div></div>`}
-        <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:4px 12px;border-radius:20px;font-size:11px;color:#fff">✏️ Ganti Banner</div>
-      </div>
-      <div class="help-dev-box" style="margin-bottom:16px">
-        <strong>👑 Developer Mode Aktif</strong><br>
-        Lo punya akses khusus ke panel developer. Gunakan dengan bijak!
-      </div>
-      <div class="stats" style="margin-bottom:20px">
-        <div class="stat"><div class="icon">👥</div><div class="num">${totalUsers}</div><div class="label">Total User</div></div>
-        <div class="stat"><div class="icon">📦</div><div class="num">${totalProducts}</div><div class="label">Produk</div></div>
-        <div class="stat"><div class="icon">🛒</div><div class="num">${totalOrders}</div><div class="label">Order</div></div>
-        <div class="stat"><div class="icon">💰</div><div class="num">${formatRp(revenue)}</div><div class="label">Revenue</div></div>
-      </div>
-      <div class="tabs" style="margin-bottom:20px">
-        <button class="active" onclick="switchDevTab('users',this)">👥 User</button>
-        <button onclick="switchDevTab('activity',this)">📊 Activity</button>
-        <button onclick="switchDevTab('reports',this)">🚨 Report</button>
-        <button onclick="switchDevTab('broadcast',this)">📢 Broadcast</button>
-        <button onclick="switchDevTab('music',this)">🎵 Musik</button>
-        <button onclick="switchDevTab('bg',this)">🖼️ Background</button>
-        <button onclick="switchDevTab('settings',this)">🚀 GitHub & Vercel</button>
-      </div>
-      <div id="dev-users"></div>
-      <div id="dev-activity" class="hidden"></div>
-      <div id="dev-reports" class="hidden"></div>
-      <div id="dev-broadcast" class="hidden"></div>
-      <div id="dev-music" class="hidden"></div>
-      <div id="dev-bg" class="hidden"></div>
-      <div id="dev-settings" class="hidden"></div>
-    `;
-    renderDevUsers(users, activities);
-    renderDevActivity(users, activities);
-    renderDevReports(reports);
-    renderDevBroadcast();
-  });
-}
-function changeDevBanner(){
-  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/*,video/mp4,video/webm';
-  input.onchange = e=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    const isVideo = file.type.startsWith('video/');
-    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
-    const maxLabel = isVideo ? '5MB' : '2MB';
-    if(file.size > maxSize){ showToast(`Banner max ${maxLabel}!`,'error'); return; }
-    const reader = new FileReader();
-    reader.onload = ev=>{
-      db.ref('warungdigital/settings').update({
-        banner: ev.target.result,
-        bannerType: isVideo ? 'video' : 'image'
-      }).then(()=>{
-        showToast('✅ Banner diganti!','success');
-        loadHomeBanner();
-        renderDev();
-      });
-    };
-    reader.readAsDataURL(file);
-  };
-  input.click();
-}
-function switchDevTab(tab, el){
-  document.querySelectorAll('#page-dev .tabs button').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-  ['users','activity','reports','broadcast','music','bg','settings'].forEach(t=>{
-    const e = document.getElementById('dev-'+t);
-    if(e) e.classList.toggle('hidden', t !== tab);
-  });
-  if(tab === 'settings') renderDevSettings();
-  if(tab === 'music') renderDevMusic();
-  if(tab === 'bg') renderDevBg();
-}
-function renderDevMusic(){
-  const el = document.getElementById('dev-music');
-  if(!el) return;
-  el.innerHTML = `
-    <div class="help-dev-box" style="margin-bottom:16px">
-      <strong>🎵 Kelola Musik Web</strong><br>
-      Upload MP3 atau video (bakal otomatis jadi audio). User bisa milih lagu, dan default-nya bisa diatur.
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">➕ Upload Lagu Baru</div></div>
-      <div class="form-group">
-        <label>Nama Lagu</label>
-        <input type="text" id="musicNama" placeholder="Contoh: Lofi Beats" />
-      </div>
-      <div class="form-group">
-        <label>File MP3 / Video</label>
-        <input type="file" id="musicFile" accept="audio/*,video/*" />
-        <div style="font-size:11px;opacity:.5;margin-top:4px">Max 5MB. Video bakal otomatis jadi audio.</div>
-      </div>
-      <div class="form-group">
-        <label style="display:flex;align-items:center;gap:8px">
-          <input type="checkbox" id="musicDefault" style="width:auto;margin:0" />
-          Set sebagai lagu default (auto-play buat user baru)
-        </label>
-      </div>
-      <button class="btn btn-primary btn-block" onclick="uploadMusicDev()">${emoji('em-upload','em')} Upload Lagu</button>
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">🎶 Daftar Lagu</div></div>
-      <div class="body" id="musicDevList" style="margin-top:12px"></div>
-    </div>
-  `;
-  db.ref('warungdigital/music').once('value', snap=>{
-    const items = snap.val() || {};
-    const arr = Object.entries(items).map(([id,v])=>({id,...v}));
-    arr.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-    const list = document.getElementById('musicDevList');
-    if(!list) return;
-    if(arr.length === 0){ list.innerHTML = '<div class="empty"><p>Belum ada lagu</p></div>'; return; }
-    list.innerHTML = arr.map(m=>`
-      <div class="income-item">
-        <div class="info">
-          <div class="nama">🎵 ${escapeHtml(m.nama||'Lagu')} ${m.isDefault ? '<span style="color:#f1c40f;font-size:11px">⭐ DEFAULT</span>' : ''}</div>
-          <div class="tanggal">${new Date(m.createdAt||0).toLocaleString('id-ID')}</div>
-        </div>
-        <div style="display:flex;gap:4px">
-          <button class="del" onclick="setMusicDefault('${m.id}')" title="Set Default">⭐</button>
-          <button class="del" onclick="hapusMusic('${m.id}')" title="Hapus">${emoji('em-trash','em')}</button>
-        </div>
-      </div>
-    `).join('');
-  });
-}
-function uploadMusicDev(){
-  const nama = document.getElementById('musicNama').value.trim() || 'Lagu';
-  const file = document.getElementById('musicFile').files[0];
-  const isDefault = document.getElementById('musicDefault').checked;
-  if(!file){ showToast('Pilih file dulu!','error'); return; }
-  if(file.size > 5*1024*1024){ showToast('File max 5MB!','error'); return; }
-  const reader = new FileReader();
-  reader.onload = ev=>{
-    const data = ev.target.result;
-    const musicData = {
-      nama: nama,
-      data: data,
-      isDefault: isDefault,
-      createdAt: Date.now()
-    };
-    const pushFn = ()=>{
-      db.ref('warungdigital/music').push(musicData).then(()=>{
-        showToast('✅ Lagu berhasil diupload!','success');
-        renderDevMusic();
-      }).catch(e=>showToast('❌ '+e.message,'error'));
-    };
-    if(isDefault){
-      db.ref('warungdigital/music').once('value', snap=>{
-        const updates = {};
-        snap.forEach(c=>{
-          if(c.val().isDefault) updates[c.key + '/isDefault'] = false;
-        });
-        if(Object.keys(updates).length > 0){
-          db.ref('warungdigital/music').update(updates).then(pushFn);
-        } else {
-          pushFn();
-        }
-      });
-    } else {
-      pushFn();
-    }
-  };
-  reader.readAsDataURL(file);
-}
-function setMusicDefault(id){
-  if(!isDev){ showToast('Cuma Dev!','error'); return; }
-  db.ref('warungdigital/music').once('value', snap=>{
-    const updates = {};
-    snap.forEach(c=>{
-      updates[c.key + '/isDefault'] = (c.key === id);
-    });
-    db.ref('warungdigital/music').update(updates).then(()=>{
-      showToast('✅ Lagu default diatur!','success');
-      renderDevMusic();
-    });
-  });
-}
-function renderDevBg(){
-  const el = document.getElementById('dev-bg');
-  if(!el) return;
-  db.ref('warungdigital/settings').once('value', snap=>{
-    const s = snap.val() || {};
-    el.innerHTML = `
-      <div class="help-dev-box" style="margin-bottom:16px">
-        <strong>🖼️ Background Web</strong><br>
-        Atur background web pake gambar atau video. User biasa gak bisa ganti.
-      </div>
-      <div class="order-item">
-        <div class="head"><div class="oid">🎨 Background Sekarang</div></div>
-        <div class="banner-dev" id="devBgPreview" onclick="changeDevBg()">
-          ${s.bgWeb ? (s.bgType === 'video' ? `<video src="${s.bgWeb}" autoplay muted loop playsinline></video>` : `<img src="${s.bgWeb}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik buat upload background</div></div>`}
-          <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:4px 12px;border-radius:20px;font-size:11px;color:#fff">✏️ Ganti Background</div>
-        </div>
-        <button class="btn btn-danger btn-block" onclick="hapusDevBg()">${emoji('em-trash','em')} Hapus Background</button>
-      </div>
-    `;
-  });
-}
-function changeDevBg(){
-  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/*,video/mp4,video/webm';
-  input.onchange = e=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    const isVideo = file.type.startsWith('video/');
-    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
-    const maxLabel = isVideo ? '5MB' : '2MB';
-    if(file.size > maxSize){ showToast(`Background max ${maxLabel}!`,'error'); return; }
-    const reader = new FileReader();
-    reader.onload = ev=>{
-      db.ref('warungdigital/settings').update({
-        bgWeb: ev.target.result,
-        bgType: isVideo ? 'video' : 'image'
-      }).then(()=>{
-        showToast('✅ Background diganti!','success');
-        applyBgWeb();
-        renderDevBg();
-      });
-    };
-    reader.readAsDataURL(file);
-  };
-  input.click();
-}
-function hapusDevBg(){
-  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
-  if(!confirm('Hapus background web?')) return;
-  db.ref('warungdigital/settings').update({ bgWeb: '', bgType: '' }).then(()=>{
-    showToast('Background dihapus','success');
-    applyBgWeb();
-    renderDevBg();
-  });
-}
-function renderDevUsers(users, activities){
-  const el = document.getElementById('dev-users');
-  if(!el) return;
-  const arr = Object.entries(users).map(([nama, u])=>({nama, ...u}));
-  arr.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-  if(arr.length === 0){ el.innerHTML = '<div class="empty"><p>Belum ada user</p></div>'; return; }
-  el.innerHTML = arr.map(u=>{
-    const act = activities[u.nama] || {};
-    const isOnline = act.lastSeen && (Date.now() - act.lastSeen < 5*60*1000);
-    const statusText = isOnline ? '🟢 Online' : '⚫ Offline';
-    return `
-    <div class="order-item">
-      <div class="head">
-        <div class="oid">${escapeHtml(u.nama)} ${u.isDev ? '<span style="color:#f1c40f;font-size:11px">👑 DEV</span>' : ''}</div>
-        <div class="status ${isOnline ? 'status-verified' : 'status-cancelled'}">${statusText}</div>
-      </div>
-      <div class="body">
-        📅 Daftar: ${new Date(u.createdAt||0).toLocaleString('id-ID')}<br>
-        📱 WA: ${escapeHtml(u.wa||'-')}<br>
-        💳 E-Wallet: ${(u.ewallets||[]).length} · 📊 Status: ${escapeHtml(u.status||'-')}<br>
-        🔒 Password: <span style="background:#0f151c;padding:2px 8px;border-radius:6px;filter:blur(4px);user-select:none">••••••••</span> <span style="font-size:10px;opacity:.5">(disembunyiin)</span>
-      </div>
-      <div class="actions">
-        <button class="btn btn-sm btn-secondary" onclick="devViewAccount('${escapeHtml(u.nama)}')">${emoji('em-eye','em')} Lihat Akun</button>
-        <button class="btn btn-sm btn-warning" onclick="devResetPassword('${escapeHtml(u.nama)}')">${emoji('em-lock','em')} Reset Password</button>
-        <button class="btn btn-sm btn-danger" onclick="showDevDeleteUser('${escapeHtml(u.nama)}')">${emoji('em-trash','em')} Hapus Akun</button>
-      </div>
-    </div>
-  `}).join('');
-}
-function renderDevActivity(users, activities){
-  const el = document.getElementById('dev-activity');
-  if(!el) return;
-  const arr = Object.entries(activities).map(([nama, a])=>({nama, ...a}));
-  arr.sort((a,b)=>(b.lastSeen||0)-(a.lastSeen||0));
-  if(arr.length === 0){ el.innerHTML = '<div class="empty"><p>Belum ada aktivitas</p></div>'; return; }
-  el.innerHTML = arr.map(a=>{
-    const isOnline = a.lastSeen && (Date.now() - a.lastSeen < 5*60*1000);
-    return `
-      <div class="order-item">
-        <div class="head">
-          <div class="oid">👤 ${escapeHtml(a.nama)}</div>
-          <div class="status ${isOnline ? 'status-verified' : 'status-cancelled'}">${isOnline ? '🟢 Online' : '⚫ Offline'}</div>
-        </div>
-        <div class="body">
-          📄 Halaman: <strong>${escapeHtml(a.page||'-')}</strong><br>
-          🕐 Terakhir aktif: ${a.lastSeen ? new Date(a.lastSeen).toLocaleString('id-ID') : '-'}<br>
-          💻 Device: ${escapeHtml((a.device||'-').substring(0,60))}
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-function renderDevReports(reports){
-  const el = document.getElementById('dev-reports');
-  if(!el) return;
-  const arr = Object.entries(reports).map(([id, r])=>({id, ...r}));
-  arr.sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
-  if(arr.length === 0){ el.innerHTML = '<div class="empty"><p>Belum ada laporan</p></div>'; return; }
-  el.innerHTML = arr.map(r=>`
-    <div class="order-item">
-      <div class="head">
-        <div class="oid">🚨 ${escapeHtml(r.reporter||'-')}</div>
-        <div class="status status-waiting">${new Date(r.timestamp||0).toLocaleDateString('id-ID')}</div>
-      </div>
-      <div class="body">
-        📋 Order: ${escapeHtml(r.orderKey||'-')}<br>
-        📝 Alasan: ${escapeHtml(r.reason||'-')}
-      </div>
-      <div class="actions">
-        <button class="btn btn-sm btn-secondary" onclick="viewReportChat('${escapeHtml(r.reporter)}')">${emoji('em-eye','em')} Liat Chat Terkait</button>
-        <button class="btn btn-sm btn-success" onclick="devMarkReport('${r.id}')">${emoji('em-check','em')} Selesai</button>
-        <button class="btn btn-sm btn-danger" onclick="devDeleteReport('${r.id}')">${emoji('em-trash','em')} Hapus</button>
-      </div>
-    </div>
-  `).join('');
-}
-function renderDevBroadcast(){
-  const el = document.getElementById('dev-broadcast');
-  if(!el) return;
-  el.innerHTML = `
-    <div class="help-warn-box" style="margin-bottom:16px">
-      <strong>📢 Kirim Pengumuman</strong><br>
-      Pesan bakal muncul di notif atas + notif system HP semua user.
-    </div>
-    <div class="form-group">
-      <label>Judul Pengumuman</label>
-      <input type="text" id="broadcastTitle" placeholder="Contoh: Maintenance" />
-    </div>
-    <div class="form-group">
-      <label>Isi Pengumuman</label>
-      <textarea id="broadcastMsg" rows="4" placeholder="Tulis pengumuman..."></textarea>
-    </div>
-    <button class="btn btn-primary btn-block" onclick="sendBroadcast()">${emoji('em-send','em')} Kirim Pengumuman</button>
-  `;
-}
-function sendBroadcast(){
-  const title = document.getElementById('broadcastTitle').value.trim();
-  const msg = document.getElementById('broadcastMsg').value.trim();
-  if(!title || !msg){ showToast('Isi judul & pesan!','error'); return; }
-  db.ref('warungdigital/users').once('value', snap=>{
-    const users = snap.val() || {};
-    const promises = [];
-    Object.keys(users).forEach(nama => {
-      promises.push(db.ref('warungdigital/notifications').push({
-        target: nama,
-        title: title,
-        message: msg,
-        type: 'info',
-        from: 'Developer',
-        timestamp: Date.now(),
-        read: false
-      }));
-    });
-    Promise.all(promises).then(()=>{
-      showToast('✅ Pengumuman terkirim!','success');
-      showTopNotif('📢 ' + title, msg, 'info');
-    });
-  });
-}
-function renderDevSettings(){
-  const el = document.getElementById('dev-settings');
-  if(!el) return;
-  el.innerHTML = `
-    <div class="help-dev-box" style="margin-bottom:16px">
-      <strong>🚀 Atur Web via GitHub & Vercel</strong><br>
-      Update HTML, CSS, JS, dan file lain lewat GitHub. Vercel bakal auto-deploy.
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">🔗 Link Cepat</div></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/tree/main" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">📦 Repo GitHub</a>
-        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/edit/main/index.html" target="_blank" class="btn btn-warning btn-sm" style="text-decoration:none">✏️ Edit HTML</a>
-        <a href="https://vercel.com/webproj3ctid/warungdigital-vxz" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">⚡ Vercel</a>
-      </div>
-    </div>
-    <div class="order-item">
-      <div class="head"><div class="oid">📝 Cara Update Web</div></div>
-      <div class="body" style="margin-top:12px">
-        <div class="help-step"><div class="num">1</div><div class="text">Minta AI generate HTML baru.</div></div>
-        <div class="help-step"><div class="num">2</div><div class="text">Klik "Edit HTML" di atas.</div></div>
-        <div class="help-step"><div class="num">3</div><div class="text">Ctrl+A → Delete → Paste HTML baru.</div></div>
-        <div class="help-step"><div class="num">4</div><div class="text">Commit changes.</div></div>
-        <div class="help-step"><div class="num">5</div><div class="text">Tunggu Vercel auto-deploy ~30 detik.</div></div>
-      </div>
-    </div>
-  `;
-}
-function devViewAccount(nama){
-  db.ref('warungdigital/users').child(nama).once('value', snap=>{
-    const u = snap.val() || {};
-    const ewallets = (u.ewallets || []).map(e => `• ${e.jenis} — ${e.namaAkun} (${e.nomor.substring(0,4)}****${e.nomor.substring(e.nomor.length-4)})`).join('<br>') || '-';
-    openModal(`
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2>${emoji('em-eye','em-lg')} Lihat Akun</h2>
-      <div class="verify-box">
-        <div class="label">Nama</div>
-        <div class="val big">${escapeHtml(nama)}</div>
-        <div class="label" style="margin-top:8px">Status</div>
-        <div class="val">${escapeHtml(u.status||'Member')}</div>
-        <div class="label" style="margin-top:8px">Daftar</div>
-        <div class="val">${new Date(u.createdAt||0).toLocaleString('id-ID')}</div>
-        <div class="label" style="margin-top:8px">Nomor WA</div>
-        <div class="val">${escapeHtml(u.wa||'-')}</div>
-        <div class="label" style="margin-top:8px">E-Wallet</div>
-        <div class="val" style="font-size:13px;line-height:1.8">${ewallets}</div>
-        <div class="label" style="margin-top:8px">Password</div>
-        <div class="val" style="background:#0f151c;padding:8px 12px;border-radius:8px;filter:blur(5px);user-select:none">••••••••••••</div>
-      </div>
-      <p style="font-size:11px;opacity:.5;text-align:center;margin-top:8px">*Password & nomor e-wallet sebagian disembunyiin buat privasi</p>
-      <button class="btn btn-secondary btn-block" onclick="closeModal()">Tutup</button>
-    `);
-  });
-}
-function devResetPassword(nama){
-  const newPass = prompt(`Password baru buat ${nama} (min 6 karakter):`);
-  if(!newPass || newPass.length < 6){ showToast('Password min 6 karakter!','error'); return; }
-  db.ref('warungdigital/users').child(nama).update({ password: newPass }).then(()=>{
-    db.ref('warungdigital/notifications').push({
-      target: nama,
-      title: '🔑 Password Direset',
-      message: 'Password lo direset oleh Developer. Password baru: ' + newPass,
-      type: 'info',
-      from: 'Developer',
-      timestamp: Date.now(),
-      read: false
-    });
-    showToast('✅ Password direset & user dikasih notif','success');
-  });
-}
-function showDevDeleteUser(nama){
-  if(nama === DEV_NAME){ showToast('Gak bisa hapus akun developer!','error'); return; }
-  openModal(`
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <h2 style="color:#e74c3c">${emoji('em-warning','em-lg')} Hapus Akun?</h2>
-    <p style="font-size:14px;opacity:.8;margin-bottom:14px">Lo yakin mau hapus akun <strong>${escapeHtml(nama)}</strong>?</p>
-    <label>Alasan Hapus Akun</label>
-    <select id="deleteReasonSelect" onchange="document.getElementById('deleteReasonCustom').style.display = this.value === 'lainnya' ? 'block' : 'none'">
-      <option value="">-- Pilih Alasan --</option>
-      <option value="Melanggar aturan web">Melanggar aturan web</option>
-      <option value="Akun spam / fake">Akun spam / fake</option>
-      <option value="Jual produk ilegal">Jual produk ilegal</option>
-      <option value="Laporan dari user lain">Laporan dari user lain</option>
-      <option value="Permintaan sendiri">Permintaan sendiri</option>
-      <option value="lainnya">Lainnya</option>
-    </select>
-    <textarea id="deleteReasonCustom" rows="2" placeholder="Tulis alasan..." style="display:none;margin-top:8px"></textarea>
-    <button class="btn btn-danger btn-block" onclick="devDeleteUser('${escapeHtml(nama)}')">${emoji('em-trash','em')} Hapus Akun Permanen</button>
-    <button class="btn btn-secondary btn-block" onclick="closeModal()">Batal</button>
-  `);
-}
-function devDeleteUser(nama){
-  const select = document.getElementById('deleteReasonSelect');
-  const custom = document.getElementById('deleteReasonCustom');
-  let reason = select.value;
-  if(reason === 'lainnya' || !reason) reason = custom.value.trim();
-  if(!reason){ showToast('Pilih atau tulis alasan hapus!','error'); return; }
-  if(!confirm(`⚠️ Yakin hapus akun ${nama}?`)) return;
-  startLoading('Menghapus Akun...', 'Sedang menghapus akun + data terkait', () => {
-    db.ref('warungdigital/notifications').push({
-      target: nama,
-      title: '❌ Akun Dihapus',
-      message: `Akun lo dihapus oleh Developer. Alasan: ${reason}`,
-      type: 'danger',
-      from: 'Developer',
-      timestamp: Date.now(),
-      read: false
-    });
-    db.ref('warungdigital/products').orderByChild('penjual').equalTo(nama).once('value', psnap=>{
-      psnap.forEach(c => c.ref.remove());
-    });
-    db.ref('warungdigital/orders').once('value', osnap=>{
-      osnap.forEach(c=>{
-        const o = c.val();
-        if(o.pembeli === nama || o.penjual === nama) c.ref.remove();
-      });
-    });
-    db.ref('warungdigital/activities').child(nama).remove();
-    db.ref('warungdigital/income').child(nama).remove();
-    setTimeout(()=>{
-      db.ref('warungdigital/users').child(nama).remove().then(()=>{
-        db.ref('warungdigital/devLogs').push({
-          userName: nama, reason, deletedBy: currentUser, deletedAt: Date.now()
-        });
-        closeModal();
-        showToast(`✅ Akun ${nama} dihapus`,'success');
-        renderDev();
-      });
-    }, 1000);
-  });
-}
-function devMarkReport(id){
-  db.ref('warungdigital/reports').child(id).update({ status: 'done' }).then(()=>{
-    showToast('✅ Report ditandai selesai','success');
-    renderDev();
-  });
-}
-function devDeleteReport(id){
-  if(!confirm('Hapus report ini?')) return;
-  db.ref('warungdigital/reports').child(id).remove().then(()=>{
-    showToast('Report dihapus','success');
-    renderDev();
-  });
-}
-function viewReportChat(reporter){
-  db.ref('warungdigital/chats').once('value', snap=>{
-    const rooms = [];
-    snap.forEach(child=>{
-      const roomId = child.key;
-      if(roomId.includes(reporter)) rooms.push(roomId);
-    });
-    if(rooms.length === 0){ showToast('Gak ada chat terkait','warn'); return; }
-    openModal(`
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2>💬 Chat Terkait</h2>
-      ${rooms.map(r => `
-        <div class="verify-box" style="margin-bottom:10px">
-          <div class="label">Room</div>
-          <div class="val">${escapeHtml(r)}</div>
-          <button class="btn btn-sm btn-secondary" onclick="viewRoomChat('${r}')" style="margin-top:8px">${emoji('em-eye','em')} Liat Isi Chat</button>
-        </div>
-      `).join('')}
-      <button class="btn btn-secondary btn-block" onclick="closeModal()">Tutup</button>
-    `);
-  });
-}
-function viewRoomChat(roomId){
-  db.ref('warungdigital/chats').child(roomId).once('value', snap=>{
-    const msgs = snap.val() || {};
-    const arr = Object.values(msgs).sort((a,b)=>a.timestamp-b.timestamp);
-    openModal(`
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2>💬 Isi Chat</h2>
-      <div style="background:#0f151c;border-radius:16px;padding:16px;max-height:400px;overflow-y:auto">
-        ${arr.map(m=>{
-          const time = new Date(m.timestamp).toLocaleString('id-ID');
-          return `<div style="margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #1a222c">
-            <div style="font-size:11px;opacity:.5">${escapeHtml(m.from)} · ${time}</div>
-            <div style="font-size:13px;margin-top:4px">${escapeHtml(m.text || '[File]')}</div>
-          </div>`;
-        }).join('')}
-      </div>
-      <button class="btn btn-secondary btn-block" onclick="closeModal()" style="margin-top:12px">Tutup</button>
-    `);
+  if(!reason){ showToast('Pilih alasan!','error'); return; }
+  db.ref('warungdigital/reports').push({ orderKey, reason, reporter: currentUser, timestamp: Date.now(), status: 'pending' }).then(()=>{
+    closeModal(); showToast('✅ Laporan terkirim!','success');
   });
 }
 
 function renderDompet(){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
   db.ref('warungdigital/orders').orderByChild('penjual').equalTo(currentUser).once('value', snap=>{
     let total = 0; let history = [];
     snap.forEach(child=>{
@@ -2550,7 +2119,6 @@ function renderAccounts(){
   if(!el) return;
   db.ref('warungdigital/users').once('value', snap=>{
     if(!snap.exists()){el.innerHTML=`<div class="empty">${emoji('em-user','em-2xl')}<p>Belum ada akun</p></div>`;return}
-    let html = '';
     const arr = [];
     snap.forEach(child=>{
       const nama = child.key;
@@ -2563,7 +2131,7 @@ function renderAccounts(){
       if(!a.isDev && b.isDev) return 1;
       return (b.createdAt||0) - (a.createdAt||0);
     });
-    html = arr.map(u=>{
+    el.innerHTML = arr.map(u=>{
       const isDevUser = u.isDev || u.nama === DEV_NAME;
       return `
         <div class="account-item" onclick="showAccountDetail('${escapeHtml(u.nama)}')" style="${isDevUser?'border-color:rgba(241,196,15,0.4);background:rgba(241,196,15,0.05)':''}">
@@ -2571,16 +2139,12 @@ function renderAccounts(){
             ${u.avatar?`<img src="${u.avatar}">`:u.nama.charAt(0).toUpperCase()}
           </div>
           <div class="info">
-            <div class="nama">
-              ${escapeHtml(u.nama)}
-              ${isDevUser?'<span style="color:#f1c40f;font-size:12px">👑 DEVELOPER</span>':''}
-            </div>
+            <div class="nama">${escapeHtml(u.nama)} ${isDevUser?'<span style="color:#f1c40f;font-size:12px">👑 DEVELOPER</span>':''}</div>
             <div class="meta">${emoji('em-store','em')} ${isDevUser?'Pembuat web ini':'Lihat profil & produk'}</div>
           </div>
         </div>
       `;
-    }).join('');
-    el.innerHTML = html || `<div class="empty">${emoji('em-user','em-2xl')}<p>Belum ada akun lain</p></div>`;
+    }).join('') || `<div class="empty">${emoji('em-user','em-2xl')}<p>Belum ada akun lain</p></div>`;
   });
 }
 function showAccountDetail(nama){
@@ -2594,13 +2158,12 @@ function showAccountDetail(nama){
       openModal(`
         <button class="close-btn" onclick="closeModal()">✕</button>
         <div style="text-align:center;margin-bottom:16px">
-          ${isDevUser?'<div style="background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-size:11px;font-weight:900;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:12px">👑 DEVELOPER — PEMBUAT WEB INI</div>':''}
+          ${isDevUser?'<div style="background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-size:11px;font-weight:900;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:12px">👑 DEVELOPER</div>':''}
           <div style="width:80px;height:80px;border-radius:50%;background:${isDevUser?'linear-gradient(135deg,#f1c40f,#e67e22)':'linear-gradient(135deg,#25d366,#6c5ce7)'};margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;overflow:hidden;border:${isDevUser?'3px solid #f1c40f':'2px solid #2a3340'}">
             ${u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover">`:nama.charAt(0).toUpperCase()}
           </div>
           <h2 style="margin-top:12px;${isDevUser?'color:#f1c40f':''}">${escapeHtml(nama)} ${isDevUser?'👑':''}</h2>
         </div>
-        ${u.banner?`<img src="${u.banner}" style="width:100%;border-radius:12px;margin-bottom:12px;max-height:120px;object-fit:cover">`:''}
         <div class="tabungan-grid" style="margin-bottom:16px">
           <div class="tabungan-item"><div class="label">Produk</div><div class="val">${myProducts.length}</div></div>
           <div class="tabungan-item"><div class="label">Penjualan</div><div class="val">${count}</div></div>
@@ -2613,7 +2176,7 @@ function showAccountDetail(nama){
 }
 
 function renderChatList(){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
   const el = document.getElementById('chatListContainer');
   const cc = document.getElementById('chatListCount');
   if(!el) return;
@@ -2626,7 +2189,7 @@ function renderChatList(){
         if(other){
           const msgs = child.val() || {};
           const arr = Object.values(msgs).sort((a,b)=>b.timestamp-a.timestamp);
-          if(arr.length > 0){ rooms.push({ other, lastMsg: arr[0], count: arr.length }); }
+          if(arr.length > 0){ rooms.push({ other, lastMsg: arr[0] }); }
         }
       }
     });
@@ -2651,8 +2214,8 @@ function renderChatList(){
 }
 
 function openChatWith(user){
-  if(!currentUser){showToast('Login dulu!','error');showLoginModal();return}
-  if(user === currentUser){showToast('Gak bisa chat diri sendiri!','error');return}
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); showLoginModal(); return; }
+  if(user === currentUser){ showToast('Gak bisa chat diri sendiri!','error'); return; }
   currentChatUser = user;
   const roomId = [currentUser, user].sort().join('_');
   document.getElementById('chatName').textContent = user;
@@ -2680,13 +2243,6 @@ function openChatWith(user){
     });
     body.innerHTML = html;
     body.scrollTop = body.scrollHeight;
-    const last = arr[arr.length - 1];
-    if(last && last.from !== currentUser && last.timestamp > (window._lastChatTime || 0)){
-      if(document.hidden || currentChatUser !== last.from){
-        showTopNotif('💬 Chat Baru', `${last.from}: ${(last.text || '📎 File').substring(0, 60)}`, 'info');
-      }
-    }
-    window._lastChatTime = last.timestamp;
   });
 }
 function closeChat(){
@@ -2707,9 +2263,8 @@ function attachChatFile(){
   input.type = 'file';
   input.accept = 'image/*,application/pdf,.zip,.rar,.doc,.docx,.xls,.xlsx,.txt';
   input.onchange = e=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    if(file.size > 5*1024*1024){showToast('File max 5MB!','error');return}
+    const file = e.target.files[0]; if(!file) return;
+    if(file.size > 5*1024*1024){ showToast('File max 5MB!','error'); return; }
     const reader = new FileReader();
     reader.onload = ev=>{
       const roomId = [currentUser, currentChatUser].sort().join('_');
@@ -2736,7 +2291,7 @@ function saveSettingAccount(){
   if(!nama){showToast('Nama wajib!','error');return}
   const update = {wa};
   if(pass) update.password = pass;
-  startLoading('Menyimpan Akun...', 'Menyimpan perubahan akun lo', () => {
+  startLoading('Menyimpan Akun...', 'Menyimpan perubahan', () => {
     db.ref('warungdigital/users').child(currentUser).update(update).then(()=>{
       showToast('Akun disimpan!','success');
       document.getElementById('accPass').value='';
@@ -2750,32 +2305,28 @@ function showHelp(){
     <h2>${emoji('em-help','em-lg')} Help & Info</h2>
     <div class="help-info-box"><strong>WarungDigital</strong> adalah marketplace produk digital.</div>
     <div class="help-section"><h3>${emoji('em-user','em')} Cara Daftar & Login</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik Login / Daftar di sidebar.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Isi Nama & Password, klik Daftar.</div></div>
+      <div class="help-step"><div class="num">1</div><div class="text">Pilih Login/Daftar di intro atau topbar.</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-store','em')} Cara Jualan</h3>
       <div class="help-step"><div class="num">1</div><div class="text">Upload file ke MediaFire manual.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Klik Jualan Saya → E-Wallet → tambah e-wallet.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Klik Tambah Produk.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Daftarin e-wallet di Jualan Saya → E-Wallet.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Tambah Produk.</div></div>
+    </div>
+    <div class="help-section"><h3>${emoji('em-cloud','em')} Download Gratis</h3>
+      <div class="help-step"><div class="num">1</div><div class="text">Masuk menu Download di topbar.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Upload via link atau file langsung.</div></div>
     </div>
     <div class="help-section"><h3>${emoji('em-cart','em')} Cara Beli</h3>
       <div class="help-step"><div class="num">1</div><div class="text">Klik Beli Langsung.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Pilih e-wallet penjual, transfer.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Upload bukti, kirim pesanan.</div></div>
-      <div class="help-step"><div class="num">4</div><div class="text">Penjual konfirmasi → dapet link download.</div></div>
+      <div class="help-step"><div class="num">2</div><div class="text">Transfer ke e-wallet penjual, upload bukti.</div></div>
+      <div class="help-step"><div class="num">3</div><div class="text">Penjual konfirmasi → dapet link download.</div></div>
     </div>
-    <div class="help-section"><h3>${emoji('em-music','em')} Musik</h3>
-      <div class="help-step"><div class="num">1</div><div class="text">Klik menu Musik di sidebar.</div></div>
-      <div class="help-step"><div class="num">2</div><div class="text">Pilih lagu buat diputar.</div></div>
-      <div class="help-step"><div class="num">3</div><div class="text">Kalo gak pilih, lagu default bakal muter.</div></div>
-    </div>
-    <div class="help-info-box"><strong>Bantuan?</strong> Tako admin: <a href="https://tako.id/warungvaro" target="_blank" style="color:#25d366">tako.id/warungvaro</a></div>
     <button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti!</button>
   `);
 }
 
 function showLoginModal(){
-  if(currentUser){showToast('Udah login!');return}
+  if(currentUser){ showToast('Udah login!'); return; }
   openModal(`
     <button class="close-btn" onclick="closeModal()">✕</button>
     <h2>${emoji('em-lock','em-lg')} Login / Daftar</h2>
@@ -2794,17 +2345,15 @@ function doLogin(){
   db.ref('warungdigital/users').child(nama).once('value', snap=>{
     if(!snap.exists()){showToast('❌ Akun gak terdaftar!','error');return}
     if(snap.val().password!==pass){showToast('Password salah!','error');return}
-    currentUser = nama; localStorage.setItem('wd_user', nama);
+    currentUser = nama; isGuest = false; localStorage.setItem('wd_user', nama);
     closeModal();
     db.ref('warungdigital/users').child(nama).child('isDev').once('value', dsnap=>{
       const userIsDev = dsnap.val() === true || nama === DEV_NAME;
       isDev = userIsDev;
-      updateDevMenu(); updateSidebar(); updateNavbarBadge();
-      if(userIsDev){
-        showToast('👑 Selamat datang, Developer!','dev');
-      } else {
-        showToast('Login berhasil!','success');
-      }
+      updateDevMenu();
+      updateLoginBtns();
+      if(userIsDev) showToast('👑 Selamat datang, Developer!','dev');
+      else showToast('Login berhasil!','success');
       showPage('home');
     });
   });
@@ -2819,17 +2368,28 @@ function doRegister(){
     db.ref('warungdigital/users').child(nama).set({
       password: pass, createdAt: Date.now(), ewallets: [], wa: '', avatar: '', banner: '', status: ''
     }).then(()=>{
-      currentUser = nama; localStorage.setItem('wd_user', nama);
+      currentUser = nama; isGuest = false; localStorage.setItem('wd_user', nama);
       closeModal(); showToast('Daftar & login berhasil!','success');
-      updateSidebar(); showPage('home');
-    }).catch(e=>showToast('❌ '+e.message,'error'));
+      updateLoginBtns(); showPage('home');
+    });
   });
+}
+function updateLoginBtns(){
+  const logoutBtn = document.getElementById('logoutBtn2');
+  const loginBtn = document.getElementById('loginBtn2');
+  if(currentUser){
+    if(logoutBtn) logoutBtn.style.display = 'flex';
+    if(loginBtn) loginBtn.style.display = 'none';
+  } else {
+    if(logoutBtn) logoutBtn.style.display = 'none';
+    if(loginBtn) loginBtn.style.display = 'flex';
+  }
 }
 function logoutUser(){
   if(!confirm('Yakin logout?')) return;
-  currentUser = null; localStorage.removeItem('wd_user');
-  isDev = false; updateDevMenu(); updateNavbarBadge();
-  showToast('Logout!','success'); updateSidebar(); showPage('home');
+  currentUser = null; isGuest = false; localStorage.removeItem('wd_user');
+  isDev = false; updateDevMenu(); updateLoginBtns();
+  showToast('Logout!','success'); showPage('home');
 }
 
 function showRequestFitur(){
@@ -2847,61 +2407,812 @@ function showRequestFitur(){
 function submitRequestFitur(){
   const nama = document.getElementById('reqNama').value.trim()||'Anonim';
   const fitur = document.getElementById('reqFitur').value.trim();
-  if(!fitur){showToast('Tulis fitur yang dimau!','error');return}
-  startLoading('Mengirim...', 'Mengirim request fitur lo', () => {
+  if(!fitur){showToast('Tulis fitur!','error');return}
+  startLoading('Mengirim...', 'Mengirim request', () => {
     db.ref('warungdigital/requests').push({ nama, fitur, user: currentUser, timestamp: Date.now() }).then(()=>{ closeModal(); showToast('Request terkirim!','success'); });
   });
 }
 
-let productsLoaded = false;
-let usersLoaded = false;
-
-db.ref('warungdigital/products').once('value', ()=>{
-  productsLoaded = true;
-  updateLoadingBar(50, 'Memuat produk...');
-  checkDbReady();
-});
-db.ref('warungdigital/users').once('value', ()=>{
-  usersLoaded = true;
-  updateLoadingBar(90, 'Memuat pengguna...');
-  checkDbReady();
-});
-
-function checkDbReady() {
-  if(productsLoaded && usersLoaded && !dbReady) {
-    dbReady = true;
-    updateLoadingBar(100, 'Selesai!');
-    setTimeout(()=>{
-      hideDbLoading();
-      try { ensureDevAccount(); } catch(e){ console.warn(e); }
-      try { loadHomeBanner(); } catch(e){}
-      try { applyBgWeb(); } catch(e){}
-      try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
-      try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
-      try { if(currentUser) checkDevStatus(); } catch(e){}
-      try { updateCartBadge(); } catch(e){}
-      setTimeout(()=>{ try { autoLoadMusic(); } catch(e){} }, 1500);
-    }, 600);
+function renderPromoJualan(){
+  const track = document.getElementById('promoJualanTrack');
+  if(!track) return;
+  db.ref('warungdigital/banners/promosiJualan').once('value', snap=>{
+    const items = snap.val() || {};
+    allPromoJualan = Object.entries(items).map(([id,v])=>({id,...v}));
+    allPromoJualan.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    let html = '';
+    allPromoJualan.forEach(p=>{
+      html += `
+        <div class="promo-slide" onclick="clickPromoJualan('${p.id}','${escapeHtml(p.user||'')}','${escapeHtml(p.produkId||'')}','${escapeHtml(p.link||'')}')">
+          ${p.banner?`<img src="${p.banner}" />`:emoji('em-store','em-2xl')}
+          <div class="slide-label">${escapeHtml(p.judul||p.user||'Promo')}</div>
+        </div>
+      `;
+    });
+    if(currentUser && !isGuest){
+      html += `<button class="promo-add-btn" onclick="showAddPromo('jualan')">${emoji('em-plus','em-lg')}<div>Tambah Promo</div></button>`;
+    }
+    if(allPromoJualan.length === 0 && (!currentUser || isGuest)){
+      html = `<div style="padding:20px;opacity:.5;font-size:13px">Belum ada promo</div>`;
+    }
+    track.innerHTML = html;
+    enableDragScroll(track);
+  });
+}
+function clickPromoJualan(id, user, produkId, link){
+  if(produkId && products[produkId]){ showDetail(produkId); return; }
+  if(link){ window.open(link, '_blank'); return; }
+  if(user){
+    const userProduk = Object.entries(products).find(([k,v])=>v.penjual === user);
+    if(userProduk){ showPage('home'); setTimeout(()=>showDetail(userProduk[0]), 300); return; }
   }
+  showToast('Promo ini gak ada link','warn');
+}
+function renderPromoMedsos(){
+  const track = document.getElementById('promoMedsosTrack');
+  if(!track) return;
+  db.ref('warungdigital/banners/promosiMedsos').once('value', snap=>{
+    const items = snap.val() || {};
+    allPromoMedsos = Object.entries(items).map(([id,v])=>({id,...v}));
+    allPromoMedsos.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    let html = '';
+    allPromoMedsos.forEach(p=>{
+      html += `
+        <div class="promo-slide" onclick="clickPromoMedsos('${escapeHtml(p.link||'')}')">
+          ${p.banner?`<img src="${p.banner}" />`:emoji('em-wa','em-2xl')}
+          <div class="slide-label">${escapeHtml(p.judul||'Sosmed')}</div>
+        </div>
+      `;
+    });
+    if(currentUser && !isGuest){
+      html += `<button class="promo-add-btn" onclick="showAddPromo('medsos')">${emoji('em-plus','em-lg')}<div>Tambah Sosmed</div></button>`;
+    }
+    if(allPromoMedsos.length === 0 && (!currentUser || isGuest)){
+      html = `<div style="padding:20px;opacity:.5;font-size:13px">Belum ada promo sosmed</div>`;
+    }
+    track.innerHTML = html;
+    enableDragScroll(track);
+  });
+}
+function clickPromoMedsos(link){
+  if(!link){ showToast('Gak ada link','warn'); return; }
+  window.open(link, '_blank');
+}
+function enableDragScroll(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e=>{ isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+  track.addEventListener('mouseleave', ()=>{ isDown = false; });
+  track.addEventListener('mouseup', ()=>{ isDown = false; });
+  track.addEventListener('mousemove', e=>{
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 2;
+    track.scrollLeft = scrollLeft - walk;
+  });
+}
+function showAddPromo(jenis){
+  if(!currentUser || isGuest){ showToast('Login dulu!','error'); return; }
+  bannerBase64 = '';
+  const isJualan = jenis === 'jualan';
+  const myProducts = Object.entries(products).filter(([id,p])=>p.penjual === currentUser);
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h2>${emoji(isJualan?'em-store':'em-wa','em-lg')} Tambah Promo ${isJualan?'Jualan':'Sosmed'}</h2>
+    <label>Judul Promo</label>
+    <input type="text" id="promoJudul" placeholder="${isJualan?'Promo Toko A':'Saluran WA'}" />
+    <label>Upload Banner</label>
+    <input type="file" id="promoBanner" accept="image/*" onchange="readPromoBanner(this)" />
+    <div id="promoBannerInfo" style="font-size:12px;opacity:.6;margin-top:6px"></div>
+    ${isJualan ? `
+      <label style="margin-top:12px">Link ke Produk Lo (opsional)</label>
+      <select id="promoProduk">
+        <option value="">-- Pilih Produk --</option>
+        ${myProducts.map(([id,p])=>`<option value="${id}">${escapeHtml(p.nama)}</option>`).join('')}
+      </select>
+      <label style="margin-top:12px">Atau Link External (opsional)</label>
+      <input type="text" id="promoLink" placeholder="https://..." />
+    ` : `
+      <label style="margin-top:12px">Link Sosmed (WA/IG/TikTok/dll)</label>
+      <input type="text" id="promoLink" placeholder="https://wa.me/..." />
+    `}
+    <button class="btn btn-primary btn-block" onclick="savePromo('${jenis}')">${emoji('em-check','em')} Simpan Promo</button>
+  `);
+}
+async function readPromoBanner(input){
+  const file = input.files[0]; if(!file) return;
+  if(file.size > 5*1024*1024){ showToast('Banner max 5MB!','error'); input.value=''; return; }
+  try {
+    const c = await compressImage(file, 800, 0.75);
+    bannerBase64 = c;
+    document.getElementById('promoBannerInfo').textContent = `✅ ${file.name}`;
+  } catch(e){ showToast('Gagal','error'); }
+}
+function savePromo(jenis){
+  const judul = document.getElementById('promoJudul').value.trim();
+  const link = document.getElementById('promoLink')?.value.trim() || '';
+  const produkId = document.getElementById('promoProduk')?.value || '';
+  if(!judul){ showToast('Judul wajib!','error'); return; }
+  if(!bannerBase64){ showToast('Upload banner!','error'); return; }
+  const path = jenis === 'jualan' ? 'promosiJualan' : 'promosiMedsos';
+  db.ref('warungdigital/banners/'+path).push({
+    judul, banner: bannerBase64, user: currentUser, produkId, link,
+    createdAt: Date.now()
+  }).then(()=>{
+    closeModal(); bannerBase64 = '';
+    showToast('✅ Promo ditambahkan!','success');
+    if(jenis === 'jualan') renderPromoJualan();
+    else renderPromoMedsos();
+  });
 }
 
-setTimeout(()=>{
-  if(!dbReady) {
-    dbReady = true;
-    updateLoadingBar(100, 'Selesai!');
-    hideDbLoading();
-    try { ensureDevAccount(); } catch(e){}
-    try { loadHomeBanner(); } catch(e){}
-    try { applyBgWeb(); } catch(e){}
-    try { if(typeof showPage === 'function') showPage('home'); } catch(e){}
-    try { if(currentUser && typeof updateSidebar === 'function') updateSidebar(); } catch(e){}
-    try { if(currentUser) checkDevStatus(); } catch(e){}
-    try { updateCartBadge(); } catch(e){}
-    setTimeout(()=>{ try { autoLoadMusic(); } catch(e){} }, 1500);
-  }
-}, 8000);
+function renderDev(){
+  if(!isDev){ showToast('Akses developer diperlukan!','error'); return; }
+  const el = document.getElementById('devContent');
+  const dc = document.getElementById('devCount');
+  if(!el) return;
+  db.ref('warungdigital').once('value', snap=>{
+    const data = snap.val() || {};
+    const users = data.users || {};
+    const products = data.products || {};
+    const orders = data.orders || {};
+    const reports = data.reports || {};
+    const activities = data.activities || {};
+    const intro = data.introWeb || {};
+    const uiInfo = data.uiInfo || {};
+    const totalUsers = Object.keys(users).length;
+    const totalProducts = Object.keys(products).length;
+    const totalOrders = Object.keys(orders).length;
+    let revenue = 0;
+    Object.values(orders).forEach(o=>{ if(o.status === 'verified') revenue += o.total || 0; });
+    if(dc) dc.textContent = totalUsers + ' user';
+    el.innerHTML = `
+      <div class="help-dev-box" style="margin-bottom:16px">
+        <strong>👑 Developer Mode Aktif</strong><br>
+        Lo punya akses khusus. Gunakan dengan bijak!
+      </div>
+      <div class="stats" style="margin-bottom:20px">
+        <div class="stat"><div class="icon">👥</div><div class="num">${totalUsers}</div><div class="label">Total User</div></div>
+        <div class="stat"><div class="icon">📦</div><div class="num">${totalProducts}</div><div class="label">Produk</div></div>
+        <div class="stat"><div class="icon">🛒</div><div class="num">${totalOrders}</div><div class="label">Order</div></div>
+        <div class="stat"><div class="icon">💰</div><div class="num">${formatRp(revenue)}</div><div class="label">Revenue</div></div>
+      </div>
+      <div class="tabs" style="margin-bottom:20px">
+        <button class="active" onclick="switchDevTab('intro',this)">🎬 Intro</button>
+        <button onclick="switchDevTab('uiinfo',this)">📢 Info UI</button>
+        <button onclick="switchDevTab('banner',this)">🖼️ Banner</button>
+        <button onclick="switchDevTab('users',this)">👥 User</button>
+        <button onclick="switchDevTab('reports',this)">🚨 Report</button>
+        <button onclick="switchDevTab('broadcast',this)">📢 Broadcast</button>
+        <button onclick="switchDevTab('music',this)">🎵 Musik</button>
+        <button onclick="switchDevTab('settings',this)">🚀 GitHub</button>
+      </div>
+      <div id="dev-intro"></div>
+      <div id="dev-uiinfo" class="hidden"></div>
+      <div id="dev-banner" class="hidden"></div>
+      <div id="dev-users" class="hidden"></div>
+      <div id="dev-reports" class="hidden"></div>
+      <div id="dev-broadcast" class="hidden"></div>
+      <div id="dev-music" class="hidden"></div>
+      <div id="dev-settings" class="hidden"></div>
+    `;
+    renderDevIntro(intro);
+    renderDevUiInfo(uiInfo);
+    renderDevBanner(data.settings || {});
+    renderDevUsers(users, activities);
+    renderDevReports(reports);
+    renderDevBroadcast();
+  });
+}
+function switchDevTab(tab, el){
+  document.querySelectorAll('#page-dev .tabs button').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  ['intro','uiinfo','banner','users','reports','broadcast','music','settings'].forEach(t=>{
+    const e = document.getElementById('dev-'+t);
+    if(e) e.classList.toggle('hidden', t !== tab);
+  });
+  if(tab === 'settings') renderDevSettings();
+  if(tab === 'music') renderDevMusic();
+}
+function renderDevIntro(intro){
+  const el = document.getElementById('dev-intro');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="help-dev-box" style="margin-bottom:16px">
+      <strong>🎬 Intro Web</strong><br>
+      Atur video/foto intro + info UI yang muncul setelahnya.
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">🎥 Media Intro</div></div>
+      <div class="banner-dev" id="devIntroPreview" onclick="changeDevIntro()">
+        ${intro.media ? (intro.mediaType === 'video' ? `<video src="${intro.media}" autoplay muted loop playsinline></video>` : `<img src="${intro.media}" />`) : `<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik buat upload intro</div></div>`}
+        <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);padding:4px 12px;border-radius:20px;font-size:11px;color:#fff">✏️ Ganti</div>
+      </div>
+      <button class="btn btn-danger btn-block" onclick="hapusDevIntro()">${emoji('em-trash','em')} Hapus Intro</button>
+    </div>
+  `;
+}
+function changeDevIntro(){
+  if(!isDev){ showToast('Dev only!','error'); return; }
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*,video/mp4,video/webm';
+  input.onchange = e=>{
+    const file = e.target.files[0]; if(!file) return;
+    const isVideo = file.type.startsWith('video/');
+    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
+    if(file.size > maxSize){ showToast(`Max ${isVideo?'5MB':'2MB'}!`,'error'); return; }
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      db.ref('warungdigital/introWeb').update({
+        media: ev.target.result, mediaType: isVideo ? 'video' : 'image'
+      }).then(()=>{ showToast('✅ Intro diganti!','success'); renderDev(); });
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+function hapusDevIntro(){
+  if(!isDev){ showToast('Dev only!','error'); return; }
+  if(!confirm('Hapus intro?')) return;
+  db.ref('warungdigital/introWeb').update({ media: '', mediaType: '' }).then(()=>{
+    showToast('Intro dihapus','success'); renderDev();
+  });
+}
+function renderDevUiInfo(uiInfo){
+  const el = document.getElementById('dev-uiinfo');
+  if(!el) return;
+  const updates = uiInfo.updates || [];
+  const features = uiInfo.features || [];
+  el.innerHTML = `
+    <div class="help-dev-box" style="margin-bottom:16px">
+      <strong>📢 UI Info Web</strong><br>
+      Info update + status fitur yang muncul setelah intro video.
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">📝 Update Terbaru</div></div>
+      <div class="form-group">
+        <label>Judul Info</label>
+        <input type="text" id="uiInfoTitle" value="${escapeHtml(uiInfo.title||'WarungDigital v6.0')}" />
+        <label>Subtitle</label>
+        <input type="text" id="uiInfoSubtitle" value="${escapeHtml(uiInfo.subtitle||'Marketplace Produk Digital')}" />
+      </div>
+      <div id="uiUpdatesList">
+        ${updates.map((u,i)=>`
+          <div class="income-item">
+            <div class="info">
+              <div class="nama">• ${escapeHtml(u)}</div>
+            </div>
+            <button class="del" onclick="hapusUiUpdate(${i})">${emoji('em-trash','em')}</button>
+          </div>
+        `).join('') || '<div style="opacity:.5;font-size:13px;padding:8px">Belum ada update</div>'}
+      </div>
+      <button class="btn btn-primary btn-block" onclick="tambahUiUpdate()">${emoji('em-plus','em')} Tambah Update</button>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">🎯 Status Fitur</div></div>
+      <div id="uiFeaturesList">
+        ${features.map((f,i)=>`
+          <div class="income-item">
+            <div class="info">
+              <div class="nama">${escapeHtml(f.nama)}</div>
+              <div class="tanggal">Status: ${f.status}</div>
+            </div>
+            <button class="del" onclick="hapusUiFeature(${i})">${emoji('em-trash','em')}</button>
+          </div>
+        `).join('') || '<div style="opacity:.5;font-size:13px;padding:8px">Belum ada fitur</div>'}
+      </div>
+      <button class="btn btn-primary btn-block" onclick="tambahUiFeature()">${emoji('em-plus','em')} Tambah Fitur</button>
+    </div>
+    <button class="btn btn-success btn-block" onclick="simpanUiInfo()">${emoji('em-check','em')} Simpan Info UI</button>
+  `;
+}
+function tambahUiUpdate(){
+  const t = prompt('Update baru:');
+  if(!t) return;
+  db.ref('warungdigital/uiInfo/updates').push(t).then(()=>{ showToast('Update ditambah','success'); renderDev(); });
+}
+function hapusUiUpdate(i){
+  if(!confirm('Hapus?')) return;
+  db.ref('warungdigital/uiInfo/updates').once('value', s=>{
+    const arr = s.val() || [];
+    if(Array.isArray(arr)){ arr.splice(i,1); db.ref('warungdigital/uiInfo/updates').set(arr).then(()=>renderDev()); }
+  });
+}
+function tambahUiFeature(){
+  const nama = prompt('Nama fitur:');
+  if(!nama) return;
+  const status = prompt('Status (online/bug/offline):','online');
+  if(!status) return;
+  db.ref('warungdigital/uiInfo/features').push({ nama, status: status.toLowerCase() }).then(()=>{ showToast('Fitur ditambah','success'); renderDev(); });
+}
+function hapusUiFeature(i){
+  if(!confirm('Hapus?')) return;
+  db.ref('warungdigital/uiInfo/features').once('value', s=>{
+    const arr = s.val() || [];
+    if(Array.isArray(arr)){ arr.splice(i,1); db.ref('warungdigital/uiInfo/features').set(arr).then(()=>renderDev()); }
+  });
+}
+function simpanUiInfo(){
+  const title = document.getElementById('uiInfoTitle').value.trim();
+  const subtitle = document.getElementById('uiInfoSubtitle').value.trim();
+  db.ref('warungdigital/uiInfo').update({ title, subtitle }).then(()=>{
+    showToast('Info UI disimpan!','success');
+  });
+}
+function renderDevBanner(settings){
+  const el = document.getElementById('dev-banner');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="help-dev-box" style="margin-bottom:16px">
+      <strong>🖼️ Atur Banner Web</strong><br>
+      Banner 1:1 (navbar), Banner Judul Web, Banner Animasi Pojok Kanan Bawah, Background Web.
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">1️⃣ Banner 1:1 (Navbar)</div></div>
+      <div class="banner-dev" onclick="changeBanner11()">
+        ${settings.banner11 ? (settings.banner11Type === 'video' ? `<video src="${settings.banner11}" autoplay muted loop playsinline></video>` : `<img src="${settings.banner11}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
+      </div>
+      <button class="btn btn-danger btn-block" onclick="hapusBanner('banner11')">${emoji('em-trash','em')} Hapus</button>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">📰 Banner Judul Web (Atas Navbar)</div></div>
+      <div class="banner-dev" onclick="changeBannerJudul()">
+        ${settings.bannerJudul ? (settings.bannerJudulType === 'video' ? `<video src="${settings.bannerJudul}" autoplay muted loop playsinline></video>` : `<img src="${settings.bannerJudul}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
+      </div>
+      <button class="btn btn-danger btn-block" onclick="hapusBanner('bannerJudul')">${emoji('em-trash','em')} Hapus</button>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">✨ Banner Animasi Pojok Kanan Bawah</div></div>
+      <div style="font-size:12px;opacity:.6;margin-bottom:8px">Support PNG transparan / WebM alpha</div>
+      <div class="banner-dev" onclick="changeBannerAnimasi()">
+        ${settings.bannerAnimasi ? (settings.bannerAnimasiType === 'video' ? `<video src="${settings.bannerAnimasi}" autoplay muted loop playsinline></video>` : `<img src="${settings.bannerAnimasi}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
+      </div>
+      <button class="btn btn-danger btn-block" onclick="hapusBanner('bannerAnimasi')">${emoji('em-trash','em')} Hapus</button>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">🌄 Background Web</div></div>
+      <div class="banner-dev" onclick="changeBgWeb()">
+        ${settings.bgWeb ? (settings.bgType === 'video' ? `<video src="${settings.bgWeb}" autoplay muted loop playsinline></video>` : `<img src="${settings.bgWeb}" />`) : `<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}
+      </div>
+      <button class="btn btn-danger btn-block" onclick="hapusBgWeb()">${emoji('em-trash','em')} Hapus</button>
+    </div>
+  `;
+}
+function changeBanner11(){ uploadBannerFile('banner11'); }
+function changeBannerJudul(){ uploadBannerFile('bannerJudul'); }
+function changeBannerAnimasi(){ uploadBannerFile('bannerAnimasi', true); }
+function changeBgWeb(){ uploadBannerFile('bgWeb'); }
+function uploadBannerFile(key, allowTransparent){
+  if(!isDev){ showToast('Dev only!','error'); return; }
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = allowTransparent ? 'image/*,video/webm,video/mp4' : 'image/*,video/mp4,video/webm';
+  input.onchange = e=>{
+    const file = e.target.files[0]; if(!file) return;
+    const isVideo = file.type.startsWith('video/');
+    const maxSize = isVideo ? 5*1024*1024 : 2*1024*1024;
+    if(file.size > maxSize){ showToast(`Max ${isVideo?'5MB':'2MB'}!`,'error'); return; }
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      db.ref('warungdigital/settings').update({
+        [key]: ev.target.result,
+        [key + 'Type']: isVideo ? 'video' : 'image'
+      }).then(()=>{
+        showToast('✅ Banner diganti!','success');
+        loadAllBanners();
+        renderDev();
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+function hapusBanner(key){
+  if(!isDev){ showToast('Dev only!','error'); return; }
+  if(!confirm('Hapus banner ini?')) return;
+  db.ref('warungdigital/settings').update({ [key]: '', [key + 'Type']: '' }).then(()=>{
+    showToast('Banner dihapus','success');
+    loadAllBanners();
+    renderDev();
+  });
+}
+function hapusBgWeb(){
+  if(!isDev){ showToast('Dev only!','error'); return; }
+  if(!confirm('Hapus background?')) return;
+  db.ref('warungdigital/settings').update({ bgWeb: '', bgType: '' }).then(()=>{
+    showToast('BG dihapus','success');
+    loadAllBanners();
+    renderDev();
+  });
+}
+function loadAllBanners(){
+  db.ref('warungdigital/settings').once('value', snap=>{
+    const s = snap.val() || {};
+    const setBanner = (wrapId, imgId, vidId, key, typeKey)=>{
+      const wrap = document.getElementById(wrapId);
+      const img = document.getElementById(imgId);
+      const vid = document.getElementById(vidId);
+      if(!wrap || !img || !vid) return;
+      if(s[key]){
+        wrap.classList.add('show');
+        if(s[typeKey] === 'video'){
+          img.style.display = 'none'; vid.style.display = 'block'; vid.src = s[key];
+        } else {
+          vid.style.display = 'none'; img.style.display = 'block'; img.src = s[key];
+        }
+      } else {
+        wrap.classList.remove('show');
+      }
+    };
+    setBanner('banner11','banner11Img','banner11Vid','banner11','banner11Type');
+    setBanner('judulWebBanner','judulWebImg','judulWebVid','bannerJudul','bannerJudulType');
+    setBanner('bannerAnimasiRB','bannerAnimasiImg','bannerAnimasiVid','bannerAnimasi','bannerAnimasiType');
+    if(s.bgWeb && s.bgType === 'image'){
+      document.body.classList.add('has-bg');
+      const old = document.getElementById('bgStyle');
+      if(old) old.remove();
+      const st = document.createElement('style');
+      st.id = 'bgStyle';
+      st.textContent = `body.has-bg::after{background-image:url('${s.bgWeb}')}`;
+      document.head.appendChild(st);
+    } else if(s.bgWeb && s.bgType === 'video'){
+      let vidBg = document.getElementById('bgVideoEl');
+      if(!vidBg){
+        vidBg = document.createElement('video');
+        vidBg.id = 'bgVideoEl';
+        vidBg.autoplay = true; vidBg.muted = true; vidBg.loop = true; vidBg.playsInline = true;
+        vidBg.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.15;pointer-events:none';
+        document.body.appendChild(vidBg);
+      }
+      vidBg.src = s.bgWeb;
+    } else {
+      document.body.classList.remove('has-bg');
+      const old = document.getElementById('bgStyle');
+      if(old) old.remove();
+      const vidBg = document.getElementById('bgVideoEl');
+      if(vidBg) vidBg.remove();
+    }
+  });
+}
+function renderDevUsers(users, activities){
+  const el = document.getElementById('dev-users');
+  if(!el) return;
+  const arr = Object.entries(users).map(([nama, u])=>({nama, ...u}));
+  arr.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  if(arr.length === 0){ el.innerHTML = '<div class="empty"><p>Belum ada user</p></div>'; return; }
+  el.innerHTML = arr.map(u=>{
+    const isDevUser = u.isDev || u.nama === DEV_NAME;
+    return `
+    <div class="order-item">
+      <div class="head">
+        <div class="oid">${escapeHtml(u.nama)} ${isDevUser ? '<span style="color:#f1c40f;font-size:11px">👑</span>' : ''}</div>
+      </div>
+      <div class="body">
+        📅 ${new Date(u.createdAt||0).toLocaleString('id-ID')}<br>
+        💳 E-Wallet: ${(u.ewallets||[]).length}
+      </div>
+      <div class="actions">
+        <button class="btn btn-sm btn-warning" onclick="devResetPassword('${escapeHtml(u.nama)}')">${emoji('em-lock','em')} Reset Pass</button>
+        <button class="btn btn-sm btn-danger" onclick="showDevDeleteUser('${escapeHtml(u.nama)}')">${emoji('em-trash','em')} Hapus</button>
+      </div>
+    </div>
+  `}).join('');
+}
+function renderDevReports(reports){
+  const el = document.getElementById('dev-reports');
+  if(!el) return;
+  const arr = Object.entries(reports).map(([id, r])=>({id, ...r}));
+  arr.sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
+  if(arr.length === 0){ el.innerHTML = '<div class="empty"><p>Belum ada laporan</p></div>'; return; }
+  el.innerHTML = arr.map(r=>`
+    <div class="order-item">
+      <div class="head"><div class="oid">🚨 ${escapeHtml(r.reporter||'-')}</div></div>
+      <div class="body">${escapeHtml(r.reason||'-')}</div>
+      <div class="actions">
+        <button class="btn btn-sm btn-success" onclick="devMarkReport('${r.id}')">${emoji('em-check','em')} Selesai</button>
+        <button class="btn btn-sm btn-danger" onclick="devDeleteReport('${r.id}')">${emoji('em-trash','em')} Hapus</button>
+      </div>
+    </div>
+  `).join('');
+}
+function devResetPassword(nama){
+  const newPass = prompt(`Password baru buat ${nama}:`);
+  if(!newPass || newPass.length < 6){ showToast('Min 6 karakter!','error'); return; }
+  db.ref('warungdigital/users').child(nama).update({ password: newPass }).then(()=>{
+    db.ref('warungdigital/notifications').push({ target: nama, title: '🔑 Password Direset', message: 'Password baru: ' + newPass, type: 'info', from: 'Developer', timestamp: Date.now(), read: false });
+    showToast('✅ Password direset','success');
+  });
+}
+function showDevDeleteUser(nama){
+  if(nama === DEV_NAME){ showToast('Gak bisa hapus dev!','error'); return; }
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <h2 style="color:#e74c3c">${emoji('em-warning','em-lg')} Hapus Akun?</h2>
+    <p>Yakin hapus <strong>${escapeHtml(nama)}</strong>?</p>
+    <label>Alasan</label>
+    <input type="text" id="deleteReasonInput" placeholder="Alasan hapus..." />
+    <button class="btn btn-danger btn-block" onclick="devDeleteUser('${escapeHtml(nama)}')">${emoji('em-trash','em')} Hapus</button>
+    <button class="btn btn-secondary btn-block" onclick="closeModal()">Batal</button>
+  `);
+}
+function devDeleteUser(nama){
+  const reason = document.getElementById('deleteReasonInput').value.trim() || 'Tanpa alasan';
+  if(!confirm(`⚠️ Hapus ${nama}?`)) return;
+  startLoading('Menghapus...', 'Menghapus akun', () => {
+    db.ref('warungdigital/notifications').push({ target: nama, title: '❌ Akun Dihapus', message: `Alasan: ${reason}`, type: 'danger', from: 'Developer', timestamp: Date.now(), read: false });
+    db.ref('warungdigital/products').orderByChild('penjual').equalTo(nama).once('value', psnap=>{ psnap.forEach(c => c.ref.remove()); });
+    db.ref('warungdigital/users').child(nama).remove().then(()=>{
+      closeModal(); showToast(`Akun ${nama} dihapus`,'success'); renderDev();
+    });
+  });
+}
+function devMarkReport(id){
+  db.ref('warungdigital/reports').child(id).update({ status: 'done' }).then(()=>{ showToast('Ditandai','success'); renderDev(); });
+}
+function devDeleteReport(id){
+  if(!confirm('Hapus report?')) return;
+  db.ref('warungdigital/reports').child(id).remove().then(()=>{ showToast('Report dihapus','success'); renderDev(); });
+}
+function renderDevBroadcast(){
+  const el = document.getElementById('dev-broadcast');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="help-warn-box" style="margin-bottom:16px">
+      <strong>📢 Broadcast</strong><br>
+      Kirim pengumuman ke semua user.
+    </div>
+    <div class="form-group">
+      <label>Judul</label>
+      <input type="text" id="broadcastTitle" />
+    </div>
+    <div class="form-group">
+      <label>Isi</label>
+      <textarea id="broadcastMsg" rows="4"></textarea>
+    </div>
+    <button class="btn btn-primary btn-block" onclick="sendBroadcast()">${emoji('em-send','em')} Kirim</button>
+  `;
+}
+function sendBroadcast(){
+  const title = document.getElementById('broadcastTitle').value.trim();
+  const msg = document.getElementById('broadcastMsg').value.trim();
+  if(!title || !msg){ showToast('Isi judul & pesan!','error'); return; }
+  db.ref('warungdigital/users').once('value', snap=>{
+    const promises = [];
+    Object.keys(snap.val() || {}).forEach(nama => {
+      promises.push(db.ref('warungdigital/notifications').push({ target: nama, title, message: msg, type: 'info', from: 'Developer', timestamp: Date.now(), read: false }));
+    });
+    Promise.all(promises).then(()=>{ showToast('✅ Terkirim!','success'); showTopNotif('📢 ' + title, msg, 'info'); });
+  });
+}
+function renderDevMusic(){
+  const el = document.getElementById('dev-music');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="help-dev-box" style="margin-bottom:16px">
+      <strong>🎵 Musik Web</strong>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">➕ Upload Lagu</div></div>
+      <div class="form-group"><label>Nama</label><input type="text" id="musicNama" /></div>
+      <div class="form-group"><label>File (max 5MB)</label><input type="file" id="musicFile" accept="audio/*,video/*" /></div>
+      <div class="form-group"><label><input type="checkbox" id="musicDefault" style="width:auto;margin-right:8px" /> Set default</label></div>
+      <button class="btn btn-primary btn-block" onclick="uploadMusicDev()">${emoji('em-upload','em')} Upload</button>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">🎶 Daftar</div></div>
+      <div id="musicDevList"></div>
+    </div>
+  `;
+  db.ref('warungdigital/music').once('value', snap=>{
+    const items = snap.val() || {};
+    const arr = Object.entries(items).map(([id,v])=>({id,...v}));
+    arr.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+    const list = document.getElementById('musicDevList');
+    if(!list) return;
+    if(arr.length === 0){ list.innerHTML = '<div class="empty"><p>Belum ada lagu</p></div>'; return; }
+    list.innerHTML = arr.map(m=>`
+      <div class="income-item">
+        <div class="info">
+          <div class="nama">🎵 ${escapeHtml(m.nama||'Lagu')} ${m.isDefault ? '⭐' : ''}</div>
+        </div>
+        <div style="display:flex;gap:4px">
+          <button class="del" onclick="setMusicDefault('${m.id}')">⭐</button>
+          <button class="del" onclick="hapusMusic('${m.id}')">${emoji('em-trash','em')}</button>
+        </div>
+      </div>
+    `).join('');
+  });
+}
+function uploadMusicDev(){
+  const nama = document.getElementById('musicNama').value.trim() || 'Lagu';
+  const file = document.getElementById('musicFile').files[0];
+  const isDefault = document.getElementById('musicDefault').checked;
+  if(!file){ showToast('Pilih file!','error'); return; }
+  if(file.size > 5*1024*1024){ showToast('Max 5MB!','error'); return; }
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    const pushFn = ()=>{
+      db.ref('warungdigital/music').push({ nama, data: ev.target.result, isDefault, createdAt: Date.now() }).then(()=>{
+        showToast('✅ Upload!','success'); renderDevMusic();
+      });
+    };
+    if(isDefault){
+      db.ref('warungdigital/music').once('value', snap=>{
+        const updates = {};
+        snap.forEach(c=>{ if(c.val().isDefault) updates[c.key + '/isDefault'] = false; });
+        if(Object.keys(updates).length > 0) db.ref('warungdigital/music').update(updates).then(pushFn);
+        else pushFn();
+      });
+    } else pushFn();
+  };
+  reader.readAsDataURL(file);
+}
+function setMusicDefault(id){
+  if(!isDev){ showToast('Dev only!','error'); return; }
+  db.ref('warungdigital/music').once('value', snap=>{
+    const updates = {};
+    snap.forEach(c=>{ updates[c.key + '/isDefault'] = (c.key === id); });
+    db.ref('warungdigital/music').update(updates).then(()=>{ showToast('✅ Default diatur!','success'); renderDevMusic(); });
+  });
+}
+function renderDevSettings(){
+  const el = document.getElementById('dev-settings');
+  if(!el) return;
+  el.innerHTML = `
+    <div class="help-dev-box" style="margin-bottom:16px">
+      <strong>🚀 GitHub & Vercel</strong>
+    </div>
+    <div class="order-item">
+      <div class="head"><div class="oid">🔗 Link Cepat</div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/tree/main" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">📦 Repo</a>
+        <a href="https://github.com/webproj3ctid-coder/Warungdigital_VXZ/edit/main/index.html" target="_blank" class="btn btn-warning btn-sm" style="text-decoration:none">✏️ Edit HTML</a>
+        <a href="https://vercel.com/webproj3ctid/warungdigital-vxz" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">⚡ Vercel</a>
+      </div>
+    </div>
+  `;
+}
 
-console.log('WarungDigital v5.0 — Ready!');
+/* ============ INTRO WEB FLOW ============ */
+function initIntroWeb(){
+  db.ref('warungdigital/introWeb').once('value', snap=>{
+    introData = snap.val() || {};
+    db.ref('warungdigital/uiInfo').once('value', s2=>{
+      uiInfoData = s2.val() || {};
+      showIntroMedia();
+    });
+  });
+}
+function showIntroMedia(){
+  const ov = document.getElementById('introOverlay');
+  ov.classList.add('show');
+  const wrap = document.getElementById('introMediaWrap');
+  const img = document.getElementById('introImg');
+  const vid = document.getElementById('introVid');
+  img.style.display = 'none'; vid.style.display = 'none';
+  const hasMedia = introData.media && introData.mediaType;
+  if(!hasMedia){
+    setTimeout(()=>{ showIntroInfo(); }, 500);
+    return;
+  }
+  if(introData.mediaType === 'video'){
+    vid.style.display = 'block';
+    vid.src = introData.media;
+    vid.muted = true;
+    vid.onended = ()=>{ showIntroInfo(); };
+    vid.onerror = ()=>{ showIntroInfo(); };
+    vid.play().catch(()=>{ setTimeout(()=>showIntroInfo(), 2000); });
+    setTimeout(()=>{ if(ov.classList.contains('show')) showIntroInfo(); }, 15000);
+  } else {
+    img.style.display = 'block';
+    img.src = introData.media;
+    setTimeout(()=>{ showIntroInfo(); }, 3000);
+  }
+}
+function showIntroInfo(){
+  document.getElementById('introMediaWrap').style.display = 'none';
+  document.getElementById('introInfoPanel').classList.add('show');
+  const title = document.getElementById('introInfoTitle');
+  const sub = document.getElementById('introInfoSubtitle');
+  if(title) title.textContent = uiInfoData.title || 'WarungDigital';
+  if(sub) sub.textContent = uiInfoData.subtitle || 'Marketplace Produk Digital';
+  const content = document.getElementById('introInfoContent');
+  const updates = uiInfoData.updates ? Object.values(uiInfoData.updates) : [];
+  const features = uiInfoData.features ? Object.values(uiInfoData.features) : [];
+  let html = '';
+  if(updates.length > 0){
+    html += `<div class="intro-info-card"><h3>📝 Update Terbaru</h3>`;
+    updates.forEach(u => { html += `<div class="intro-update-item"><div class="dot"></div><div>${escapeHtml(u)}</div></div>`; });
+    html += `</div>`;
+  } else {
+    html += `<div class="intro-info-card"><h3>📝 Update Terbaru</h3><div class="intro-update-item"><div class="dot"></div><div>WarungDigital v6.0 — Intro web, banner baru, halaman Download, promosi slider!</div></div></div>`;
+  }
+  if(features.length > 0){
+    html += `<div class="intro-info-card"><h3>🎯 Status Fitur</h3>`;
+    features.forEach(f => {
+      const cls = f.status === 'online' ? 'badge-online' : (f.status === 'bug' ? 'badge-bug' : 'badge-offline');
+      const label = f.status === 'online' ? '🟢 Online' : (f.status === 'bug' ? '🟡 Bug' : '🔴 Offline');
+      html += `<div class="intro-feature-status"><div class="name">${escapeHtml(f.nama)}</div><div class="badge-status ${cls}">${label}</div></div>`;
+    });
+    html += `</div>`;
+  }
+  content.innerHTML = html;
+}
+function introGoToChoice(){
+  document.getElementById('introInfoPanel').classList.remove('show');
+  document.getElementById('introChoicePanel').classList.add('show');
+}
+function introChoose(mode){
+  const ov = document.getElementById('introOverlay');
+  if(mode === 'guest'){
+    isGuest = true; currentUser = null;
+    localStorage.removeItem('wd_user');
+    ov.classList.remove('show');
+    afterIntroGo();
+  } else if(mode === 'login'){
+    ov.classList.remove('show');
+    afterIntroGo();
+    setTimeout(()=>{ showLoginModal(); }, 300);
+  } else if(mode === 'register'){
+    ov.classList.remove('show');
+    afterIntroGo();
+    setTimeout(()=>{ showLoginModal(); }, 300);
+  }
+}
+function afterIntroGo(){
+  // Start banner loading -> then show home
+  document.getElementById('bannerLoading').style.display = 'flex';
+  updateBannerLoading(20, 'Memuat background...');
+  setTimeout(()=>updateBannerLoading(60, 'Memuat banner...'), 400);
+  setTimeout(()=>updateBannerLoading(90, 'Hampir selesai...'), 900);
+  setTimeout(()=>{
+    hideBannerLoading();
+    hideMiniLoader();
+    loadAllBanners();
+    renderHome();
+    renderPromoJualan();
+    renderPromoMedsos();
+    updateLoginBtns();
+    updateCartBadge();
+    if(currentUser) checkDevStatus();
+    setTimeout(()=>{ try { autoLoadMusic(); } catch(e){} }, 500);
+    showToast('Selamat datang di WarungDigital! 🎉','success');
+  }, 1400);
+}
+
+/* ============ BOOT ============ */
+function startBoot(){
+  // DB Loading
+  document.getElementById('dbLoading').style.display = 'flex';
+  updateDbLoading(20, 'Menghubungkan ke database...');
+  db.ref('warungdigital/products').once('value', ()=>{
+    updateDbLoading(50, 'Memuat produk...');
+    db.ref('warungdigital/users').once('value', ()=>{
+      updateDbLoading(80, 'Memuat pengguna...');
+      setTimeout(()=>{
+        updateDbLoading(100, 'Selesai!');
+        ensureDevAccount();
+        dbReady = true;
+        setTimeout(()=>{
+          hideDbLoading();
+          hideMiniLoader();
+          initIntroWeb();
+        }, 500);
+      }, 400);
+    });
+  });
+  // Fallback timeout
+  setTimeout(()=>{
+    if(!dbReady){
+      dbReady = true;
+      hideDbLoading();
+      initIntroWeb();
+    }
+  }, 8000);
+}
+startBoot();
+console.log('WarungDigital v6.0 — Ready!');
 </script>
 </body>
-                                          </html>
+  </html>
