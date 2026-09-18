@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>WarungDigital v8.1</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2325d366'/%3E%3Cstop offset='100%25' stop-color='%236c5ce7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='58' font-weight='900' text-anchor='middle' fill='white'%3EW%3C/text%3E%3C/svg%3E">
+<title>WarungDigital v8.2</title>
+<link rel="icon" id="faviconLink" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2325d366'/%3E%3Cstop offset='100%25' stop-color='%236c5ce7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='58' font-weight='900' text-anchor='middle' fill='white'%3EW%3C/text%3E%3C/svg%3E">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
 window.OneSignalDeferred=window.OneSignalDeferred||[];
@@ -14,31 +14,38 @@ OneSignalDeferred.push(async function(o){await o.init({appId:"28a6c9d0-25dd-4398
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;max-width:100%}
 html,body{width:100%;overflow-x:hidden;background:#070a0f;color:#e0e6ed}
+body.has-bg::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:.15;z-index:-1;pointer-events:none}
 button{cursor:pointer;font-family:inherit}
 input,textarea,select{font-family:inherit}
 .em{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.15em;fill:currentColor}
 .em-lg{width:1.5em;height:1.5em}.em-xl{width:2.5em;height:2.5em}.em-2xl{width:4em;height:4em}
 .container{max-width:1100px;margin:0 auto;padding:20px}
 .navbar-wrap{position:sticky;top:8px;z-index:999;margin-bottom:24px}
-.navbar{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:12px 16px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.navbar{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 16px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .navbar .left{display:flex;align-items:center;gap:10px}
-.navbar .center{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center}
-.navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:13px;font-weight:600;padding:7px 12px;border-radius:10px;background:transparent;border:none;opacity:.7;display:flex;align-items:center;gap:5px;position:relative;transition:.3s}
+.navbar .center{display:flex;gap:6px;align-items:center;flex-wrap:nowrap;justify-content:center;overflow-x:auto;scrollbar-width:none}
+.navbar .center::-webkit-scrollbar{display:none}
+.navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:13px;font-weight:600;padding:7px 12px;border-radius:10px;background:transparent;border:none;opacity:.7;display:flex;align-items:center;gap:5px;position:relative;transition:.3s;white-space:nowrap}
 .navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
 .logo-nav{width:36px;height:36px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#25d366,#6c5ce7);box-shadow:0 4px 14px rgba(37,211,102,.4);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;flex-shrink:0}
 .logo-nav span{font-size:18px;font-weight:900;color:#fff;z-index:2}
-.logo-nav img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:3;display:none}
+.logo-nav img,.logo-nav video{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:3;display:none}
 .clock-top{display:flex;flex-direction:column;gap:2px;font-size:11px;font-weight:700}
 .clock-top .row{display:flex;gap:6px;align-items:center;opacity:.7}
 .clock-top .row span{color:#25d366;font-weight:800}
 .banner-1-1-big{width:90px;height:90px;border-radius:14px;overflow:hidden;background:#0f151c;border:2px solid #2a3340;display:none;flex-shrink:0}
 .banner-1-1-big.show{display:flex}
-.banner-1-1-big img{width:100%;height:100%;object-fit:cover}
+.banner-1-1-big img,.banner-1-1-big video{width:100%;height:100%;object-fit:cover}
 .judul-web-banner{width:100%;aspect-ratio:16/4;max-height:120px;border-radius:20px 20px 0 0;overflow:hidden;background:#0f151c;border:1px solid #1f2a34;border-bottom:none;display:none}
 .judul-web-banner.show{display:block}
-.judul-web-banner img{width:100%;height:100%;object-fit:cover}
+.judul-web-banner img,.judul-web-banner video{width:100%;height:100%;object-fit:cover}
 .judul-web-banner.show + .navbar{border-radius:0 0 20px 20px}
 .cart-badge{position:absolute;top:-4px;right:-4px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
+.chat-balloon{position:fixed;right:12px;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#25d366,#20b858);display:none;align-items:center;justify-content:center;color:#fff;font-size:24px;box-shadow:0 8px 24px rgba(37,211,102,.5);z-index:9997;cursor:pointer;border:none;transition:.3s}
+.chat-balloon.show{display:flex}
+.chat-balloon:hover{transform:translateY(-50%) scale(1.1)}
+.chat-balloon .balloon-badge{position:absolute;top:-2px;right:-2px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:12px;min-width:20px;text-align:center;animation:popIn .3s}
+@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
 .hero{text-align:center;padding:50px 24px;background:linear-gradient(135deg,rgba(20,26,34,.9),rgba(26,42,58,.9));border-radius:28px;margin-bottom:24px;border:1px solid #1f2a34;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(37,211,102,.1),transparent 30%);animation:rotate 8s linear infinite;z-index:0}
 @keyframes rotate{to{transform:rotate(360deg)}}
@@ -68,6 +75,9 @@ input,textarea,select{font-family:inherit}
 .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
 .section-header h2{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px}
 .section-header .count{background:rgba(37,211,102,.15);color:#25d366;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;padding:12px;background:#141a22;border-radius:14px;border:1px solid #1f2a34}
+.filter-bar input,.filter-bar select{flex:1;min-width:120px;padding:10px 14px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:13px;outline:none}
+.filter-bar input:focus,.filter-bar select:focus{border-color:#25d366}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 .product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;overflow:hidden;cursor:pointer;transition:.4s;position:relative}
 .product-card:hover{transform:translateY(-4px);border-color:#25d366}
@@ -80,12 +90,15 @@ input,textarea,select{font-family:inherit}
 .product-card .info .meta{font-size:11px;margin:4px 0;display:flex;gap:8px;flex-wrap:wrap}
 .product-card .info .meta .stok{color:#25d366}
 .product-card .info .meta .sold{color:#e74c3c}
+.product-card .info .meta .rating{color:#f1c40f}
 .product-card .info .harga{color:#25d366;font-weight:900;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
 .product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700}
 .badge-dev{position:absolute;top:10px;left:10px;background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000;font-size:10px;font-weight:900;padding:3px 10px;border-radius:10px}
 .badge-habis{position:absolute;top:10px;right:10px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px}
 .badge-free{position:absolute;top:10px;left:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px}
 .badge-mini-cart{position:absolute;top:10px;right:10px;background:#25d366;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px}
+.badge-flash{position:absolute;top:10px;left:10px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;font-size:10px;font-weight:900;padding:3px 10px;border-radius:10px;animation:flashPulse 1s infinite}
+@keyframes flashPulse{0%,100%{opacity:1}50%{opacity:.6}}
 .wishlist-btn{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:18px;padding:6px 10px;border-radius:50%;cursor:pointer;transition:.3s;z-index:4;backdrop-filter:blur(4px)}
 .wishlist-btn.active{color:#e74c3c}
 .wishlist-btn:hover{transform:scale(1.15)}
@@ -127,7 +140,8 @@ input,textarea,select{font-family:inherit}
 .topbar .menu-btn .lock-icon{position:absolute;top:4px;right:4px;font-size:12px}
 .topbar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999}
 .topbar-overlay.show{display:block}
-.tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto}
+.tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:13px;white-space:nowrap;opacity:.6;display:flex;align-items:center;justify-content:center;gap:6px;transition:.3s}
 .tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
 .order-item{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;padding:18px;margin-bottom:12px}
@@ -137,6 +151,7 @@ input,textarea,select{font-family:inherit}
 .status-waiting{background:#f39c12;color:#fff}
 .status-verified{background:#25d366;color:#fff}
 .status-cancelled{background:#e74c3c;color:#fff}
+.status-refund{background:#9b59b6;color:#fff}
 .order-item .body{font-size:13px;opacity:.8;line-height:1.8}
 .order-item .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .cart-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;margin-bottom:10px;border:1px solid #1f2a34}
@@ -205,7 +220,7 @@ input,textarea,select{font-family:inherit}
 .upload-area .icon{font-size:32px;color:#25d366;margin-bottom:8px}
 .upload-area .text{font-size:13px;opacity:.7}
 .banner-dev{width:100%;aspect-ratio:16/5;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;overflow:hidden;margin-bottom:16px;position:relative;display:flex;align-items:center;justify-content:center;color:#2a3340;font-size:14px;cursor:pointer}
-.banner-dev img{width:100%;height:100%;object-fit:cover}
+.banner-dev img,.banner-dev video{width:100%;height:100%;object-fit:cover}
 .banner-dev .placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.4}
 .calc-display{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:20px;text-align:right;font-size:32px;font-weight:900;color:#25d366;margin-bottom:12px;min-height:60px;word-break:break-all}
 .calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
@@ -232,7 +247,7 @@ input,textarea,select{font-family:inherit}
 .music-player-bar .info .status{font-size:11px;opacity:.5}
 .music-player-bar button{background:transparent;border:none;color:#e0e6ed;font-size:20px;padding:6px;cursor:pointer;border-radius:8px}
 .footer{text-align:center;padding:30px 20px;opacity:.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
-::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:#070a0f}
 ::-webkit-scrollbar-thumb{background:#2a3340;border-radius:10px}
 .hidden{display:none!important}
@@ -317,8 +332,9 @@ input,textarea,select{font-family:inherit}
 .leaderboard-item .info .nama{font-weight:700;font-size:14px}
 .leaderboard-item .info .meta{font-size:11px;opacity:.6;margin-top:2px}
 .leaderboard-item .exp{color:#25d366;font-weight:900;font-size:14px;flex-shrink:0}
-.terminal-wrap{position:fixed;bottom:20px;right:20px;width:420px;max-width:90vw;height:480px;max-height:80vh;background:#0a0a0a;border:1px solid #25d366;border-radius:14px;z-index:10003;display:none;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.8);font-family:'JetBrains Mono',monospace;overflow:hidden}
+.terminal-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:90vw;max-width:800px;height:80vh;max-height:600px;background:#0a0a0a;border:1px solid #25d366;border-radius:14px;z-index:10003;display:none;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.8);font-family:'JetBrains Mono',monospace;overflow:hidden}
 .terminal-wrap.show{display:flex}
+.terminal-wrap.minimized{top:auto;left:auto;bottom:80px;right:20px;transform:none;width:320px;height:220px;max-width:none;max-height:none}
 .terminal-header{display:flex;align-items:center;gap:8px;padding:10px 12px;background:linear-gradient(180deg,#141414,#0d0d0d);border-bottom:1px solid #1f1f1f;flex-shrink:0}
 .terminal-header .dots{display:flex;gap:5px}
 .terminal-header .dot{width:11px;height:11px;border-radius:50%}
@@ -341,6 +357,7 @@ input,textarea,select{font-family:inherit}
 .log-line.DEBUG .lvl{color:#95a5a6}
 .log-line.CMD .lvl{color:#9b59b6}
 .log-line.SECRET .lvl{color:#f1c40f}
+.log-line.DEV .lvl{color:#e67e22}
 .log-line .msg{color:#c0c0c0;flex:1;word-break:break-word}
 .terminal-input-wrap{display:flex;gap:6px;padding:8px 10px;background:#0d0d0d;border-top:1px solid #1a1a1a;flex-shrink:0;align-items:center}
 .terminal-input-wrap .prompt{color:#25d366;font-weight:800;font-size:13px}
@@ -350,8 +367,8 @@ input,textarea,select{font-family:inherit}
 .terminal-float-btn.show{display:flex;align-items:center;justify-content:center}
 .promo-slider-wrap{position:relative;margin-bottom:24px;border-radius:20px;overflow:hidden;border:1px solid #1f2a34;background:#0f151c}
 .promo-slider-title{position:absolute;top:10px;left:14px;z-index:3;background:rgba(0,0,0,.6);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;color:#25d366}
-.promo-slider-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:12px;cursor:grab}
-.promo-slider-track::-webkit-scrollbar{height:4px}
+.promo-slider-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:12px;cursor:grab;scrollbar-width:none}
+.promo-slider-track::-webkit-scrollbar{display:none}
 .promo-slide{flex:0 0 auto;scroll-snap-align:start;width:280px;height:150px;border-radius:14px;overflow:hidden;position:relative;background:#141a22;border:1px solid #2a3340;cursor:pointer}
 .promo-slide img{width:100%;height:100%;object-fit:cover}
 .promo-slide .slide-label{position:absolute;bottom:0;left:0;width:100%;padding:8px 12px;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);color:#fff;font-size:12px;font-weight:700;pointer-events:none}
@@ -359,7 +376,7 @@ input,textarea,select{font-family:inherit}
 .promo-add-btn:hover{border-color:#25d366;background:rgba(37,211,102,.05)}
 #bannerAnimasiRB{position:fixed;bottom:20px;right:20px;max-width:150px;max-height:150px;z-index:9997;display:none;pointer-events:none;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
 #bannerAnimasiRB.show{display:block}
-#bannerAnimasiRB img{max-width:100%;max-height:150px;object-fit:contain;display:block}
+#bannerAnimasiRB img,#bannerAnimasiRB video{max-width:100%;max-height:150px;object-fit:contain;display:block}
 .download-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;position:relative}
 .download-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#25d366}
 .download-card .thumb img{width:100%;height:100%;object-fit:cover}
@@ -381,12 +398,25 @@ input,textarea,select{font-family:inherit}
 @keyframes virusPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
 .virus-info-bottom{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;text-align:center;font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,.7);padding:14px 24px;border-radius:14px;border:2px solid #25d366;z-index:11;max-width:90%}
 .virus-info-bottom code{color:#25d366;font-weight:800;background:#0f151c;padding:2px 8px;border-radius:6px}
+.virus-overlay.shake{animation:virShake .1s infinite}
+@keyframes virShake{0%{transform:translate(0,0)}25%{transform:translate(-3px,3px)}50%{transform:translate(3px,-3px)}75%{transform:translate(-3px,-3px)}100%{transform:translate(3px,3px)}}
 .rating-stars{display:flex;gap:4px;font-size:24px;cursor:pointer;justify-content:center}
 .rating-stars span{opacity:.3;transition:.2s}
 .rating-stars span.active{opacity:1;transform:scale(1.1)}
 .review-item{background:#0f151c;border-radius:12px;padding:12px;margin-bottom:8px;font-size:12px}
 .review-item .name{font-weight:700;margin-bottom:4px}
 .review-item .stars{color:#f1c40f}
+.ps-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:16px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ps-card .ps-info{flex:1;min-width:0}
+.ps-card .ps-info .ps-title{font-weight:700;font-size:14px;margin-bottom:4px}
+.ps-card .ps-info .ps-price{color:#25d366;font-weight:900;font-size:18px}
+.ps-card .ps-info .ps-desc{font-size:11px;opacity:.6;margin-top:4px;line-height:1.4}
+.ps-card .ps-btn{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;padding:10px 16px;border-radius:12px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap}
+.ps-status-box{background:rgba(37,211,102,.08);border:1px solid #25d366;border-radius:16px;padding:20px;text-align:center;margin-bottom:16px}
+.ps-status-box.expired{background:rgba(231,76,60,.08);border-color:#e74c3c}
+.ps-status-box .ps-title{font-size:14px;opacity:.7;margin-bottom:6px}
+.ps-status-box .ps-value{font-size:32px;font-weight:900;color:#25d366;font-family:'JetBrains Mono',monospace}
+.ps-status-box.expired .ps-value{color:#e74c3c}
 @media(max-width:600px){
   .container{padding:14px}
   .navbar{padding:10px 12px;gap:8px}
@@ -402,8 +432,10 @@ input,textarea,select{font-family:inherit}
   .promo-add-btn{width:100px;height:120px}
   #bannerAnimasiRB{max-width:90px;max-height:90px}
   .judul-web-banner{aspect-ratio:16/6;max-height:100px}
-  .terminal-wrap{width:100vw;height:70vh;bottom:0;right:0;border-radius:14px 14px 0 0}
+  .terminal-wrap{width:96vw;height:70vh}
+  .terminal-wrap.minimized{width:90vw;right:5vw}
   .virus-title-center{font-size:36px}
+  .chat-balloon{width:48px;height:48px;font-size:20px}
 }
 </style>
 </head>
@@ -456,12 +488,24 @@ input,textarea,select{font-family:inherit}
 <symbol id="em-diamond" viewBox="0 0 24 24"><path d="M12 2L2 9l10 13L22 9 12 2zm0 3.5L18.5 9 12 18 5.5 9 12 5.5z"/></symbol>
 <symbol id="em-shield" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></symbol>
 <symbol id="em-key" viewBox="0 0 24 24"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></symbol>
+<symbol id="em-bell" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></symbol>
+<symbol id="em-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></symbol>
+<symbol id="em-server" viewBox="0 0 24 24"><path d="M4 1h16c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2zm0 12h16c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2zm2-9v2h2V4H6zm0 12v2h2v-2H6z"/></symbol>
+<symbol id="em-database" viewBox="0 0 24 24"><path d="M12 2C7.58 2 4 3.79 4 6v12c0 2.21 3.58 4 8 4s8-1.79 8-4V6c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2zm0 16c-3.87 0-6-1.5-6-2v-2.31c1.42.79 3.58 1.31 6 1.31s4.58-.52 6-1.31V18c0 .5-2.13 2-6 2zm0-5c-3.87 0-6-1.5-6-2v-2.31c1.42.79 3.58 1.31 6 1.31s4.58-.52 6-1.31V13c0 .5-2.13 2-6 2z"/></symbol>
+<symbol id="em-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
+<symbol id="em-settings" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></symbol>
+<symbol id="em-filter" viewBox="0 0 24 24"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/></symbol>
+<symbol id="em-sort" viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></symbol>
+<symbol id="em-share" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></symbol>
+<symbol id="em-edit" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>
+<symbol id="em-refresh" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></symbol>
 </svg>
 
+<!-- ============ FLOW PAGES ============ -->
 <div class="page-flow show" id="pageFlowDb">
   <div class="flow-box">
     <div class="flow-logo-3d">W</div>
-    <h2 class="flow-title">WarungDigital</h2>
+    <h2 class="flow-title">WarungDigital v8.2</h2>
     <p class="flow-desc" id="flowDbStatus">Menghubungkan ke database...</p>
     <div class="flow-progress"><div class="flow-progress-bar" id="flowDbBar"></div></div>
     <button class="flow-skip-btn" onclick="skipFlowDb()">⏭️ Skip</button>
@@ -524,6 +568,7 @@ input,textarea,select{font-family:inherit}
   </div>
 </div>
 
+<!-- ============ MAIN APP ============ -->
 <div id="topNotif"></div>
 <div class="topbar-overlay" id="topbarOverlay" onclick="closeTopbar()"></div>
 <div class="topbar" id="topbar">
@@ -531,18 +576,26 @@ input,textarea,select{font-family:inherit}
 <div class="menu-grid" id="topbarGrid"></div>
 </div>
 
-<div id="bannerAnimasiRB"><img id="bannerAnimasiImg" style="display:none" /></div>
+<div id="bannerAnimasiRB"><img id="bannerAnimasiImg" style="display:none" /><video id="bannerAnimasiVid" style="display:none" autoplay muted loop playsinline></video></div>
 <button class="terminal-float-btn" id="terminalFloatBtn" onclick="toggleTerminal()">&gt;_</button>
+<button class="chat-balloon" id="chatBalloon" onclick="openChatListFromBalloon()">
+  <svg class="em em-lg"><use href="#em-chat"/></svg>
+  <span class="balloon-badge" id="chatBalloonBadge" style="display:none">0</span>
+</button>
 
 <div class="container">
 <div class="navbar-wrap">
-  <div class="judul-web-banner" id="judulWebBanner"><img id="judulWebImg" style="display:none" /></div>
+  <div class="judul-web-banner" id="judulWebBanner">
+    <img id="judulWebImg" style="display:none" />
+    <video id="judulWebVid" style="display:none" autoplay muted loop playsinline></video>
+  </div>
   <nav class="navbar">
     <div class="left">
       <button onclick="openTopbar()" style="background:transparent;border:none;color:#e0e6ed;font-size:24px;padding:4px"><svg class="em em-lg"><use href="#em-menu"/></svg></button>
       <div class="logo-nav" id="logoNav" onclick="showPage('home')">
         <span id="logoNavFallback">W</span>
         <img id="logoNavImg" style="display:none" />
+        <video id="logoNavVid" style="display:none" autoplay muted loop playsinline></video>
       </div>
       <div class="clock-top">
         <div class="row">🕐 <span id="clockWIB">--:--:--</span> WIB</div>
@@ -559,7 +612,10 @@ input,textarea,select{font-family:inherit}
       <a href="javascript:showPage('fun')">Fun</a>
       <button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
     </div>
-    <div class="banner-1-1-big" id="banner11"><img id="banner11Img" style="display:none" /></div>
+    <div class="banner-1-1-big" id="banner11">
+      <img id="banner11Img" style="display:none" />
+      <video id="banner11Vid" style="display:none" autoplay muted loop playsinline></video>
+    </div>
   </nav>
 </div>
 
@@ -573,7 +629,7 @@ input,textarea,select{font-family:inherit}
     <div class="promo-slider-track" id="promoMedsosTrack"></div>
   </div>
   <div class="hero">
-    <div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL</div>
+    <div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL v8.2</div>
     <h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
     <p>Platform jual-beli produk digital dengan verifikasi manual. Aman, cepat, dan terpercaya.</p>
     <div class="btn-group">
@@ -585,12 +641,31 @@ input,textarea,select{font-family:inherit}
     <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
     <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
     <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
-    <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num">4.9</div><div class="label">Rating</div></div>
+    <div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num" id="statRating">0.0</div><div class="label">Rating</div></div>
   </div>
   <div class="section" id="produk">
     <div class="section-header">
       <h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2>
       <span class="count" id="produkCount">0 produk</span>
+    </div>
+    <div class="filter-bar">
+      <input type="text" id="searchProduk" placeholder="🔍 Cari produk..." oninput="renderHome()" />
+      <select id="filterKategori" onchange="renderHome()">
+        <option value="">Semua Kategori</option>
+        <option value="Umum">Umum</option>
+        <option value="Top-Up Game">Top-Up Game</option>
+        <option value="Template">Template</option>
+        <option value="E-book">E-book</option>
+        <option value="Preset">Preset</option>
+        <option value="Lainnya">Lainnya</option>
+      </select>
+      <select id="filterSort" onchange="renderHome()">
+        <option value="terbaru">Terbaru</option>
+        <option value="termurah">Termurah</option>
+        <option value="termahal">Termahal</option>
+        <option value="terlaris">Terlaris</option>
+        <option value="rating">Rating</option>
+      </select>
     </div>
     <div class="product-grid" id="productGrid">
       <div class="empty"><svg class="em-2xl"><use href="#em-box"/></svg><p>Memuat produk...</p></div>
@@ -676,6 +751,11 @@ input,textarea,select{font-family:inherit}
 <button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px">Logout</button>
 </div>
 
+<div id="page-privateserver" class="hidden">
+<div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-server"/></svg> Private Server</h2><span class="count">Firebase RTDB</span></div>
+<div id="psContent"></div>
+</div>
+
 <div id="page-dev" class="hidden">
 <div class="section-header"><h2 style="color:#f1c40f"><svg class="em em-lg" style="color:#f1c40f"><use href="#em-crown"/></svg> Dev Panel</h2><span class="count" id="devCount">0 user</span></div>
 <div id="devContent"><div class="empty"><p>Memuat...</p></div></div>
@@ -690,7 +770,7 @@ input,textarea,select{font-family:inherit}
 <button onclick="stopMusic()"><svg class="em em-lg"><use href="#em-close"/></svg></button>
 </div>
 
-<div class="footer">Made with <svg class="em" style="color:#25d366"><use href="#em-heart"/></svg> by <strong>WarungDigital</strong> · © 2026</div>
+<div class="footer">Made with <svg class="em" style="color:#25d366"><use href="#em-heart"/></svg> by <strong>WarungDigital v8.2</strong> · © 2026</div>
 
 <div class="modal-overlay" id="modalOverlay"><div class="modal" id="modalContent"></div></div>
 <div id="toast"></div>
@@ -699,7 +779,7 @@ input,textarea,select{font-family:inherit}
 <div class="chat-header">
 <button class="back" onclick="closeChat()"><svg class="em em-lg"><use href="#em-close"/></svg></button>
 <div class="chat-avatar" id="chatAvatar">👤</div>
-<div><div class="chat-name" id="chatName">-</div><div class="chat-status" id="chatStatus">Online</div></div>
+<div><div class="chat-name" id="chatName">-</div><div class="chat-status" id="chatStatus" style="font-size:11px;opacity:.6">Online</div></div>
 </div>
 <div class="chat-body" id="chatBody"></div>
 <div class="chat-footer">
@@ -712,15 +792,16 @@ input,textarea,select{font-family:inherit}
 <div class="terminal-wrap" id="terminalWrap">
   <div class="terminal-header">
     <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-    <div class="title" id="terminalTitle">WarungDigital Terminal</div>
+    <div class="title" id="terminalTitle">WarungDigital Terminal v8.2</div>
     <button class="btn" onclick="exportLog()">💾</button>
     <button class="btn" onclick="resetLogForce()">🗑️</button>
+    <button class="btn" onclick="minimizeTerminal()">▁</button>
     <button class="btn" onclick="toggleTerminal()">✕</button>
   </div>
   <div class="terminal-body" id="terminalBody"></div>
   <div class="terminal-input-wrap">
     <span class="prompt" id="terminalPrompt">&gt;</span>
-    <input type="text" id="terminalInput" placeholder="Ketik command... (VXZ-help)" onkeydown="if(event.key==='Enter')handleCommand(this.value)" />
+    <input type="text" id="terminalInput" placeholder="Ketik command... (Vmenu)" onkeydown="if(event.key==='Enter')handleCommand(this.value)" />
   </div>
 </div>
 
@@ -729,7 +810,7 @@ input,textarea,select{font-family:inherit}
   <div class="virus-title-center" id="virusTitle">⚠️ VIRUS DETECTED ⚠️</div>
   <div class="virus-info-bottom">
     Ini cuma <strong>PRANK</strong> 😄<br>
-    Ketik <code>VXZ-virusoff</code> ATAU refresh web <strong>10 kali</strong> buat berhenti.
+    Ketik <code>Vvirusoff</code> ATAU refresh web <strong>10 kali</strong> buat berhenti.
     <div style="margin-top:8px;font-size:12px;opacity:.7">Auto-stop dalam <span id="virusCountdown">300</span> detik</div>
   </div>
 </div>
@@ -738,7 +819,7 @@ input,textarea,select{font-family:inherit}
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-  <script>
+<script>
 const firebaseConfig={
   apiKey:"AIzaSyDp_3SDiQUAGX0_gw8BYtO2Ecnypl1GlgE",
   authDomain:"project1-f57d6.firebaseapp.com",
@@ -756,6 +837,14 @@ const CLOUDINARY_URL=`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`
 const MAX_FILE_SIZE=25*1024*1024;
 const DEV_NAME="vardev";
 const DEV_PASS="vardevanakganteng2";
+const PS_PRICES=[
+  {id:'rules',title:'Mengatur Rules RTDB',price:500,desc:'Setup rules Firebase Realtime Database'},
+  {id:'rules_fs',title:'Rules RTDB + Firestore',price:1000,desc:'Setup rules RTDB + Firestore'},
+  {id:'lainnya',title:'Mengatur Lainnya',price:3000,desc:'Config lengkap sesuai request'},
+  {id:'gmail',title:'Akses Penuh Gmail Firebase',price:5000,desc:'Full access ke akun Firebase'},
+  {id:'extend_day',title:'Perpanjang / Hari',price:300,desc:'Perpanjang 1 hari'},
+  {id:'extend_perm',title:'Perpanjang Permanent',price:5000,desc:'Perpanjang selamanya'}
+];
 const LEVELS=[
   {lv:1,name:'Pemula',expNeed:0,rarity:'common'},
   {lv:2,name:'Buyer Kaya',expNeed:2000,rarity:'uncommon'},
@@ -775,6 +864,7 @@ const MISSIONS=[
   {id:'follow',name:'Follow user',desc:'Follow user',exp:50,icon:'❤️'},
   {id:'random',name:'Misi Random',desc:'Misi spesial',exp:500,icon:'🎲'}
 ];
+
 let currentUser=localStorage.getItem('wd_user')||null;
 let currentPage='home';
 let products={};
@@ -814,9 +904,14 @@ let virusDuration=300;
 let refreshCount=0;
 let secretUnlocked=localStorage.getItem('wd_secret_unlocked')==='true';
 let secretVerifyPending=false;
-let secretMathQuestion=null;
 let secretAnswer=null;
-let currentProductDetail=null;
+let secretLockUntil=0;
+let pendingProductBannerUrl='';
+let pendingDownloadBannerUrl='';
+let pendingDownloadFileUrl='';
+let pendingDownloadFileName='';
+let pendingPromoBannerUrl='';
+let unreadChatCount=0;
 
 function formatRp(n){return 'Rp '+Number(n||0).toLocaleString('id-ID')}
 function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -825,6 +920,41 @@ function formatBytes(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFi
 function cdnImg(url,w){if(!url)return'';if(!url.includes('res.cloudinary.com'))return url;return url.replace('/upload/',`/upload/f_auto,q_auto,w_${w||800}/`)}
 function getLevelFromExp(exp){let lv=1;let total=0;for(let i=0;i<LEVELS.length;i++){total+=LEVELS[i].expNeed;if(exp>=total)lv=LEVELS[i].lv}return lv}
 function getLevelInfo(lv){return LEVELS[lv-1]||LEVELS[0]}
+
+// ===== SOUND NOTIFICATION (Web Audio API) =====
+let audioCtx=null;
+function getAudioCtx(){
+  if(!audioCtx){try{audioCtx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+  return audioCtx;
+}
+function playTone(freq,dur,type,vol){
+  const ctx=getAudioCtx();if(!ctx)return;
+  try{
+    const osc=ctx.createOscillator();
+    const gain=ctx.createGain();
+    osc.type=type||'sine';
+    osc.frequency.value=freq;
+    gain.gain.value=vol||0.15;
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.start();
+    gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+dur);
+    osc.stop(ctx.currentTime+dur);
+  }catch(e){}
+}
+function playSequence(notes){
+  notes.forEach((n,i)=>{setTimeout(()=>playTone(n.f,n.d||0.15,n.t||'sine',n.v||0.15),i*(n.gap||120))});
+}
+const SOUNDS={
+  levelup:{1:()=>playSequence([{f:523,d:.15},{f:659,d:.15},{f:784,d:.3}]),2:()=>playSequence([{f:587,d:.15},{f:784,d:.15},{f:988,d:.3}]),3:()=>playSequence([{f:659,d:.15},{f:880,d:.15},{f:1047,d:.3}]),4:()=>playSequence([{f:698,d:.15},{f:932,d:.15},{f:1175,d:.3}]),5:()=>playSequence([{f:784,d:.15},{f:988,d:.15},{f:1319,d:.35}]),6:()=>playSequence([{f:880,d:.15},{f:1109,d:.15},{f:1480,d:.4},{f:1760,d:.5}]),7:()=>playSequence([{f:1047,d:.15},{f:1319,d:.15},{f:1568,d:.2},{f:2093,d:.6}])},
+  chat:()=>playSequence([{f:880,d:.08},{f:1175,d:.12}]),
+  order:()=>playSequence([{f:659,d:.1},{f:784,d:.1},{f:1047,d:.2}]),
+  notif:()=>playSequence([{f:988,d:.15},{f:1319,d:.2}]),
+  error:()=>playSequence([{f:200,d:.15,t:'square'},{f:150,d:.25,t:'square'}]),
+  success:()=>playSequence([{f:659,d:.1},{f:988,d:.15},{f:1319,d:.2}]),
+  gacha:()=>playSequence([{f:523,d:.05},{f:659,d:.05},{f:784,d:.05},{f:988,d:.05},{f:1175,d:.05},{f:1319,d:.05},{f:1568,d:.15}]),
+  virus:()=>{playSequence([{f:100,d:.1,t:'sawtooth',v:.3},{f:80,d:.1,t:'sawtooth',v:.3}]);setTimeout(SOUNDS.virus,250)},
+  message:()=>playTone(880,0.1,'sine',0.15)
+};
 
 function pushLog(level,msg){
   const entry={t:Date.now(),level,msg:String(msg)};
@@ -852,14 +982,19 @@ function renderTerminal(){
 }
 function toggleTerminal(){
   const t=document.getElementById('terminalWrap');
-  if(t.classList.contains('show'))t.classList.remove('show');
+  if(t.classList.contains('show')){t.classList.remove('show')}
   else{
     t.classList.add('show');
+    t.classList.remove('minimized');
     renderTerminal();
     document.getElementById('terminalTitle').textContent=isDev?'WarungDigital Terminal [DEV]':'Log Aktivitas';
     document.getElementById('terminalPrompt').textContent=isDev?'DEV >':'>';
     document.getElementById('terminalInput').focus();
   }
+}
+function minimizeTerminal(){
+  const t=document.getElementById('terminalWrap');
+  t.classList.toggle('minimized');
 }
 function exportLog(){
   const data={exportedAt:new Date().toISOString(),user:currentUser||'guest',isDev,totalLogs:logBuffer.length,logs:logBuffer};
@@ -875,7 +1010,7 @@ function exportLog(){
 }
 function resetLogForce(){
   if(logBuffer.length===0){showToast('Log kosong','warn');return}
-  if(!confirm(`Reset ${logBuffer.length} log? Pastikan udah export!`))return;
+  if(!confirm(`Reset ${logBuffer.length} log?`))return;
   logBuffer=[];
   renderTerminal();
   pushLog('OK','Log direset');
@@ -986,8 +1121,9 @@ function showFlow(id){
   document.querySelectorAll('.page-flow').forEach(el=>el.classList.remove('show'));
   const el=document.getElementById(id);
   if(el){el.classList.remove('exit');el.classList.add('show')}
-  document.querySelector('.container').style.display='none';
-  document.getElementById('terminalFloatBtn').classList.remove('show');
+  const c=document.querySelector('.container');if(c)c.style.display='none';
+  const tf=document.getElementById('terminalFloatBtn');if(tf)tf.classList.remove('show');
+  const cb=document.getElementById('chatBalloon');if(cb)cb.classList.remove('show');
 }
 function hideFlow(id){
   const el=document.getElementById(id);
@@ -996,9 +1132,10 @@ function hideFlow(id){
   setTimeout(()=>{el.classList.remove('show','exit')},400);
 }
 function showApp(){
-  document.querySelectorAll('.page-flow').forEach(el=>{el.classList.remove('show');el.remove()});
-  document.querySelector('.container').style.display='block';
+  document.querySelectorAll('.page-flow').forEach(el=>{el.classList.remove('show');});
+  const c=document.querySelector('.container');if(c)c.style.display='block';
   document.getElementById('terminalFloatBtn').classList.add('show');
+  if(currentUser&&!isGuest)document.getElementById('chatBalloon').classList.add('show');
 }
 
 let dbSkipClicked=false;
@@ -1061,27 +1198,33 @@ async function loadAllBannersAndBg(){
     const snap=await db.ref('warungdigital/settings').once('value');
     const s=snap.val()||{};
     pendingBanner={...pendingBanner,...s};
-    applyBanner('banner11','banner11Img',s.banner11);
-    applyBanner('judulWebBanner','judulWebImg',s.bannerJudul);
-    applyBanner('bannerAnimasiRB','bannerAnimasiImg',s.bannerAnimasi);
-    applyLogo(s.bannerLogo);
+    applyBannerImgVid('banner11','banner11Img','banner11Vid',s.banner11,s.banner11Type);
+    applyBannerImgVid('judulWebBanner','judulWebImg','judulWebVid',s.bannerJudul,s.bannerJudulType);
+    applyBannerImgVid('bannerAnimasiRB','bannerAnimasiImg','bannerAnimasiVid',s.bannerAnimasi,s.bannerAnimasiType);
+    applyLogo(s.bannerLogo,s.bannerLogoType);
     applyFavicon(s.favicon);
     applyBg(s.bgWeb);
   }catch(e){console.warn(e)}
 }
-function applyBanner(wrapId,imgId,url){
+function applyBannerImgVid(wrapId,imgId,vidId,url,type){
   const wrap=document.getElementById(wrapId);
   const img=document.getElementById(imgId);
+  const vid=document.getElementById(vidId);
   if(!wrap)return;
-  if(url){wrap.classList.add('show');if(img){img.style.display='block';img.src=cdnImg(url,600);img.loading='lazy'}}
-  else wrap.classList.remove('show');
+  if(url){
+    wrap.classList.add('show');
+    if(type==='video'&&vid){vid.style.display='block';vid.src=url;if(img)img.style.display='none'}
+    else if(img){img.style.display='block';img.src=cdnImg(url,600);img.loading='lazy';if(vid)vid.style.display='none'}
+  }else wrap.classList.remove('show');
 }
-function applyLogo(url){
+function applyLogo(url,type){
   const img=document.getElementById('logoNavImg');
+  const vid=document.getElementById('logoNavVid');
   const fb=document.getElementById('logoNavFallback');
-  if(!url){fb.style.display='block';img.style.display='none';return}
+  if(!url){fb.style.display='block';img.style.display='none';vid.style.display='none';return}
   fb.style.display='none';
-  img.style.display='block';img.src=cdnImg(url,200);
+  if(type==='video'){vid.style.display='block';vid.src=url;img.style.display='none'}
+  else{img.style.display='block';img.src=cdnImg(url,200);vid.style.display='none'}
 }
 function applyFavicon(url){
   const link=document.getElementById('faviconLink');
@@ -1097,14 +1240,8 @@ function applyBg(url){
   st.textContent=`body.has-bg::after{background-image:url('${cdnImg(url,1200)}')}`;
   document.head.appendChild(st);
 }
-async function loadIntroData(){
-  try{const s=await db.ref('warungdigital/introWeb').once('value');introData=s.val()||{}}
-  catch(e){introData={}}
-}
-async function loadUiInfo(){
-  try{const s=await db.ref('warungdigital/uiInfo').once('value');uiInfoData=s.val()||{}}
-  catch(e){uiInfoData={}}
-}
+async function loadIntroData(){try{const s=await db.ref('warungdigital/introWeb').once('value');introData=s.val()||{}}catch(e){introData={}}}
+async function loadUiInfo(){try{const s=await db.ref('warungdigital/uiInfo').once('value');uiInfoData=s.val()||{}}catch(e){uiInfoData={}}}
 async function loadPromoJualan(){
   try{
     const s=await db.ref('warungdigital/banners/promosiJualan').limitToLast(20).once('value');
@@ -1161,7 +1298,7 @@ function showIntroInfo(){
     showFlow('pageIntroInfo');
     const t=document.getElementById('introInfoTitle');
     const s=document.getElementById('introInfoSubtitle');
-    if(t)t.textContent=uiInfoData.title||'WarungDigital';
+    if(t)t.textContent=uiInfoData.title||'WarungDigital v8.2';
     if(s)s.textContent=uiInfoData.subtitle||'Marketplace Produk Digital';
     const content=document.getElementById('introInfoContent');
     const updates=uiInfoData.updates?Object.values(uiInfoData.updates):[];
@@ -1171,7 +1308,7 @@ function showIntroInfo(){
       updates.forEach(u=>{html+=`<div class="intro-update-item"><div class="dot"></div><div>${escapeHtml(u)}</div></div>`});
       html+=`</div>`;
     }else{
-      html+=`<div class="intro-info-card"><h3>📝 Update Terbaru</h3><div class="intro-update-item"><div class="dot"></div><div>WarungDigital v8.1 — 7 Level, 7 Rarity, 30 Command, Virus Prank!</div></div></div>`;
+      html+=`<div class="intro-info-card"><h3>📝 Update v8.2</h3><div class="intro-update-item"><div class="dot"></div><div>Terminal Fullscreen + Minimize</div></div><div class="intro-update-item"><div class="dot"></div><div>Private Server System</div></div><div class="intro-update-item"><div class="dot"></div><div>Web Audio API (Sound beda per event)</div></div><div class="intro-update-item"><div class="dot"></div><div>Balon Chat Melayang + Badge Unread</div></div><div class="intro-update-item"><div class="dot"></div><div>Banner Support Video</div></div><div class="intro-update-item"><div class="dot"></div><div>25 Fitur Jual-Beli</div></div></div>`;
     }
     content.innerHTML=html;
   },400);
@@ -1234,6 +1371,7 @@ async function afterAuthGo(){
     await checkDailyReset();
     await logMission('login');
     checkVirusOnLoad();
+    checkPrivateServerStatus();
     const stored=parseInt(localStorage.getItem('wd_refresh_count')||'0');
     refreshCount=stored+1;
     localStorage.setItem('wd_refresh_count',String(refreshCount));
@@ -1252,8 +1390,10 @@ async function afterAuthGo(){
       const n=snap.val();
       if(!n||n.read)return;
       showTopNotif(n.title,n.message,n.type==='danger'?'error':'info');
+      SOUNDS.notif();
       snap.ref.update({read:true});
     });
+    startUnreadChatListener();
   }
   setTimeout(()=>autoLoadMusic(),800);
 }
@@ -1289,7 +1429,7 @@ function updateLevelUI(){
       <div class="exp-text"><span>EXP: <span class="exp-now">${expInLevel.toLocaleString('id-ID')}</span> / ${expForNext.toLocaleString('id-ID')}</span><span>${pct}%</span></div>
       ${nextLv?`<div class="level-name">Next: Level ${nextLv.lv} - ${escapeHtml(nextLv.name)}</div>`:`<div class="level-name">🎉 Level MAX!</div>`}
     </div>
-    <div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">${emoji('em-trophy','em')} Leaderboard Level (Top 10)</h2><span class="count">Global</span></div>
+    <div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">${emoji('em-trophy','em')} Leaderboard (Top 10)</h2><span class="count">Global</span></div>
     <div id="leaderboardContainer"><div class="empty"><p>Memuat leaderboard...</p></div></div>
     <div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">${emoji('em-bolt','em')} Misi Harian</h2><span class="count">Refresh 24 jam</span></div>
     <div>${MISSIONS.map(m=>{
@@ -1328,6 +1468,7 @@ async function addExp(amount,reason){
   if(userLevel>oldLevel){
     const lvInfo=getLevelInfo(userLevel);
     showTopNotif('🎉 LEVEL UP!',`Level ${userLevel} - ${lvInfo.name}`,'success');
+    const fn=SOUNDS.levelup[userLevel];if(fn)fn();
   }
   updateLevelUI();
 }
@@ -1354,7 +1495,9 @@ async function logMission(missionId){
 async function ensureDevAccount(){
   const snap=await db.ref('warungdigital/users/'+DEV_NAME).once('value');
   if(!snap.exists()){
-    await db.ref('warungdigital/users/'+DEV_NAME).set({password:DEV_PASS,createdAt:Date.now(),ewallets:[],wa:'',exp:999999,level:7,missions:{},isDev:true,status:'Developer'});
+    await db.ref('warungdigital/users/'+DEV_NAME).set({password:DEV_PASS,createdAt:Date.now(),ewallets:[],wa:'',exp:999999,level:999,missions:{},isDev:true,status:'Developer'});
+  }else{
+    await db.ref('warungdigital/users/'+DEV_NAME).update({isDev:true,level:999});
   }
 }
 async function checkDevStatus(){
@@ -1387,16 +1530,16 @@ function buildTopbarMenu(){
     {icon:'em-heart',label:'Wishlist',page:'wishlist',minLv:1},
     {icon:'em-trophy',label:'Level',page:'level',minLv:1},
     {icon:'em-bolt',label:'Fun',page:'fun',minLv:2},
-    {icon:'em-calc',label:'Kalkulator',page:'calculator',minLv:1},
     {icon:'em-music',label:'Musik',page:'music',minLv:1},
     {icon:'em-user',label:'Info Akun',page:'accounts',minLv:1},
     {icon:'em-send',label:'Chat',page:'chatlist',minLv:1},
     {icon:'em-user',label:'Setting',page:'account',minLv:1},
+    {icon:'em-server',label:'Private Server',page:'privateserver',minLv:1},
     {icon:'em-bulb',label:'Request',onclick:'showRequestFitur()',minLv:1},
     {icon:'em-help',label:'Help',onclick:'showHelp()',minLv:1},
   ];
   let html=items.map(i=>{
-    const locked=userLevel<i.minLv;
+    const locked=userLevel<i.minLv&&!isDev;
     const cls=locked?'locked':'';
     const lockIcon=locked?`<span class="lock-icon">🔒</span>`:'';
     const onclick=locked?`onclick="showToast('Butuh Level ${i.minLv}','warn')"`:`onclick="${i.onclick||`showPage('${i.page}');closeTopbar()`}"`;
@@ -1434,7 +1577,7 @@ function addToCart(id){
   const p=products[id];if(!p)return;
   if(!currentUser||isGuest){showToast('Login dulu!','error');showAuthPage('login');return}
   if(p.penjual===currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
-  if(p.stock!==undefined&&p.stock<=0){showToast('Stok habis!','error');return}
+  if(p.stock!==undefined&&p.stock!==null&&p.stock<=0){showToast('Stok habis!','error');return}
   const ex=cart.find(c=>c.id===id);
   if(ex)ex.qty++;
   else cart.push({id,nama:p.nama,harga:p.harga,penjual:p.penjual,qty:1});
@@ -1462,7 +1605,7 @@ async function checkoutCart(){
   const u=snap.val()||{};
   const ewallets=(u.ewallets||[]).filter(e=>e.verified);
   if(ewallets.length===0){showToast('Penjual belum punya e-wallet!','error');return}
-  buktiUrl='';
+  buktiUrl='';selectedEwallet=null;
   openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-cart','em-lg')} Checkout</h2><div class="verify-box"><div class="label">Bayar ke</div><div class="val">${escapeHtml(firstSeller)}</div><div class="label" style="margin-top:8px">Total</div><div class="val big">${formatRp(total)}</div></div><label>Pilih E-Wallet</label><div class="metode-list" id="ewalletList">${ewallets.map((e,i)=>`<div class="metode-item" onclick="pilihEwalletCart(${i},'${escapeHtml(e.jenis)}','${escapeHtml(e.namaAkun)}','${escapeHtml(e.nomor)}')">${e.icon||'💳'} ${escapeHtml(e.jenis)} — ${escapeHtml(e.namaAkun)}</div>`).join('')}</div><div id="ewalletDetail"></div><label style="margin-top:14px">Upload Bukti Transfer</label><div class="upload-area" id="uploadArea" onclick="document.getElementById('buktiInput').click()"><div class="icon">${emoji('em-upload','em-2xl')}</div><div class="text">Klik buat upload</div><img id="buktiPreview" style="display:none" /></div><input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFile(this)" /><div class="verify-box"><div class="label">Nama Tujuan</div><div class="val" id="autoNamaTujuan">-</div><div class="label" style="margin-top:8px">Nominal</div><div class="val big">${formatRp(total)}</div></div><button class="btn btn-primary btn-block" onclick="submitCartOrder()">${emoji('em-check','em')} Kirim</button>`);
 }
 function pilihEwalletCart(i,jenis,namaAkun,nomor){
@@ -1494,6 +1637,7 @@ async function submitCartOrder(){
   await db.ref('warungdigital/orders/'+orderId).set(order);
   closeModal();
   showToast('✅ Pesanan dikirim!','success');
+  SOUNDS.order();
   pushLog('OK','Order dibuat: '+orderId);
   const expAdd=total<=9000?100:total<=25000?250:total<=50000?500:1000;
   await addExp(expAdd,'Beli produk');
@@ -1523,6 +1667,7 @@ function showPage(page){
   if(page==='accounts')renderAccounts();
   if(page==='chatlist')renderChatList();
   if(page==='account')loadSettingAccount();
+  if(page==='privateserver')renderPrivateServer();
   if(page==='dev')renderDev();
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -1553,7 +1698,8 @@ db.ref('warungdigital/orders').on('value',snap=>{
     snap.forEach(child=>{
       const o=child.val();
       if(o.penjual===currentUser&&o.status==='proof_uploaded'){
-        showTopNotif('🛒 Pesanan Baru!',`${o.produkNama} - Rp ${(o.total||0).toLocaleString('id-ID')}`,'success');
+        showTopNotif('🛒 Pesanan Baru!',`${o.produkNama} - ${formatRp(o.total)}`,'success');
+        SOUNDS.order();
       }
     });
   }
@@ -1563,14 +1709,26 @@ db.ref('warungdigital/orders').on('value',snap=>{
 function renderHome(){
   const grid=document.getElementById('productGrid');
   if(!grid)return;
-  const list=Object.entries(products).filter(([id,p])=>p.kategori!=='Top-Up Game').map(([id,p])=>({id,...p}));
+  let list=Object.entries(products).map(([id,p])=>({id,...p}));
+  const q=document.getElementById('searchProduk')?.value.trim().toLowerCase()||'';
+  const kat=document.getElementById('filterKategori')?.value||'';
+  const sort=document.getElementById('filterSort')?.value||'terbaru';
+  if(q)list=list.filter(p=>(p.nama||'').toLowerCase().includes(q)||(p.deskripsi||'').toLowerCase().includes(q));
+  if(kat)list=list.filter(p=>p.kategori===kat);
+  if(sort==='terbaru')list.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  if(sort==='termurah')list.sort((a,b)=>(a.harga||0)-(b.harga||0));
+  if(sort==='termahal')list.sort((a,b)=>(b.harga||0)-(a.harga||0));
+  if(sort==='terlaris')list.sort((a,b)=>(b.sold||0)-(a.sold||0));
+  if(sort==='rating')list.sort((a,b)=>(b.rating||0)-(a.rating||0));
   if(list.length===0){grid.innerHTML=`<div class="empty">${emoji('em-box','em-2xl')}<p>Belum ada produk</p></div>`;return}
-  grid.innerHTML=list.reverse().map(p=>{
+  grid.innerHTML=list.map(p=>{
     const inCart=cart.find(c=>c.id===p.id);
-    const habis=p.stock!==undefined&&p.stock<=0;
+    const habis=p.stock!==undefined&&p.stock!==null&&p.stock<=0;
     const inWishlist=wishlist.includes(p.id);
     const thumbContent=p.banner?`<img src="${cdnImg(p.banner,500)}" loading="lazy">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl');
-    return `<div class="product-card" onclick="showDetail('${p.id}')"><div class="thumb">${thumbContent}</div><button class="wishlist-btn ${inWishlist?'active':''}" onclick="event.stopPropagation();toggleWishlist('${p.id}')">${inWishlist?'❤️':'🤍'}</button>${inCart?`<div class="badge-mini-cart">${emoji('em-cart','em')} ${inCart.qty}</div>`:''}${habis?`<div class="badge-habis">HABIS</div>`:''}${p.penjual===DEV_NAME?'<div class="badge-dev">👑 DEV</div>':''}<div class="info"><div class="kategori">${escapeHtml(p.kategori||'Umum')}</div><div class="nama">${escapeHtml(p.nama||'Tanpa Nama')}</div><div class="penjual">${emoji('em-user','em')} ${escapeHtml(p.penjual||'Anonim')}</div><div class="meta"><span class="stok">📦 ${p.stock!==undefined?p.stock:'∞'}</span><span class="sold">🛒 ${p.sold||0}</span></div><div class="harga"><span>${formatRp(p.harga)}</span><button class="btn-beli" onclick="event.stopPropagation();${habis?'showToast(\'Habis!\',\'error\')':`beliLangsung('${p.id}')`}">Beli</button></div></div></div>`;
+    const ratingAvg=p.rating||0;
+    const flash=p.flashSale;
+    return `<div class="product-card" onclick="showDetail('${p.id}')"><div class="thumb">${thumbContent}</div><button class="wishlist-btn ${inWishlist?'active':''}" onclick="event.stopPropagation();toggleWishlist('${p.id}')">${inWishlist?'❤️':'🤍'}</button>${inCart?`<div class="badge-mini-cart">${emoji('em-cart','em')} ${inCart.qty}</div>`:''}${habis?`<div class="badge-habis">HABIS</div>`:''}${flash?`<div class="badge-flash">🔥 FLASH</div>`:''}${p.penjual===DEV_NAME?'<div class="badge-dev">👑 DEV</div>':''}<div class="info"><div class="kategori">${escapeHtml(p.kategori||'Umum')}</div><div class="nama">${escapeHtml(p.nama||'Tanpa Nama')}</div><div class="penjual">${emoji('em-user','em')} ${escapeHtml(p.penjual||'Anonim')}</div><div class="meta"><span class="stok">📦 ${p.stock!==undefined&&p.stock!==null?p.stock:'∞'}</span><span class="sold">🛒 ${p.sold||0}</span>${ratingAvg>0?`<span class="rating">⭐ ${ratingAvg.toFixed(1)}</span>`:''}</div><div class="harga"><span>${formatRp(p.harga)}</span><button class="btn-beli" onclick="event.stopPropagation();${habis?'showToast(\'Habis!\',\'error\')':`beliLangsung('${p.id}')`}">Beli</button></div></div></div>`;
   }).join('');
 }
 function toggleWishlist(id){
@@ -1590,24 +1748,54 @@ function renderWishlist(){
   if(list.length===0){el.innerHTML=`<div class="empty">${emoji('em-heart','em-2xl')}<p>Wishlist kosong</p></div>`;return}
   el.innerHTML=list.map(p=>`<div class="product-card" onclick="showDetail('${p.id}')"><div class="thumb">${p.banner?`<img src="${cdnImg(p.banner,500)}" loading="lazy">`:emoji('em-box','em-2xl')}</div><button class="wishlist-btn active" onclick="event.stopPropagation();toggleWishlist('${p.id}')">❤️</button><div class="info"><div class="kategori">${escapeHtml(p.kategori||'Umum')}</div><div class="nama">${escapeHtml(p.nama)}</div><div class="harga"><span>${formatRp(p.harga)}</span><button class="btn-beli" onclick="event.stopPropagation();beliLangsung('${p.id}')">Beli</button></div></div></div>`).join('');
 }
-function showDetail(id){
+async function showDetail(id){
   const p=products[id];if(!p)return;
+  db.ref('warungdigital/products/'+id+'/views').transaction(c=>(c||0)+1);
   const banner=p.banner?`<img src="${cdnImg(p.banner,800)}" style="width:100%;border-radius:16px;margin-bottom:14px;max-height:200px;object-fit:cover" />`:'';
-  const habis=p.stock!==undefined&&p.stock<=0;
-  openModal(`<button class="close-btn" onclick="closeModal()">✕</button>${banner}<h2>${escapeHtml(p.nama)}</h2><div style="font-size:12px;opacity:.6;margin-bottom:8px">${emoji('em-user','em')} Dijual oleh <strong>${escapeHtml(p.penjual)}</strong></div><div style="font-size:28px;font-weight:900;color:#25d366;margin-bottom:12px">${formatRp(p.harga)}</div><p style="font-size:14px;opacity:.8;line-height:1.6;margin-bottom:16px;white-space:pre-wrap">${escapeHtml(p.deskripsi||'Tidak ada deskripsi.')}</p><div class="tabungan-grid" style="margin-bottom:16px"><div class="tabungan-item"><div class="label">Stok</div><div class="val">${p.stock!==undefined?p.stock:'∞'}</div></div><div class="tabungan-item"><div class="label">Terjual</div><div class="val">${p.sold||0}</div></div></div><button class="btn btn-primary btn-block" onclick="${habis?'showToast(\'Habis!\',\'error\')':`beliLangsung('${id}')`}" ${habis?'disabled':''}>${emoji('em-cart','em')} Beli Langsung</button><button class="btn btn-secondary btn-block" onclick="addToCart('${id}');closeModal();" ${habis?'disabled':''}>${emoji('em-cart','em')} + Keranjang</button><button class="btn btn-secondary btn-block" onclick="closeModal();openChatWith('${escapeHtml(p.penjual)}')">${emoji('em-send','em')} Chat Penjual</button>`);
+  const habis=p.stock!==undefined&&p.stock!==null&&p.stock<=0;
+  const ratingAvg=p.rating||0;
+  const stars='⭐'.repeat(Math.round(ratingAvg))||'';
+  openModal(`<button class="close-btn" onclick="closeModal()">✕</button>${banner}<h2>${escapeHtml(p.nama)}</h2><div style="font-size:12px;opacity:.6;margin-bottom:8px">${emoji('em-user','em')} Dijual oleh <strong>${escapeHtml(p.penjual)}</strong></div><div style="font-size:28px;font-weight:900;color:#25d366;margin-bottom:12px">${formatRp(p.harga)}</div>${ratingAvg>0?`<div style="font-size:13px;color:#f1c40f;margin-bottom:12px">${stars} ${ratingAvg.toFixed(1)} (${p.ratingCount||0} rating)</div>`:''}<p style="font-size:14px;opacity:.8;line-height:1.6;margin-bottom:16px;white-space:pre-wrap">${escapeHtml(p.deskripsi||'Tidak ada deskripsi.')}</p><div class="tabungan-grid" style="margin-bottom:16px"><div class="tabungan-item"><div class="label">Stok</div><div class="val">${p.stock!==undefined&&p.stock!==null?p.stock:'∞'}</div></div><div class="tabungan-item"><div class="label">Terjual</div><div class="val">${p.sold||0}</div></div><div class="tabungan-item"><div class="label">Views</div><div class="val">${(p.views||0)+1}</div></div></div><button class="btn btn-primary btn-block" onclick="${habis?'showToast(\'Habis!\',\'error\')':`beliLangsung('${id}')`}" ${habis?'disabled':''}>${emoji('em-cart','em')} Beli Langsung</button><button class="btn btn-secondary btn-block" onclick="addToCart('${id}');closeModal();" ${habis?'disabled':''}>${emoji('em-cart','em')} + Keranjang</button><button class="btn btn-secondary btn-block" onclick="closeModal();openChatWith('${escapeHtml(p.penjual)}')">${emoji('em-send','em')} Chat Penjual</button><button class="btn btn-secondary btn-block" onclick="rateProduct('${id}')">${emoji('em-star','em')} Kasih Rating</button><button class="btn btn-secondary btn-block" onclick="shareProduct('${id}')">${emoji('em-share','em')} Share</button>`);
+}
+function shareProduct(id){
+  const p=products[id];if(!p)return;
+  const url=location.origin+location.pathname+'#product-'+id;
+  if(navigator.share){navigator.share({title:p.nama,text:p.deskripsi,url}).catch(()=>{})}
+  else{navigator.clipboard.writeText(url);showToast('✅ Link dicopy!','success')}
+}
+function rateProduct(id){
+  const p=products[id];if(!p)return;
+  openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-star','em-lg')} Rating Produk</h2><p style="font-size:13px;opacity:.7;margin-bottom:16px">${escapeHtml(p.nama)}</p><div class="rating-stars" id="ratingStars">${[1,2,3,4,5].map(n=>`<span onclick="selectRating(${n})" data-val="${n}">⭐</span>`).join('')}</div><label style="margin-top:16px">Ulasan (optional)</label><textarea id="reviewText" rows="3" placeholder="Tulis ulasan..."></textarea><button class="btn btn-primary btn-block" onclick="submitRating('${id}')">${emoji('em-check','em')} Kirim</button>`);
+}
+let selectedRating=0;
+function selectRating(n){selectedRating=n;document.querySelectorAll('#ratingStars span').forEach(s=>{s.classList.toggle('active',parseInt(s.dataset.val)<=n)})}
+async function submitRating(id){
+  if(!selectedRating){showToast('Pilih bintang!','error');return}
+  if(!currentUser||isGuest){showToast('Login dulu!','error');return}
+  const text=document.getElementById('reviewText').value.trim();
+  await db.ref('warungdigital/products/'+id+'/reviews').push({user:currentUser,rating:selectedRating,text,createdAt:Date.now()});
+  const p=products[id];
+  const oldCount=p.ratingCount||0;
+  const oldAvg=p.rating||0;
+  const newCount=oldCount+1;
+  const newAvg=(oldAvg*oldCount+selectedRating)/newCount;
+  await db.ref('warungdigital/products/'+id).update({rating:newAvg,ratingCount:newCount});
+  closeModal();showToast('✅ Rating terkirim!','success');
+  await addExp(50,'Rating produk');
+  await logMission('rating');
 }
 async function beliLangsung(id){
   if(!currentUser||isGuest){showToast('Login dulu!','error');showAuthPage('login');return}
   const p=products[id];if(!p)return;
   if(p.penjual===currentUser){showToast('Gak bisa beli produk sendiri!','error');return}
-  if(p.stock!==undefined&&p.stock<=0){showToast('Stok habis!','error');return}
+  if(p.stock!==undefined&&p.stock!==null&&p.stock<=0){showToast('Stok habis!','error');return}
   if(p.tipe==='wa'&&p.waLink){window.open(p.waLink,'_blank');return}
   closeModal();
   const snap=await db.ref('warungdigital/users/'+p.penjual).once('value');
   const u=snap.val()||{};
   const ewallets=(u.ewallets||[]).filter(e=>e.verified);
   if(ewallets.length===0){showToast('Penjual belum punya e-wallet!','error');return}
-  buktiUrl='';
+  buktiUrl='';selectedEwallet=null;
   openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-cart','em-lg')} Beli Langsung</h2><div class="verify-box"><div class="label">Produk</div><div class="val">${escapeHtml(p.nama)}</div><div class="label" style="margin-top:8px">Nominal</div><div class="val big">${formatRp(p.harga)}</div></div><label>Pilih E-Wallet</label><div class="metode-list" id="ewalletList">${ewallets.map((e,i)=>`<div class="metode-item" onclick="pilihEwalletPenjual(${i},'${escapeHtml(e.jenis)}','${escapeHtml(e.namaAkun)}','${escapeHtml(e.nomor)}')">${e.icon||'💳'} ${escapeHtml(e.jenis)} — ${escapeHtml(e.namaAkun)}</div>`).join('')}</div><div id="ewalletDetail"></div><label style="margin-top:14px">Upload Bukti TF</label><div class="upload-area" id="uploadArea" onclick="document.getElementById('buktiInput').click()"><div class="icon">${emoji('em-upload','em-2xl')}</div><div class="text">Klik buat upload</div><img id="buktiPreview" style="display:none" /></div><input type="file" id="buktiInput" accept="image/*" style="display:none" onchange="readBuktiFileBL(this,'${id}')" /><button class="btn btn-primary btn-block" onclick="submitBeliLangsung('${id}')">${emoji('em-check','em')} Kirim</button>`);
 }
 function pilihEwalletPenjual(i,jenis,namaAkun,nomor){
@@ -1639,7 +1827,8 @@ async function submitBeliLangsung(id){
   await db.ref('warungdigital/orders/'+orderId).set(order);
   closeModal();
   showToast(isDevProduct?'✅ Produk Dev langsung terverifikasi!':'✅ Pesanan dikirim!','success');
-  if(isDevProduct&&p.stock!==undefined){await db.ref('warungdigital/products/'+id).update({stock:Math.max(0,p.stock-1),sold:(p.sold||0)+1})}
+  SOUNDS.order();
+  if(isDevProduct&&p.stock!==undefined&&p.stock!==null){await db.ref('warungdigital/products/'+id).update({stock:Math.max(0,p.stock-1),sold:(p.sold||0)+1})}
   const expAdd=p.harga<=9000?100:p.harga<=25000?250:p.harga<=50000?500:1000;
   await addExp(expAdd,'Beli produk');
   await logMission('beli');
@@ -1650,7 +1839,7 @@ async function submitBeliLangsung(id){
 function renderFun(){
   const el=document.getElementById('funGrid');
   if(!el)return;
-  if(userLevel<2){el.innerHTML=`<div class="empty"><p>🔒 Butuh Level 2 (Buyer Kaya) buat akses Fun Zone</p></div>`;return}
+  if(userLevel<2&&!isDev){el.innerHTML=`<div class="empty"><p>🔒 Butuh Level 2 (Buyer Kaya) buat akses Fun Zone</p></div>`;return}
   const fun=[
     {icon:'🎲',nama:'Kocok Dadu',fn:'funDadu()'},
     {icon:'🪙',nama:'Coin Flip',fn:'funCoin()'},
@@ -1673,6 +1862,7 @@ async function funGacha(){
 async function doGacha(){
   if(userExp<500){showToast('EXP gak cukup!','error');return}
   await addExp(-500,'Gacha');
+  SOUNDS.gacha();
   const roll=Math.random()*100;
   let rarity,icon,prize;
   if(roll<40){rarity='common';icon='🟢';prize='+100 EXP balik';await addExp(100,'Gacha common')}
@@ -1709,7 +1899,13 @@ async function renderJualanProduk(){
   }
   const my=Object.entries(products).filter(([id,p])=>p.penjual===currentUser);
   if(my.length===0){el.innerHTML=warningHtml+`<div class="empty"><p>Belum ada produk</p></div>`;return}
-  el.innerHTML=warningHtml+'<div class="product-grid">'+my.map(([id,p])=>`<div class="product-card"><div class="thumb">${p.banner?`<img src="${cdnImg(p.banner,500)}" loading="lazy">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div><div class="info"><div class="kategori">${escapeHtml(p.kategori||'Umum')}</div><div class="nama">${escapeHtml(p.nama)}</div><div class="meta"><span class="stok">📦 ${p.stock!==undefined?p.stock:'∞'}</span><span class="sold">🛒 ${p.sold||0}</span></div><div class="harga">${formatRp(p.harga)}</div><div style="display:flex;gap:6px;margin-top:10px"><button class="btn btn-sm btn-danger" style="flex:1" onclick="deleteProduct('${id}')">${emoji('em-trash','em')}</button></div></div></div>`).join('')+'</div>';
+  el.innerHTML=warningHtml+'<div class="product-grid">'+my.map(([id,p])=>`<div class="product-card"><div class="thumb">${p.banner?`<img src="${cdnImg(p.banner,500)}" loading="lazy">`:emoji(p.tipe==='wa'?'em-wa':'em-box','em-2xl')}</div><div class="info"><div class="kategori">${escapeHtml(p.kategori||'Umum')}</div><div class="nama">${escapeHtml(p.nama)}</div><div class="meta"><span class="stok">📦 ${p.stock!==undefined&&p.stock!==null?p.stock:'∞'}</span><span class="sold">🛒 ${p.sold||0}</span></div><div class="harga">${formatRp(p.harga)}</div><div style="display:flex;gap:6px;margin-top:10px"><button class="btn btn-sm btn-secondary" style="flex:1" onclick="toggleFlashSale('${id}')">${p.flashSale?'🔥':'💤'}</button><button class="btn btn-sm btn-danger" style="flex:1" onclick="deleteProduct('${id}')">${emoji('em-trash','em')}</button></div></div></div>`).join('')+'</div>';
+}
+async function toggleFlashSale(id){
+  const p=products[id];if(!p)return;
+  await db.ref('warungdigital/products/'+id).update({flashSale:!p.flashSale});
+  showToast(p.flashSale?'Flash sale off':'🔥 Flash sale on!','success');
+  renderJualanProduk();
 }
 async function renderJualanPesanan(){
   const el=document.getElementById('jualan-pesanan');
@@ -1755,10 +1951,10 @@ async function showAddProduct(){
   if(!currentUser||isGuest){showToast('Login dulu!','error');return}
   const eSnap=await db.ref('warungdigital/users/'+currentUser+'/ewallets').once('value');
   const ewallets=eSnap.val()||[];
-  if(ewallets.length===0){openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2 style="color:#f39c12">${emoji('em-warning','em-lg')} E-Wallet Belum Ada</h2><p style="font-size:14px;opacity:.8;margin-bottom:14px">Daftarin E-Wallet dulu sebelum jualan.</p><button class="btn btn-warning btn-block" onclick="closeModal();switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2])">💳 Daftarin Sekarang</button><button class="btn btn-secondary btn-block" onclick="closeModal()">Nanti Aja</button>`);return}
+  if(ewallets.length===0){openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2 style="color:#f39c12">${emoji('em-warning','em-lg')} E-Wallet Belum Ada</h2><p style="font-size:14px;opacity:.8;margin-bottom:14px">Daftarin E-Wallet dulu sebelum jualan.</p><button class="btn btn-warning btn-block" onclick="closeModal();showPage('jualan');setTimeout(()=>switchJualanTab('pembayaran',document.querySelectorAll('#page-jualan .tabs button')[2]),200)">💳 Daftarin Sekarang</button><button class="btn btn-secondary btn-block" onclick="closeModal()">Nanti Aja</button>`);return}
+  pendingProductBannerUrl='';
   openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-plus','em-lg')} Tambah Produk</h2><label>Tipe</label><select id="pType" onchange="toggleProductType()"><option value="digital">Digital (MediaFire)</option><option value="wa">WhatsApp</option></select><label>Nama</label><input type="text" id="pNama" /><label>Harga</label><input type="number" id="pHarga" /><label>Stok (kosong = unlimited)</label><input type="number" id="pStock" /><label>Kategori</label><select id="pKategori"><option value="Umum">Umum</option><option value="Top-Up Game">Top-Up Game</option><option value="Template">Template</option><option value="E-book">E-book</option><option value="Preset">Preset</option><option value="Lainnya">Lainnya</option></select><label>Deskripsi</label><textarea id="pDeskripsi" rows="3"></textarea><div id="pDigitalSection"><label>Link MediaFire</label><input type="text" id="pLinkMediafire" /><label style="margin-top:12px">Banner (max 25MB)</label><input type="file" id="pBanner" accept="image/*" onchange="uploadProductBanner(this)" /></div><div id="pWASection" class="hidden"><label>Nomor WA</label><input type="text" id="pWANumber" oninput="autoFillWA()" /><label>Link WA (auto)</label><input type="text" id="pWALink" readonly /></div><button class="btn btn-primary btn-block" onclick="saveProduct()">${emoji('em-check','em')} Simpan</button>`);
 }
-let pendingProductBannerUrl='';
 function toggleProductType(){
   const t=document.getElementById('pType').value;
   document.getElementById('pDigitalSection').classList.toggle('hidden',t!=='digital');
@@ -1791,7 +1987,7 @@ async function saveProduct(){
   if(!nama||!harga){showToast('Nama & harga wajib!','error');return}
   if(tipe==='wa'&&!waLink){showToast('Nomor WA wajib!','error');return}
   if(tipe==='digital'&&!linkMediafire){showToast('Link MediaFire wajib!','error');return}
-  const data={nama,harga,kategori,deskripsi,stock,sold:0,penjual:currentUser,tipe,linkMediafire:tipe==='digital'?linkMediafire:'',waLink:tipe==='wa'?waLink:'',banner:pendingProductBannerUrl||'',createdAt:Date.now()};
+  const data={nama,harga,kategori,deskripsi,stock,sold:0,views:0,penjual:currentUser,tipe,linkMediafire:tipe==='digital'?linkMediafire:'',waLink:tipe==='wa'?waLink:'',banner:pendingProductBannerUrl||'',createdAt:Date.now()};
   await db.ref('warungdigital/products').push(data);
   closeModal();pendingProductBannerUrl='';
   showToast('Produk ditambah!','success');
@@ -1823,9 +2019,6 @@ function showAddDownload(){
   pendingDownloadBannerUrl='';pendingDownloadFileUrl='';pendingDownloadFileName='';
   openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-cloud','em-lg')} Upload Gratisan</h2><label>Nama File</label><input type="text" id="dlNama" /><label>Deskripsi</label><textarea id="dlDesk" rows="3"></textarea><label>Tipe</label><select id="dlTipe" onchange="toggleDlTipe()"><option value="link">Link</option><option value="file">File (max 25MB)</option></select><div id="dlLinkSection"><label>Link</label><input type="text" id="dlLink" /></div><div id="dlFileSection" class="hidden"><label>File (max 25MB)</label><input type="file" id="dlFile" onchange="uploadDlFile(this)" /></div><label style="margin-top:12px">Banner (max 25MB)</label><input type="file" id="dlBanner" accept="image/*" onchange="uploadDlBanner(this)" /><button class="btn btn-primary btn-block" onclick="saveDownload()">${emoji('em-check','em')} Upload</button>`);
 }
-let pendingDownloadBannerUrl='';
-let pendingDownloadFileUrl='';
-let pendingDownloadFileName='';
 function toggleDlTipe(){
   const t=document.getElementById('dlTipe').value;
   document.getElementById('dlLinkSection').classList.toggle('hidden',t!=='link');
@@ -1968,12 +2161,12 @@ async function renderOrders(){
   el.innerHTML=orders.map(o=>renderOrderCard(o,o.penjual===currentUser?'penjual':'pembeli')).join('');
 }
 function renderOrderCard(o,role){
-  const statusMap={proof_uploaded:{label:'⏳ Nunggu',cls:'status-waiting'},verified:{label:'✅ Selesai',cls:'status-verified'},cancelled:{label:'❌ Batal',cls:'status-cancelled'}};
+  const statusMap={proof_uploaded:{label:'⏳ Nunggu',cls:'status-waiting'},verified:{label:'✅ Selesai',cls:'status-verified'},cancelled:{label:'❌ Batal',cls:'status-cancelled'},refund:{label:'💸 Refund',cls:'status-refund'}};
   const st=statusMap[o.status]||statusMap.proof_uploaded;
   const time=new Date(o.createdAt).toLocaleString('id-ID');
   const items=o.items?o.items.map(i=>`${escapeHtml(i.nama)} ×${i.qty}`).join(', '):escapeHtml(o.produkNama||'');
   const buktiHtml=o.bukti?`<div style="margin-top:10px"><div style="font-size:11px;opacity:.6;margin-bottom:4px">📸 Bukti:</div><img src="${cdnImg(o.bukti,400)}" loading="lazy" style="max-width:100%;max-height:200px;border-radius:12px;cursor:pointer;border:1px solid #2a3340" onclick="previewBukti('${o.key}')" /></div>`:'';
-  return `<div class="order-item"><div class="head"><div class="oid">${escapeHtml(o.orderId)}</div><div class="status ${st.cls}">${st.label}</div></div><div class="body">${emoji('em-box','em')} <strong>${items}</strong><br>${emoji('em-wallet','em')} ${formatRp(o.total)} · ${escapeHtml(o.ewallet?.jenis||'-')}<br>${emoji('em-user','em')} ${role==='pembeli'?'Penjual':'Pembeli'}: ${escapeHtml(role==='pembeli'?o.penjual:o.pembeli)}<br>${emoji('em-receipt','em')} ${time}</div>${buktiHtml}<div class="actions">${o.status==='proof_uploaded'&&role==='penjual'?`<button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')">${emoji('em-check','em')} Konfirmasi</button><button class="btn btn-sm btn-danger" onclick="cancelOrder('${o.key}')">${emoji('em-close','em')} Cancel</button>`:''}${o.status==='verified'&&role==='pembeli'&&o.linkProduk?`<a class="btn btn-sm btn-success" href="${o.linkProduk}" target="_blank">${emoji('em-download','em')} Download</a>`:''}<button class="btn btn-sm btn-secondary" onclick="openChatWith('${role==='pembeli'?o.penjual:o.pembeli}')">${emoji('em-send','em')} Chat</button></div></div>`;
+  return `<div class="order-item"><div class="head"><div class="oid">${escapeHtml(o.orderId)}</div><div class="status ${st.cls}">${st.label}</div></div><div class="body">${emoji('em-box','em')} <strong>${items}</strong><br>${emoji('em-wallet','em')} ${formatRp(o.total)} · ${escapeHtml(o.ewallet?.jenis||'-')}<br>${emoji('em-user','em')} ${role==='pembeli'?'Penjual':'Pembeli'}: ${escapeHtml(role==='pembeli'?o.penjual:o.pembeli)}<br>${emoji('em-receipt','em')} ${time}</div>${buktiHtml}<div class="actions">${o.status==='proof_uploaded'&&role==='penjual'?`<button class="btn btn-sm btn-primary" onclick="confirmOrder('${o.key}')">${emoji('em-check','em')} Konfirmasi</button><button class="btn btn-sm btn-danger" onclick="cancelOrder('${o.key}')">${emoji('em-close','em')} Cancel</button>`:''}${o.status==='verified'&&role==='pembeli'&&o.linkProduk?`<a class="btn btn-sm btn-success" href="${o.linkProduk}" target="_blank">${emoji('em-download','em')} Download</a>`:''}${o.status==='verified'&&role==='pembeli'&&!o.refunded?`<button class="btn btn-sm btn-warning" onclick="refundOrder('${o.key}')">💸 Refund</button>`:''}<button class="btn btn-sm btn-secondary" onclick="openChatWith('${role==='pembeli'?o.penjual:o.pembeli}')">${emoji('em-send','em')} Chat</button></div></div>`;
 }
 function previewBukti(orderKey){
   db.ref('warungdigital/orders/'+orderKey).once('value',snap=>{
@@ -1990,8 +2183,9 @@ function confirmOrder(orderKey){
     const update={status:'verified',confirmedAt:Date.now()};
     if(produk&&produk.linkMediafire)update.linkProduk=produk.linkMediafire;
     db.ref('warungdigital/orders/'+orderKey).update(update).then(()=>{
-      if(produk&&produk.stock!==undefined){db.ref('warungdigital/products/'+o.produkId).update({stock:Math.max(0,(produk.stock||0)-1),sold:(produk.sold||0)+1})}
+      if(produk&&produk.stock!==undefined&&produk.stock!==null){db.ref('warungdigital/products/'+o.produkId).update({stock:Math.max(0,(produk.stock||0)-1),sold:(produk.sold||0)+1})}
       showToast('✅ Dikonfirmasi!','success');
+      SOUNDS.success();
       logMission('jual');
       renderOrders();renderJualanPesanan();
     });
@@ -2004,6 +2198,14 @@ function submitCancelOrder(orderKey){
   const reason=document.getElementById('cancelReasonSelect').value;
   if(!reason){showToast('Pilih alasan!','error');return}
   db.ref('warungdigital/orders/'+orderKey).update({status:'cancelled',cancelReason:reason,cancelledAt:Date.now(),cancelledBy:currentUser}).then(()=>{closeModal();showToast('❌ Dibatalkan','success');renderOrders();renderJualanPesanan()});
+}
+function refundOrder(orderKey){
+  openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2 style="color:#9b59b6">💸 Request Refund</h2><label>Alasan</label><textarea id="refundReason" rows="3" placeholder="Kenapa mau refund?"></textarea><button class="btn btn-warning btn-block" onclick="submitRefund('${orderKey}')">${emoji('em-check','em')} Kirim</button>`);
+}
+function submitRefund(orderKey){
+  const reason=document.getElementById('refundReason').value.trim();
+  if(!reason){showToast('Isi alasan!','error');return}
+  db.ref('warungdigital/orders/'+orderKey).update({status:'refund',refundReason:reason,refundAt:Date.now()}).then(()=>{closeModal();showToast('💸 Refund diajukan','success');renderOrders()});
 }
 
 async function renderDompet(){
@@ -2076,6 +2278,11 @@ async function renderChatList(){
     return `<div class="account-item" onclick="openChatWith('${escapeHtml(r.other)}')"><div class="avatar">${r.other.charAt(0).toUpperCase()}</div><div class="info"><div class="nama">${escapeHtml(r.other)}</div><div class="meta">${escapeHtml(preview).substring(0,40)}</div><div class="meta" style="font-size:10px">${time}</div></div></div>`;
   }).join('');
 }
+function openChatListFromBalloon(){
+  showPage('chatlist');
+  unreadChatCount=0;
+  updateChatBalloon();
+}
 function openChatWith(user){
   if(!currentUser||isGuest){showToast('Login dulu!','error');return}
   if(user===currentUser){showToast('Gak bisa chat sendiri!','error');return}
@@ -2086,7 +2293,7 @@ function openChatWith(user){
   document.getElementById('chatBody').innerHTML='';
   document.getElementById('chatContainer').classList.add('show');
   if(chatRef)chatRef.off();
-  chatRef=db.ref('warungdigital/chats/'+roomId);
+  chatRef=db.ref('warungdigital/chats/'+roomId+'/messages');
   chatRef.orderByChild('timestamp').limitToLast(100).on('value',snap=>{
     const body=document.getElementById('chatBody');
     if(!snap.exists()){body.innerHTML=`<div style="text-align:center;padding:20px;opacity:.5;font-size:13px">Belum ada chat</div>`;return}
@@ -2107,6 +2314,8 @@ function openChatWith(user){
     body.innerHTML=html;
     body.scrollTop=body.scrollHeight;
   });
+  unreadChatCount=0;
+  updateChatBalloon();
 }
 function closeChat(){
   document.getElementById('chatContainer').classList.remove('show');
@@ -2118,7 +2327,7 @@ function sendChatMsg(){
   const text=input.value.trim();
   if(!text||!currentChatUser)return;
   const roomId=[currentUser,currentChatUser].sort().join('_');
-  db.ref('warungdigital/chats/'+roomId).push({from:currentUser,text,timestamp:Date.now()}).then(()=>{input.value='';logMission('chat')});
+  db.ref('warungdigital/chats/'+roomId+'/messages').push({from:currentUser,text,timestamp:Date.now()}).then(()=>{input.value='';logMission('chat')});
 }
 function attachChatFile(){
   if(!currentChatUser)return;
@@ -2133,11 +2342,41 @@ function attachChatFile(){
       const res=await uploadToCloudinary(file,updateUploadProgress);
       closeModal();
       const roomId=[currentUser,currentChatUser].sort().join('_');
-      await db.ref('warungdigital/chats/'+roomId).push({from:currentUser,file:res.secure_url,fileType:file.type,fileName:file.name,timestamp:Date.now()});
+      await db.ref('warungdigital/chats/'+roomId+'/messages').push({from:currentUser,file:res.secure_url,fileType:file.type,fileName:file.name,timestamp:Date.now()});
       showToast('File terkirim!','success');
     }catch(e){showToast('❌ '+e.message,'error');closeModal()}
   };
   input.click();
+}
+function startUnreadChatListener(){
+  if(!currentUser||isGuest)return;
+  db.ref('warungdigital/chats').on('value',snap=>{
+    let total=0;
+    snap.forEach(room=>{
+      const roomId=room.key;
+      if(roomId.includes(currentUser)&&currentUser){
+        const other=roomId.split('_').find(u=>u!==currentUser);
+        if(other){
+          const msgs=room.val()?.messages||{};
+          const arr=Object.values(msgs).filter(m=>m.from!==currentUser);
+          const lastSeen=parseInt(localStorage.getItem('wd_lastseen_'+other)||'0');
+          arr.forEach(m=>{if(m.timestamp>lastSeen&&!m.read)total++});
+        }
+      }
+    });
+    unreadChatCount=total;
+    updateChatBalloon();
+    if(total>0)SOUNDS.chat();
+  });
+}
+function updateChatBalloon(){
+  const badge=document.getElementById('chatBalloonBadge');
+  const balloon=document.getElementById('chatBalloon');
+  if(!badge||!balloon)return;
+  if(currentUser&&!isGuest){balloon.classList.add('show')}
+  else{balloon.classList.remove('show');return}
+  if(unreadChatCount>0){badge.style.display='block';badge.textContent=unreadChatCount}
+  else badge.style.display='none';
 }
 
 function loadSettingAccount(){
@@ -2158,8 +2397,64 @@ function saveSettingAccount(){
   db.ref('warungdigital/users/'+currentUser).update(update).then(()=>{showToast('Akun disimpan!','success');document.getElementById('accPass').value=''});
 }
 
+// ============ PRIVATE SERVER ============
+async function renderPrivateServer(){
+  if(!currentUser||isGuest){showToast('Login dulu!','error');return}
+  const el=document.getElementById('psContent');
+  if(!el)return;
+  const snap=await db.ref('warungdigital/privateserver/'+currentUser).once('value');
+  const ps=snap.val();
+  let statusHtml='';
+  if(ps&&ps.expiresAt&&!ps.permanent){
+    const remaining=ps.expiresAt-Date.now();
+    if(remaining>0){
+      const days=Math.floor(remaining/86400000);
+      const hours=Math.floor((remaining%86400000)/3600000);
+      statusHtml=`<div class="ps-status-box"><div class="ps-title">✅ Private Server Aktif</div><div class="ps-value">${days}h ${hours}j</div><div style="font-size:12px;opacity:.6;margin-top:6px">Expired: ${new Date(ps.expiresAt).toLocaleString('id-ID')}</div></div>`;
+    }else{
+      statusHtml=`<div class="ps-status-box expired"><div class="ps-title">❌ EXPIRED</div><div class="ps-value">HABIS</div><div style="font-size:12px;opacity:.6;margin-top:6px">Perpanjang sekarang!</div></div>`;
+    }
+  }else if(ps&&ps.permanent){
+    statusHtml=`<div class="ps-status-box"><div class="ps-title">✅ Private Server PERMANENT</div><div class="ps-value">∞</div><div style="font-size:12px;opacity:.6;margin-top:6px">Terima kasih! 🎉</div></div>`;
+  }else{
+    statusHtml=`<div class="help-info-box">Belum punya Private Server. Beli di bawah!</div>`;
+  }
+  el.innerHTML=statusHtml+'<div class="section-header"><h2 style="font-size:18px">📋 List Harga</h2></div>'+PS_PRICES.map(p=>`<div class="ps-card"><div class="ps-info"><div class="ps-title">${escapeHtml(p.title)}</div><div class="ps-price">${p.price}P</div><div class="ps-desc">${escapeHtml(p.desc)}</div></div><button class="ps-btn" onclick="buyPrivateServer('${p.id}')">Beli</button></div>`).join('')+'<div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">💬 Chat dengan Dev</h2></div><button class="btn btn-primary btn-block" onclick="openChatWith(\''+DEV_NAME+'\')">💬 Chat Dev</button>';
+}
+function buyPrivateServer(priceId){
+  const price=PS_PRICES.find(p=>p.id===priceId);
+  if(!price)return;
+  openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-server','em-lg')} Beli Private Server</h2><div class="verify-box"><div class="label">Paket</div><div class="val">${escapeHtml(price.title)}</div><div class="label" style="margin-top:8px">Harga</div><div class="val big">${price.price}P</div></div><label>Chat via</label><div class="metode-list"><div class="metode-item" onclick="selectPSChannel(this,'wa')">💬 WhatsApp</div><div class="metode-item" onclick="selectPSChannel(this,'web')">🌐 Chat Web</div></div><label>Request / Catatan</label><textarea id="psRequest" rows="3" placeholder="Tulis request kamu..."></textarea><button class="btn btn-primary btn-block" onclick="submitPSRequest('${priceId}')">${emoji('em-send','em')} Kirim Request</button>`);
+}
+let psChannel='web';
+function selectPSChannel(el,ch){
+  psChannel=ch;
+  document.querySelectorAll('.metode-list .metode-item').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+}
+async function submitPSRequest(priceId){
+  const price=PS_PRICES.find(p=>p.id===priceId);
+  const req=document.getElementById('psRequest').value.trim();
+  if(!req){showToast('Tulis request!','error');return}
+  const reqId='PS-'+Date.now();
+  await db.ref('warungdigital/psRequests/'+reqId).set({user:currentUser,priceId,price:price.price,title:price.title,request:req,channel:psChannel,status:'pending',createdAt:Date.now()});
+  closeModal();
+  showToast('✅ Request terkirim ke Dev!','success');
+  pushLog('OK','PS Request: '+reqId);
+  if(psChannel==='wa'){window.open('https://wa.me/?text=Halo%20Dev%20WarungDigital,%20saya%20mau%20beli%20'+encodeURIComponent(price.title),'_blank')}
+}
+async function checkPrivateServerStatus(){
+  if(!currentUser)return;
+  const snap=await db.ref('warungdigital/privateserver/'+currentUser).once('value');
+  const ps=snap.val();
+  if(!ps)return;
+  if(!ps.permanent&&ps.expiresAt&&Date.now()>ps.expiresAt){
+    showTopNotif('⚠️ Private Server Expired','Perpanjang sekarang!','warn');
+  }
+}
+
 function showHelp(){
-  openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-help','em-lg')} Help & Info</h2><div class="help-info-box"><strong>WarungDigital v8.1</strong> — 7 Level, 7 Rarity, 30 Command, Virus Prank!</div><div class="help-section"><h3>${emoji('em-user','em')} Daftar & Login</h3><div class="help-step"><div class="num">1</div><div class="text">Pilih Login/Daftar di intro.</div></div></div><div class="help-section"><h3>${emoji('em-trophy','em')} Cara Naik Level</h3><div class="help-step"><div class="num">1</div><div class="text">Beli/jual produk dapet EXP (100-1000).</div></div><div class="help-step"><div class="num">2</div><div class="text">Kerjain misi harian buat EXP bonus.</div></div></div><div class="help-section"><h3>${emoji('em-info','em')} Terminal Command</h3><div class="help-step"><div class="num">1</div><div class="text">Ketik "VXZ-help" buat list semua command.</div></div><div class="help-step"><div class="num">2</div><div class="text">Prefix command: VXZ-</div></div></div><button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti!</button>`);
+  openModal(`<button class="close-btn" onclick="closeModal()">✕</button><h2>${emoji('em-help','em-lg')} Help & Info</h2><div class="help-info-box"><strong>WarungDigital v8.2</strong> — 7 Level, 7 Rarity, Terminal Fullscreen, Private Server, Virus Prank!</div><div class="help-section"><h3>${emoji('em-user','em')} Daftar & Login</h3><div class="help-step"><div class="num">1</div><div class="text">Pilih Login/Daftar di intro.</div></div></div><div class="help-section"><h3>${emoji('em-trophy','em')} Cara Naik Level</h3><div class="help-step"><div class="num">1</div><div class="text">Beli/jual produk dapet EXP (100-1000).</div></div><div class="help-step"><div class="num">2</div><div class="text">Kerjain misi harian buat EXP bonus.</div></div></div><div class="help-section"><h3>${emoji('em-server','em')} Private Server</h3><div class="help-step"><div class="num">1</div><div class="text">Buka menu Private Server di topbar.</div></div><div class="help-step"><div class="num">2</div><div class="text">Pilih paket, kirim request ke Dev.</div></div></div><div class="help-section"><h3>${emoji('em-info','em')} Terminal Command</h3><div class="help-step"><div class="num">1</div><div class="text">Ketik "Vmenu" buat list semua command.</div></div><div class="help-step"><div class="num">2</div><div class="text">Prefix command: V</div></div></div><button class="btn btn-primary btn-block" onclick="closeModal()">${emoji('em-check','em')} Ngerti!</button>`);
 }
 function showRequestFitur(){
   if(!currentUser){showToast('Login dulu!','error');return}
@@ -2209,7 +2504,6 @@ function enableDragScroll(track){
   track.addEventListener('mouseup',()=>{isDown=false});
   track.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-track.offsetLeft;track.scrollLeft=scrollLeft-(x-startX)*2});
 }
-let pendingPromoBannerUrl='';
 function showAddPromo(jenis){
   if(!currentUser||isGuest){showToast('Login dulu!','error');return}
   pendingPromoBannerUrl='';
@@ -2240,6 +2534,7 @@ async function savePromo(jenis){
   if(jenis==='jualan')loadPromoJualan();else loadPromoMedsos();
 }
 
+// ============ DEV PANEL ============
 function renderDev(){
   if(!isDev){showToast('Dev only!','error');return}
   const el=document.getElementById('devContent');
@@ -2258,18 +2553,19 @@ function renderDev(){
     let revenue=0;
     Object.values(orders).forEach(o=>{if(o.status==='verified')revenue+=o.total||0});
     if(dc)dc.textContent=totalUsers+' user';
-    el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>👑 Developer Mode</strong><br>v8.1 — 7 Level, 30 Command, Virus Prank</div><div class="stats" style="margin-bottom:20px"><div class="stat"><div class="icon">👥</div><div class="num">${totalUsers}</div><div class="label">User</div></div><div class="stat"><div class="icon">📦</div><div class="num">${totalProducts}</div><div class="label">Produk</div></div><div class="stat"><div class="icon">🛒</div><div class="num">${totalOrders}</div><div class="label">Order</div></div><div class="stat"><div class="icon">💰</div><div class="num">${formatRp(revenue)}</div><div class="label">Revenue</div></div></div><div class="tabs" style="margin-bottom:20px"><button class="active" onclick="switchDevTab('intro',this)">🎬 Intro</button><button onclick="switchDevTab('uiinfo',this)">📢 Info</button><button onclick="switchDevTab('banner',this)">🖼️ Banner</button><button onclick="switchDevTab('users',this)">👥 User</button><button onclick="switchDevTab('broadcast',this)">📢 BC</button><button onclick="switchDevTab('music',this)">🎵 Musik</button></div><div id="dev-intro"></div><div id="dev-uiinfo" class="hidden"></div><div id="dev-banner" class="hidden"></div><div id="dev-users" class="hidden"></div><div id="dev-broadcast" class="hidden"></div><div id="dev-music" class="hidden"></div>`;
+    el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>👑 Developer Mode</strong><br>v8.2 — Terminal Fullscreen, Private Server, Web Audio API</div><div class="stats" style="margin-bottom:20px"><div class="stat"><div class="icon">👥</div><div class="num">${totalUsers}</div><div class="label">User</div></div><div class="stat"><div class="icon">📦</div><div class="num">${totalProducts}</div><div class="label">Produk</div></div><div class="stat"><div class="icon">🛒</div><div class="num">${totalOrders}</div><div class="label">Order</div></div><div class="stat"><div class="icon">💰</div><div class="num">${formatRp(revenue)}</div><div class="label">Revenue</div></div></div><div class="tabs" style="margin-bottom:20px"><button class="active" onclick="switchDevTab('intro',this)">🎬 Intro</button><button onclick="switchDevTab('uiinfo',this)">📢 Info</button><button onclick="switchDevTab('banner',this)">🖼️ Banner</button><button onclick="switchDevTab('users',this)">👥 User</button><button onclick="switchDevTab('ps',this)">🌐 PS</button><button onclick="switchDevTab('broadcast',this)">📢 BC</button><button onclick="switchDevTab('music',this)">🎵 Musik</button></div><div id="dev-intro"></div><div id="dev-uiinfo" class="hidden"></div><div id="dev-banner" class="hidden"></div><div id="dev-users" class="hidden"></div><div id="dev-ps" class="hidden"></div><div id="dev-broadcast" class="hidden"></div><div id="dev-music" class="hidden"></div>`;
     renderDevIntro(intro);
     renderDevUiInfo(uiInfo);
     renderDevBanner(data.settings||{});
     renderDevUsers(users);
+    renderDevPS();
     renderDevBroadcast();
   });
 }
 function switchDevTab(tab,el){
   document.querySelectorAll('#page-dev .tabs button').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
-  ['intro','uiinfo','banner','users','broadcast','music'].forEach(t=>{
+  ['intro','uiinfo','banner','users','ps','broadcast','music'].forEach(t=>{
     const e=document.getElementById('dev-'+t);
     if(e)e.classList.toggle('hidden',t!==tab);
   });
@@ -2278,7 +2574,8 @@ function switchDevTab(tab,el){
 function renderDevIntro(intro){
   const el=document.getElementById('dev-intro');
   if(!el)return;
-  el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>🎬 Intro Web</strong><br>Video/foto intro (max 25MB)</div><div class="order-item"><div class="banner-dev" onclick="changeDevIntro()">${intro.media?`<img src="${cdnImg(intro.media,600)}" />`:`<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik upload</div></div>`}</div><button class="btn btn-danger btn-block" onclick="hapusDevIntro()">${emoji('em-trash','em')} Hapus</button></div>`;
+  const isVideo=intro.mediaType==='video';
+  el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>🎬 Intro Web (Foto/Video)</strong></div><div class="order-item"><div class="banner-dev" onclick="changeDevIntro()">${intro.media?(isVideo?`<video src="${intro.media}" autoplay muted loop playsinline></video>`:`<img src="${cdnImg(intro.media,600)}" />`):`<div class="placeholder">${emoji('em-camera','em-2xl')}<div>Klik upload</div></div>`}</div><button class="btn btn-danger btn-block" onclick="hapusDevIntro()">${emoji('em-trash','em')} Hapus</button></div>`;
 }
 function changeDevIntro(){
   const input=document.createElement('input');
@@ -2305,7 +2602,7 @@ function renderDevUiInfo(uiInfo){
   const el=document.getElementById('dev-uiinfo');
   if(!el)return;
   const updates=uiInfo.updates?Object.entries(uiInfo.updates):[];
-  el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>📢 Info UI</strong></div><div class="order-item"><div class="form-group"><label>Judul</label><input type="text" id="uiInfoTitle" value="${escapeHtml(uiInfo.title||'WarungDigital')}" /></div><div class="form-group"><label>Subtitle</label><input type="text" id="uiInfoSubtitle" value="${escapeHtml(uiInfo.subtitle||'Marketplace Produk Digital')}" /></div><button class="btn btn-primary btn-block" onclick="simpanUiInfo()">${emoji('em-check','em')} Simpan</button></div><div class="order-item"><div class="head"><div class="oid">📝 Update</div></div>${updates.map(([id,u])=>`<div class="income-item"><div class="info"><div class="nama">• ${escapeHtml(u)}</div></div><button class="del" onclick="hapusUiUpdate('${id}')">${emoji('em-trash','em')}</button></div>`).join('')||'<div style="opacity:.5;font-size:13px;padding:8px">Belum ada</div>'}<div style="display:flex;gap:8px;margin-top:8px"><input type="text" id="newUiUpdate" placeholder="Update baru..." style="flex:1" /><button class="btn btn-primary btn-sm" onclick="tambahUiUpdate()">+</button></div></div>`;
+  el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>📢 Info UI</strong></div><div class="order-item"><div class="form-group"><label>Judul</label><input type="text" id="uiInfoTitle" value="${escapeHtml(uiInfo.title||'WarungDigital v8.2')}" /></div><div class="form-group"><label>Subtitle</label><input type="text" id="uiInfoSubtitle" value="${escapeHtml(uiInfo.subtitle||'Marketplace Produk Digital')}" /></div><button class="btn btn-primary btn-block" onclick="simpanUiInfo()">${emoji('em-check','em')} Simpan</button></div><div class="order-item"><div class="head"><div class="oid">📝 Update</div></div>${updates.map(([id,u])=>`<div class="income-item"><div class="info"><div class="nama">• ${escapeHtml(u)}</div></div><button class="del" onclick="hapusUiUpdate('${id}')">${emoji('em-trash','em')}</button></div>`).join('')||'<div style="opacity:.5;font-size:13px;padding:8px">Belum ada</div>'}<div style="display:flex;gap:8px;margin-top:8px"><input type="text" id="newUiUpdate" placeholder="Update baru..." style="flex:1" /><button class="btn btn-primary btn-sm" onclick="tambahUiUpdate()">+</button></div></div>`;
 }
 function tambahUiUpdate(){
   const v=document.getElementById('newUiUpdate').value.trim();if(!v)return;
@@ -2320,21 +2617,24 @@ function simpanUiInfo(){
 function renderDevBanner(settings){
   const el=document.getElementById('dev-banner');
   if(!el)return;
-  el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>🖼️ Banner (max 25MB)</strong></div>${bannerBlock('1️⃣ Banner 1:1','banner11',settings.banner11)}${bannerBlock('📰 Banner Judul Web','bannerJudul',settings.bannerJudul)}${bannerBlock('🏷️ Banner Logo Web','bannerLogo',settings.bannerLogo)}${bannerBlock('✨ Banner Animasi (RB)','bannerAnimasi',settings.bannerAnimasi)}${bannerBlock('🌄 Background Web','bgWeb',settings.bgWeb)}${bannerBlock('⭐ Favicon','favicon',settings.favicon)}`;
+  el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>🖼️ Banner (Foto/Video)</strong></div>${bannerBlock('1️⃣ Banner 1:1','banner11',settings.banner11,settings.banner11Type)}${bannerBlock('📰 Banner Judul Web','bannerJudul',settings.bannerJudul,settings.bannerJudulType)}${bannerBlock('🏷️ Banner Logo Web','bannerLogo',settings.bannerLogo,settings.bannerLogoType)}${bannerBlock('✨ Banner Animasi (RB)','bannerAnimasi',settings.bannerAnimasi,settings.bannerAnimasiType)}${bannerBlock('🌄 Background Web','bgWeb',settings.bgWeb,settings.bgType)}${bannerBlock('⭐ Favicon','favicon',settings.favicon,'image')}`;
 }
-function bannerBlock(label,key,url){
-  return `<div class="order-item"><div class="head"><div class="oid">${label}</div></div><div class="banner-dev" onclick="uploadBannerFile('${key}')">${url?`<img src="${cdnImg(url,600)}" />`:`<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}</div><button class="btn btn-danger btn-block" onclick="hapusBanner('${key}')">${emoji('em-trash','em')} Hapus</button></div>`;
+function bannerBlock(label,key,url,type){
+  const isVideo=type==='video';
+  return `<div class="order-item"><div class="head"><div class="oid">${label}</div></div><div class="banner-dev" onclick="uploadBannerFile('${key}')">${url?(isVideo?`<video src="${url}" autoplay muted loop playsinline></video>`:`<img src="${cdnImg(url,600)}" />`):`<div class="placeholder">${emoji('em-image','em-2xl')}<div>Klik upload</div></div>`}</div><button class="btn btn-danger btn-block" onclick="hapusBanner('${key}')">${emoji('em-trash','em')} Hapus</button></div>`;
 }
 function uploadBannerFile(key){
   const input=document.createElement('input');
-  input.type='file';input.accept='image/*';
+  input.type='file';input.accept='image/*,video/mp4,video/webm';
   input.onchange=async e=>{
     const file=e.target.files[0];if(!file)return;
     if(file.size>MAX_FILE_SIZE){showToast('Max 25MB!','error');return}
     showUploadProgress('Upload Banner');
     try{
       const res=await uploadToCloudinary(file,updateUploadProgress);
-      await db.ref('warungdigital/settings').update({[key]:res.secure_url,[key+'Type']:'image'});
+      const isVideo=file.type.startsWith('video/');
+      const typeKey=key==='bgWeb'?'bgType':key+'Type';
+      await db.ref('warungdigital/settings').update({[key]:res.secure_url,[typeKey]:isVideo?'video':'image'});
       closeModal();showToast('✅ Diganti!','success');
       await loadAllBannersAndBg();renderDev();
     }catch(e){showToast('❌ '+e.message,'error');closeModal()}
@@ -2343,7 +2643,8 @@ function uploadBannerFile(key){
 }
 function hapusBanner(key){
   if(!confirm('Hapus?'))return;
-  db.ref('warungdigital/settings').update({[key]:'',[key+'Type']:''}).then(()=>{showToast('Dihapus','success');loadAllBannersAndBg();renderDev()});
+  const typeKey=key==='bgWeb'?'bgType':key+'Type';
+  db.ref('warungdigital/settings').update({[key]:'',[typeKey]:''}).then(()=>{showToast('Dihapus','success');loadAllBannersAndBg();renderDev()});
 }
 function renderDevUsers(users){
   const el=document.getElementById('dev-users');
@@ -2368,7 +2669,42 @@ function showDevDeleteUser(nama){
 }
 function devDeleteUser(nama){
   if(!confirm(`Hapus ${nama}?`))return;
-  db.ref('warungdigital/users/'+nama).remove().then(()=>{closeModal();showToast(`Akun ${nama} dihapus`,'success');renderDev()});
+  db.ref('warungdigital/users/'+nama).remove().then(()=>{
+    db.ref('warungdigital/devLogs').push({userName:nama,reason:'Deleted by dev',deletedBy:currentUser,deletedAt:Date.now()});
+    closeModal();showToast(`Akun ${nama} dihapus`,'success');renderDev();
+  });
+}
+function renderDevPS(){
+  const el=document.getElementById('dev-ps');
+  if(!el)return;
+  el.innerHTML=`<div class="help-dev-box" style="margin-bottom:16px"><strong>🌐 Private Server Requests</strong></div><div id="psRequestsList"><div class="empty"><p>Memuat...</p></div></div>`;
+  db.ref('warungdigital/psRequests').limitToLast(50).once('value',snap=>{
+    const items=snap.val()||{};
+    const list=Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>b.createdAt-a.createdAt);
+    const el2=document.getElementById('psRequestsList');
+    if(!el2)return;
+    if(list.length===0){el2.innerHTML='<div class="empty"><p>Belum ada request</p></div>';return}
+    el2.innerHTML=list.map(r=>`<div class="order-item"><div class="head"><div class="oid">${escapeHtml(r.user)}</div><div class="status status-waiting">${escapeHtml(r.status)}</div></div><div class="body">Paket: <strong>${escapeHtml(r.title)}</strong> (${r.price}P)<br>Chat: ${escapeHtml(r.channel)}<br>Request: ${escapeHtml(r.request)}<br>Waktu: ${new Date(r.createdAt).toLocaleString('id-ID')}</div><div class="actions"><button class="btn btn-sm btn-primary" onclick="confirmPSUser('${r.id}')">✅ Confirm</button><button class="btn btn-sm btn-danger" onclick="rejectPSUser('${r.id}')">❌ Reject</button></div></div>`).join('');
+  });
+}
+function confirmPSUser(reqId){
+  const duration=prompt('Durasi (hari) / ketik "perm" buat permanent:','7');
+  if(!duration)return;
+  db.ref('warungdigital/psRequests/'+reqId).once('value',snap=>{
+    const r=snap.val();
+    if(!r)return;
+    const permanent=duration==='perm';
+    const expiresAt=permanent?0:Date.now()+parseInt(duration)*86400000;
+    db.ref('warungdigital/psRequests/'+reqId).update({status:'confirmed',devMessage:'Dikonfirmasi',devTime:Date.now()}).then(()=>{
+      db.ref('warungdigital/privateserver/'+r.user).set({giftedBy:currentUser,price:r.price,title:r.title,expiresAt,permanent,createdAt:Date.now()});
+      db.ref('warungdigital/notifications').push({target:r.user,title:'✅ Private Server Aktif!',message:'Paket: '+r.title+(permanent?' (Permanent)':' ('+duration+' hari)'),type:'info',from:'Developer',timestamp:Date.now(),read:false});
+      showToast('✅ PS diaktifkan!','success');renderDevPS();
+    });
+  });
+}
+function rejectPSUser(reqId){
+  if(!confirm('Reject request?'))return;
+  db.ref('warungdigital/psRequests/'+reqId).update({status:'rejected',devTime:Date.now()}).then(()=>{showToast('Ditolak','success');renderDevPS()});
 }
 function renderDevBroadcast(){
   const el=document.getElementById('dev-broadcast');
@@ -2424,6 +2760,7 @@ function hapusMusic(id){
   db.ref('warungdigital/music/'+id).remove().then(()=>{showToast('Dihapus','success');renderDevMusic()});
 }
 
+// ============ TERMINAL COMMAND ============
 function handleCommand(cmd){
   const input=document.getElementById('terminalInput');
   const c=cmd.trim();
@@ -2431,36 +2768,36 @@ function handleCommand(cmd){
   input.value='';
   const [main,...args]=c.split(/\s+/);
   pushLog('CMD',isDev?'DEV > '+c:'> '+c);
-  const devCmds=['VXZ-users','VXZ-broadcast','VXZ-say','VXZ-panic','VXZ-kelolaserverDB'];
-  const secretCmds=['VXZ-virus','VXZ-virusoff','VXZ-virusstatus','VXZ-hint','VXZ-hack','VXZ-matrix','VXZ-love','VXZ-owner','VXZ-credit'];
+  const devCmds=['Vusers','Vbroadcast','Vsay','Vpanic','VkelolaserverDB','Vsettingdatabaseweb','VconfirmPSuser','Vgiftprivateserver'];
+  const secretCmds=['Vvirus','Vvirusoff','Vvirusstatus','Vhint','Vhack','Vmatrix','Vlove','Vowner','Vcredit'];
   if(devCmds.includes(main)&&!isDev){pushLog('ERROR','Command ini cuma buat Developer');return}
-  if(secretCmds.includes(main)&&!secretUnlocked){pushLog('ERROR','Command secret belum di-unlock! Ketik VXZ-secret dulu.');return}
+  if(secretCmds.includes(main)&&!secretUnlocked){pushLog('ERROR','Command secret belum di-unlock! Ketik Vsecret dulu.');return}
   switch(main){
-    case 'VXZ-help':
+    case 'Vmenu':
       pushLog('INFO','=== COMMAND TERSEDIA ===');
-      pushLog('INFO','Prefix: VXZ-');
-      pushLog('INFO','Utility: help, clear, reset, stats, time, date, ping, uptime, info, version');
-      pushLog('INFO','User: whoami, myid, exp, level, rank');
-      pushLog('INFO','Tools: calc, search');
-      pushLog('INFO','Data: backup, export, log');
-      pushLog('INFO','Server: claimserver, listserverDB');
-      if(isDev)pushLog('DEV','Dev: users, broadcast, say, panic, kelolaserverDB');
-      if(secretUnlocked)pushLog('SECRET','Secret: virus, virusoff, virusstatus, hint, hack, matrix, love, owner, credit');
+      pushLog('INFO','Prefix: V');
+      pushLog('INFO','Utility: Vmenu, Vclear, Vreset, Vstats, Vtime, Vdate, Vping, Vuptime, Vinfo, Vversion');
+      pushLog('INFO','User: Vwhoami, Vmyid, Vexp, Vlevel, Vrank');
+      pushLog('INFO','Tools: Vcalc, Vsearch');
+      pushLog('INFO','Data: Vbackup, Vexport, Vlog');
+      pushLog('INFO','Server: Vclaimserver, VlistserverDB, VbuyprivateserverDB');
+      if(isDev)pushLog('DEV','Dev: Vusers, Vbroadcast, Vsay, Vpanic, VkelolaserverDB, Vsettingdatabaseweb, VconfirmPSuser, Vgiftprivateserver');
+      if(secretUnlocked)pushLog('SECRET','Secret: Vvirus, Vvirusoff, Vvirusstatus, Vhint, Vhack, Vmatrix, Vlove, Vowner, Vcredit');
       break;
-    case 'VXZ-clear':logBuffer=[];renderTerminal();pushLog('OK','Log dibersihin');break;
-    case 'VXZ-reset':resetLogForce();break;
-    case 'VXZ-stats':pushLog('INFO',`Produk: ${Object.keys(products).length} | Produk Lo: ${Object.entries(products).filter(([k,v])=>v.penjual===currentUser).length} | Level: ${userLevel} | EXP: ${userExp}`);break;
-    case 'VXZ-time':pushLog('INFO',new Date().toLocaleTimeString('id-ID'));break;
-    case 'VXZ-date':pushLog('INFO',new Date().toLocaleDateString('id-ID'));break;
-    case 'VXZ-ping':pushLog('OK','Pong! Server online 🟢');break;
-    case 'VXZ-uptime':pushLog('INFO',`Uptime: ${Math.floor(performance.now()/1000)} detik`);break;
-    case 'VXZ-info':pushLog('INFO','WarungDigital v8.1 - Marketplace Produk Digital');break;
-    case 'VXZ-version':pushLog('INFO','Versi: 8.1');break;
-    case 'VXZ-whoami':pushLog('INFO',currentUser?`User: ${currentUser} | Level ${userLevel} | ${userExp} EXP`:'Guest');break;
-    case 'VXZ-myid':pushLog('INFO','User ID: '+(currentUser||'guest'));break;
-    case 'VXZ-exp':pushLog('INFO','EXP: '+userExp);break;
-    case 'VXZ-level':pushLog('INFO','Level: '+userLevel+' - '+getLevelInfo(userLevel).name);break;
-    case 'VXZ-rank':
+    case 'Vclear':logBuffer=[];renderTerminal();pushLog('OK','Log dibersihin');break;
+    case 'Vreset':resetLogForce();break;
+    case 'Vstats':pushLog('INFO',`Produk: ${Object.keys(products).length} | Produk Lo: ${Object.entries(products).filter(([k,v])=>v.penjual===currentUser).length} | Level: ${userLevel} | EXP: ${userExp}`);break;
+    case 'Vtime':pushLog('INFO',new Date().toLocaleTimeString('id-ID'));break;
+    case 'Vdate':pushLog('INFO',new Date().toLocaleDateString('id-ID'));break;
+    case 'Vping':pushLog('OK','Pong! Server online 🟢');break;
+    case 'Vuptime':pushLog('INFO',`Uptime: ${Math.floor(performance.now()/1000)} detik`);break;
+    case 'Vinfo':pushLog('INFO','WarungDigital v8.2 - Marketplace Produk Digital');break;
+    case 'Vversion':pushLog('INFO','Versi: 8.2');break;
+    case 'Vwhoami':pushLog('INFO',currentUser?`User: ${currentUser} | Level ${userLevel} | ${userExp} EXP`:'Guest');break;
+    case 'Vmyid':pushLog('INFO','User ID: '+(currentUser||'guest'));break;
+    case 'Vexp':pushLog('INFO','EXP: '+userExp);break;
+    case 'Vlevel':pushLog('INFO','Level: '+userLevel+' - '+getLevelInfo(userLevel).name);break;
+    case 'Vrank':
       db.ref('warungdigital/users').once('value').then(snap=>{
         const users=snap.val()||{};
         const arr=Object.entries(users).map(([nama,u])=>({nama,exp:u.exp||0})).filter(u=>!u.isDev);
@@ -2470,17 +2807,17 @@ function handleCommand(cmd){
         else{pushLog('WARN','Rank gak ketemu')}
       });
       break;
-    case 'VXZ-calc':
+    case 'Vcalc':
       try{const r=Function('"use strict";return('+args.join(' ')+')')();pushLog('OK','Hasil: '+r)}
       catch(e){pushLog('ERROR','Rumus invalid')}
       break;
-    case 'VXZ-search':window.open('https://www.google.com/search?q='+encodeURIComponent(args.join(' ')),'_blank');pushLog('OK','Search dibuka');break;
-    case 'VXZ-backup':pushLog('OK','Backup data...');console.log({user:currentUser,exp:userExp,level:userLevel});break;
-    case 'VXZ-export':exportLog();break;
-    case 'VXZ-log':toggleTerminal();break;
-    case 'VXZ-claimserver':{
+    case 'Vsearch':window.open('https://www.google.com/search?q='+encodeURIComponent(args.join(' ')),'_blank');pushLog('OK','Search dibuka');break;
+    case 'Vbackup':pushLog('OK','Backup data...');console.log({user:currentUser,exp:userExp,level:userLevel});break;
+    case 'Vexport':exportLog();break;
+    case 'Vlog':toggleTerminal();break;
+    case 'Vclaimserver':{
       if(userLevel<5&&!isDev){pushLog('ERROR','Claim server butuh Level 5+');break}
-      if(!args[0]){pushLog('WARN','Usage: VXZ-claimserver ID_xxxxx');pushLog('INFO','Liat list dulu: VXZ-listserverDB');break}
+      if(!args[0]){pushLog('WARN','Usage: Vclaimserver ID_xxxxx');pushLog('INFO','Liat list dulu: VlistserverDB');break}
       const serverId=args[0];
       db.ref('warungdigital/servers/'+serverId).once('value').then(snap=>{
         if(!snap.exists()){pushLog('ERROR','Server ID gak ditemukan');return}
@@ -2498,7 +2835,7 @@ function handleCommand(cmd){
       });
       break;
     }
-    case 'VXZ-listserverDB':{
+    case 'VlistserverDB':{
       pushLog('INFO','=== LIST SERVER ===');
       db.ref('warungdigital/servers').once('value').then(snap=>{
         const servers=snap.val()||{};
@@ -2510,36 +2847,62 @@ function handleCommand(cmd){
           const status=users>=max?'🔴 FULL':'🟢 OPEN';
           pushLog('INFO',`${status} ID: ${id} | ${s.name||'Server'} | ${users}/${max} user`);
         });
-        pushLog('INFO','Cara claim: VXZ-claimserver ID_xxxxx');
+        pushLog('INFO','Cara claim: Vclaimserver ID_xxxxx');
       });
       break;
     }
-    case 'VXZ-users':
+    case 'VbuyprivateserverDB':showPage('privateserver');pushLog('OK','Buka halaman Private Server');break;
+    case 'Vusers':
       db.ref('warungdigital/users').limitToLast(20).once('value').then(s=>{
         s.forEach(d=>{const u=d.val();pushLog('DEV',`${d.key} - Lv${u.level||1} - ${u.exp||0} EXP`)});
       });
       break;
-    case 'VXZ-broadcast':
-      if(!args.length){pushLog('WARN','Usage: VXZ-broadcast pesan');break}
+    case 'Vbroadcast':
+      if(!args.length){pushLog('WARN','Usage: Vbroadcast pesan');break}
       db.ref('warungdigital/users').once('value',snap=>{
         const promises=[];
         snap.forEach(d=>{promises.push(db.ref('warungdigital/notifications').push({target:d.key,title:'📢 Dev',message:args.join(' '),type:'info',from:'Developer',timestamp:Date.now(),read:false}))});
         Promise.all(promises).then(()=>{pushLog('OK','Broadcast terkirim');showTopNotif('📢 Dev',args.join(' '),'info')});
       });
       break;
-    case 'VXZ-say':showTopNotif('📢 Pengumuman',args.join(' '),'info');pushLog('OK','Announce');break;
-    case 'VXZ-panic':
+    case 'Vsay':showTopNotif('📢 Pengumuman',args.join(' '),'info');pushLog('OK','Announce');break;
+    case 'Vpanic':
       if(confirm('⚠️ Panic mode?')){document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;color:#fff;font-size:24px">🚨 Web dalam perbaikan 🚨</div>'}
       break;
-    case 'VXZ-kelolaserverDB':{
+    case 'Vsettingdatabaseweb':
+      pushLog('INFO','=== SETTING DATABASE WEB ===');
+      pushLog('INFO','Config ini buat ganti server DB (Firebase/Supabase/Custom)');
+      pushLog('INFO','Coming soon di v8.3');
+      pushLog('INFO','Sementara pakai Firebase RTDB default.');
+      break;
+    case 'VconfirmPSuser':
+      if(!args[0]){pushLog('WARN','Usage: VconfirmPSuser [reqId]');break}
+      confirmPSUser(args[0]);
+      pushLog('OK','Confirm PS: '+args[0]);
+      break;
+    case 'Vgiftprivateserver':{
+      if(!args[0]||!args[1]){pushLog('WARN','Usage: Vgiftprivateserver [user] [harga] [waktu]');break}
+      const target=args[0];
+      const harga=parseInt(args[1])||0;
+      const waktu=args[2]||'perm';
+      const permanent=waktu==='perm';
+      const expiresAt=permanent?0:Date.now()+parseInt(waktu)*86400000;
+      db.ref('warungdigital/privateserver/'+target).set({giftedBy:currentUser,price:harga,title:'Gift Dev',expiresAt,permanent,createdAt:Date.now()}).then(()=>{
+        db.ref('warungdigital/notifications').push({target,title:'🎁 Gift Private Server!',message:`Dari Dev: ${permanent?'Permanent':waktu+' hari'}`,type:'info',from:'Developer',timestamp:Date.now(),read:false});
+        pushLog('DEV','✅ Gift PS ke '+target);
+        showToast('✅ Gift berhasil!','success');
+      });
+      break;
+    }
+    case 'VkelolaserverDB':{
       if(!isDev){pushLog('ERROR','Dev only');break}
       const subCmd=args[0];
       if(!subCmd){
         pushLog('INFO','=== KELOLA SERVER (DEV) ===');
-        pushLog('INFO','VXZ-kelolaserverDB add [nama] [max]');
-        pushLog('INFO','VXZ-kelolaserverDB remove [id]');
-        pushLog('INFO','VXZ-kelolaserverDB list');
-        pushLog('INFO','VXZ-kelolaserverDB users [id]');
+        pushLog('INFO','VkelolaserverDB add [nama] [max]');
+        pushLog('INFO','VkelolaserverDB remove [id]');
+        pushLog('INFO','VkelolaserverDB list');
+        pushLog('INFO','VkelolaserverDB users [id]');
         break;
       }
       if(subCmd==='add'){
@@ -2554,7 +2917,7 @@ function handleCommand(cmd){
       }
       if(subCmd==='remove'){
         const id=args[1];
-        if(!id){pushLog('WARN','Usage: VXZ-kelolaserverDB remove [id]');break}
+        if(!id){pushLog('WARN','Usage: VkelolaserverDB remove [id]');break}
         db.ref('warungdigital/servers/'+id).remove().then(()=>{
           pushLog('DEV','✅ Server '+id+' dihapus');
           showToast('Server dihapus','success');
@@ -2575,7 +2938,7 @@ function handleCommand(cmd){
       }
       if(subCmd==='users'){
         const id=args[1];
-        if(!id){pushLog('WARN','Usage: VXZ-kelolaserverDB users [id]');break}
+        if(!id){pushLog('WARN','Usage: VkelolaserverDB users [id]');break}
         db.ref('warungdigital/servers/'+id+'/users').once('value').then(snap=>{
           const users=snap.val()||{};
           pushLog('DEV','Users di server '+id+':');
@@ -2585,49 +2948,54 @@ function handleCommand(cmd){
       }
       break;
     }
-    case 'VXZ-secret':startSecretVerify();break;
-    case 'VXZ-unlockabcsecret':{
+    case 'Vsecret':startSecretVerify();break;
+    case 'Vunlockabcsecret':{
       if(secretUnlocked){pushLog('SECRET','✅ Secret udah di-unlock!');break}
-      if(!secretVerifyPending){pushLog('WARN','Ketik VXZ-secret dulu buat mulai verifikasi');break}
+      if(Date.now()<secretLockUntil){const s=Math.ceil((secretLockUntil-Date.now())/1000);pushLog('ERROR',`Tunggu ${s} detik lagi`);break}
+      if(!secretVerifyPending){pushLog('WARN','Ketik Vsecret dulu buat mulai verifikasi');break}
       const userAns=parseInt(args[0]);
-      if(isNaN(userAns)){pushLog('ERROR','Jawab pakai angka. Contoh: VXZ-unlockabcsecret 42');break}
+      if(isNaN(userAns)){pushLog('ERROR','Jawab pakai angka. Contoh: Vunlockabcsecret 42');break}
       if(userAns===secretAnswer){
         secretUnlocked=true;
         secretVerifyPending=false;
         localStorage.setItem('wd_secret_unlocked','true');
         pushLog('SECRET','🎉 SECRET UNLOCKED! Semua command secret kebuka!');
-        pushLog('SECRET','Coba: VXZ-virus, VXZ-hack, VXZ-matrix, VXZ-love, VXZ-hint');
+        pushLog('SECRET','Coba: Vvirus, Vhack, Vmatrix, Vlove, Vhint');
         showToast('🎉 Command Secret Terbuka!','dev');
+        SOUNDS.success();
       }else{
         secretVerifyPending=false;
         secretAnswer=null;
-        pushLog('ERROR','❌ Jawaban salah! Tunggu 30 detik, terus ketik VXZ-secret lagi');
+        secretLockUntil=Date.now()+30000;
+        pushLog('ERROR','❌ Jawaban salah! Tunggu 30 detik, terus ketik Vsecret lagi');
         showToast('❌ Jawaban salah!','error');
+        SOUNDS.error();
       }
       break;
     }
-    case 'VXZ-virus':startVirusFromCommand(args);break;
-    case 'VXZ-virusoff':stopVirus();break;
-    case 'VXZ-virusstatus':pushLog('SECRET',virusActive?'⚠️ Virus aktif di layar':'🟢 Virus gak aktif');break;
-    case 'VXZ-hint':pushLog('SECRET','💡 Hint: Coba "VXZ-virus [user] [detik]" buat prank!');break;
-    case 'VXZ-hack':
+    case 'Vvirus':startVirusFromCommand(args);break;
+    case 'Vvirusoff':stopVirus();break;
+    case 'Vvirusstatus':pushLog('SECRET',virusActive?'⚠️ Virus aktif di layar':'🟢 Virus gak aktif');break;
+    case 'Vhint':pushLog('SECRET','💡 Hint: Coba "Vvirus [user] [detik]" buat prank!');break;
+    case 'Vhack':
       pushLog('SECRET','Initializing hack.exe...');
       setTimeout(()=>pushLog('SECRET','Bypassing firewall...'),500);
       setTimeout(()=>pushLog('SECRET','Decrypting database...'),1000);
       setTimeout(()=>pushLog('ERROR','ACCESS DENIED 😂 (cuma prank)'),1500);
       break;
-    case 'VXZ-matrix':
+    case 'Vmatrix':
       for(let i=0;i<10;i++)pushLog('SECRET','01001000 01100101 01101100 01101100 01101111');
       break;
-    case 'VXZ-love':pushLog('SECRET','❤️ ❤️ ❤️ WarungDigital ❤️ ❤️ ❤️');break;
-    case 'VXZ-owner':pushLog('SECRET','👑 Owner: vardev (Developer)');break;
-    case 'VXZ-credit':pushLog('SECRET','Made by vardev · v8.1 · 2026');break;
+    case 'Vlove':pushLog('SECRET','❤️ ❤️ ❤️ WarungDigital ❤️ ❤️ ❤️');break;
+    case 'Vowner':pushLog('SECRET','👑 Owner: vardev (Developer)');break;
+    case 'Vcredit':pushLog('SECRET','Made by vardev · v8.2 · 2026');break;
     default:
-      pushLog('ERROR','Command gak dikenal: '+main+'. Ketik "VXZ-help"');
+      pushLog('ERROR','Command gak dikenal: '+main+'. Ketik "Vmenu"');
   }
 }
 
 function startSecretVerify(){
+  if(Date.now()<secretLockUntil){const s=Math.ceil((secretLockUntil-Date.now())/1000);pushLog('ERROR',`Tunggu ${s} detik lagi`);return}
   const a=Math.floor(Math.random()*100)+1;
   const b=Math.floor(Math.random()*100)+1;
   const ops=['+','-','×'];
@@ -2636,12 +3004,11 @@ function startSecretVerify(){
   if(op==='+')answer=a+b;
   else if(op==='-')answer=a-b;
   else answer=a*b;
-  secretMathQuestion=`${a} ${op} ${b} = ?`;
   secretAnswer=answer;
   secretVerifyPending=true;
   pushLog('SECRET','🔐 VERIFIKASI SECRET');
-  pushLog('SECRET','Soal MTK: '+secretMathQuestion);
-  pushLog('SECRET','Jawab pakai: VXZ-unlockabcsecret <jawaban>');
+  pushLog('SECRET','Soal MTK: '+a+' '+op+' '+b+' = ?');
+  pushLog('SECRET','Jawab pakai: Vunlockabcsecret <jawaban>');
   showToast('🔐 Jawab soal MTK di terminal!','info');
 }
 
@@ -2650,7 +3017,7 @@ async function startVirusFromCommand(args){
   if(userLevel<5&&!isDev){pushLog('ERROR','Butuh Level 5+ buat pakai virus prank');return}
   const target=args[0];
   const duration=parseInt(args[1])||300;
-  if(!target){pushLog('WARN','Usage: VXZ-virus [nama target] [durasi detik]');pushLog('INFO','Max 5 menit buat user biasa, 15 menit buat Dev');return}
+  if(!target){pushLog('WARN','Usage: Vvirus [nama target] [durasi detik]');pushLog('INFO','Max 5 menit buat user biasa, 15 menit buat Dev');return}
   if(target===DEV_NAME){pushLog('ERROR','Gak bisa prank Dev! Virus balik ke pengirim 😈');startVirus(Math.min(duration,300),'self');return}
   const maxDur=isDev?900:300;
   const finalDur=Math.min(duration,maxDur);
@@ -2680,6 +3047,8 @@ function startVirus(duration,role){
   virusActive=true;
   virusDuration=duration;
   document.getElementById('virusOverlay').classList.add('show');
+  document.getElementById('virusOverlay').classList.add('shake');
+  SOUNDS.virus();
   for(let i=0;i<15;i++){
     setTimeout(()=>{
       if(!virusActive)return;
@@ -2706,6 +3075,7 @@ function stopVirus(){
   if(!virusActive)return;
   virusActive=false;
   document.getElementById('virusOverlay').classList.remove('show');
+  document.getElementById('virusOverlay').classList.remove('shake');
   document.querySelectorAll('.virus-popup').forEach(p=>p.remove());
   if(virusTimer)clearTimeout(virusTimer);
   if(virusCountdownInterval)clearInterval(virusCountdownInterval);
@@ -2731,11 +3101,11 @@ setInterval(()=>{
 },5000);
 
 (async function init(){
-  pushLog('INFO','WarungDigital v8.1 start');
+  pushLog('INFO','WarungDigital v8.2 start');
   await ensureDevAccount();
   await bootStart();
 })();
-console.log('WarungDigital v8.1 — Ready!');
+console.log('WarungDigital v8.2 — Ready!');
 </script>
 </body>
   </html>
