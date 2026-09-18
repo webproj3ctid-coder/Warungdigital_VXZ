@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>WarungDigital v8.3.1</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2325d366'/%3E%3Ctext x='50' y='70' font-size='58' font-weight='900' text-anchor='middle' fill='white'%3EW%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(o){await o.init({appId:"28a6c9d0-25dd-4398-8edf-c2bcbe3b54e4",allowLocalhostAsSecureOrigin:true,notifyButton:{enable:false}})});</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+html,body{background:#070a0f;color:#e0e6ed;width:100%;overflow-x:hidden}
+button{cursor:pointer;font-family:inherit}input,textarea,select{font-family:inherit}
+.em{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.15em;fill:currentColor}
+.em-lg{width:1.5em;height:1.5em}.em-xl{width:2.5em;height:2.5em}.em-2xl{width:4em;height:4em}
+.hidden{display:none!important}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.navbar-wrap{position:sticky;top:8px;z-index:999;margin-bottom:24px}
+.navbar{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 16px;background:rgba(20,26,34,.95);backdrop-filter:blur(20px);border:1px solid #1f2a34;border-radius:20px}
+.navbar .left{display:flex;align-items:center;gap:10px}
+.navbar .center{display:flex;gap:6px;align-items:center;flex-wrap:nowrap;justify-content:center;overflow-x:auto;scrollbar-width:none}
+.navbar .center::-webkit-scrollbar{display:none}
+.navbar .menu a,.navbar .menu button{color:#e0e6ed;text-decoration:none;font-size:13px;font-weight:600;padding:7px 12px;border-radius:10px;background:transparent;border:none;opacity:.7;display:flex;align-items:center;gap:5px;position:relative;white-space:nowrap}
+.navbar .menu a:hover,.navbar .menu button:hover{background:#1f2a34;opacity:1}
+.logo-nav{width:36px;height:36px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;flex-shrink:0}
+.logo-nav span{font-size:18px;font-weight:900;color:#fff;z-index:2}
+.logo-nav img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:3;display:none}
+.clock-top{display:flex;flex-direction:column;gap:2px;font-size:11px;font-weight:700}
+.clock-top .row{display:flex;gap:6px;align-items:center;opacity:.7}
+.clock-top .row span{color:#25d366;font-weight:800}
+.banner-1-1-big{width:130px;height:130px;border-radius:18px;overflow:hidden;background:#0f151c;border:2px solid #2a3340;display:none;flex-shrink:0}
+.banner-1-1-big.show{display:flex}
+.banner-1-1-big img{width:100%;height:100%;object-fit:cover}
+.judul-web-banner{width:100%;aspect-ratio:16/4;max-height:120px;border-radius:20px 20px 0 0;overflow:hidden;background:#0f151c;border:1px solid #1f2a34;border-bottom:none;display:none}
+.judul-web-banner.show{display:block}
+.judul-web-banner img{width:100%;height:100%;object-fit:cover}
+.judul-web-banner.show + .navbar{border-radius:0 0 20px 20px}
+.cart-badge{position:absolute;top:-4px;right:-4px;background:#e74c3c;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:18px;text-align:center}
+.chat-balloon{position:fixed;right:12px;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#25d366,#20b858);display:none;align-items:center;justify-content:center;color:#fff;font-size:24px;z-index:9997;border:none}
+.chat-balloon.show{display:flex}
+.chat-balloon .balloon-badge{position:absolute;top:-2px;right:-2px;background:#e74c3c;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:12px;min-width:20px;text-align:center}
+.hero{text-align:center;padding:50px 24px;background:linear-gradient(135deg,rgba(20,26,34,.95),rgba(37,211,102,.08),rgba(108,92,231,.08));border-radius:28px;margin-bottom:24px;border:1px solid #1f2a34}
+.hero .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);color:#25d366;font-size:12px;font-weight:700;margin-bottom:14px}
+.hero h1{font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.1;margin-bottom:12px}
+.hero h1 span{background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{opacity:.7;font-size:15px;max-width:500px;margin:0 auto 22px;line-height:1.6}
+.hero .btn-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{padding:12px 24px;border-radius:40px;border:none;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center;transition:.3s}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:linear-gradient(135deg,#25d366,#20b858);color:#fff}
+.btn-secondary{background:rgba(255,255,255,.05);color:#e0e6ed;border:1px solid #2a3340}
+.btn-danger{background:#e74c3c;color:#fff}
+.btn-warning{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff}
+.btn-success{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff}
+.btn-sm{padding:8px 16px;font-size:12px;border-radius:12px}
+.btn-block{width:100%;margin-top:8px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px}
+.stat{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;padding:18px;text-align:center}
+.stat .icon{color:#25d366;margin-bottom:6px}
+.stat .num{font-size:24px;font-weight:900;color:#25d366}
+.stat .label{font-size:11px;opacity:.6;margin-top:4px;font-weight:600}
+.section{margin-bottom:40px}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.section-header h2{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px}
+.section-header .count{background:rgba(37,211,102,.15);color:#25d366;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;padding:12px;background:#141a22;border-radius:14px;border:1px solid #2a3340}
+.filter-bar input,.filter-bar select{flex:1;min-width:120px;padding:10px 14px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:13px;outline:none}
+.filter-bar input:focus,.filter-bar select:focus{border-color:#25d366}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.product-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;overflow:hidden;cursor:pointer;position:relative}
+.product-card:hover{border-color:#25d366}
+.product-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#25d366}
+.product-card .thumb img{width:100%;height:100%;object-fit:cover}
+.product-card .info{padding:14px}
+.product-card .info .kategori{font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.product-card .info .nama{font-weight:700;font-size:14px;margin:6px 0}
+.product-card .info .penjual{font-size:11px;opacity:.5;margin-bottom:4px}
+.product-card .info .meta{font-size:11px;margin:4px 0;display:flex;gap:8px;flex-wrap:wrap}
+.product-card .info .meta .stok{color:#25d366}
+.product-card .info .meta .sold{color:#e74c3c}
+.product-card .info .harga{color:#25d366;font-weight:900;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.product-card .info .btn-beli{background:#25d366;color:#fff;border:none;padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.badge-dev,.badge-habis,.badge-free,.badge-mini-cart,.badge-flash{position:absolute;top:10px;font-size:10px;font-weight:900;padding:3px 10px;border-radius:10px;z-index:2}
+.badge-dev{left:10px;background:linear-gradient(135deg,#f1c40f,#e67e22);color:#000}
+.badge-habis{right:10px;background:#e74c3c;color:#fff;font-weight:700}
+.badge-free{left:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-weight:700}
+.badge-mini-cart{right:10px;background:#25d366;color:#fff;font-weight:700}
+.badge-flash{left:10px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff}
+.wishlist-btn{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:18px;padding:6px 10px;border-radius:50%;z-index:4}
+.wishlist-btn.active{color:#e74c3c}
+.empty{text-align:center;padding:40px 20px;opacity:.5;background:#141a22;border-radius:18px;border:1px dashed #2a3340}
+.empty svg{color:#25d366;opacity:.4;margin-bottom:10px}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:10001;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal{background:#141a22;border-radius:24px;padding:24px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid #2a3340}
+.modal .close-btn{float:right;font-size:26px;opacity:.5;background:transparent;border:none;color:#e0e6ed}
+.modal h2{font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.modal label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8}
+.modal input,.modal textarea,.modal select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;margin-bottom:12px}
+.modal input:focus,.modal textarea:focus,.modal select:focus{border-color:#25d366}
+#toast{position:fixed;bottom:24px;right:24px;z-index:999999;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;padding:14px 24px;border-radius:16px;font-weight:700;font-size:14px;transform:translateX(400px);transition:.4s;display:flex;align-items:center;gap:10px;max-width:90vw}
+#toast.show{transform:translateX(0)}
+#toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b)}
+#toast.warn{background:linear-gradient(135deg,#f39c12,#e67e22)}
+#topNotif{position:fixed;top:0;left:0;width:100%;z-index:999998;display:flex;flex-direction:column;gap:8px;padding:12px;pointer-events:none}
+.topNotifItem{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #25d366;border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:12px;pointer-events:auto;max-width:600px;margin:0 auto;width:100%}
+.topNotifItem.error{border-color:#e74c3c}
+.topNotifItem.info{border-color:#3498db}
+.topNotifItem .icon{font-size:24px;flex-shrink:0}
+.topNotifItem .content{flex:1;min-width:0}
+.topNotifItem .content .title{font-weight:700;font-size:14px}
+.topNotifItem .content .msg{font-size:13px;opacity:.8;margin-top:2px}
+.topNotifItem .close{background:transparent;border:none;color:#e0e6ed;font-size:18px;opacity:.5;padding:0 4px}
+.topbar{position:fixed;top:0;left:0;width:100%;background:rgba(20,26,34,.98);backdrop-filter:blur(20px);border-bottom:2px solid #25d366;z-index:10000;transform:translateY(-120%);transition:.4s;padding:20px;overflow-y:auto;max-height:85vh}
+.topbar.open{transform:translateY(0)}
+.topbar h3{font-size:18px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#25d366}
+.topbar .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.topbar .menu-btn{padding:14px 10px;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;color:#e0e6ed;font-size:12px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;position:relative}
+.topbar .menu-btn:hover{border-color:#25d366;background:rgba(37,211,102,.05)}
+.topbar .menu-btn svg{width:24px;height:24px;color:#25d366}
+.topbar .menu-btn.dev{color:#f1c40f}
+.topbar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999}
+.topbar-overlay.show{display:block}
+.tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:1;padding:12px 16px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:600;font-size:13px;white-space:nowrap;opacity:.6;display:flex;align-items:center;justify-content:center;gap:6px}
+.tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
+.order-item{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:18px;padding:18px;margin-bottom:12px}
+.order-item .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+.order-item .head .oid{font-weight:800;font-size:15px}
+.order-item .head .status{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700}
+.status-waiting{background:#f39c12;color:#fff}
+.status-verified{background:#25d366;color:#fff}
+.status-cancelled{background:#e74c3c;color:#fff}
+.status-refund{background:#9b59b6;color:#fff}
+.order-item .body{font-size:13px;opacity:.8;line-height:1.8}
+.order-item .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.cart-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;margin-bottom:10px;border:1px solid #1f2a34}
+.cart-item .thumb{width:60px;height:60px;border-radius:12px;background:#141a22;display:flex;align-items:center;justify-content:center;color:#25d366;flex-shrink:0;font-size:24px;overflow:hidden}
+.cart-item .info{flex:1;min-width:0}
+.cart-item .info .nama{font-weight:700;font-size:14px}
+.cart-item .info .harga{color:#25d366;font-weight:700;font-size:13px;margin-top:2px}
+.cart-item .qty{display:flex;align-items:center;gap:8px;background:#141a22;border-radius:10px;padding:4px}
+.cart-item .qty button{background:transparent;border:none;color:#e0e6ed;font-size:16px;padding:4px 8px;border-radius:6px;font-weight:700}
+.cart-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:6px}
+.cart-total{display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid #1f2a34;margin-top:14px;font-weight:700;font-size:16px}
+.cart-total .total{color:#25d366;font-size:22px}
+.wallet-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:24px;padding:30px;text-align:center;margin-bottom:20px}
+.wallet-card .label{font-size:13px;opacity:.6;margin-bottom:8px}
+.wallet-card .saldo{font-size:42px;font-weight:900;color:#25d366}
+.form-group{margin-bottom:14px}
+.form-group label{font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#25d366}
+.metode-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.metode-item{padding:10px 16px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
+.metode-item.selected{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border-color:#25d366}
+.account-list{display:flex;flex-direction:column;gap:10px}
+.account-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border-radius:16px;border:1px solid #1f2a34;cursor:pointer}
+.account-item:hover{border-color:#25d366}
+.account-item .avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;font-weight:700;flex-shrink:0;overflow:hidden}
+.account-item .info{flex:1;min-width:0}
+.account-item .info .nama{font-weight:700;font-size:15px}
+.account-item .info .meta{font-size:12px;opacity:.6;margin-top:2px}
+.chat-container{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0a0e14;z-index:10002;flex-direction:column}
+.chat-container.show{display:flex}
+.chat-header{display:flex;align-items:center;gap:12px;padding:14px 20px;background:#141a22;border-bottom:1px solid #1f2a34;flex-shrink:0}
+.chat-header .back{font-size:22px;opacity:.7;background:transparent;border:none;color:#e0e6ed}
+.chat-header .chat-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:700;overflow:hidden}
+.chat-header .chat-name{font-weight:700;font-size:16px}
+.chat-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:8px;background:#0a0e14}
+.chat-msg{max-width:75%;padding:10px 16px;border-radius:18px;font-size:14px;word-wrap:break-word}
+.chat-msg.me{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg.other{background:#1f2a34;color:#e0e6ed;align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg .time{font-size:10px;opacity:.6;margin-top:4px;display:block}
+.chat-msg img{max-width:100%;border-radius:12px;margin-top:4px}
+.chat-footer{display:flex;gap:8px;padding:12px 16px;background:#141a22;border-top:1px solid #1f2a34;flex-shrink:0}
+.chat-footer .attach{font-size:22px;opacity:.6;background:transparent;border:none;color:#e0e6ed;padding:4px}
+.chat-footer input{flex:1;padding:12px 16px;border-radius:24px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none}
+.chat-footer .send{font-size:22px;background:transparent;border:none;color:#25d366;padding:4px}
+.tabungan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.tabungan-item{background:#0f151c;border:1px solid #1f2a34;border-radius:16px;padding:16px}
+.tabungan-item .label{font-size:12px;opacity:.6}
+.tabungan-item .val{font-size:20px;font-weight:900;color:#25d366;margin-top:4px}
+.help-info-box{background:rgba(37,211,102,.08);border-left:4px solid #25d366;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
+.help-warn-box{background:rgba(243,156,18,.1);border-left:4px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
+.help-dev-box{background:rgba(241,196,15,.1);border-left:4px solid #f1c40f;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6}
+.verify-box{background:#0f151c;border:1px solid #2a3340;border-radius:16px;padding:16px;margin-bottom:14px}
+.verify-box .label{font-size:12px;opacity:.6;margin-bottom:6px}
+.verify-box .val{font-size:14px;font-weight:700}
+.verify-box .val.big{font-size:18px;color:#25d366}
+.upload-area{border:2px dashed #2a3340;border-radius:16px;padding:24px;text-align:center;cursor:pointer;margin-bottom:12px}
+.upload-area.has-file{border-color:#25d366;background:rgba(37,211,102,.1)}
+.upload-area img{max-width:100%;max-height:150px;border-radius:12px;margin-top:8px}
+.upload-area .icon{font-size:32px;color:#25d366;margin-bottom:8px}
+.upload-area .text{font-size:13px;opacity:.7}
+.banner-dev{width:100%;aspect-ratio:16/5;border-radius:16px;background:#0f151c;border:1px solid #1f2a34;overflow:hidden;margin-bottom:16px;position:relative;display:flex;align-items:center;justify-content:center;color:#2a3340;font-size:14px;cursor:pointer}
+.banner-dev img{width:100%;height:100%;object-fit:cover}
+.banner-dev .placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.4}
+.income-item{background:#0f151c;border:1px solid #1f2a34;border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.income-item .info{flex:1;min-width:0}
+.income-item .info .nama{font-weight:700;font-size:14px}
+.income-item .del{background:transparent;border:none;color:#e74c3c;font-size:16px;padding:4px 8px}
+.footer{text-align:center;padding:30px 20px;opacity:.4;font-size:13px;border-top:1px solid #1f2a34;margin-top:40px}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:#070a0f}
+::-webkit-scrollbar-thumb{background:#2a3340;border-radius:10px}
+.page-flow{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999999;background:#070a0f;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow-y:auto;transition:opacity .4s,transform .4s}
+.page-flow.show{display:flex}
+.page-flow.exit{opacity:0;transform:scale(1.02);pointer-events:none}
+.page-flow .flow-box{text-align:center;max-width:400px;width:100%}
+.page-flow .flow-spinner{width:80px;height:80px;border:6px solid rgba(37,211,102,.15);border-top-color:#25d366;border-radius:50%;margin:0 auto 24px;animation:spin .9s linear infinite}
+.page-flow .flow-title{font-size:22px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-flow .flow-desc{font-size:14px;opacity:.6;margin-bottom:24px}
+.page-flow .flow-progress{width:100%;height:6px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:16px}
+.page-flow .flow-progress-bar{height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,#25d366,#6c5ce7);transition:width .3s}
+.page-flow .flow-skip-btn{padding:8px 20px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid #2a3340;color:#e0e6ed;font-size:12px;font-weight:600}
+@keyframes spin{to{transform:rotate(360deg)}}
+.flow-logo-3d{width:100px;height:100px;margin:0 auto 20px;border-radius:24px;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:900;color:#fff}
+.flow-logo-3d.custom-logo{background:none;overflow:hidden}
+.flow-logo-3d.custom-logo img{width:100%;height:100%;object-fit:cover;border-radius:24px}
+.flow-spinner.custom-spinner{background:none;border:none!important;overflow:hidden;animation:none!important}
+.flow-spinner.custom-spinner img{width:100%;height:100%;object-fit:cover;border-radius:50%;animation:spin 1.5s linear infinite}
+#pageFlowDb,#pageFlowBanner{background-size:cover;background-position:center;position:relative}
+#pageFlowDb .flow-box,#pageFlowBanner .flow-box{position:relative;z-index:2}
+#pageFlowDb::before,#pageFlowBanner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(7,10,15,.75);z-index:1}
+#pageIntroMedia{background:#000;padding:0}
+#pageIntroMedia .intro-media-wrap{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+#pageIntroMedia img,#pageIntroMedia video{width:100%;height:100%;object-fit:contain}
+#pageIntroMedia .intro-sound-hint{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);color:#fff;background:rgba(37,211,102,.9);padding:10px 20px;border-radius:20px;font-size:13px;font-weight:700;display:none;z-index:5;border:none}
+#pageIntroMedia .intro-sound-hint.show{display:block}
+#pageIntroInfo{background:linear-gradient(180deg,rgba(7,10,15,.98),rgba(7,10,15,1));padding:30px 20px;justify-content:flex-start}
+#pageIntroInfo .intro-info-inner{max-width:640px;margin:auto;width:100%}
+.intro-info-header{text-align:center;margin-bottom:24px}
+.intro-info-header .logo-big{width:80px;height:80px;border-radius:22px;background:linear-gradient(135deg,#25d366,#6c5ce7);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:900;color:#fff}
+.intro-info-header h1{font-size:28px;font-weight:900;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.intro-info-header p{font-size:14px;opacity:.6}
+.intro-info-card{background:#141a22;border:1px solid #1f2a34;border-radius:20px;padding:20px;margin-bottom:14px}
+.intro-info-card h3{font-size:15px;color:#25d366;margin-bottom:12px;font-weight:800}
+.intro-update-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #1a222c;font-size:13px;line-height:1.5}
+.intro-update-item:last-child{border-bottom:none}
+.intro-update-item .dot{width:8px;height:8px;border-radius:50%;background:#25d366;flex-shrink:0;margin-top:6px}
+.intro-enter-btn{margin-top:16px;width:100%;padding:16px;border-radius:16px;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;font-weight:900;font-size:16px}
+#pageIntroChoice{background:linear-gradient(180deg,rgba(7,10,15,.97),rgba(7,10,15,.99))}
+#pageIntroChoice .intro-choice-inner{max-width:420px;width:100%}
+#pageIntroChoice h2{text-align:center;font-size:22px;font-weight:900;margin-bottom:24px}
+.choice-btn{width:100%;padding:16px;border-radius:16px;font-weight:800;font-size:15px;border:none;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px}
+.choice-guest{background:linear-gradient(135deg,#3498db,#2980b9);color:#fff}
+.choice-login{background:linear-gradient(135deg,#25d366,#20b858);color:#fff}
+.choice-register{background:linear-gradient(135deg,#6c5ce7,#5f4fd6);color:#fff}
+#pageAuth{background:linear-gradient(180deg,rgba(7,10,15,.98),rgba(7,10,15,1));padding:30px 20px;justify-content:flex-start;align-items:center}
+#pageAuth .auth-inner{max-width:420px;width:100%;margin:auto}
+#auth-tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:16px;margin-bottom:20px;border:1px solid #1f2a34}
+#auth-tabs button{flex:1;padding:12px;border-radius:12px;border:none;background:transparent;color:#e0e6ed;font-weight:700;font-size:14px;opacity:.5}
+#auth-tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
+.auth-box{background:#141a22;border:1px solid #1f2a34;border-radius:24px;padding:24px}
+.login-method-tabs{display:flex;gap:4px;padding:4px;background:#0f151c;border-radius:14px;margin-bottom:20px;border:1px solid #1f2a34}
+.login-method-tabs button{flex:1;padding:10px;border-radius:10px;border:none;background:transparent;color:#e0e6ed;font-weight:700;font-size:12px;opacity:.5}
+.login-method-tabs button.active{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;opacity:1}
+.login-card-file{background:linear-gradient(135deg,#1a2230,#141a22);border:2px dashed #25d366;border-radius:20px;padding:24px;margin:20px 0;text-align:center}
+.login-card-file .file-icon{font-size:64px;margin-bottom:12px}
+.login-card-file .file-name{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:#25d366;word-break:break-all;margin-bottom:8px}
+.login-card-file .file-info{font-size:12px;opacity:.6;margin-bottom:16px}
+.login-card-file .btn-download{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;padding:14px 32px;border-radius:14px;font-size:15px;font-weight:800;width:100%;display:flex;align-items:center;justify-content:center;gap:10px}
+.login-card-file .btn-download.done{background:linear-gradient(135deg,#3498db,#2980b9)}
+.login-card-warning{background:rgba(243,156,18,.1);border-left:4px solid #f39c12;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6;text-align:left}
+.login-card-warning strong{color:#f39c12}
+.login-card-steps{background:rgba(37,211,102,.08);border-left:4px solid #25d366;border-radius:12px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.7;text-align:left}
+.login-card-steps ol{margin-left:20px;margin-top:6px}
+.login-card-steps li{margin-bottom:4px}
+.card-page-wrap{max-width:520px;width:100%;margin:auto;padding:20px}
+.card-upload-area{border:2px dashed #2a3340;border-radius:16px;padding:30px 20px;text-align:center;cursor:pointer;margin-bottom:12px}
+.card-upload-area.has-file{border-color:#25d366;background:rgba(37,211,102,.1)}
+.card-upload-area .icon{font-size:48px;color:#25d366;margin-bottom:10px}
+.card-upload-area .text{font-size:13px;opacity:.7}
+.card-upload-area .filename{font-size:12px;color:#25d366;font-weight:700;margin-top:8px;font-family:'JetBrains Mono',monospace}
+.level-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;padding:20px;margin-bottom:20px;position:relative;overflow:hidden}
+.level-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#25d366,#6c5ce7,#f1c40f)}
+.level-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.level-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:20px;background:linear-gradient(135deg,#25d366,#6c5ce7);color:#fff;font-weight:900;font-size:14px}
+.exp-bar-wrap{width:100%;height:14px;background:#0f151c;border-radius:10px;overflow:hidden;margin-bottom:8px;border:1px solid #2a3340}
+.exp-bar{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);border-radius:10px;transition:width .8s}
+.exp-text{display:flex;justify-content:space-between;font-size:12px;opacity:.7;font-weight:600}
+.exp-text .exp-now{color:#25d366;font-weight:800}
+.level-name{font-size:11px;opacity:.6;margin-top:8px;font-style:italic}
+.mission-item{display:flex;gap:12px;align-items:center;padding:14px;background:#0f151c;border:1px solid #1f2a34;border-radius:14px;margin-bottom:8px}
+.mission-item.done{border-color:#25d366;background:rgba(37,211,102,.05);opacity:.6}
+.mission-item .icon{font-size:24px;flex-shrink:0}
+.mission-item .info{flex:1;min-width:0}
+.mission-item .info .nama{font-weight:700;font-size:14px}
+.mission-item .info .desc{font-size:11px;opacity:.6;margin-top:2px}
+.mission-item .reward{background:rgba(37,211,102,.15);color:#25d366;padding:6px 12px;border-radius:12px;font-size:12px;font-weight:800;flex-shrink:0}
+.leaderboard-item{display:flex;gap:12px;align-items:center;padding:12px 16px;background:#0f151c;border:1px solid #1f2a34;border-radius:14px;margin-bottom:8px}
+.leaderboard-item.top1{border-color:#f1c40f}
+.leaderboard-item.top2{border-color:#bdc3c7}
+.leaderboard-item.top3{border-color:#cd7f32}
+.leaderboard-item .rank{font-size:20px;font-weight:900;width:32px;text-align:center;flex-shrink:0}
+.leaderboard-item .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#25d366,#6c5ce7);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0}
+.leaderboard-item .info{flex:1;min-width:0}
+.leaderboard-item .info .nama{font-weight:700;font-size:14px}
+.leaderboard-item .info .meta{font-size:11px;opacity:.6;margin-top:2px}
+.leaderboard-item .exp{color:#25d366;font-weight:900;font-size:14px;flex-shrink:0}
+.voucher-card{background:linear-gradient(135deg,#1a2230,#141a22);border:2px dashed #25d366;border-radius:14px;padding:14px;margin-bottom:10px;position:relative;overflow:hidden}
+.voucher-card.used{opacity:.4;border-style:dotted}
+.voucher-card.expired{border-color:#e74c3c;opacity:.5}
+.voucher-code{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:900;color:#25d366;letter-spacing:3px;text-align:center;padding:10px;background:rgba(37,211,102,.1);border-radius:10px;margin-bottom:8px}
+.voucher-disc{font-size:22px;font-weight:900;color:#f1c40f;text-align:center;margin:6px 0}
+.voucher-info{font-size:12px;display:flex;justify-content:space-between;opacity:.8}
+.voucher-input-row{display:flex;gap:8px;margin:12px 0}
+.voucher-input-row input{flex:1;padding:12px 16px;border-radius:12px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:2px;outline:none}
+.voucher-input-row button{padding:12px 20px;border-radius:12px;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;font-weight:700}
+.voucher-applied{background:rgba(37,211,102,.15);border:1px solid #25d366;border-radius:10px;padding:10px 14px;font-size:13px;color:#25d366;font-weight:700;margin:10px 0;display:flex;justify-content:space-between;align-items:center}
+.streak-card{background:linear-gradient(135deg,#1a2230,#141a22);border:1px solid #2a3340;border-radius:20px;padding:20px;margin-bottom:20px;text-align:center}
+.streak-card .streak-icon{font-size:48px;margin-bottom:8px}
+.streak-card .streak-num{font-size:36px;font-weight:900;color:#f39c12;font-family:'JetBrains Mono',monospace}
+.streak-card .streak-lbl{font-size:13px;opacity:.7;margin-bottom:16px}
+.streak-days{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.streak-day{width:36px;height:36px;border-radius:10px;background:#0f151c;border:1px solid #2a3340;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#5a6673;font-family:'JetBrains Mono',monospace}
+.streak-day.active{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border-color:#f39c12}
+.streak-day.today{box-shadow:0 0 0 3px rgba(243,156,18,.4)}
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:12px}
+.badge-item{background:#0f151c;border:2px solid #2a3340;border-radius:16px;padding:16px;text-align:center}
+.badge-item.unlocked{border-color:#f1c40f;background:linear-gradient(135deg,rgba(241,196,15,.1),rgba(230,126,34,.05))}
+.badge-item.locked{opacity:.4}
+.badge-item .badge-icon{font-size:36px;margin-bottom:8px}
+.badge-item .badge-name{font-weight:800;font-size:13px;margin-bottom:4px}
+.badge-item .badge-desc{font-size:11px;opacity:.6;line-height:1.4}
+.ps-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:16px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ps-card:hover{border-color:#25d366}
+.ps-card .ps-info{flex:1;min-width:0}
+.ps-card .ps-info .ps-title{font-weight:700;font-size:14px;margin-bottom:4px}
+.ps-card .ps-info .ps-price{color:#25d366;font-weight:900;font-size:18px}
+.ps-card .ps-info .ps-desc{font-size:11px;opacity:.6;margin-top:4px;line-height:1.4}
+.ps-card .ps-btn{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;padding:10px 16px;border-radius:12px;font-weight:700;font-size:12px}
+.ps-status-box{background:rgba(37,211,102,.08);border:1px solid #25d366;border-radius:16px;padding:20px;text-align:center;margin-bottom:16px}
+.ps-status-box.expired{background:rgba(231,76,60,.08);border-color:#e74c3c}
+.ps-status-box .ps-title{font-size:14px;opacity:.7;margin-bottom:6px}
+.ps-status-box .ps-value{font-size:32px;font-weight:900;color:#25d366;font-family:'JetBrains Mono',monospace}
+.ps-status-box.expired .ps-value{color:#e74c3c}
+.promo-web-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #2a3340;border-radius:18px;overflow:hidden;cursor:pointer;margin-bottom:12px}
+.promo-web-card:hover{border-color:#25d366}
+.promo-web-card .pw-thumb{aspect-ratio:16/9;background:#0f151c;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#25d366}
+.promo-web-card .pw-thumb img{width:100%;height:100%;object-fit:cover}
+.promo-web-card .pw-info{padding:14px}
+.promo-web-card .pw-info .pw-title{font-weight:800;font-size:14px;margin-bottom:6px}
+.promo-web-card .pw-info .pw-url{font-size:11px;opacity:.5;font-family:'JetBrains Mono',monospace;margin-bottom:8px;word-break:break-all}
+.promo-web-card .pw-info .pw-btn{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:700;width:100%}
+.promo-slider-wrap{position:relative;margin-bottom:24px;border-radius:20px;overflow:hidden;border:1px solid #1f2a34;background:#0f151c}
+.promo-slider-title{position:absolute;top:10px;left:14px;z-index:3;background:rgba(0,0,0,.6);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;color:#25d366}
+.promo-slider-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:12px;scrollbar-width:none}
+.promo-slider-track::-webkit-scrollbar{display:none}
+.promo-slide{flex:0 0 auto;scroll-snap-align:start;width:280px;height:150px;border-radius:14px;overflow:hidden;position:relative;background:#141a22;border:1px solid #2a3340;cursor:pointer}
+.promo-slide img{width:100%;height:100%;object-fit:cover}
+.promo-slide .slide-label{position:absolute;bottom:0;left:0;width:100%;padding:8px 12px;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);color:#fff;font-size:12px;font-weight:700;pointer-events:none}
+.promo-add-btn{flex:0 0 auto;width:120px;height:150px;border-radius:14px;border:2px dashed #2a3340;background:transparent;color:#25d366;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+#bannerAnimasiRB{position:fixed;bottom:20px;right:20px;max-width:150px;max-height:150px;z-index:9997;display:none;pointer-events:none}
+#bannerAnimasiRB.show{display:block}
+#bannerAnimasiRB img{max-width:100%;max-height:150px;object-fit:contain;display:block}
+.download-card{background:linear-gradient(135deg,#141a22,#1a222c);border:1px solid #1f2a34;border-radius:20px;overflow:hidden;position:relative}
+.download-card .thumb{aspect-ratio:16/10;background:#0f151c;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#25d366}
+.download-card .thumb img{width:100%;height:100%;object-fit:cover}
+.download-card .info{padding:16px}
+.download-card .info .nama{font-weight:700;font-size:15px;margin:4px 0}
+.download-card .info .uploader{font-size:11px;opacity:.5;margin-bottom:6px}
+.download-card .info .desk{font-size:12px;opacity:.7;line-height:1.5;margin-bottom:10px;max-height:54px;overflow:hidden}
+.download-card .info .btn-dl{background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:700;width:100%;display:flex;align-items:center;justify-content:center;gap:6px}
+.upload-progress{width:100%;height:8px;background:#0f151c;border-radius:10px;overflow:hidden;margin:12px 0}
+.upload-progress-bar{height:100%;width:0;background:linear-gradient(90deg,#25d366,#6c5ce7);border-radius:10px;transition:width .2s}
+.upload-progress-text{text-align:center;font-size:13px;font-weight:700;color:#25d366}
+.rating-stars{display:flex;gap:4px;font-size:24px;cursor:pointer;justify-content:center}
+.rating-stars span{opacity:.3}
+.rating-stars span.active{opacity:1}
+.terminal-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:90vw;max-width:800px;height:80vh;max-height:600px;background:#0a0a0a;border:1px solid #25d366;border-radius:14px;z-index:10003;display:none;flex-direction:column;font-family:'JetBrains Mono',monospace;overflow:hidden}
+.terminal-wrap.show{display:flex}
+.terminal-wrap.minimized{top:auto;left:auto;bottom:80px;right:20px;transform:none;width:320px;height:220px}
+.terminal-header{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#0d0d0d;border-bottom:1px solid #1f1f1f;flex-shrink:0}
+.terminal-header .dots{display:flex;gap:5px}
+.terminal-header .dot{width:11px;height:11px;border-radius:50%}
+.terminal-header .dot.red{background:#ff5f56}
+.terminal-header .dot.yellow{background:#ffbd2e}
+.terminal-header .dot.green{background:#27c93f}
+.terminal-header .title{flex:1;font-size:11px;color:#25d366;font-weight:700;text-align:center;opacity:.8}
+.terminal-header .btn{background:transparent;border:none;color:#888;font-size:14px;padding:2px 6px;border-radius:4px}
+.terminal-header .btn:hover{background:#1f1f1f;color:#25d366}
+.terminal-body{flex:1;overflow-y:auto;padding:10px;font-size:12px;line-height:1.6;background:#050505}
+.log-line{display:flex;gap:8px;padding:2px 4px;word-wrap:break-word}
+.log-line .t{color:#555;flex-shrink:0}
+.log-line .lvl{font-weight:800;flex-shrink:0}
+.log-line.INFO .lvl{color:#3498db}
+.log-line.OK .lvl{color:#25d366}
+.log-line.WARN .lvl{color:#f39c12}
+.log-line.ERROR .lvl{color:#e74c3c}
+.log-line.CMD .lvl{color:#9b59b6}
+.log-line.SECRET .lvl{color:#f1c40f}
+.log-line.DEV .lvl{color:#e67e22}
+.log-line .msg{color:#c0c0c0;flex:1;word-break:break-word}
+.terminal-input-wrap{display:flex;gap:6px;padding:8px 10px;background:#0d0d0d;border-top:1px solid #1a1a1a;flex-shrink:0;align-items:center}
+.terminal-input-wrap .prompt{color:#25d366;font-weight:800;font-size:13px}
+.terminal-input-wrap input{flex:1;background:transparent;border:none;color:#e0e6ed;font-size:12px;outline:none;font-family:'JetBrains Mono',monospace}
+.terminal-float-btn{position:fixed;bottom:80px;right:20px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#25d366,#20b858);color:#fff;border:none;font-size:20px;z-index:9996;font-family:'JetBrains Mono',monospace;font-weight:900;display:none}
+.terminal-float-btn.show{display:flex;align-items:center;justify-content:center}
+.virus-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999999;display:none;background:#000;overflow:hidden}
+.virus-overlay.show{display:block}
+.virus-popup{position:absolute;background:#e74c3c;color:#fff;padding:14px 20px;border:3px solid #fff;border-radius:10px;font-weight:900;font-size:16px;font-family:'JetBrains Mono',monospace;pointer-events:none;z-index:20}
+.virus-tv-noise{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;opacity:.4;background:repeating-linear-gradient(0deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.1) 1px,transparent 1px,transparent 3px)}
+.virus-title-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:60px;font-weight:900;color:#e74c3c;text-shadow:0 0 30px #e74c3c,0 0 60px #e74c3c;font-family:'JetBrains Mono',monospace;z-index:10;text-align:center;pointer-events:none}
+.virus-info-bottom{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;text-align:center;font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,.7);padding:14px 24px;border-radius:14px;border:2px solid #25d366;z-index:11;max-width:90%}
+.virus-info-bottom code{color:#25d366;font-weight:800;background:#0f151c;padding:2px 8px;border-radius:6px}
+.opkhyah-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999998;display:none;pointer-events:none;overflow:hidden}
+.opkhyah-overlay.show{display:block}
+.opkhyah-overlay .opk-particle{position:absolute;pointer-events:none;font-family:'JetBrains Mono',monospace;font-weight:900}
+.opkhyah-overlay .opk-popup{position:absolute;background:#e74c3c;color:#fff;padding:10px 16px;border:3px solid #fff;border-radius:10px;font-weight:900;font-size:14px;font-family:'JetBrains Mono',monospace;pointer-events:none;z-index:100}
+.opkhyah-timer{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:99999999;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:14px 32px;border-radius:20px;font-weight:900;font-size:20px;font-family:'JetBrains Mono',monospace;display:none;border:3px solid #fff;text-align:center}
+.opkhyah-timer.show{display:block}
+.opkhyah-timer .opk-countdown{font-size:32px;display:block;text-align:center;margin-top:4px}
+.opkhyah-timer .opk-hint{font-size:11px;opacity:.9;font-weight:600;margin-top:4px;text-align:center}
+.opkhyah-progress-bar{width:100%;height:8px;background:rgba(0,0,0,.3);border-radius:10px;overflow:hidden;margin-top:8px}
+.opkhyah-progress-bar-fill{height:100%;background:linear-gradient(90deg,#25d366,#6c5ce7);border-radius:10px;transition:width .3s}
+.opkhyah-win-modal{background:linear-gradient(135deg,#25d366,#6c5ce7);border-radius:24px;padding:32px;text-align:center;color:#fff}
+.opkhyah-win-modal h1{font-size:32px;font-weight:900;margin-bottom:12px}
+.opkhyah-win-modal .opk-reward{font-size:60px;margin:16px 0}
+.opkhyah-win-modal .opk-level-text{font-size:18px;font-weight:800;background:rgba(255,255,255,.2);padding:10px 20px;border-radius:14px;display:inline-block;margin-bottom:16px}
+@media(max-width:600px){.container{padding:14px}.navbar{padding:10px 12px;gap:8px}.navbar .menu a,.navbar .menu button{padding:5px 8px;font-size:12px}.banner-1-1-big{width:80px;height:80px}.clock-top{font-size:10px}.hero{padding:40px 20px}.product-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.wallet-card .saldo{font-size:32px}.chat-msg{max-width:85%}.topbar .menu-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}.promo-slide{width:220px;height:120px}.promo-add-btn{width:100px;height:120px}#bannerAnimasiRB{max-width:90px;max-height:90px}.judul-web-banner{aspect-ratio:16/6;max-height:100px}.terminal-wrap{width:96vw;height:70vh}.virus-title-center{font-size:36px}.chat-balloon{width:48px;height:48px;font-size:20px}}
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="em-cart" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.6-1.4 2.4c-.1.2-.2.5-.2.8 0 1.1.9 2 2 2h12v-2H7.4c-.1 0-.2-.1-.2-.2v-.1L8.1 13h7.4c.8 0 1.4-.4 1.8-1l3.6-6.5c.1-.2.1-.3.1-.5 0-.6-.4-1-1-1H5.2L4.3 2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
+<symbol id="em-box" viewBox="0 0 24 24"><path d="M20 6h-2.2c.1-.3.2-.6.2-1 0-2.2-1.8-4-4-4S10 2.8 10 5c0 .4.1.7.2 1H8c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM8 8h12v11H8V8z"/></symbol>
+<symbol id="em-store" viewBox="0 0 24 24"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/></symbol>
+<symbol id="em-receipt" viewBox="0 0 24 24"><path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z"/></symbol>
+<symbol id="em-wallet" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></symbol>
+<symbol id="em-user" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
+<symbol id="em-bulb" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></symbol>
+<symbol id="em-login" viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></symbol>
+<symbol id="em-logout" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></symbol>
+<symbol id="em-star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>
+<symbol id="em-fire" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/></symbol>
+<symbol id="em-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
+<symbol id="em-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+<symbol id="em-warning" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+<symbol id="em-upload" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></symbol>
+<symbol id="em-download" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></symbol>
+<symbol id="em-plus" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></symbol>
+<symbol id="em-trash" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></symbol>
+<symbol id="em-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+<symbol id="em-send" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></symbol>
+<symbol id="em-tag" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></symbol>
+<symbol id="em-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></symbol>
+<symbol id="em-lock" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></symbol>
+<symbol id="em-bag" viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm0 12c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/></symbol>
+<symbol id="em-help" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></symbol>
+<symbol id="em-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
+<symbol id="em-crown" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></symbol>
+<symbol id="em-trophy" viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></symbol>
+<symbol id="em-bolt" viewBox="0 0 24 24"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></symbol>
+<symbol id="em-rocket" viewBox="0 0 24 24"><path d="M12 2.5s-4 4-4 9c0 2.21 1.79 4 4 4s4-1.79 4-4c0-5-4-9-4-9zm0 11c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0 6.5l-3-3h6l-3 3z"/></symbol>
+<symbol id="em-gift" viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/></symbol>
+<symbol id="em-key" viewBox="0 0 24 24"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></symbol>
+<symbol id="em-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></symbol>
+<symbol id="em-server" viewBox="0 0 24 24"><path d="M4 1h16c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2zm0 12h16c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-6c0-1.1.9-2 2-2zm2-9v2h2V4H6zm0 12v2h2v-2H6z"/></symbol>
+<symbol id="em-link" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></symbol>
+<symbol id="em-menu" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></symbol>
+<symbol id="em-image" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></symbol>
+<symbol id="em-cloud" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
+<symbol id="em-camera" viewBox="0 0 24 24"><path d="M12 15.2c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2 1.43 3.2 3.2 3.2zM9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></symbol>
+</svg>
+
+<div class="page-flow show" id="pageFlowDb">
+<div class="flow-box">
+<div class="flow-logo-3d" id="loadingLogo">W</div>
+<h2 class="flow-title">WarungDigital v8.3.1</h2>
+<p class="flow-desc" id="flowDbStatus">Menghubungkan ke database...</p>
+<div class="flow-progress"><div class="flow-progress-bar" id="flowDbBar"></div></div>
+<button class="flow-skip-btn" onclick="skipFlowDb()">⏭️ Skip</button>
+</div>
+</div>
+
+<div class="page-flow" id="pageFlowBanner">
+<div class="flow-box">
+<div class="flow-spinner" id="loadingCircle" style="border-top-color:#6c5ce7"></div>
+<h2 class="flow-title" style="background:linear-gradient(135deg,#6c5ce7,#25d366);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Memuat Tampilan</h2>
+<p class="flow-desc" id="flowBannerStatus">Memuat background & banner...</p>
+<div class="flow-progress"><div class="flow-progress-bar" id="flowBannerBar" style="background:linear-gradient(90deg,#6c5ce7,#25d366)"></div></div>
+<button class="flow-skip-btn" onclick="skipFlowBanner()">⏭️ Skip</button>
+</div>
+</div>
+
+<div class="page-flow" id="pageIntroMedia">
+<div class="intro-media-wrap">
+<img id="introImg" style="display:none" />
+<video id="introVid" style="display:none" playsinline></video>
+</div>
+<button class="intro-sound-hint" id="introSoundHint" onclick="enableIntroSound()">🔊 Nyalakan Suara</button>
+</div>
+
+<div class="page-flow" id="pageIntroInfo">
+<div class="intro-info-inner">
+<div class="intro-info-header">
+<div class="logo-big">W</div>
+<h1 id="introInfoTitle">WarungDigital</h1>
+<p id="introInfoSubtitle">Marketplace Produk Digital</p>
+</div>
+<div id="introInfoContent"></div>
+<button class="intro-enter-btn" onclick="introGoToChoice()">Masuk ke Web</button>
+</div>
+</div>
+
+<div class="page-flow" id="pageIntroChoice">
+<div class="intro-choice-inner">
+<h2>Mau Ngapain Dulu? 🚀</h2>
+<button class="choice-btn choice-guest" onclick="introChoose('guest')">👀 Langsung Masuk (Guest)</button>
+<button class="choice-btn choice-login" onclick="introChoose('login')">🔑 Login</button>
+<button class="choice-btn choice-register" onclick="introChoose('register')">📝 Daftar</button>
+</div>
+</div>
+
+<div class="page-flow" id="pageAuth">
+<div class="auth-inner">
+<div id="auth-tabs">
+<button id="authTabLogin" class="active" onclick="switchAuthTab('login')">Login</button>
+<button id="authTabRegister" onclick="switchAuthTab('register')">Daftar</button>
+</div>
+<div id="loginModeTabs" style="margin-bottom:16px">
+<div class="login-method-tabs">
+<button id="loginMethodManual" class="active" onclick="switchLoginMethod('manual')">⌨️ Manual</button>
+<button id="loginMethodCard" onclick="switchLoginMethod('card')">📄 Login via Card</button>
+</div>
+</div>
+<div class="auth-box">
+<div id="loginManualForm">
+<label style="font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8">Nama</label>
+<input type="text" id="authNama" placeholder="Nama lo" style="width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;margin-bottom:12px" />
+<label style="font-size:13px;font-weight:600;display:block;margin-bottom:6px;opacity:.8">Password</label>
+<input type="password" id="authPass" placeholder="Password" style="width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a3340;background:#0f151c;color:#e0e6ed;font-size:14px;outline:none;margin-bottom:12px" />
+<button class="btn btn-primary btn-block" id="authSubmitBtn" onclick="doAuthSubmit()">Login</button>
+</div>
+<div id="loginCardForm" style="display:none">
+<div class="help-info-box" style="margin-bottom:14px">📄 Upload file <strong>card login</strong> yang kamu download pas daftar.</div>
+<div class="card-upload-area" id="cardUploadArea" onclick="document.getElementById('cardFileInput').click()">
+<div class="icon">📄</div>
+<div class="text">Klik buat pilih file card (.txt)</div>
+<div class="filename" id="cardUploadFilename" style="display:none"></div>
+</div>
+<input type="file" id="cardFileInput" accept=".txt,text/plain" style="display:none" onchange="readCardFile(this)" />
+<button class="btn btn-primary btn-block" id="cardLoginBtn" onclick="doCardLogin()" disabled style="opacity:.4">🔓 Login via Card</button>
+</div>
+<button class="btn btn-secondary btn-block" onclick="backToChoice()" style="margin-top:8px">Kembali</button>
+</div>
+</div>
+</div>
+
+<div class="page-flow" id="pageCardDownload">
+<div class="card-page-wrap">
+<div style="text-align:center;margin-bottom:20px">
+<div style="font-size:60px;margin-bottom:8px">🎉</div>
+<h1 style="font-size:24px;font-weight:900;background:linear-gradient(135deg,#25d366,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px">Akun Berhasil Dibuat!</h1>
+<p style="font-size:13px;opacity:.7">Sekarang kamu WAJIB download file card login di bawah</p>
+</div>
+<div class="login-card-warning"><strong>⚠️ WAJIB DIBACA!</strong><br>File card login ini <strong>SATU-SATUNYA</strong> cara buat masuk akun kamu lagi. Kalau hilang, kamu <strong>TIDAK BISA LOGIN</strong> selamanya!</div>
+<div class="login-card-file">
+<div class="file-icon">📄</div>
+<div class="file-name" id="cardFileName">warungdigital-card-xxx.txt</div>
+<div class="file-info" id="cardFileSize">0 KB</div>
+<button class="btn-download" id="cardDownloadBtn" onclick="downloadLoginCard()"><svg class="em em-lg"><use href="#em-download"/></svg><span id="cardDownloadBtnText">Download Card Login</span></button>
+</div>
+<div class="login-card-steps"><strong>📖 Cara pakai card ini:</strong><ol><li>Simpan file ini di HP/laptop kamu</li><li>Kalau mau login lagi, buka halaman Login</li><li>Pilih tab <strong>"Login via Card"</strong></li><li>Upload file ini → otomatis masuk</li></ol></div>
+<button class="btn btn-primary btn-block" id="cardContinueBtn" onclick="continueFromCardPage()" disabled style="opacity:.4;margin-top:12px">Lanjut ke Web (setelah download)</button>
+</div>
+</div>
+
+<div id="topNotif"></div>
+<div class="topbar-overlay" id="topbarOverlay" onclick="closeTopbar()"></div>
+<div class="topbar" id="topbar">
+<h3><svg class="em em-lg"><use href="#em-menu"/></svg> Menu Navigasi</h3>
+<div class="menu-grid" id="topbarGrid"></div>
+</div>
+
+<div id="bannerAnimasiRB"><img id="bannerAnimasiImg" style="display:none" /></div>
+<button class="terminal-float-btn" id="terminalFloatBtn" onclick="toggleTerminal()">&gt;_</button>
+<button class="chat-balloon" id="chatBalloon" onclick="openChatListFromBalloon()"><svg class="em em-lg"><use href="#em-chat"/></svg><span class="balloon-badge" id="chatBalloonBadge" style="display:none">0</span></button>
+
+<div class="container">
+<div class="navbar-wrap">
+<div class="judul-web-banner" id="judulWebBanner"><img id="judulWebImg" style="display:none" /></div>
+<nav class="navbar">
+<div class="left">
+<button onclick="openTopbar()" style="background:transparent;border:none;color:#e0e6ed;font-size:24px;padding:4px"><svg class="em em-lg"><use href="#em-menu"/></svg></button>
+<div class="logo-nav" id="logoNav" onclick="showPage('home')"><span id="logoNavFallback">W</span><img id="logoNavImg" style="display:none" /></div>
+<div class="clock-top">
+<div class="row">🕐 <span id="clockWIB">--:--:--</span> WIB</div>
+<div class="row" style="font-size:10px">🌏 <span id="clockWITA">--:--:--</span> WITA</div>
+<div class="row" style="font-size:10px">🌏 <span id="clockWIT">--:--:--</span> WIT</div>
+</div>
+</div>
+<div class="center menu">
+<a href="javascript:showPage('home')">Home</a>
+<a href="javascript:showPage('jualan')">Jualan</a>
+<a href="javascript:showPage('download')">Download</a>
+<a href="javascript:showPage('wishlist')">Wishlist</a>
+<a href="javascript:showPage('level')">Level</a>
+<a href="javascript:showPage('flashsale')">Flash Sale</a>
+<button onclick="showPage('cart')" title="Keranjang"><svg class="em em-lg"><use href="#em-cart"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
+</div>
+<div class="banner-1-1-big" id="banner11"><img id="banner11Img" style="display:none" /></div>
+</nav>
+</div>
+
+<div id="page-home">
+<div class="promo-slider-wrap"><div class="promo-slider-title">🔥 Promo Jualan</div><div class="promo-slider-track" id="promoJualanTrack"></div></div>
+<div class="promo-slider-wrap"><div class="promo-slider-title">📱 Sosial Media</div><div class="promo-slider-track" id="promoMedsosTrack"></div></div>
+<div class="hero">
+<div class="badge"><svg class="em"><use href="#em-star"/></svg> MARKETPLACE PRODUK DIGITAL v8.3.1</div>
+<h1>Jual & Beli <span>Produk Digital</span><br>dengan Mudah</h1>
+<p>Platform jual-beli produk digital dengan verifikasi manual. Aman, cepat, dan terpercaya.</p>
+<div class="btn-group"><a href="#produk" class="btn btn-primary"><svg class="em em-lg"><use href="#em-bag"/></svg> Lihat Produk</a><a href="javascript:showPage('jualan')" class="btn btn-secondary"><svg class="em em-lg"><use href="#em-store"/></svg> Mulai Jualan</a></div>
+</div>
+<div class="stats">
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-box"/></svg></div><div class="num" id="statProduk">0</div><div class="label">Produk</div></div>
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-user"/></svg></div><div class="num" id="statUser">0</div><div class="label">Pengguna</div></div>
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-cart"/></svg></div><div class="num" id="statOrder">0</div><div class="label">Transaksi</div></div>
+<div class="stat"><div class="icon"><svg class="em em-xl"><use href="#em-star"/></svg></div><div class="num" id="statRating">0.0</div><div class="label">Rating</div></div>
+</div>
+<div class="section" id="produk">
+<div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-fire"/></svg> Produk Terbaru</h2><span class="count" id="produkCount">0 produk</span></div>
+<div class="filter-bar">
+<input type="text" id="searchProduk" placeholder="🔍 Cari produk..." oninput="renderHome()" />
+<select id="filterKategori" onchange="renderHome()"><option value="">Semua Kategori</option><option value="Umum">Umum</option><option value="Top-Up Game">Top-Up Game</option><option value="Template">Template</option><option value="E-book">E-book</option><option value="Preset">Preset</option><option value="Lainnya">Lainnya</option></select>
+<select id="filterSort" onchange="renderHome()"><option value="terbaru">Terbaru</option><option value="termurah">Termurah</option><option value="termahal">Termahal</option><option value="terlaris">Terlaris</option></select>
+</div>
+<div class="product-grid" id="productGrid"><div class="empty"><svg class="em-2xl"><use href="#em-box"/></svg><p>Memuat produk...</p></div></div>
+</div>
+</div>
+
+<div id="page-level" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-trophy"/></svg> Level & Misi</h2><span class="count" id="levelPageCount">-</span></div><div id="levelPageContent"></div></div>
+<div id="page-flashsale" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#e74c3c"><use href="#em-fire"/></svg> Flash Sale</h2><span class="count" id="flashSaleCount">0</span></div><div class="help-info-box">⚡ Promo kilat dengan waktu terbatas!</div><div class="product-grid" id="flashSaleGrid"></div></div>
+<div id="page-wishlist" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#e74c3c"><use href="#em-heart"/></svg> Wishlist</h2><span class="count" id="wishlistCount">0</span></div><div class="product-grid" id="wishlistGrid"></div></div>
+<div id="page-jualan" class="hidden">
+<div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-store"/></svg> Jualan Saya</h2><button class="btn btn-primary btn-sm" onclick="showAddProduct()"><svg class="em"><use href="#em-plus"/></svg> Tambah</button></div>
+<div class="tabs"><button class="active" onclick="switchJualanTab('produk',this)">Produk</button><button onclick="switchJualanTab('pesanan',this)">Penjualan</button><button onclick="switchJualanTab('pembayaran',this)">E-Wallet</button></div>
+<div id="jualan-produk"></div><div id="jualan-pesanan" class="hidden"></div><div id="jualan-pembayaran" class="hidden"></div>
+</div>
+<div id="page-cart" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cart"/></svg> Keranjang</h2><span class="count" id="cartCount">0 item</span></div><div id="cartList"></div></div>
+<div id="page-orders" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-receipt"/></svg> History</h2><span class="count" id="ordersCount">0</span></div><div id="ordersList"><div class="empty"><p>Belum ada history</p></div></div></div>
+<div id="page-dompet" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-wallet"/></svg> Dompet</h2></div><div class="wallet-card"><div class="label">Saldo Dompet</div><div class="saldo" id="walletSaldo">Rp 0</div></div><div class="section"><div class="section-header"><h2 style="font-size:18px">Riwayat</h2></div><div id="walletHistory"><div class="empty"><p>Belum ada transaksi</p></div></div></div></div>
+<div id="page-download" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-cloud"/></svg> Download Gratis</h2><button class="btn btn-primary btn-sm" onclick="showAddDownload()"><svg class="em"><use href="#em-plus"/></svg> Upload</button></div><div class="help-info-box">Produk digital <strong>GRATIS</strong>! Upload via link atau file (max 25MB).</div><div id="downloadGrid" class="product-grid"><div class="empty"><p>Memuat...</p></div></div></div>
+<div id="page-voucher" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-tag"/></svg> Voucher</h2><button class="btn btn-primary btn-sm" onclick="showCreateVoucher()"><svg class="em"><use href="#em-plus"/></svg> Buat</button></div><div class="help-info-box">🎟️ Voucher dibuat oleh <strong>penjual</strong>.</div><div id="voucherList"></div></div>
+<div id="page-following" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#e74c3c"><use href="#em-heart"/></svg> Following</h2><span class="count" id="followingCount">0</span></div><div id="followingList"></div></div>
+<div id="page-streak" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#f39c12"><use href="#em-fire"/></svg> Daily Streak</h2><span class="count" id="streakCount">-</span></div><div id="streakContent"></div></div>
+<div id="page-achievements" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#f1c40f"><use href="#em-trophy"/></svg> Badge</h2><span class="count" id="achCount">0/0</span></div><div id="achievementsContent"></div></div>
+<div id="page-statistik" class="hidden"><div class="section-header"><h2>📊 Statistik</h2></div><div id="statistikContent"></div></div>
+<div id="page-promoweb" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-link"/></svg> Promosi Web</h2><button class="btn btn-primary btn-sm" onclick="showAddPromoWeb()"><svg class="em"><use href="#em-plus"/></svg> Tambah</button></div><div class="help-info-box">Promosikan website kamu di sini! GRATIS.</div><div id="promoWebList"></div></div>
+<div id="page-privateserver" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-server"/></svg> Private Server</h2><span class="count">Firebase RTDB</span></div><div id="psContent"></div></div>
+<div id="page-accounts" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Info Akun</h2></div><div class="account-list" id="accountsList"><div class="empty"><p>Memuat...</p></div></div></div>
+<div id="page-chatlist" class="hidden"><div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-send"/></svg> Chat</h2><span class="count" id="chatListCount">0</span></div><div class="account-list" id="chatListContainer"><div class="empty"><p>Memuat...</p></div></div></div>
+<div id="page-account" class="hidden">
+<div class="section-header"><h2><svg class="em em-lg" style="color:#25d366"><use href="#em-user"/></svg> Setting Akun</h2></div>
+<div class="form-group"><label>Nama</label><input type="text" id="accNama" /></div>
+<div class="form-group"><label>Password Baru</label><input type="password" id="accPass" /></div>
+<div class="form-group"><label>Nomor WA</label><input type="text" id="accWA" placeholder="628xxxxxxxxxx" /></div>
+<div class="form-group"><label>Notifikasi Browser</label><button type="button" class="btn btn-secondary btn-block" onclick="requestNotifPermission()">🔔 Aktifkan</button></div>
+<button class="btn btn-primary btn-block" onclick="saveSettingAccount()">Simpan Akun</button>
+<button class="btn btn-danger btn-block" onclick="logoutUser()" style="margin-top:12px">Logout</button>
+</div>
+<div id="page-dev" class="hidden"><div class="section-header"><h2 style="color:#f1c40f"><svg class="em em-lg" style="color:#f1c40f"><use href="#em-crown"/></svg> Dev Panel</h2><span class="count" id="devCount">0 user</span></div><div id="devContent"><div class="empty"><p>Memuat...</p></div></div></div>
+
+</div>
+
+<div class="footer">Made with <svg class="em" style="color:#25d366"><use href="#em-heart"/></svg> by <strong>WarungDigital v8.3.1</strong> · © 2026</div>
+
+<div class="modal-overlay" id="modalOverlay"><div class="modal" id="modalContent"></div></div>
+<div id="toast"></div>
+
+<div class="chat-container" id="chatContainer">
+<div class="chat-header"><button class="back" onclick="closeChat()"><svg class="em em-lg"><use href="#em-close"/></svg></button><div class="chat-avatar" id="chatAvatar">👤</div><div><div class="chat-name" id="chatName">-</div><div style="font-size:11px;opacity:.6">Online</div></div></div>
+<div class="chat-body" id="chatBody"></div>
+<div class="chat-footer"><button class="attach" onclick="attachChatFile()"><svg class="em em-lg"><use href="#em-upload"/></svg></button><input type="text" id="chatInput" placeholder="Tulis pesan..." onkeydown="if(event.key==='Enter')sendChatMsg()" /><button class="send" onclick="sendChatMsg()"><svg class="em em-lg"><use href="#em-send"/></svg></button></div>
+</div>
+
+<div class="terminal-wrap" id="terminalWrap">
+<div class="terminal-header"><div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div><div class="title" id="terminalTitle">WarungDigital Terminal v8.3.1</div><button class="btn" onclick="exportLog()">💾</button><button class="btn" onclick="resetLogForce()">🗑️</button><button class="btn" onclick="minimizeTerminal()">▁</button><button class="btn" onclick="toggleTerminal()">✕</button></div>
+<div class="terminal-body" id="terminalBody"></div>
+<div class="terminal-input-wrap"><span class="prompt" id="terminalPrompt">&gt;</span><input type="text" id="terminalInput" placeholder="Ketik command... (Vmenu)" onkeydown="if(event.key==='Enter')handleCommand(this.value)" /></div>
+</div>
+
+<div class="virus-overlay" id="virusOverlay"><div class="virus-tv-noise"></div><div class="virus-title-center" id="virusTitle">⚠️ VIRUS DETECTED ⚠️</div><div class="virus-info-bottom">Ini cuma <strong>PRANK</strong> 😄<br>Ketik <code>Vvirusoff</code> ATAU refresh web <strong>10 kali</strong> buat berhenti.<div style="margin-top:8px;font-size:12px;opacity:.7">Auto-stop dalam <span id="virusCountdown">300</span> detik</div></div></div>
+
+<div class="opkhyah-overlay" id="opkhyahOverlay"></div>
+<div class="opkhyah-timer" id="opkhyahTimer">🥚 VOPKHYAH MODE<span class="opk-countdown" id="opkCountdown">60</span><div class="opk-hint">Jangan refresh / close! Tahan sampai 0 untuk hadiah 🎁</div><div class="opkhyah-progress-bar"><div class="opkhyah-progress-bar-fill" id="opkProgressFill" style="width:0%"></div></div></div>
+
+<audio id="globalAudio" loop></audio>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig={apiKey:"AIzaSyDp_3SDiQUAGX0_gw8BYtO2Ecnypl1GlgE",authDomain:"project1-f57d6.firebaseapp.com",databaseURL:"https://project1-f57d6-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"project1-f57d6",storageBucket:"project1-f57d6.firebasestorage.app",messagingSenderId:"722737960517",appId:"1:722737960517:web:f465039879d08fa306b52c"};
+firebase.initializeApp(firebaseConfig);
+const db=firebase.database();
+const CLOUD_NAME='lcceusqr',UPLOAD_PRESET='Warungdigital_Unsigned',CLOUDINARY_URL=`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`,MAX_FILE_SIZE=25*1024*1024;
+const DEV_NAME="vardev",DEV_PASS="vardevanakganteng2";
+const PS_PRICES=[{id:'rules',title:'Rules RTDB',price:500,desc:'Setup rules Firebase RTDB'},{id:'rules_fs',title:'Rules RTDB + Firestore',price:1000,desc:'Setup rules RTDB + Firestore'},{id:'lainnya',title:'Mengatur Lainnya',price:3000,desc:'Config lengkap'},{id:'gmail',title:'Akses Gmail Firebase',price:5000,desc:'Full access'},{id:'extend_day',title:'Perpanjang / Hari',price:300,desc:'1 hari'},{id:'extend_perm',title:'Perpanjang Permanent',price:5000,desc:'Selamanya'}];
+const LEVELS=[{lv:1,name:'Pemula',expNeed:0},{lv:2,name:'Buyer Kaya',expNeed:2000},{lv:3,name:'Buyer Hambur Duit 💸',expNeed:3000},{lv:4,name:'Buyer Emas',expNeed:4000},{lv:5,name:'Buyer Diamond',expNeed:5000},{lv:6,name:'VIP Plengerzz 🔥',expNeed:8000},{lv:7,name:'VVIP++ 👑',expNeed:10000}];
+const MISSIONS=[{id:'login',name:'Login hari ini',desc:'Buka web',exp:50,icon:'🚪'},{id:'beli',name:'Beli 1 produk',desc:'Beli produk',exp:150,icon:'🛒'},{id:'jual',name:'Jual 1 produk',desc:'Konfirmasi jual',exp:200,icon:'💰'},{id:'chat',name:'Chat 1 penjual',desc:'Kirim chat',exp:75,icon:'💬'},{id:'upload',name:'Upload 1 produk',desc:'Tambah produk',exp:250,icon:'📦'},{id:'rating',name:'Rating produk',desc:'Kasih rating',exp:100,icon:'⭐'},{id:'follow',name:'Follow user',desc:'Follow user',exp:50,icon:'❤️'},{id:'flashsale',name:'Beli Flash Sale',desc:'Beli flash sale',exp:200,icon:'🔥'}];
+const ACHIEVEMENTS=[{id:'first_login',name:'First Login',desc:'Login pertama',icon:'🚪'},{id:'first_buy',name:'First Buyer',desc:'Beli pertama',icon:'🛒'},{id:'first_sell',name:'First Seller',desc:'Jual pertama',icon:'💰'},{id:'big_spender',name:'Big Spender',desc:'Belanja >100rb',icon:'💎'},{id:'chatty',name:'Chatty',desc:'Kirim 10 chat',icon:'💬'},{id:'lvl5',name:'Diamond',desc:'Level 5',icon:'💎'},{id:'lvl7',name:'VVIP',desc:'Level 7',icon:'👑'},{id:'streak7',name:'Streak 7',desc:'Login 7 hari',icon:'🔥'},{id:'vopkhyah',name:'Vopkhyah Survivor',desc:'Selesai Vopkhyah',icon:'🥚'},{id:'voucher_maker',name:'Voucher Maker',desc:'Bikin voucher',icon:'🎟️'}];
+
+let currentUser=localStorage.getItem('wd_user')||null;
+let currentPage='home';
+let products={},downloadItems={};
+let cart=JSON.parse(localStorage.getItem('wd_cart')||'[]');
+let wishlist=JSON.parse(localStorage.getItem('wd_wishlist')||'[]');
+let selectedEwallet=null,currentChatUser=null,chatRef=null,buktiUrl='';
+let dbReady=false,isSubmitting=false,isDev=false,isGuest=false;
+let allPromoJualan=[],allPromoMedsos=[];
+let introData={},uiInfoData={};
+let lastOrderCount=0,authMode='login';
+let userData=null,userExp=0,userLevel=1,userMissions={},userAchievements={},userFollows={},userStreak={};
+let logBuffer=[],errorLog=[],oneSignalReady=false;
+let virusActive=false,virusTimer=null,virusCountdownInterval=null,virusDuration=300,refreshCount=0;
+let secretUnlocked=localStorage.getItem('wd_secret_unlocked')==='true',secretVerifyPending=false,secretAnswer=null,secretLockUntil=0;
+let pendingProductBannerUrl='',pendingDownloadBannerUrl='',pendingDownloadFileUrl='',pendingDownloadFileName='',pendingPromoBannerUrl='',pendingPwBanner='',pendingCardData=null,appliedVoucher=null,unreadChatCount=0;
+let opkhyahActive=false,opkhyahTimer=null,opkhyahCountdownInterval=null,opkhyahParticleInterval=null,opkhyahPopupInterval=null,opkhyahSoundInterval=null,opkhyahNotifInterval=null;
+let opkhyahDuration=60,opkhyahRemaining=60,opkhyahCompleted=false,opkhyahRewardGiven=false,opkhyahUsed=localStorage.getItem('wd_opkhyah_used')==='true';
+let hasSeenIntro=sessionStorage.getItem('wd_seen_intro')==='true';
+
+function formatRp(n){return 'Rp '+Number(n||0).toLocaleString('id-ID')}
+function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function escapeAttr(s){return String(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function emoji(id,cls){return `<svg class="em ${cls||''}"><use href="#${id}"/></svg>`}
+function cdnImg(url,w){if(!url)return'';if(!url.includes('res.cloudinary.com'))return url;return url.replace('/upload/',`/upload/f_auto,q_auto,w_${w||800}/`)}
+function getLevelFromExp(exp){let lv=1;let total=0;for(let i=0;i<LEVELS.length;i++){total+=LEVELS[i].expNeed;if(exp>=total)lv=LEVELS[i].lv}return lv}
+function getLevelInfo(lv){return LEVELS[lv-1]||LEVELS[0]}
+
+let audioCtx=null;
+function getAudioCtx(){if(!audioCtx){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}return audioCtx}
+function playTone(freq,dur,type,vol){const ctx=getAudioCtx();if(!ctx)return;try{const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type=type||'sine';osc.frequency.value=freq;gain.gain.value=vol||0.15;osc.connect(gain);gain.connect(ctx.destination);osc.start();gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+dur);osc.stop(ctx.currentTime+dur)}catch(e){}}
+function playSequence(notes){notes.forEach((n,i)=>{setTimeout(()=>playTone(n.f,n.d||0.15,n.t||'sine',n.v||0.15),i*(n.gap||120))})}
+const SOUNDS={success:()=>playSequence([{f:659,d:.1},{f:988,d:.15},{f:1319,d:.2}]),order:()=>playSequence([{f:659,d:.1},{f:784,d:.1},{f:1047,d:.2}])};
+
+function pushLog(level,msg){const entry={t:Date.now(),level,msg:String(msg)};logBuffer.push(entry);if(logBuffer.length>500)logBuffer.shift();const tw=document.getElementById('terminalWrap');if(tw&&tw.classList.contains('show'))appendLogToDOM(entry)}
+function appendLogToDOM(entry){const body=document.getElementById('terminalBody');if(!body)return;const d=new Date(entry.t);const time=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0');const div=document.createElement('div');div.className='log-line '+entry.level;div.innerHTML=`<span class="t">[${time}]</span><span class="lvl">[${entry.level}]</span><span class="msg">${escapeHtml(entry.msg)}</span>`;body.appendChild(div);body.scrollTop=body.scrollHeight}
+function renderTerminal(){const body=document.getElementById('terminalBody');if(!body)return;body.innerHTML='';logBuffer.forEach(appendLogToDOM)}
+function toggleTerminal(){const t=document.getElementById('terminalWrap');if(t.classList.contains('show')){t.classList.remove('show')}else{t.classList.add('show');t.classList.remove('minimized');renderTerminal();document.getElementById('terminalTitle').textContent=isDev?'Terminal [DEV]':'Log Aktivitas';document.getElementById('terminalPrompt').textContent=isDev?'DEV >':'>';document.getElementById('terminalInput').focus()}}
+function minimizeTerminal(){document.getElementById('terminalWrap').classList.toggle('minimized')}
+function exportLog(){const data={exportedAt:new Date().toISOString(),user:currentUser||'guest',isDev,totalLogs:logBuffer.length,logs:logBuffer};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='wd-log-'+Date.now()+'.json';a.click();URL.revokeObjectURL(url);showToast('✅ Log ter-export!','success')}
+function resetLogForce(){if(logBuffer.length===0){showToast('Log kosong','warn');return}if(!confirm('Reset '+logBuffer.length+' log?'))return;logBuffer=[];renderTerminal();showToast('✅ Log direset','success')}
+
+function showToast(msg,type){const t=document.getElementById('toast');t.innerHTML=(type==='error'?'❌':type==='warn'?'⚠️':'✅')+' '+msg;t.className=type==='error'?'show error':type==='warn'?'show warn':'show';clearTimeout(t._t);t._t=setTimeout(()=>t.className='',4000)}
+function showTopNotif(title,msg,type){const wrap=document.getElementById('topNotif');const id='tn_'+Date.now()+Math.random().toString(36).substr(2,4);const iconMap={info:'📢',success:'✅',error:'❌',warn:'⚠️'};wrap.insertAdjacentHTML('beforeend',`<div class="topNotifItem ${type||'info'}" id="${id}"><div class="icon">${iconMap[type]||'📢'}</div><div class="content"><div class="title">${escapeHtml(title)}</div><div class="msg">${escapeHtml(msg)}</div></div><button class="close" onclick="document.getElementById('${id}').remove()">✕</button></div>`);setTimeout(()=>{const el=document.getElementById(id);if(el)el.remove()},8000)}
+function openModal(html){document.getElementById('modalContent').innerHTML=html;document.getElementById('modalOverlay').classList.add('show')}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('show')}
+
+function uploadToCloudinary(file,onProgress){return new Promise((resolve,reject)=>{if(file.size>MAX_FILE_SIZE){reject(new Error('File max 25MB!'));return}const fd=new FormData();fd.append('file',file);fd.append('upload_preset',UPLOAD_PRESET);fd.append('folder','warungdigital');const xhr=new XMLHttpRequest();xhr.open('POST',CLOUDINARY_URL,true);if(onProgress&&xhr.upload){xhr.upload.onprogress=e=>{if(e.lengthComputable)onProgress(Math.round((e.loaded/e.total)*100))}}xhr.onload=()=>{if(xhr.status>=200&&xhr.status<300){try{resolve(JSON.parse(xhr.responseText))}catch(e){reject(new Error('Invalid'))}}else{let msg='Upload gagal';try{msg=JSON.parse(xhr.responseText).error?.message||msg}catch(e){};reject(new Error(msg))}};xhr.onerror=()=>reject(new Error('Koneksi gagal'));xhr.send(fd)})}
+function showUploadProgress(title){openModal(`<h2>📤 ${escapeHtml(title)}</h2><div class="upload-progress"><div class="upload-progress-bar" id="upBar"></div></div><div class="upload-progress-text" id="upText">0%</div><button class="btn btn-danger btn-block" onclick="closeModal()" style="margin-top:12px">Batal</button>`)}
+function updateUploadProgress(pct){const bar=document.getElementById('upBar');const txt=document.getElementById('upText');if(bar)bar.style.width=pct+'%';if(txt)txt.textContent=pct+'%'}
+
+setInterval(()=>{const now=new Date();const wib=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jakarta'}));const wita=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Makassar'}));const wit=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jayapura'}));const f=d=>String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0');const e1=document.getElementById('clockWIB');if(e1)e1.textContent=f(wib);const e2=document.getElementById('clockWITA');if(e2)e2.textContent=f(wita);const e3=document.getElementById('clockWIT');if(e3)e3.textContent=f(wit)},1000);
+
+function showFlow(id){document.querySelectorAll('.page-flow').forEach(el=>el.classList.remove('show'));const el=document.getElementById(id);if(el){el.classList.remove('exit');el.classList.add('show')}const c=document.querySelector('.container');if(c)c.style.display='none'}
+function hideFlow(id){const el=document.getElementById(id);if(!el)return;el.classList.add('exit');setTimeout(()=>{el.classList.remove('show','exit')},400)}
+function showApp(){document.querySelectorAll('.page-flow').forEach(el=>el.classList.remove('show'));const c=document.querySelector('.container');if(c)c.style.display='block';document.getElementById('terminalFloatBtn').classList.add('show');if(currentUser&&!isGuest)document.getElementById('chatBalloon').classList.add('show')}
+
+let dbSkipClicked=false;
+function updateFlowDb(pct,status){const bar=document.getElementById('flowDbBar');const st=document.getElementById('flowDbStatus');if(bar)bar.style.width=pct+'%';if(st&&status)st.textContent=status}
+function skipFlowDb(){dbSkipClicked=true;hideFlow('pageFlowDb')}
+function skipFlowBanner(){hideFlow('pageFlowBanner')}
+
+async function bootStart(){showFlow('pageFlowDb');updateFlowDb(10,'Menghubungkan ke database...');await applyLoadingBanners();try{const paths=['warungdigital/products','warungdigital/users','warungdigital/orders','warungdigital/download','warungdigital/settings','warungdigital/introWeb','warungdigital/uiInfo','warungdigital/vouchers','warungdigital/follows','warungdigital/promoweb'];let done=0;for(const p of paths){await db.ref(p).once('value');done++;updateFlowDb(10+Math.round((done/paths.length)*85),'Memuat '+p.split('/').pop()+'...')}updateFlowDb(100,'Selesai!');dbReady=true;await new Promise(r=>setTimeout(r,300));if(!dbSkipClicked)hideFlow('pageFlowDb');await loadBannerStage()}catch(e){console.warn(e);dbReady=true;if(!dbSkipClicked)hideFlow('pageFlowDb');await loadBannerStage()}}
+
+async function loadBannerStage(){showFlow('pageFlowBanner');const set=(p,t)=>{const b=document.getElementById('flowBannerBar');const s=document.getElementById('flowBannerStatus');if(b)b.style.width=p+'%';if(s)s.textContent=t};set(20,'Memuat setting...');await loadAllBannersAndBg();set(50,'Memuat intro...');await loadIntroData();set(70,'Memuat info UI...');await loadUiInfo();set(90,'Memuat promo...');await Promise.all([loadPromoJualan(),loadPromoMedsos()]);set(100,'Selesai!');await new Promise(r=>setTimeout(r,200));hideFlow('pageFlowBanner');startIntro()}
+
+async function applyLoadingBanners(){try{const snap=await db.ref('warungdigital/settings').once('value');const s=snap.val()||{};if(s.loadingBg){const dbPage=document.getElementById('pageFlowDb');const bannerPage=document.getElementById('pageFlowBanner');dbPage.style.backgroundImage=`url('${cdnImg(s.loadingBg,1200)}')`;bannerPage.style.backgroundImage=`url('${cdnImg(s.loadingBg,1200)}')`}if(s.loadingCircle){const logo3d=document.getElementById('loadingLogo');const spinner=document.getElementById('loadingCircle');if(logo3d){logo3d.classList.add('custom-logo');logo3d.innerHTML=`<img src="${cdnImg(s.loadingCircle,200)}" />`}if(spinner){spinner.classList.add('custom-spinner');spinner.innerHTML=`<img src="${cdnImg(s.loadingCircle,200)}" />`}}}catch(e){}}
+
+async function loadAllBannersAndBg(){try{const snap=await db.ref('warungdigital/settings').once('value');const s=snap.val()||{};applyBannerImgVid('banner11','banner11Img',s.banner11);applyBannerImgVid('judulWebBanner','judulWebImg',s.bannerJudul);applyBannerImgVid('bannerAnimasiRB','bannerAnimasiImg',s.bannerAnimasi);applyLogo(s.bannerLogo);applyFavicon(s.favicon);applyBg(s.bgWeb)}catch(e){}}
+function applyBannerImgVid(wrapId,imgId,url){const wrap=document.getElementById(wrapId);const img=document.getElementById(imgId);if(!wrap)return;if(url){wrap.classList.add('show');if(img){img.style.display='block';img.src=cdnImg(url,600);img.loading='lazy'}}else wrap.classList.remove('show')}
+function applyLogo(url){const img=document.getElementById('logoNavImg');const fb=document.getElementById('logoNavFallback');if(!url){fb.style.display='block';img.style.display='none';return}fb.style.display='none';img.style.display='block';img.src=cdnImg(url,200)}
+function applyFavicon(url){const link=document.querySelector('link[rel="icon"]');if(link&&url)link.href=cdnImg(url,64)}
+function applyBg(url){if(!url)return;const st=document.createElement('style');st.id='bgStyle';st.textContent=`body{background-image:url('${cdnImg(url,1200)}');background-size:cover;background-attachment:fixed}`;document.head.appendChild(st)}
+async function loadIntroData(){try{const s=await db.ref('warungdigital/introWeb').once('value');introData=s.val()||{}}catch(e){}}
+async function loadUiInfo(){try{const s=await db.ref('warungdigital/uiInfo').once('value');uiInfoData=s.val()||{}}catch(e){}}
+async function loadPromoJualan(){try{const s=await db.ref('warungdigital/banners/promosiJualan').limitToLast(20).once('value');const items=s.val()||{};allPromoJualan=Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));renderPromoJualan()}catch(e){}}
+async function loadPromoMedsos(){try{const s=await db.ref('warungdigital/banners/promosiMedsos').limitToLast(20).once('value');const items=s.val()||{};allPromoMedsos=Object.entries(items).map(([id,v])=>({id,...v})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));renderPromoMedsos()}catch(e){}}
+
+function startIntro(){if(currentUser&&hasSeenIntro){afterAuthGo();return}const hasMedia=introData.media&&introData.mediaType;if(!hasMedia){showIntroInfo();return}showFlow('pageIntroMedia');const img=document.getElementById('introImg');const vid=document.getElementById('introVid');const soundHint=document.getElementById('introSoundHint');img.style.display='none';vid.style.display='none';if(introData.mediaType==='video'){vid.style.display='block';vid.src=introData.media;vid.muted=false;vid.volume=1;vid.onended=()=>showIntroInfo();vid.play().catch(()=>{vid.muted=true;vid.play().then(()=>soundHint.classList.add('show')).catch(()=>{soundHint.classList.add('show');setTimeout(showIntroInfo,3000)})});setTimeout(()=>{if(document.getElementById('pageIntroMedia').classList.contains('show'))showIntroInfo()},30000)}else{img.style.display='block';img.src=introData.media;setTimeout(showIntroInfo,3000)}}
+function enableIntroSound(){const vid=document.getElementById('introVid');if(vid){vid.muted=false;vid.play().catch(()=>{})}document.getElementById('introSoundHint').classList.remove('show')}
+function showIntroInfo(){hideFlow('pageIntroMedia');setTimeout(()=>{showFlow('pageIntroInfo');document.getElementById('introInfoTitle').textContent=uiInfoData.title||'WarungDigital v8.3.1';document.getElementById('introInfoSubtitle').textContent=uiInfoData.subtitle||'Marketplace Produk Digital';const updates=uiInfoData.updates?Object.values(uiInfoData.updates):[];let html='';if(updates.length>0){html+='<div class="intro-info-card"><h3>📝 Update</h3>';updates.forEach(u=>{html+=`<div class="intro-update-item"><div class="dot"></div><div>${escapeHtml(u)}</div></div>`});html+='</div>'}else{html+='<div class="intro-info-card"><h3>📝 Update v8.3.1</h3><div class="intro-update-item"><div class="dot"></div><div>Login Card System</div></div><div class="intro-update-item"><div class="dot"></div><div>Voucher dari Penjual</div></div><div class="intro-update-item"><div class="dot"></div><div>Follow Seller + Streak + Badge</div></div><div class="intro-update-item"><div class="dot"></div><div>Flash Sale + Private Server + Promosi Web</div></div><div class="intro-update-item"><div class="dot"></div><div>Vopkhyah Easter Egg</div></div></div>'}document.getElementById('introInfoContent').innerHTML=html},400)}
+function introGoToChoice(){sessionStorage.setItem('wd_seen_intro','true');hasSeenIntro=true;hideFlow('pageIntroInfo');setTimeout(()=>{if(currentUser){afterAuthGo()}else{showFlow('pageIntroChoice')}},400)}
+function introChoose(mode){sessionStorage.setItem('wd_seen_intro','true');hasSeenIntro=true;hideFlow('pageIntroChoice');setTimeout(()=>{if(mode==='guest'){isGuest=true;currentUser=null;localStorage.removeItem('wd_user');afterAuthGo()}else{authMode=mode;showAuthPage(mode)}},400)}
+function backToChoice(){hideFlow('pageAuth');setTimeout(()=>showFlow('pageIntroChoice'),400)}
+function showAuthPage(mode){authMode=mode;showFlow('pageAuth');const tabL=document.getElementById('authTabLogin');const tabR=document.getElementById('authTabRegister');const btn=document.getElementById('authSubmitBtn');if(mode==='login'){tabL.classList.add('active');tabR.classList.remove('active');btn.textContent='Login'}else{tabR.classList.add('active');tabL.classList.remove('active');btn.textContent='Daftar'}document.getElementById('authNama').value='';document.getElementById('authPass').value=''}
+function switchAuthTab(mode){showAuthPage(mode)}
+function switchLoginMethod(method){const mT=document.getElementById('loginMethodManual');const cT=document.getElementById('loginMethodCard');const mF=document.getElementById('loginManualForm');const cF=document.getElementById('loginCardForm');if(method==='manual'){mT.classList.add('active');cT.classList.remove('active');mF.style.display='block';cF.style.display='none'}else{mT.classList.remove('active');cT.classList.add('active');mF.style.display='none';cF.style.display='block'}}
+
+async function doAuthSubmit(){const nama=document.getElementById('authNama').value.trim();const pass=document.getElementById('authPass').value.trim();if(!nama||!pass){showToast('Isi semua!','error');return}if(authMode==='register'){if(pass.length<4){showToast('Password min 4!','error');return}const snap=await db.ref('warungdigital/users/'+nama).once('value');if(snap.exists()){showToast('Nama udah dipake!','error');return}await db.ref('warungdigital/users/'+nama).set({password:pass,createdAt:Date.now(),ewallets:[],wa:'',exp:0,level:1,missions:{},achievements:{},follows:{},streak:{current:0,last:0,max:0},status:''});currentUser=nama;isGuest=false;localStorage.setItem('wd_user',nama);sessionStorage.setItem('wd_seen_intro','true');showToast('🎉 Daftar berhasil!','success');hideFlow('pageAuth');setTimeout(()=>showCardDownloadPage(nama,pass),400)}else{const snap=await db.ref('warungdigital/users/'+nama).once('value');if(!snap.exists()){showToast('❌ Akun gak terdaftar!','error');return}const u=snap.val();if(u.password!==pass){showToast('Password salah!','error');return}currentUser=nama;isGuest=false;localStorage.setItem('wd_user',nama);sessionStorage.setItem('wd_seen_intro','true');showToast('Login berhasil!','success');hideFlow('pageAuth');setTimeout(afterAuthGo,400)}}
+
+function generateCardContent(userData){const idCard='CXZ-'+Math.random().toString(36).substring(2,10).toUpperCase();return{idCard,content:['═══════════════════════════════════════','   WARUNGDIGITAL v8.3.1 LOGIN CARD','═══════════════════════════════════════','ID CARD  : '+idCard,'Nama     : '+userData.nama,'Password : '+userData.password,'Dibuat   : '+new Date().toLocaleString('id-ID'),'═══════════════════════════════════════','⚠️ JANGAN BAGIKAN FILE INI!','⚠️ Satu-satunya cara login.','═══════════════════════════════════════'].join('\n')}}
+function showCardDownloadPage(nama,password){const card=generateCardContent({nama,password});pendingCardData={nama,password,idCard:card.idCard,content:card.content,downloaded:false};document.getElementById('cardFileName').textContent='warungdigital-card-'+nama+'.txt';document.getElementById('cardFileSize').textContent=(new Blob([card.content]).size/1024).toFixed(2)+' KB';document.getElementById('cardDownloadBtn').classList.remove('done');document.getElementById('cardDownloadBtnText').textContent='Download Card Login';const cB=document.getElementById('cardContinueBtn');cB.disabled=true;cB.style.opacity='.4';showFlow('pageCardDownload');setTimeout(()=>{if(pendingCardData&&!pendingCardData.downloaded)downloadLoginCard(true)},1000)}
+function downloadLoginCard(auto){if(!pendingCardData){showToast('Card gak ada!','error');return}const blob=new Blob([pendingCardData.content],{type:'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='warungdigital-card-'+pendingCardData.nama+'.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);pendingCardData.downloaded=true;document.getElementById('cardDownloadBtn').classList.add('done');document.getElementById('cardDownloadBtnText').textContent='✅ Downloaded!';const cB=document.getElementById('cardContinueBtn');cB.disabled=false;cB.style.opacity='1';if(!auto)showToast('✅ Card ter-download!','success');if(currentUser){db.ref('warungdigital/logincards/'+currentUser).set({idCard:pendingCardData.idCard,nama:pendingCardData.nama,createdAt:Date.now(),lastDownload:Date.now()})}}
+function continueFromCardPage(){if(!pendingCardData||!pendingCardData.downloaded){showToast('Download dulu!','error');return}hideFlow('pageCardDownload');setTimeout(afterAuthGo,400)}
+function readCardFile(input){const file=input.files[0];if(!file)return;if(!file.name.endsWith('.txt')){showToast('File harus .txt!','error');return}const reader=new FileReader();reader.onload=e=>{const parsed=parseCardContent(e.target.result);if(!parsed){showToast('❌ File gak valid!','error');return}document.getElementById('cardUploadArea').classList.add('has-file');document.getElementById('cardUploadFilename').textContent='✅ '+file.name;document.getElementById('cardUploadFilename').style.display='block';document.getElementById('cardLoginBtn').disabled=false;document.getElementById('cardLoginBtn').style.opacity='1';pendingCardData={nama:parsed.nama,password:parsed.password};showToast('✅ File terbaca!','success')};reader.readAsText(file)}
+function parseCardContent(content){const lines=content.split('\n');let nama=null,password=null;lines.forEach(l=>{const t=l.trim();if(t.startsWith('Nama'))nama=t.split(':')[1]?.trim();if(t.startsWith('Password'))password=t.split(':')[1]?.trim()});if(!nama||!password)return null;return{nama,password}}
+async function doCardLogin(){if(!pendingCardData||!pendingCardData.nama){showToast('Upload file!','error');return}const snap=await db.ref('warungdigital/users/'+pendingCardData.nama).once('value');if(!snap.exists()){showToast('❌ Akun gak ditemukan!','error');return}const u=snap.val();if(u.password!==pendingCardData.password){showToast('❌ Password gak cocok!','error');return}currentUser=pendingCardData.nama;isGuest=false;localStorage.setItem('wd_user',currentUser);sessionStorage.setItem('wd_seen_intro','true');showToast('✅ Login via card!','success');hideFlow('pageAuth');setTimeout(afterAuthGo,400)}
+
+async function afterAuthGo(){showApp();showPage('home');if(currentUser){setTimeout(()=>{if(oneSignalReady)window.OneSignal.login(currentUser).catch(()=>{})},1000);await loadUserData();await checkDevStatus();await checkDailyReset();await checkStreak();await logMission('login');await checkAchievement('first_login');checkVirusOnLoad();db.ref('warungdigital/users/'+currentUser).on('value',snap=>{if(!snap.exists()){showTopNotif('❌ Akun Dihapus','Akun lo dihapus Dev','error');setTimeout(()=>{currentUser=null;localStorage.removeItem('wd_user');location.reload()},3000)}});db.ref('warungdigital/notifications').orderByChild('target').equalTo(currentUser).limitToLast(10).on('child_added',snap=>{const n=snap.val();if(!n||n.read)return;showTopNotif(n.title,n.message,n.type==='danger'?'error':'info');snap.ref.update({read:true})});startUnreadChatListener()}}
+async function loadUserData(){if(!currentUser)return;const snap=await db.ref('warungdigital/users/'+currentUser).once('value');if(!snap.exists)return;userData=snap.val();userExp=userData.exp||0;userLevel=userData.level||1;userMissions=userData.missions||{};userAchievements=userData.achievements||{};userFollows=userData.follows||{};userStreak=userData.streak||{current:0,last:0,max:0};updateLevelUI()}
+
+function updateLevelUI(){const el=document.getElementById('levelPageContent');if(!el)return;const lvInfo=getLevelInfo(userLevel);const nextLv=LEVELS[userLevel]||null;const expForNext=nextLv?nextLv.expNeed:0;const expTotalForLevel=LEVELS.slice(0,userLevel-1).reduce((a,b)=>a+b.expNeed,0);const expInLevel=userExp-expTotalForLevel;const pct=expForNext>0?Math.min(100,Math.round(expInLevel/expForNext*100)):100;const todayMissionIds=Object.keys(userMissions);el.innerHTML=`<div class="level-card"><div class="level-header"><div class="level-badge">${emoji('em-trophy','em')} Level ${userLevel}</div><div style="font-size:13px;opacity:.7">Total EXP: <strong style="color:#25d366">${userExp.toLocaleString('id-ID')}</strong></div></div><div style="font-size:16px;font-weight:800;margin-bottom:12px">${escapeHtml(lvInfo.name)}</div><div class="exp-bar-wrap"><div class="exp-bar" style="width:${pct}%"></div></div><div class="exp-text"><span>EXP: <span class="exp-now">${expInLevel.toLocaleString('id-ID')}</span> / ${expForNext.toLocaleString('id-ID')}</span><span>${pct}%</span></div>${nextLv?'<div class="level-name">Next: Level '+nextLv.lv+'</div>':'<div class="level-name">🎉 MAX</div>'}</div><div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">${emoji('em-trophy','em')} Leaderboard</h2></div><div id="leaderboardContainer"><div class="empty"><p>Memuat...</p></div></div><div class="section-header" style="margin-top:20px"><h2 style="font-size:18px">${emoji('em-bolt','em')} Misi Harian</h2></div><div>${MISSIONS.map(m=>{const done=todayMissionIds.includes(m.id);return `<div class="mission-item ${done?'done':''}"><div class="icon">${m.icon}</div><div class="info"><div class="nama">${escapeHtml(m.name)}</div><div class="desc">${escapeHtml(m.desc)}</div></div><div class="reward">${done?'✅':'+'+m.exp}</div></div>`}).join('')}</div>`;loadLeaderboard()}
+async function loadLeaderboard(){const el=document.getElementById('leaderboardContainer');if(!el)return;try{const snap=await db.ref('warungdigital/users').once('value');const users=snap.val()||{};const arr=Object.entries(users).map(([nama,u])=>({nama,exp:u.exp||0,level:u.level||1,isDev:u.isDev||false})).filter(u=>!u.isDev);arr.sort((a,b)=>b.exp-a.exp);const top10=arr.slice(0,10);if(top10.length===0){el.innerHTML='<div class="empty"><p>Belum ada user</p></div>';return}const medals=['🥇','🥈','🥉'];el.innerHTML=top10.map((u,i)=>{const cls=i===0?'top1':i===1?'top2':i===2?'top3':'';const rank=i<3?medals[i]:('#'+(i+1));return `<div class="leaderboard-item ${cls}"><div class="rank">${rank}</div><div class="avatar">${u.nama.charAt(0).toUpperCase()}</div><div class="info"><div class="nama">${escapeHtml(u.nama)}${u.nama===currentUser?' (Lo)':''}</div><div class="meta">Lv ${u.level}</div></div><div class="exp">${u.exp.toLocaleString('id-ID')}</div></div>`}).join('')}catch(e){el.innerHTML='<div class="empty"><p>Gagal load</p></div>'}}
+
+async function addExp(amount,reason){if(!currentUser||isGuest)return;const oldLevel=userLevel;userExp+=amount;userLevel=getLevelFromExp(userExp);await db.ref('warungdigital/users/'+currentUser).update({exp:userExp,level:userLevel});if(userLevel>oldLevel){showTopNotif('🎉 LEVEL UP!','Level '+userLevel+' - '+getLevelInfo(userLevel).name,'success');if(userLevel>=5)checkAchievement('lvl5');if(userLevel>=7)checkAchievement('lvl7')}updateLevelUI()}
+async function checkDailyReset(){if(!currentUser)return;const lastReset=userData?.lastMissionReset||0;if(Date.now()-lastReset>=24*60*60*1000){await db.ref('warungdigital/users/'+currentUser).update({missions:{},lastMissionReset:Date.now()});userMissions={}}}
+async function checkStreak(){if(!currentUser||isGuest)return;const today=new Date().toDateString();const last=userStreak.last?new Date(userStreak.last).toDateString():null;if(last===today)return;const yesterday=new Date(Date.now()-86400000).toDateString();let current=userStreak.current||0;if(last===yesterday)current++;else current=1;const max=Math.max(userStreak.max||0,current);userStreak={current,last:Date.now(),max};await db.ref('warungdigital/users/'+currentUser).update({streak:userStreak});const bonus=50*current;await addExp(bonus,'Streak hari ke-'+current);if(current>=7)checkAchievement('streak7')}
+async function logMission(missionId){if(!currentUser||isGuest)return;if(userMissions[missionId])return;const m=MISSIONS.find(x=>x.id===missionId);if(!m)return;userMissions[missionId]=true;await db.ref('warungdigital/users/'+currentUser).update({missions:userMissions});await addExp(m.exp,'Misi: '+m.name)}
+async function checkAchievement(id){if(!currentUser||isGuest)return;if(userAchievements[id])return;const a=ACHIEVEMENTS.find(x=>x.id===id);if(!a)return;userAchievements[id]=true;await db.ref('warungdigital/users/'+currentUser).update({achievements:userAchievements});showTopNotif('🏅 ACHIEVEMENT!',a.icon+' '+a.name,'success')}
+
+async function ensureDevAccount(){const snap=await db.ref('warungdigital/users/'+DEV_NAME).once('value');if(!snap.exists()){await db.ref('warungdigital/users/'+DEV_NAME).set({password:DEV_PASS,createdAt:Date.now(),ewallets:[],wa:'',exp:999999,level:999,missions:{},achievements:{},follows:{},streak:{current:0,last:0,max:0},isDev:true,status:'Developer'})}else{await db.ref('warungdigital/users/'+DEV_NAME).update({isDev:true,level:999})}}
+async function checkDevStatus(){if(!currentUser){isDev=false;return}const snap=await db.ref('warungdigital/users/'+currentUser+'/isDev').once('value');isDev=snap.val()===true||currentUser===DEV_NAME}
+
+window.addEventListener('error',function(e){errorLog.push({type:'error',msg:e.message,file:e.filename,line:e.lineno,time:Date.now()});if(errorLog.length>50)errorLog.shift()});
+window.addEventListener('unhandledrejection',function(e){errorLog.push({type:'promise',msg:String(e.reason),time:Date.now()});if(errorLog.length>50)errorLog.shift()});
+
+(async function init(){await ensureDevAccount();await bootStart()})();
+console.log('WarungDigital v8.3.1 — Ready!');
+</script>
+</body>
+</html>
